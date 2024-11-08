@@ -46,7 +46,7 @@ const experiences = [
 const Experience = () => {
   return (
     <div className='p-8 max-w-[600px] mx-auto'>
-        <h1 className='text-5xl text-yellow-500 font-bold text-center mb-12'>Experiences:</h1>
+        <h1 className='text-5xl text-yellow-500 font-bold text-center mb-12'>Experience:</h1>
         <motion.div
         className='space-y-8'
         initial="hidden"
