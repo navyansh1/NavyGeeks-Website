@@ -15,7 +15,6 @@ const projects = [
         title: "🎮 TicTacToe iOS App",
         description: "🎲 An iOS game app using SwiftUI and UIKit for a fun, interactive experience.",
         links: {
-            site: "#",
             github: "https://github.com/navyansh1/TickTacToe",
         },
     },
@@ -40,7 +39,6 @@ const projects = [
         title: "🃏 Playing Cards iOS App",
         description: "📲 An iOS app using SwiftUI, UIKit, and Figma that brings card games to your fingertips.",
         links: {
-            site: "",
             github: "https://github.com/navyansh1/cards-Game",
         },
     },
@@ -49,8 +47,7 @@ const projects = [
         title: "🌐 Portfolio Website",
         description: "💻 A portfolio built using React, Tailwind CSS, and Framer Motion to showcase my projects and skills.",
         links: {
-            site: "#",
-            github: "https://github.com/navyansh1/NavyGeeks-Website",
+            github: "https://github.com/navyansh1/NavyGeeksWebsite",
         },
     },
 ];
@@ -77,14 +74,15 @@ const Portfolio = () => {
                             <div className='flex space-x-4'>
                                 {project.links.site && (
                                     <a href={project.links.site}
-                                        className='px-4 py-3 mt-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300'>
+                                        className='px-4 py-4 mt-2 bg-slate-600 text-gray-200 rounded-lg font-semibold text-lg hover:bg-slate-700 transition duration-300'>
                                         View Demo
                                     </a>
                                 )}
                                 {project.links.github && (
                                     <a href={project.links.github}
-                                        className='px-4 py-3 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300'>
+                                        className='flex items-center px-4 py-3 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300'>
                                         <AiOutlineGithub style={{ fontSize: '2em' }} />
+                                        <span className="ml-2">GitHub Link</span> {/* Added label here */}
                                     </a>
                                 )}
                             </div>
