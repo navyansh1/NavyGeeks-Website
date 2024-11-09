@@ -22,7 +22,15 @@ const projects = [
     {
       img: project2,
       title: "Google Cloud Computing Foundations ☁️",
-      description: "Issued: Sep 2023 | 🌟 Top 5% in the course offered by IIT Kharagpur",
+      description: (
+        <>
+          <p>Issued: Sep 2023</p>
+          <ul className="list-disc list-inside text-gray-300">
+            <li>🌟 Ranked in the top 5% of the course</li>
+            <li>Offered by IIT Kharagpur</li>
+          </ul>
+        </>
+      ),
       links: {
         site: "https://archive.nptel.ac.in/noc/Ecertificate/?q=NPTEL23CS90S73340588620273725",
       },
