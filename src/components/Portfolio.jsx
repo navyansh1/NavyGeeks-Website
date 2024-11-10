@@ -4,6 +4,7 @@ import project2 from "../assets/project2.png";
 import project4 from "../assets/project4.png";
 import project5 from "../assets/project5.png";
 import portfolioimg from "../assets/portfolio.png";
+import mcqQuizImg from "../assets/mcq-quiz.png"; // Placeholder image for the MCQ project
 
 import { AiOutlineGithub } from 'react-icons/ai';
 import Reveal from './Reveal';
@@ -24,6 +25,15 @@ const projects = [
         description: "🔗 A decentralized lottery system built with Solidity and React, leveraging blockchain technology.",
         links: {
             site: "https://drive.google.com/file/d/1mwgChln8-jExcFmfVdADh5mv4pUMKU9W/view?usp=sharing",
+        },
+    },
+    {
+        img: mcqQuizImg, // Image for the MCQ Quiz Generator
+        title: "📝 MCQ Quiz Generator using AI",
+        description: "📄 An intelligent quiz generator that uses Gemini Pro 1.5 to access PDFs, text files, etc., and create MCQ quizzes. Includes an option to download the quiz with answers.",
+        links: {
+            site:"https://mcqgen.vercel.app/",
+            github: "https://github.com/navyansh1/MCQGenerator-using-AI", // Replace with actual GitHub link if available
         },
     },
     {
@@ -82,7 +92,7 @@ const Portfolio = () => {
                                     <a href={project.links.github}
                                         className='flex items-center px-4 py-3 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300'>
                                         <AiOutlineGithub style={{ fontSize: '2em' }} />
-                                        <span className="ml-2">GitHub Link</span> {/* Added label here */}
+                                        <span className="ml-2">GitHub Link</span>
                                     </a>
                                 )}
                             </div>
