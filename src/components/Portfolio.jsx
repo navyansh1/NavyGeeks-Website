@@ -33,7 +33,6 @@ const projects = [
         description: "📄 An intelligent quiz generator that uses Gemini Pro 1.5 to access PDFs, text files, etc., and create MCQ quizzes. Includes an option to download the quiz with answers.",
         links: {
             site:"https://mcqgen.vercel.app/",
-            github: "https://github.com/navyansh1/MCQGenerator-using-AI", // Replace with actual GitHub link if available
         },
     },
     {
