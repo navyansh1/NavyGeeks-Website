@@ -39,7 +39,7 @@ const experiences = [
       period: 'Aug 2022 - Nov 2023ㅤ||ㅤ8mos',
       description: '🎥 Videographer & Video Editorㅤㅤㅤㅤㅤㅤㅤ    ',
       icon: ecellimg,
-      link: 'https://drive.google.com/drive/folders/1iocfJIRwQCvblwgmzEeBxyvZLkjUmvgS?usp=drive_link',
+      link: 'https://navyworks.vercel.app/',
   },
 ];
 
