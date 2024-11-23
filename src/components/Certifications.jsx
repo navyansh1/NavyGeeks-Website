@@ -59,7 +59,7 @@ const projects = [
           <p>Courses:</p>
           <ul className="list-disc list-inside text-gray-300">
             <li>🌲 Forest and its Management - Scored 97%</li>
-            <li>🦌 Wildlife Ecology - Scored 98%</li>
+            <li>🦌 Wildlife Ecology - Scored 100%</li>
           </ul>
         </>
       ),
