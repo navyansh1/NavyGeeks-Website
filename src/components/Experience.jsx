@@ -13,7 +13,7 @@ const experiences = [
     {
         company: 'Hitwicket',
         period: 'Dec 2024 - Present',
-        description: '🎮 Working on Hitwicket.ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ',
+        description: "🎮 Intern'ing at Hitwicket.ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ",
         icon: hitwicketimg,
         link: 'https://hitwicket.com/',
     },
