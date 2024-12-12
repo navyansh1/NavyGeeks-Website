@@ -18,9 +18,6 @@ export default function App() {
         <Hero />
       </div>
       
-      <div id="portfolio">
-        <Portfolio />
-      </div>
 
       <div id="skills">
         <Skills />
@@ -31,13 +28,17 @@ export default function App() {
         <Experience />
       </div>
       
+      <div id="portfolio">
+        <Portfolio />
+      </div>
+      <div id="education">
+        <Education />
+      </div>
+
       <div id="certifications">
         <Certifications />
       </div>
       
-      <div id="education">
-        <Education />
-      </div>
 
       <div id="contact">
         <Contact />
