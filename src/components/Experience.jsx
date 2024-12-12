@@ -6,9 +6,17 @@ import youtubeimg from '/src/assets/youtube.png';
 import microsoftimg from '/src/assets/microsoft.png';
 import hackclubimg from '/src/assets/hackclub.png';
 import ethnusimg from '/src/assets/ethnus.png';
-import ecellimg from '/src/assets/e-cell.png';
+import ec_cellimg from '/src/assets/e-cell.png';
+import hitwicketimg from '/src/assets/hitwicket.png';
 
 const experiences = [
+    {
+        company: 'Hitwicket',
+        period: 'Dec 2024 - Present',
+        description: '🎮 Working on Hitwicket.ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ',
+        icon: hitwicketimg,
+        link: 'https://hitwicket.com/',
+    },
   {
       company: 'YouTube: NavyGeeks',
       period: '2021 - Present',
@@ -38,9 +46,10 @@ const experiences = [
       company: 'E-Cell VIT Chennai',
       period: 'Aug 2022 - Nov 2023ㅤ||ㅤ8mos',
       description: '🎥 Videographer & Video Editorㅤㅤㅤㅤㅤㅤㅤ    ',
-      icon: ecellimg,
+      icon: ec_cellimg,
       link: 'https://navyworks.vercel.app/',
   },
+
 ];
 
 const Experience = () => {
@@ -73,11 +82,11 @@ const Experience = () => {
                                 rel="noopener noreferrer" 
                                 className='mt-4 inline-block px-4 py-2 border-2 border-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
                             >
-                                {experience.company === 'YouTube: NavyGeeks' ? 'View Channel' : 'View Works'}
+                                {experience.company === 'YouTube: NavyGeeks' ? 'View Channel' : experience.company === 'Hitwicket' ? 'View Website' : 'View Works'}
                             </a>
                         )}
                     </div>
-                    <img src={experience.icon} alt={`${experience.company} icon`} className="w-14 h-14 ml-4 rounded-full" />
+                    <img src={experience.icon} alt={`${experience.company} icon`} className={`ml-4 rounded-full ${experience.company === 'Hitwicket' ? 'w-28 h-14' : 'w-14 h-14'}`} />
                 </motion.div>
                 </Reveal>
             ))}

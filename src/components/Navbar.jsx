@@ -44,11 +44,11 @@ const Navbar = () => {
 
                 <ul className='hidden md:flex gap-12 z-10 cursor-pointer'>
                     <li><Link to="hero" smooth={true} offset={-80} duration={500}>About</Link></li>
-                    <li><Link to="portfolio" smooth={true} offset={-80} duration={500}>Projects</Link></li>
                     <li><Link to="skills" smooth={true} offset={-80} duration={500}>Skills</Link></li>
                     <li><Link to="experience" smooth={true} offset={-80} duration={500}>Experience</Link></li>
-                    <li><Link to="certifications" smooth={true} offset={-80} duration={500}>Licenses</Link></li>
+                    <li><Link to="portfolio" smooth={true} offset={-80} duration={500}>Projects</Link></li>
                     <li><Link to="education" smooth={true} offset={-80} duration={500}>Education</Link></li>
+                    <li><Link to="certifications" smooth={true} offset={-80} duration={500}>Licenses</Link></li>
                     <li><Link to="contact" smooth={true} offset={-160} duration={500}>Contact</Link></li>
                 </ul>
 
@@ -65,11 +65,11 @@ const Navbar = () => {
                     
                     <ul className='font-bold italic text-4xl space-y-10 mt-20 text-center px-3'>
                         <li><Link to="hero" onClick={closeNav} smooth={true} offset={-80} duration={500}>About</Link></li>
-                        <li><Link to="portfolio" onClick={closeNav} smooth={true} offset={-80} duration={500}>Projects</Link></li>
                         <li><Link to="skills" onClick={closeNav} smooth={true} offset={-80} duration={500}>Skills</Link></li>
                         <li><Link to="experience" onClick={closeNav} smooth={true} offset={-80} duration={500}>Experience</Link></li>
-                        <li><Link to="certifications" onClick={closeNav} smooth={true} offset={-80} duration={500}>Licenses</Link></li>
+                        <li><Link to="portfolio" onClick={closeNav} smooth={true} offset={-80} duration={500}>Projects</Link></li>
                         <li><Link to="education" onClick={closeNav} smooth={true} offset={-80} duration={500}>Education</Link></li>
+                        <li><Link to="certifications" onClick={closeNav} smooth={true} offset={-80} duration={500}>Licenses</Link></li>
                         <li><Link to="contact" onClick={closeNav} smooth={true} offset={500} duration={500}>Contact</Link></li>
                     </ul>
 
