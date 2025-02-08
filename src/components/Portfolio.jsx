@@ -56,7 +56,7 @@ const projects = [
         title: "🌐 Portfolio Website",
         description: "💻 A portfolio built using React, Tailwind CSS, and Framer Motion to showcase my projects and skills.",
         links: {
-            github: "https://github.com/navyansh1/NavyGeeksWebsite",
+            github: "https://github.com/navyansh1/NavyGeeks-Website",
         },
     },
 ];
