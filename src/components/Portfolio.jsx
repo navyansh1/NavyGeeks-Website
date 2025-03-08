@@ -4,13 +4,22 @@ import project2 from "../assets/project2.png";
 import project4 from "../assets/project4.png";
 import project5 from "../assets/project5.png";
 import portfolioimg from "../assets/portfolio.png";
-import mcqQuizImg from "../assets/mcq-quiz.png"; // Placeholder image for the MCQ project
+import mcqQuizImg from "../assets/mcq-quiz.png"; 
+import nextformsImg from "../assets/nextforms.png"; 
 
 import { AiOutlineGithub } from 'react-icons/ai';
 import Reveal from './Reveal';
 import ShinyEffect from './ShinyEffect';
 
 const projects = [
+    {
+        img: nextformsImg,
+        title: "📋 NextForms",
+        description: "📝 A fully customizable alternative to Google Forms with seamless response tracking and advanced email notifications.",
+        links: {
+            site: "https://nextforms.in",
+        },
+    },
     {
         img: project1,
         title: "🎮 TicTacToe iOS App",
@@ -28,7 +37,7 @@ const projects = [
         },
     },
     {
-        img: mcqQuizImg, // Image for the MCQ Quiz Generator
+        img: mcqQuizImg,
         title: "📝 MCQ Quiz Generator using AI",
         description: "📄 An intelligent quiz generator that uses Gemini Pro 1.5 to access PDFs, text files, etc., and create MCQ quizzes. Includes an option to download the quiz with answers.",
         links: {
