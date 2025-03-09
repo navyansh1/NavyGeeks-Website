@@ -13,7 +13,7 @@ const experiences = [
         period: 'Sept 2021 - Aug 2025',
         description: [
             'BTech in Computer Science & Engineering 💻',
-            'CGPA: 8.2'
+            'CGPA: 8.3'
         ],
         image: vitImage, // Image for VIT
     },
