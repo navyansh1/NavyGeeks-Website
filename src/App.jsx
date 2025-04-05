@@ -10,7 +10,7 @@ import Certifications from "./components/Certifications";
 
 export default function App() {
   return (
-    <div className="min-h-screen w-full overflow-x-hidden">
+    <div className="min-h-screen w-full overflow-x-hidden pb-16 md:pb-0">
       <Navbar />
       
       {/* Wrapping each component with divs and assigning ids */}
