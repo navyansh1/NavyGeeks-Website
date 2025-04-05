@@ -85,7 +85,7 @@ const Navbar = () => {
                 {/* Mobile nav toggle button - Fixed dimensions and layout to prevent jitter */}
                 <motion.button
                     onClick={toggleNav}
-                    className="fixed bottom-8 right-6 z-[1000] p-3 bg-yellow-400 bg-opacity-60 backdrop-blur-sm rounded-full shadow-lg text-slate-900 w-12 h-12 flex items-center justify-center"
+                    className="fixed bottom-10 right-6 z-[1000] p-3 bg-yellow-400 bg-opacity-60 backdrop-blur-sm rounded-full shadow-lg text-slate-900 w-12 h-12 flex items-center justify-center"
                     whileTap={{ scale: 0.95 }}
                     layout
                 >
@@ -99,7 +99,7 @@ const Navbar = () => {
                 </motion.button>
 
                 {/* Current section indicator bubble */}
-                <div className="fixed bottom-6 left-6 z-[999] bg-slate-800 bg-opacity-60 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+                <div className="fixed bottom-10 left-6 z-[999] bg-slate-800 bg-opacity-60 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium shadow-lg">
                     <span className="text-yellow-400">{activeSection.charAt(0).toUpperCase() + activeSection.slice(1)}</span>
                 </div>
                 
