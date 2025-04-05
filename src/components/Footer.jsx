@@ -25,7 +25,7 @@ const Footer = () => {
         </div>
 
         <p className='text-yellow-500 italic text-xs md:text-xl mt-3'> {}
-            @2024 NavyGeeks
+            @2025 NavyGeeks
         </p>
     </div>
   );
