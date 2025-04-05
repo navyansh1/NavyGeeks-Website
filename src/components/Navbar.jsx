@@ -85,7 +85,7 @@ const Navbar = () => {
                 {/* Mobile nav toggle button - Fixed dimensions and layout to prevent jitter */}
                 <motion.button
                     onClick={toggleNav}
-                    className="fixed bottom-12 right-6 z-[1000] p-3 bg-yellow-400 bg-opacity-60 backdrop-blur-sm rounded-full shadow-lg text-slate-900 w-12 h-12 flex items-center justify-center"
+                    className="fixed bottom-10 right-6 z-[1000] p-3 bg-yellow-400 bg-opacity-60 backdrop-blur-sm rounded-full shadow-lg text-slate-900 w-12 h-12 flex items-center justify-center"
                     whileTap={{ scale: 0.95 }}
                     layout
                 >
