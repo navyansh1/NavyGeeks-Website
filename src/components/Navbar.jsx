@@ -79,11 +79,11 @@ const Navbar = () => {
             {/* Mobile Navbar at bottom */}
             <div className='fixed bottom-0 left-0 w-full z-[999] md:hidden'>
                 {/* Gradient fade effect on edges */}
-                <div className="absolute left-0 bottom-0 w-full h-24 bg-gradient-to-t from-slate-800 to-transparent opacity-95"></div>
-                <div className="absolute left-0 bottom-0 w-20 h-24 bg-gradient-to-r from-transparent to-slate-800 opacity-95"></div>
-                <div className="absolute right-0 bottom-0 w-20 h-24 bg-gradient-to-l from-transparent to-slate-800 opacity-95"></div>
+                <div className="absolute left-0 bottom-0 w-full h-24 bg-gradient-to-t from-slate-800 to-transparent opacity-70"></div>
+                <div className="absolute left-0 bottom-0 w-20 h-24 bg-gradient-to-r from-transparent to-slate-800 opacity-70"></div>
+                <div className="absolute right-0 bottom-0 w-20 h-24 bg-gradient-to-l from-transparent to-slate-800 opacity-70"></div>
                 
-                <div className='relative flex justify-center items-center px-2 h-24 text-gray-200 border-t border-slate-700 bg-slate-800 bg-opacity-85 backdrop-blur-md pb-8'>
+                <div className='relative flex justify-center items-center px-2 h-24 text-gray-200 border-t border-slate-700 bg-slate-800 bg-opacity-60 backdrop-blur-md pb-8'>
                     <div ref={navbarRef} className='flex items-center w-full overflow-x-auto scrollbar-hide px-6 py-3 mx-safe'>
                         <div className='flex space-x-10 min-w-max mx-auto relative'>
                             <Link to="hero" smooth={true} offset={-80} duration={500} className="flex flex-col items-center text-xs relative">
