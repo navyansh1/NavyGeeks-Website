@@ -11,7 +11,7 @@ const educations = [
     {
         institution: 'Vellore Institute of Technology, Chennai 🏛️',
         period: 'Sept 2021 - Aug 2025',
-        description: 'BTech in Computer Science & Engineering 💻 | CGPA: 8.3',
+        description: 'BTech in Computer Science & Engineering | CGPA: 8.3',
         icon: vitImage ,
     },
     {
