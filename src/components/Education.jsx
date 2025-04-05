@@ -6,39 +6,31 @@ import classXImage from '/src/assets/classxmarksheet.png';
 import vitImage from '/src/assets/vit-logo.png'; // Path to VIT image 🏫
 import chinmayaImage from '/src/assets/chinmaya-logo.png'; // Path to Chinmaya Vidyalaya image 🏫
 
-// Experience data
-const experiences = [
+// Education data
+const educations = [
     {
-        company: 'Vellore Institute of Technology, Chennai 🏛️',
+        institution: 'Vellore Institute of Technology, Chennai 🏛️',
         period: 'Sept 2021 - Aug 2025',
-        description: [
-            'BTech in Computer Science & Engineering 💻',
-            'CGPA: 8.3'
-        ],
-        image: vitImage, // Image for VIT
+        description: 'BTech in Computer Science & Engineering 💻 | CGPA: 8.3',
+        icon: vitImage ,
     },
     {
-        company: 'Chinmaya Vidyalaya 🏫',
-        period: 'Class XII - CBSE | Mar 2020 - Apr 2021ㅤㅤㅤ',
-        description: [
-            'Score: 94.8%',
-            'School Topper in Physics 🥇'
-        ],
+        institution: 'Chinmaya Vidyalaya 🏫ㅤㅤㅤㅤㅤ',
+        period: 'Class XII - CBSE | Mar 2020 - Apr 2021',
+        description: 'Score: 94.8% | School Topper in Physics 🥇ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ',
+        icon: chinmayaImage,
         marksheet: classXIIImage,
-        image: chinmayaImage, // Image for Chinmaya Vidyalaya
     },
     {
-        company: 'Chinmaya Vidyalaya 🏫',
-        period: 'Class X - CBSE  | Mar 2018 - Apr 2019ㅤㅤㅤㅤ',
-        description: [
-            'Score: 91.5%'
-        ],
+        institution: 'Chinmaya Vidyalaya 🏫ㅤㅤㅤㅤㅤ',
+        period: 'Class X - CBSE | Mar 2018 - Apr 2019',
+        description: 'Score: 91.5%ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ',
+        icon: chinmayaImage,
         marksheet: classXImage,
-        image: chinmayaImage, // Same image for Class X
     },
 ];
 
-const Experience = () => {
+const Education = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentMarksheet, setCurrentMarksheet] = useState('');
 
@@ -54,47 +46,35 @@ const Experience = () => {
 
     return (
         <div className='p-8 max-w-[600px] mx-auto'>
-            <h1 className='text-5xl text-yellow-500 font-bold text-center mb-12'>Education 📚</h1>
+            <h1 className='text-5xl text-yellow-500 font-bold text-center mb-12'>Education:</h1>
             <motion.div
-                className='space-y-8 flex flex-col items-center'
+                className='space-y-8'
                 initial="hidden"
                 animate="visible"
             >
-                {experiences.map((experience, index) => (
+                {educations.map((education, index) => (
                     <Reveal key={index}>
                         <motion.div
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: false, amount: 0.3 }}
-                            transition={{ duration: 1 }}
-                            className='border-4 border-yellow-500 p-6 rounded-lg shadow-md
-                            hover:shadow-xl transition-shadow duration-300 bg-purple-800/30 shadow-lg w-full flex items-center'
+                            viewport={{ once: false, amount: 0.3}}
+                            transition={{ duration: 1}}
+                            className='border-4 border-yellow-500 p-6 rounded-2xl shadow-md
+                            hover:shadow-xl transition-shadow duration-300 bg-purple-800/30 shadow-lg w-full'
                         >
-                            <div className='flex-1'>
-                                <h2 className='text-gray-100 text-2xl font-semibold'>{experience.company}</h2>
-                                <p className='text-gray-300'>{experience.period}</p>
-                                <ul className='text-gray-400 mt-4 list-disc list-inside'>
-                                    {experience.description.map((point, idx) => (
-                                        <li key={idx}>{point}</li>
-                                    ))}
-                                </ul>
-                                {experience.marksheet && (
-                                    <div className='flex justify-start mt-4'>
-                                        <button
-                                            onClick={() => openModal(experience.marksheet)}
-                                            className='px-4 py-2 bg-yellow-500 text-gray-800 rounded hover:bg-yellow-600 transition'
-                                        >
-                                            View Marksheet
-                                        </button>
-                                    </div>
-                                )}
+                            <div className='flex items-center justify-between mb-3'>
+                                <h2 className='text-gray-100 text-2xl font-semibold'>{education.institution}</h2>
+                                <img src={education.icon} alt={`${education.institution} icon`} className='w-14 h-14 rounded-full' />
                             </div>
-                            {experience.image && (
-                                <img 
-                                    src={experience.image} 
-                                    alt={`${experience.company} logo`} 
-                                    className='w-16 h-16 ml-4 rounded-lg' // Adjust size and add corner radius
-                                />
+                            <p className='text-gray-300 text-base mb-2 font-medium'>{education.period}</p>
+                            <p className='text-gray-400 mt-2 text-lg leading-relaxed'>{education.description}</p>
+                            {education.marksheet && (
+                                <button 
+                                    onClick={() => openModal(education.marksheet)}
+                                    className='mt-4 inline-block px-4 py-2 border-2 border-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
+                                >
+                                    View Marksheet
+                                </button>
                             )}
                         </motion.div>
                     </Reveal>
@@ -102,18 +82,18 @@ const Experience = () => {
             </motion.div>
 
             {isModalOpen && (
-                <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'>
-                    <div className='relative p-4'>
+                <div className='fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4'>
+                    <div className='relative max-w-4xl max-h-[90vh] bg-purple-900/90 p-4 rounded-xl border-2 border-yellow-500'>
                         <button
                             onClick={closeModal}
-                            className='absolute top-2 right-2 text-white text-2xl z-50'
+                            className='absolute top-2 right-2 w-8 h-8 flex items-center justify-center bg-red-500 text-white rounded-full hover:bg-red-600 transition'
                         >
                             ✖️
                         </button>
                         <img 
                             src={currentMarksheet} 
                             alt="Marksheet" 
-                            className='max-w-[90%] max-h-[90vh] rounded-lg' 
+                            className='max-w-full max-h-[80vh] rounded-lg object-contain' 
                         />
                     </div>
                 </div>
@@ -122,4 +102,4 @@ const Experience = () => {
     );
 }
 
-export default Experience;
+export default Education;
