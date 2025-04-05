@@ -13,14 +13,14 @@ const experiences = [
     {
         company: 'Hitwicket',
         period: 'Dec 2024 - Present',
-        description: "Intern'ing at Hitwicket.ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ",
+        description: "Intern'ing at Hitwicket.",
         icon: hitwicketimg,
         link: 'https://hitwicket.com/',
     },
   {
       company: 'YouTube: NavyGeeks',
       period: '2021 - Present',
-      description: 'Tech channel with 70 videos and 4Lakh+ views & counting!ㅤㅤㅤ',
+      description: 'Tech channel with 70 videos and 4Lakh+ views & counting!',
       icon: youtubeimg,
       link: 'https://www.youtube.com/@Navygeeks',
   },
@@ -33,7 +33,7 @@ const experiences = [
   {
       company: 'HackClub VIT Chennai',
       period: 'Jun 2023 - Nov 2024ㅤ||ㅤ1yr 6mos',
-      description: '👨‍💻 iOS App Developer. Tech Stack: SwiftUI, UIKit, Xcodeㅤㅤㅤㅤㅤㅤ',
+      description: 'iOS App Developer. Tech Stack: SwiftUI, UIKit, Xcode',
       icon: hackclubimg,
   },
   {
@@ -45,7 +45,7 @@ const experiences = [
   {
       company: 'E-Cell VIT Chennai',
       period: 'Aug 2022 - Nov 2023ㅤ||ㅤ8mos',
-      description: 'Videographer & Video Editorㅤㅤㅤㅤㅤㅤㅤ  ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ  ',
+      description: 'Videographer & Video Editor ',
       icon: ec_cellimg,
       link: 'https://navyworks.vercel.app/',
   },
@@ -56,24 +56,19 @@ const Experience = () => {
   return (
     <div className='p-8 max-w-[600px] mx-auto'>
         <h1 className='text-5xl text-yellow-500 font-bold text-center mb-12'>Experience:</h1>
-        <motion.div
-        className='space-y-8'
-        initial="hidden"
-        animate="visible"
-        >
+        <div className='space-y-8 flex flex-col items-center'>
             {experiences.map((experience, index) => (
                 <Reveal key={index}>
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: false, amount: 0.3}}
-                    transition={{ duration: 1}}
+                <div 
                     className='border-4 border-yellow-500 p-6 rounded-2xl shadow-md
-                    hover:shadow-xl transition-shadow duration-300 bg-purple-800/30 shadow-lg w-full'
+                    hover:shadow-xl transition-shadow duration-300 bg-purple-800/30 shadow-lg mx-auto'
+                    style={{ width: '350px' }}
                 >
                     <div className='flex items-center justify-between mb-3'>
                         <h2 className='text-gray-100 text-2xl font-semibold'>{experience.company}</h2>
-                        <img src={experience.icon} alt={`${experience.company} icon`} className={`rounded-full ${experience.company === 'Hitwicket' ? 'w-24 h-12' : 'w-12 h-12'}`} />
+                        <div className="flex-shrink-0">
+                            <img src={experience.icon} alt={`${experience.company} icon`} className={`rounded-full ${experience.company === 'Hitwicket' ? 'w-24 h-12' : 'w-12 h-12'}`} />
+                        </div>
                     </div>
                     <p className='text-gray-300 text-sm mb-2 font-medium'>{experience.period}</p>
                     <p className='text-gray-400 mt-2 text-base leading-relaxed'>{experience.description}</p>
@@ -87,10 +82,10 @@ const Experience = () => {
                             {experience.company === 'YouTube: NavyGeeks' ? 'View Channel' : experience.company === 'Hitwicket' ? 'View Website' : 'View Works'}
                         </a>
                     )}
-                </motion.div>
+                </div>
                 </Reveal>
             ))}
-        </motion.div>
+        </div>
     </div>
   );
 }
