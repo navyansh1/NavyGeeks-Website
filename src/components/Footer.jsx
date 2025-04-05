@@ -3,7 +3,7 @@ import { FaGithubSquare, FaInstagram, FaYoutube, FaLinkedin } from 'react-icons/
 
 const Footer = () => {
   return (
-    <div className='max-w-[1300px] mx-auto flex justify-between p-6 md:p-20 text-sm md:text-lg mt-12'>
+    <div className='max-w-[1300px] mx-auto flex justify-between p-6 pb-20 md:p-20 text-sm md:text-lg mt-12'>
         <div className='space-y-4'>
 
             
