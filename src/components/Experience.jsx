@@ -12,10 +12,16 @@ import hitwicketimg from '/src/assets/hitwicket.png';
 const experiences = [
     {
         company: 'Hitwicket',
-        period: 'Dec 2024 - Present',
-        description: "Growth Analyst intern at Hitwicket.",
+        period: 'Dec 2024 - Aug 2025',
+        description: [
+            "Technical Growth Analyst at Hitwicket",
+            "Built and optimized interactive HTML5 playables (cricket-themed) for mobile ad campaigns on Unity Ads, AppLovin, and Google Ads",
+            "Managed end-to-end pipeline: design, video editing, compression, encoding, compliance, and deployment",
+            "Campaigns delivered 7M+ impressions, 40K+ installs, with competitive CPI ($0.20–0.25)"
+        ],
         icon: hitwicketimg,
         link: 'https://hitwicket.com/',
+        portfolioLink: 'https://navyansh1.github.io/playable-portfolio/'
     },
   {
       company: 'YouTube: NavyGeeks',
@@ -71,17 +77,37 @@ const Experience = () => {
                         </div>
                     </div>
                     <p className='text-gray-300 text-sm mb-2 font-medium'>{experience.period}</p>
-                    <p className='text-gray-400 mt-2 text-base leading-relaxed'>{experience.description}</p>
-                    {experience.link && (
-                        <a 
-                            href={experience.link} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className='mt-4 inline-block px-4 py-2 border-2 border-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
-                        >
-                            {experience.company === 'YouTube: NavyGeeks' ? 'View Channel' : experience.company === 'Hitwicket' ? 'View Website' : 'View Works'}
-                        </a>
+                    {Array.isArray(experience.description) ? (
+                        <ul className='text-gray-400 mt-2 text-base leading-relaxed list-disc pl-4 space-y-1'>
+                            {experience.description.map((point, idx) => (
+                                <li key={idx}>{point}</li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p className='text-gray-400 mt-2 text-base leading-relaxed'>{experience.description}</p>
                     )}
+                    <div className="flex gap-4">
+                        {experience.link && (
+                            <a 
+                                href={experience.link} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className='mt-4 inline-block px-3 py-1.5 border-2 border-yellow-500 text-white text-sm font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
+                            >
+                                {experience.company === 'YouTube: NavyGeeks' ? 'View Channel' : experience.company === 'Hitwicket' ? 'View Website' : 'View Works'}
+                            </a>
+                        )}
+                        {experience.portfolioLink && (
+                            <a 
+                                href={experience.portfolioLink} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className='mt-4 inline-block px-3 py-1.5 border-2 border-yellow-500 text-white text-sm font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
+                            >
+                                View Playable Ads
+                            </a>
+                        )}
+                    </div>
                 </div>
                 </Reveal>
             ))}
