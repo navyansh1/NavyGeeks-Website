@@ -5,14 +5,17 @@ import classXIIImage from '/src/assets/classxiimarksheet.png';
 import classXImage from '/src/assets/classxmarksheet.png';
 import vitImage from '/src/assets/vit-logo.png'; // Path to VIT image 🏫
 import chinmayaImage from '/src/assets/chinmaya-logo.png'; // Path to Chinmaya Vidyalaya image 🏫
+import collegeSheetImage from '/src/assets/collegesheet.png'; // Path to college degree certificate
 
 // Education data
 const educations = [
     {
-        institution: 'Vellore Institute of Technology, Chennai 🏛️',
-        period: 'Sept 2021 - Aug 2025',
+        institution: 'Vellore Institute of Technology 🏛️ ',
+        period: 'Aug 2021 - Aug 2025',
         description: 'BTech in Computer Science & Engineering | CGPA: 8.3',
-        icon: vitImage ,
+        icon: vitImage,
+        degree: collegeSheetImage,
+        graduationVideo: 'https://youtu.be/OOzMpIGSRWs',
     },
     {
         institution: 'Chinmaya Vidyalaya 🏫ㅤㅤㅤㅤㅤ',
@@ -68,14 +71,35 @@ const Education = () => {
                             </div>
                             <p className='text-gray-300 text-base mb-2 font-medium'>{education.period}</p>
                             <p className='text-gray-400 mt-2 text-lg leading-relaxed'>{education.description}</p>
-                            {education.marksheet && (
-                                <button 
-                                    onClick={() => openModal(education.marksheet)}
-                                    className='mt-4 inline-block px-4 py-2 border-2 border-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
-                                >
-                                    View Marksheet
-                                </button>
-                            )}
+                            
+                            <div className='mt-4 flex flex-wrap gap-3'>
+                                {education.marksheet && (
+                                    <button 
+                                        onClick={() => openModal(education.marksheet)}
+                                        className='px-4 py-2 border-2 border-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
+                                    >
+                                        View Marksheet
+                                    </button>
+                                )}
+                                
+                                {education.degree && (
+                                    <button 
+                                        onClick={() => openModal(education.degree)}
+                                        className='px-4 py-2 border-2 border-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300 w-full sm:w-auto sm:min-w-[200px]'
+                                    >
+                                        View Degree
+                                    </button>
+                                )}
+                                
+                                {education.graduationVideo && (
+                                    <button 
+                                        onClick={() => window.open(education.graduationVideo, '_blank')}
+                                        className='px-4 py-2 border-2 border-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300 w-full sm:w-auto sm:min-w-[200px]'
+                                    >
+                                        View Graduation Video ▶️ 
+                                    </button>
+                                )}
+                            </div>
                         </motion.div>
                     </Reveal>
                 ))}

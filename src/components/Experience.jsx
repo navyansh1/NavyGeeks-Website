@@ -35,7 +35,7 @@ const experiences = [
   {
       company: 'YouTube: NavyGeeks',
       period: '2021 - Present',
-      description: 'Tech channel with 70 videos and 4Lakh+ views & counting!',
+      description: 'Tech channel with 70 videos and 400k + views & counting!',
       icon: youtubeimg,
       link: 'https://www.youtube.com/@Navygeeks',
   },
