@@ -65,7 +65,7 @@ const Hero = () => {
                 className="text-gray-200 md:text-2xl text-2xl tracking-tight mb-4 mt-6 pt-2"
                 >
                     hey, I am <br/>
-                    <span className="text-yellow-500 text-5xl font-bold">Navyansh</span>
+                    <span className="text-yellow-500 text-5xl font-bold">Navyansh Kothari</span>
                 </motion.p>
 
                 <motion.p
