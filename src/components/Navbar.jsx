@@ -72,8 +72,8 @@ const Navbar = () => {
                         <li className={isActive('hero') ? 'text-yellow-400' : ''}><Link to="hero" smooth={true} offset={-80} duration={500}>About</Link></li>
                         <li className={isActive('skills') ? 'text-yellow-400' : ''}><Link to="skills" smooth={true} offset={-80} duration={500}>Skills</Link></li>
                         <li className={isActive('experience') ? 'text-yellow-400' : ''}><Link to="experience" smooth={true} offset={-80} duration={500}>Experience</Link></li>
-                        <li className={isActive('portfolio') ? 'text-yellow-400' : ''}><Link to="portfolio" smooth={true} offset={-80} duration={500}>Projects</Link></li>
                         <li className={isActive('education') ? 'text-yellow-400' : ''}><Link to="education" smooth={true} offset={-80} duration={500}>Education</Link></li>
+                        <li className={isActive('portfolio') ? 'text-yellow-400' : ''}><Link to="portfolio" smooth={true} offset={-80} duration={500}>Projects</Link></li>
                         <li className={isActive('certifications') ? 'text-yellow-400' : ''}><Link to="certifications" smooth={true} offset={-80} duration={500}>Licenses</Link></li>
                         <li className={isActive('contact') ? 'text-yellow-400' : ''}><Link to="contact" smooth={true} offset={-160} duration={500}>Contact</Link></li>
                     </ul>
@@ -169,22 +169,6 @@ const Navbar = () => {
                                 </Link>
                                 
                                 <Link 
-                                    to="portfolio" 
-                                    smooth={true} 
-                                    offset={-80} 
-                                    duration={500} 
-                                    className={`flex items-center w-full ${isActive('portfolio') ? 'text-yellow-400' : 'text-white'}`}
-                                    onClick={closeNav}
-                                >
-                                    <span className="w-10 flex justify-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
-                                        </svg>
-                                    </span>
-                                    <span className="text-xl ml-3">Projects</span>
-                                </Link>
-                                
-                                <Link 
                                     to="education" 
                                     smooth={true} 
                                     offset={-80} 
@@ -198,6 +182,22 @@ const Navbar = () => {
                                         </svg>
                                     </span>
                                     <span className="text-xl ml-3">Education</span>
+                                </Link>
+                                
+                                <Link 
+                                    to="portfolio" 
+                                    smooth={true} 
+                                    offset={-80} 
+                                    duration={500} 
+                                    className={`flex items-center w-full ${isActive('portfolio') ? 'text-yellow-400' : 'text-white'}`}
+                                    onClick={closeNav}
+                                >
+                                    <span className="w-10 flex justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                                        </svg>
+                                    </span>
+                                    <span className="text-xl ml-3">Projects</span>
                                 </Link>
                                 
                                 <Link 
