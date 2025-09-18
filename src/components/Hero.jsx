@@ -33,7 +33,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="mt-16 max-w-[1200px] mx-auto relative px-6 md:px-0">
+    <div className="mt-24 md:mt-32 max-w-[1200px] mx-auto relative px-6 md:px-0">
         <div className={`grid md:grid-cols-2 place-items-center gap-8 ${modalOpen && 'blur-sm'}`}>
             <motion.div
             initial={{ opacity: 0, y: -50 }}
