@@ -41,7 +41,7 @@ const Hero = () => {
             viewport={{ once: true }}
             transition={{ duration: 1 }}
             >
-                <TypeAnimation
+                {/* <TypeAnimation
                     sequence={[
                         "Fullstack Dev",
                         1000,
@@ -55,7 +55,7 @@ const Hero = () => {
                     speed={35}
                     repeat={Infinity}
                     className="font-bold text-gray-100 text-2xl md:text-5xl italic mb-4"
-                />
+                /> */}
 
                 <motion.p
                 initial={{ opacity: 0 }}
