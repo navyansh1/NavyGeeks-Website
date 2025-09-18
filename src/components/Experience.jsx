@@ -8,8 +8,16 @@ import hackclubimg from '/src/assets/hackclub.png';
 import ethnusimg from '/src/assets/ethnus.png';
 import ec_cellimg from '/src/assets/e-cell.png';
 import hitwicketimg from '/src/assets/hitwicket.png';
+import ganitimg from '/src/assets/ganit.png';
 
 const experiences = [
+    {
+        company: 'Ganit Inc',
+        period: 'Sep 2025 - Present',
+        description: 'Data Engineer',
+        icon: ganitimg,
+        link: 'https://www.ganitinc.com',
+    },
     {
         company: 'Hitwicket',
         period: 'Dec 2024 - Aug 2025',
@@ -73,7 +81,7 @@ const Experience = () => {
                     <div className='flex items-center justify-between mb-3'>
                         <h2 className='text-gray-100 text-2xl font-semibold'>{experience.company}</h2>
                         <div className="flex-shrink-0">
-                            <img src={experience.icon} alt={`${experience.company} icon`} className={`rounded-full ${experience.company === 'Hitwicket' ? 'w-24 h-12' : 'w-12 h-12'}`} />
+                            <img src={experience.icon} alt={`${experience.company} icon`} className={`rounded-full ${experience.company === 'Hitwicket' ? 'w-24 h-12' : experience.company === 'Ganit Inc' ? 'w-20 h-16' : 'w-12 h-12'}`} />
                         </div>
                     </div>
                     <p className='text-gray-300 text-sm mb-2 font-medium'>{experience.period}</p>
@@ -94,7 +102,7 @@ const Experience = () => {
                                 rel="noopener noreferrer" 
                                 className='mt-4 inline-block px-3 py-1.5 border-2 border-yellow-500 text-white text-sm font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
                             >
-                                {experience.company === 'YouTube: NavyGeeks' ? 'View Channel' : experience.company === 'Hitwicket' ? 'View Website' : 'View Works'}
+                                {experience.company === 'YouTube: NavyGeeks' ? 'View Channel' : experience.company === 'Hitwicket' ? 'View Website' : experience.company === 'Ganit Inc' ? 'View Website' : 'View Works'}
                             </a>
                         )}
                         {experience.portfolioLink && (
