@@ -46,13 +46,13 @@ const skills = [
         { name: 'Photoshop', icon: <SiAdobephotoshop className='text-blue-600' /> },
       ],
     },
-    {
-      category: 'iOS Development',
-      technologies: [
-        { name: 'SwiftUI', icon: <SiSwift className='text-orange-600' /> },
-        { name: 'Xcode', icon: <SiXcode className='text-blue-600' /> },
-      ],
-    },
+    // {
+    //   category: 'iOS Development',
+    //   technologies: [
+    //     { name: 'SwiftUI', icon: <SiSwift className='text-orange-600' /> },
+    //     { name: 'Xcode', icon: <SiXcode className='text-blue-600' /> },
+    //   ],
+    // },
     {
       category: 'Cloud Development',
       technologies: [
