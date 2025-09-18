@@ -28,11 +28,12 @@ export default function App() {
         <Experience />
       </div>
       
-      <div id="portfolio">
-        <Portfolio />
-      </div>
       <div id="education">
         <Education />
+      </div>
+      
+      <div id="portfolio">
+        <Portfolio />
       </div>
 
       <div id="certifications">
