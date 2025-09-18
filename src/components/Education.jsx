@@ -10,7 +10,7 @@ import collegeSheetImage from '/src/assets/collegesheet.png'; // Path to college
 // Education data
 const educations = [
     {
-        institution: 'Vellore Institute of Technology 🏛️ ',
+        institution: 'Vellore Institute of Technology 🏛️ ㅤㅤ',
         period: 'Aug 2021 - Aug 2025',
         description: 'BTech in Computer Science & Engineering | CGPA: 8.3',
         icon: vitImage,
