@@ -33,7 +33,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="mt-24 max-w-[1200px] mx-auto relative px-6 md:px-0">
+    <div className="mt-16 max-w-[1200px] mx-auto relative px-6 md:px-0">
         <div className={`grid md:grid-cols-2 place-items-center gap-8 ${modalOpen && 'blur-sm'}`}>
             <motion.div
             initial={{ opacity: 0, y: -50 }}
@@ -62,10 +62,10 @@ const Hero = () => {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: 0.5 }}
-                className="text-gray-200 md:text-2xl text-2xl tracking-tight mb-4 mt-12 pt-6"
+                className="text-gray-200 md:text-2xl text-2xl tracking-tight mb-4 mt-6 pt-2"
                 >
-                    hello, I am <br/>
-                    <span className="text-yellow-500 text-5xl font-bold">Navyansh Kothari</span>
+                    hey, I am <br/>
+                    <span className="text-yellow-500 text-5xl font-bold">Navyansh</span>
                 </motion.p>
 
                 <motion.p
@@ -110,11 +110,11 @@ const Hero = () => {
                         className="z-10 cursor-pointer font-bold text-gray-200 text-sm md:text-base md:w-auto px-3 py-2 md:p-4 border border-yellow-400 rounded-xl"
                         onClick={toggleResume}
                     >
-                        View Resume
+                         Resume
                     </motion.button>
 
                     <div className="flex gap-6 flex-row text-4xl md:text-6xl text-yellow-400 z-20">
-                        <motion.a whileHover={{ scale: 1.4 }} href="https://github.com/navyansh1">
+                        <motion.a whileHover={{ scale: 1.4 }} href="https://github.com/navyansh1" className="text-3xl md:text-5xl">
                             <AiOutlineGithub/>
                         </motion.a>
 

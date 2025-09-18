@@ -10,11 +10,31 @@ import {
   DiMongodb,
   DiGithubBadge,
 } from "react-icons/di"
-import { SiFigma, SiAdobephotoshop, SiSwift, SiXcode, SiAmazonaws, SiGooglecloud } from "react-icons/si"  // Import AWS and GCP icons
+import { SiFigma, SiAdobephotoshop, SiSwift, SiXcode, SiAmazonaws, SiGooglecloud, SiPython, SiPostgresql, SiFlask } from "react-icons/si"  // Import AWS, GCP, Python, PostgreSQL, and Flask icons
+import { BiLogoPostgresql } from "react-icons/bi"
 
 import Reveal from "./Reveal"
 
 const skills = [
+
+    {
+      category: 'Fullstack & Version Control',
+      technologies: [
+        { name: 'Node Js', icon: <DiNodejsSmall className='text-green-500' /> },
+        { name: 'MongoDB', icon: <DiMongodb className='text-green-600' /> },
+        { name: 'React', icon: <DiReact className='text-blue-500' /> },
+        { name: 'Flask', icon: <SiFlask className='text-gray-400' /> },
+        { name: 'GitHub', icon: <DiGithubBadge className='text-gray-600' /> },
+      ],
+    },
+    {
+      category: 'Data Engineering',
+      technologies: [
+        { name: 'Python', icon: <SiPython className='text-blue-400' /> },
+        { name: 'SQL', icon: <BiLogoPostgresql className='text-blue-600' /> },
+        { name: 'PostgreSQL', icon: <SiPostgresql className='text-blue-600' /> },
+      ],
+    },
     {
       category: 'Frontend & UI-UX',
       technologies: [
@@ -24,15 +44,6 @@ const skills = [
         { name: 'React', icon: <DiReact className='text-blue-500' /> },
         { name: 'Figma', icon: <SiFigma className='text-red-600' /> },
         { name: 'Photoshop', icon: <SiAdobephotoshop className='text-blue-600' /> },
-      ],
-    },
-    {
-      category: 'Fullstack & Version Control',
-      technologies: [
-        { name: 'Node Js', icon: <DiNodejsSmall className='text-green-500' /> },
-        { name: 'MongoDB', icon: <DiMongodb className='text-green-600' /> },
-        { name: 'React', icon: <DiReact className='text-blue-500' /> },
-        { name: 'GitHub', icon: <DiGithubBadge className='text-gray-600' /> },
       ],
     },
     {
