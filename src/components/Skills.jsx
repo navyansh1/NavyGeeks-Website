@@ -44,7 +44,7 @@ const skills = [
         { name: 'JavaScript', icon: <DiJavascript1 className='text-yellow-500' /> },
         { name: 'React', icon: <DiReact className='text-blue-500' /> },
         { name: 'Figma', icon: <SiFigma className='text-red-600' /> },
-        { name: 'Photoshop', icon: <SiAdobephotoshop className='text-blue-600' /> },
+
       ],
     },
     // {

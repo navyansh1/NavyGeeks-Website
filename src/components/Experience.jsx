@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Reveal from './Reveal';
+import TestimonialsModal from './TestimonialsModal';
 
 import youtubeimg from '/src/assets/youtube.png';
 import microsoftimg from '/src/assets/microsoft.png';
@@ -67,6 +68,8 @@ const experiences = [
 ];
 
 const Experience = () => {
+  const [isTestimonialsOpen, setIsTestimonialsOpen] = useState(false);
+
   return (
     <div className='p-8 max-w-[600px] mx-auto'>
         <h1 className='text-5xl text-yellow-500 font-bold text-center mb-12'>Experience:</h1>
@@ -94,7 +97,7 @@ const Experience = () => {
                     ) : (
                         <p className='text-gray-400 mt-2 text-base leading-relaxed'>{experience.description}</p>
                     )}
-                    <div className="flex gap-4">
+                    <div className="flex gap-4 flex-wrap">
                         {experience.link && (
                             <a 
                                 href={experience.link} 
@@ -116,10 +119,25 @@ const Experience = () => {
                             </a>
                         )}
                     </div>
+                    {experience.company === 'Hitwicket' && (
+                        <div className="w-full mt-4">
+                            <button 
+                                onClick={() => setIsTestimonialsOpen(true)}
+                                className='w-full px-4 py-2 border-2 border-yellow-500 text-white text-sm font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
+                            >
+                                View Testimonials
+                            </button>
+                        </div>
+                    )}
                 </div>
                 </Reveal>
             ))}
         </div>
+        
+        <TestimonialsModal 
+          isOpen={isTestimonialsOpen} 
+          onClose={() => setIsTestimonialsOpen(false)} 
+        />
     </div>
   );
 }
