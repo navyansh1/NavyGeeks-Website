@@ -75,7 +75,7 @@ const Hero = () => {
                 transition={{ duration: 1, delay: 1 }}
                 className="text-gray-100 max-w-[300px] md:max-w-[500px] md:text-3xl text-lg mb-6 font-light pt-6 "
                 >
-                    A geek with proficiency in iOS app dev, web dev , UI-UX designs , tech content creation and YouTube' ing
+                    A geek with proficiency in  Data Engineering, Backend devlopment, Web Development, Tech Content Creation
                 </motion.p>
                 {resumeVisible && (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
@@ -107,7 +107,7 @@ const Hero = () => {
                 >
                     <motion.button 
                         whileHover={{ scale: 1.1, boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.3)" }}
-                        className="z-10 cursor-pointer font-bold text-gray-200 md:w-auto p-4 border border-yellow-400 rounded-xl"
+                        className="z-10 cursor-pointer font-bold text-gray-200 text-sm md:text-base md:w-auto px-3 py-2 md:p-4 border border-yellow-400 rounded-xl"
                         onClick={toggleResume}
                     >
                         View Resume
