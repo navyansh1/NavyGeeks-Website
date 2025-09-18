@@ -33,6 +33,7 @@ const skills = [
         { name: 'Python', icon: <SiPython className='text-blue-400' /> },
         { name: 'SQL', icon: <BiLogoPostgresql className='text-blue-600' /> },
         { name: 'PostgreSQL', icon: <SiPostgresql className='text-blue-600' /> },
+        { name: 'MongoDB', icon: <DiMongodb className='text-green-600' /> },
       ],
     },
     {
