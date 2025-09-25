@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import project1 from "../assets/certi1.png";
 import project2 from "../assets/certi2.png";
 import project4 from "../assets/certi3.png";
@@ -6,7 +6,7 @@ import project5 from "../assets/project5.png";
 import project6 from "../assets/project6.png";
 import forestCert from "../assets/forest_cert.png";
 import iitKanpurImg from "../assets/iit_kanpur.png"; // Import IIT Kanpur image
-import { AiFillGithub, AiOutlineGithub } from 'react-icons/ai';
+import { AiFillGithub, AiOutlineGithub, AiOutlineDown, AiOutlineUp } from 'react-icons/ai';
 import Reveal from './Reveal';
 
 const projects = [
@@ -70,52 +70,85 @@ const projects = [
     },
 ];
 
-const Portfolio = () => {
-  return (
-    <div className='max-w-[1000px] mx-auto p-6 md:my-20 relative' id="portfolio">
-        <div className='ShinyEffect'></div> {/* Shiny effect div */}
-        <h2 className='text-5xl font-bold text-yellow-500 mb-8'>Certifications & Licenses 📜:</h2>
-        {projects.map((project, index) => (
-            <Reveal key={index}>
-                <div 
-                  className={`flex flex-col md:flex-row ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''} mb-12`}
-                >
-                    <div className='w-full md:w-1/2 p-4'>
-                        <img
-                            src={project.img}
-                            alt={project.title}
-                            className='w-full h-full object-cover rounded-lg shadow-lg'
-                        />
-                    </div>
-                    <div className='w-full md:w-1/2 p-4 flex flex-col justify-center'>
-                        <h3 className='text-2xl font-semibold text-gray-200 mb-4'>{project.title}</h3>
-                        <p className='text-gray-300 mb-4'>{project.description}</p>
-                        <div className='flex space-x-4'>
-                            {project.links.site && (
-                                <a 
-                                    href={project.links.site}
-                                    className='px-4 py-2 bg-slate-500 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300'
-                                >
-                                    View Credentials
-                                </a>
-                            )}
-                            {project.links.certificate && (
-                                <a 
-                                    href={project.links.certificate}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className='px-4 py-2 bg-slate-500 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300'
-                                >
-                                    🖼️ View Certificates
-                                </a>
-                            )}
+const Certifications = () => {
+    const [expandedCard, setExpandedCard] = useState(null);
+
+    const toggleCard = (index) => {
+        setExpandedCard(expandedCard === index ? null : index);
+    };
+
+    return (
+        <div className='max-w-[1000px] mx-auto p-6 md:my-20 relative' id="certifications">
+            <h2 className='text-5xl font-bold text-yellow-500 mb-8'>Certifications & Licenses 📜:</h2>
+            
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start'>
+                {projects.map((project, index) => (
+                    <Reveal key={index}>
+                        <div className='bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700 hover:border-yellow-500/50 transition-all duration-300 overflow-hidden'>
+                            {/* Card Header - Always Visible */}
+                            <div 
+                                className='cursor-pointer p-4'
+                                onClick={() => toggleCard(index)}
+                            >
+                                <div className='aspect-video mb-4 overflow-hidden rounded-lg'>
+                                    <img
+                                        src={project.img}
+                                        alt={project.title}
+                                        className='w-full h-full object-cover transition-transform duration-300 hover:scale-105'
+                                    />
+                                </div>
+                                <div className='flex items-start justify-between gap-2'>
+                                    <h3 className='text-lg font-semibold text-gray-200 flex-1 leading-tight'>{project.title}</h3>
+                                    <div className='text-yellow-500 text-xl flex-shrink-0'>
+                                        {expandedCard === index ? <AiOutlineUp /> : <AiOutlineDown />}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Expandable Content */}
+                            <div className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                                expandedCard === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                            }`}>
+                                <div className='px-4 pb-4 border-t border-gray-700/50'>
+                                    <div className='text-gray-300 mb-4 mt-4 leading-relaxed'>
+                                        {typeof project.description === 'string' ? (
+                                            <p>{project.description}</p>
+                                        ) : (
+                                            project.description
+                                        )}
+                                    </div>
+                                    <div className='flex flex-col sm:flex-row gap-2'>
+                                        {project.links.site && (
+                                            <a 
+                                                href={project.links.site}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className='px-4 py-2 bg-yellow-600 text-white rounded-lg font-semibold text-center hover:bg-yellow-700 transition duration-300'
+                                                onClick={(e) => e.stopPropagation()}
+                                            >
+                                                View Credentials
+                                            </a>
+                                        )}
+                                        {project.links.certificate && (
+                                            <a 
+                                                href={project.links.certificate}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className='px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300 text-center'
+                                                onClick={(e) => e.stopPropagation()}
+                                            >
+                                                🖼️ View Certificates
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </Reveal>
-        ))}
-    </div>
-  );
+                    </Reveal>
+                ))}
+            </div>
+        </div>
+    );
 }
 
-export default Portfolio;
+export default Certifications;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import project1 from "../assets/project1.png";
 import project2 from "../assets/project2.png";
 import project4 from "../assets/project4.png";
@@ -7,7 +7,7 @@ import portfolioimg from "../assets/portfolio.png";
 import mcqQuizImg from "../assets/mcq-quiz.png"; 
 import nextformsImg from "../assets/nextforms.png"; 
 
-import { AiOutlineGithub } from 'react-icons/ai';
+import { AiOutlineGithub, AiOutlineDown, AiOutlineUp } from 'react-icons/ai';
 import Reveal from './Reveal';
 import ShinyEffect from './ShinyEffect';
 
@@ -71,43 +71,78 @@ const projects = [
 ];
 
 const Portfolio = () => {
+    const [expandedCard, setExpandedCard] = useState(null);
+
+    const toggleCard = (index) => {
+        setExpandedCard(expandedCard === index ? null : index);
+    };
+
     return (
         <div className='max-w-[1000px] mx-auto p-6 md:my-20 relative' id="portfolio">
             <h2 className='text-5xl font-bold text-yellow-500 mb-8'>Projects:</h2>
             <ShinyEffect left={0} top={0} size={1900} />
 
-            {projects.map((project, index) => (
-                <Reveal key={index}>
-                    <div className={`flex flex-col md:flex-row ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''} mb-12`}>
-                        <div className='w-full md:w-1/2 p-4'>
-                            <img
-                                src={project.img}
-                                alt={project.title}
-                                className='w-full h-full object-cover rounded-lg shadow-lg border-4 border-gray-400'
-                            />
-                        </div>
-                        <div className='w-full md:w-1/2 p-4 flex flex-col justify-center'>
-                            <h3 className='text-2xl font-semibold text-gray-200 mb-4'>{project.title}</h3>
-                            <p className='text-gray-300 mb-4'>{project.description}</p>
-                            <div className='flex space-x-4'>
-                                {project.links.site && (
-                                    <a href={project.links.site}
-                                        className='px-4 py-4 mt-2 bg-slate-600 text-gray-200 rounded-lg font-semibold text-lg hover:bg-slate-700 transition duration-300'>
-                                        View Demo
-                                    </a>
-                                )}
-                                {project.links.github && (
-                                    <a href={project.links.github}
-                                        className='flex items-center px-4 py-3 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300'>
-                                        <AiOutlineGithub style={{ fontSize: '2em' }} />
-                                        <span className="ml-2">GitHub Link</span>
-                                    </a>
-                                )}
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start'>
+                {projects.map((project, index) => (
+                    <Reveal key={index}>
+                        <div className='bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700 hover:border-yellow-500/50 transition-all duration-300 overflow-hidden'>
+                            {/* Card Header - Always Visible */}
+                            <div 
+                                className='cursor-pointer p-4'
+                                onClick={() => toggleCard(index)}
+                            >
+                                <div className='aspect-video mb-4 overflow-hidden rounded-lg'>
+                                    <img
+                                        src={project.img}
+                                        alt={project.title}
+                                        className='w-full h-full object-cover transition-transform duration-300 hover:scale-105'
+                                    />
+                                </div>
+                                <div className='flex items-start justify-between gap-2'>
+                                    <h3 className='text-xl font-semibold text-gray-200 flex-1 leading-tight'>{project.title}</h3>
+                                    <div className='text-yellow-500 text-xl flex-shrink-0'>
+                                        {expandedCard === index ? <AiOutlineUp /> : <AiOutlineDown />}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Expandable Content */}
+                            <div className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                                expandedCard === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                            }`}>
+                                <div className='px-4 pb-4 border-t border-gray-700/50'>
+                                    <p className='text-gray-300 mb-4 mt-4 leading-relaxed'>{project.description}</p>
+                                    <div className='flex flex-col sm:flex-row gap-2'>
+                                        {project.links.site && (
+                                            <a 
+                                                href={project.links.site}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className='px-4 py-2 bg-yellow-600 text-white rounded-lg font-semibold text-center hover:bg-yellow-700 transition duration-300'
+                                                onClick={(e) => e.stopPropagation()}
+                                            >
+                                                View Demo
+                                            </a>
+                                        )}
+                                        {project.links.github && (
+                                            <a 
+                                                href={project.links.github}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className='flex items-center justify-center px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300'
+                                                onClick={(e) => e.stopPropagation()}
+                                            >
+                                                <AiOutlineGithub className="mr-2" />
+                                                GitHub
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </Reveal>
-            ))}
+                    </Reveal>
+                ))}
+            </div>
         </div>
     );
 }
