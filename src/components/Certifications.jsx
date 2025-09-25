@@ -81,25 +81,25 @@ const Certifications = () => {
         <div className='max-w-[1000px] mx-auto p-6 md:my-20 relative' id="certifications">
             <h2 className='text-5xl font-bold text-yellow-500 mb-8'>Certifications & Licenses 📜:</h2>
             
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 items-start'>
                 {projects.map((project, index) => (
                     <Reveal key={index}>
-                        <div className='bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700 hover:border-yellow-500/50 transition-all duration-300 overflow-hidden'>
+                        <div className='bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700 hover:border-yellow-500/50 transition-all duration-300 overflow-hidden h-fit'>
                             {/* Card Header - Always Visible */}
                             <div 
-                                className='cursor-pointer p-4'
+                                className='cursor-pointer p-3 md:p-4 h-auto'
                                 onClick={() => toggleCard(index)}
                             >
-                                <div className='aspect-video mb-4 overflow-hidden rounded-lg'>
+                                <div className='aspect-video mb-2 md:mb-4 overflow-hidden rounded-lg'>
                                     <img
                                         src={project.img}
                                         alt={project.title}
                                         className='w-full h-full object-cover transition-transform duration-300 hover:scale-105'
                                     />
                                 </div>
-                                <div className='flex items-start justify-between gap-2'>
-                                    <h3 className='text-lg font-semibold text-gray-200 flex-1 leading-tight'>{project.title}</h3>
-                                    <div className='text-yellow-500 text-xl flex-shrink-0'>
+                                <div className='flex items-start justify-between gap-2 min-h-[3.5rem] md:min-h-[4rem]'>
+                                    <h3 className='text-base md:text-lg font-semibold text-gray-200 flex-1 leading-tight overflow-hidden' style={{display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical'}}>{project.title}</h3>
+                                    <div className='text-yellow-500 text-lg md:text-xl flex-shrink-0 mt-1'>
                                         {expandedCard === index ? <AiOutlineUp /> : <AiOutlineDown />}
                                     </div>
                                 </div>
@@ -109,15 +109,15 @@ const Certifications = () => {
                             <div className={`transition-all duration-300 ease-in-out overflow-hidden ${
                                 expandedCard === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                             }`}>
-                                <div className='px-4 pb-4 border-t border-gray-700/50'>
-                                    <div className='text-gray-300 mb-4 mt-4 leading-relaxed'>
+                                <div className='px-3 md:px-4 pb-3 md:pb-4 border-t border-gray-700/50'>
+                                    <div className='text-gray-300 mb-3 md:mb-4 mt-3 md:mt-4 leading-relaxed text-sm md:text-base'>
                                         {typeof project.description === 'string' ? (
                                             <p>{project.description}</p>
                                         ) : (
                                             project.description
                                         )}
                                     </div>
-                                    <div className='flex flex-col sm:flex-row gap-2'>
+                                    <div className='flex flex-col gap-2 md:flex-row'>
                                         {project.links.site && (
                                             <a 
                                                 href={project.links.site}
