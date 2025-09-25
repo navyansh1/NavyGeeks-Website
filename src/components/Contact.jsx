@@ -12,12 +12,12 @@ const Contact = () => {
             <div className="text-gray-300 my-3">
               <h3 className="text-4xl text-yellow-400 font-bold mb-5">About Me 👨‍💻:</h3>
               <p className="text-justify leading-7 w-11/12 mx-auto">
-                I am a tech enthusiast, certified Cloud Developer, and passionate automobile aficionado. Through my YouTube channel, NavyGeeks, I create accessible content to demystify tech concepts and share practical tutorials that empower viewers to engage with technology. With expertise in iOS app development, cloud computing, and UI/UX design, I approach projects with a balance of technical skill and creativity.
+                I am a tech enthusiast, certified Cloud Developer, Data Engineer, Backend Developer. Through my YouTube channel, NavyGeeks, I create content to explain tech concepts and share practical tutorials that empower viewers to engage with tech. I approach tasks with a balance of technical skill, creativity and with a learners mindset.
               </p>
 
               <br />
               <p className="text-justify leading-7 w-11/12 mx-auto">
-                When I’m not coding or creating content, I’m likely exploring the latest in the automotive world. My enthusiasm for cars keeps me updated on industry trends, blending my love for technology with my interest in high-performance engineering.
+                When I’m not coding or creating content, I’m likely exploring the latest in the automotive world. My enthusiasm for cars keeps me happy and i also love gardening, capturing videos, photos and making memories as my life is a movie. 
               </p>
             </div>
           </div>
@@ -29,7 +29,7 @@ const Contact = () => {
             id="form"
           >
             <p className="text-yellow-400 font-bold text-4xl mb-5">
-              Let’s Connect! 🤝
+              Let’s Talk! 🤝
             </p>
             <input
               type="text"
