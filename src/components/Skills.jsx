@@ -85,13 +85,13 @@ const Skills = () => {
         <div className="flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-4">
           {skills.map((skill, index) => (
             <div key={index} className="border-4 border-yellow-400 p-6 rounded-lg bg-purple-800/20 shadow-lg w-full md:w-1/4">
-              <h3 className="text-xl mb-4 md-2 text-center">{skill.category}</h3>
+              <h3 className="text-xl mb-4 md-2 text-center text-yellow-400">{skill.category}</h3>
               <div className="grid grid-cols-1 gap-4">
                 {skill.technologies.map((tech, idx) => {
                   if (tech.name === 'divider') {
                     return <div key={idx} className="border-t-2 border-yellow-400 my-2"></div>
                   } else if (tech.name === 'section_title') {
-                    return <h4 key={idx} className="text-lg font-semibold text-center text-yellow-400 my-2">{tech.title}</h4>
+                    return <h4 key={idx} className="text-lg text-center text-yellow-400 my-2">{tech.title}</h4>
                   } else {
                     return (
                       <div key={idx} className="flex items-center space-x-2">
