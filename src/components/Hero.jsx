@@ -91,7 +91,7 @@ const Hero = () => {
                         transition={{ duration: 1, delay: 1 }}
                         className="text-gray-100 max-w-[300px] md:max-w-[500px] md:text-3xl text-lg mb-6 font-light pt-6 "
                     >
-                        A geek with proficiency in  Data Science, Backend devlopment, Gen- AI Dev, Web Dev and Tech Content Creation
+                        A geek with proficiency in  Data Science, Backend devlopment, Gen-AI, Web Dev, App Dev and Tech Content Creation
                     </motion.p>
                     {resumeVisible && (
                         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
