@@ -18,7 +18,7 @@ const experiences = [
         period: 'Sep 2025 - Present',
         description: [
             'Data Scientist | Gen AI Engineer',
-            'Worked on BFSI domain datasets, performing data cleaning, feature engineering, and exploratory data analysis (EDA) using Pandas and NumPy, and built machine learning models on financial data leveraging PostgreSQL for analytics',
+            'Worked on FMCG and BFSI domain datasets, performing data cleaning, feature engineering, and exploratory data analysis (EDA) using Pandas and NumPy, and built machine learning models on financial data leveraging PostgreSQL for analytics',
             'Developed production-grade GenAI applications using FastAPI, LangChain, LangGraph, and AWS, supporting scalable data ingestion and retrieval pipelines'
         ],
         icon: ganitimg,
