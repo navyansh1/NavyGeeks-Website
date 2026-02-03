@@ -12,7 +12,7 @@ const Contact = () => {
             <div className="text-gray-300 my-3">
               <h3 className="text-4xl text-yellow-400 font-bold mb-5">About Me 👨‍💻:</h3>
               <p className="text-justify leading-7 w-11/12 mx-auto">
-                I am a tech enthusiast, certified Cloud Developer, Data Engineer, Backend Developer. Through my YouTube channel, NavyGeeks, I create content to explain tech concepts and share practical tutorials that empower viewers to engage with tech. I approach tasks with a balance of technical skill, creativity and with a learners mindset.
+                I am a tech enthusiast, certified Cloud Developer, Data Scientist, Backend Developer, Mobile App Developer. Through my YouTube channel, NavyGeeks, I create content to explain tech concepts and share practical tutorials that help viewers to engage with tech better. I approach tasks with a balance of technical skill, creativity and with a learners mindset.
               </p>
 
               <br />
@@ -65,7 +65,7 @@ const Contact = () => {
             <div className="flex items-center justify-center mt-1">
               <AiOutlineMail className="text-yellow-400 text-2xl mr-2" />  {/* Email icon */}
               <p className="text-gray-100">
-                <a href="mailto:navycodes@gmail.com" className="underline">navycodes@gmail.com</a>
+                <a href="mailto:navygeeks@gmail.com" className="underline">navygeeks@gmail.com</a>
               </p>
             </div>
 
