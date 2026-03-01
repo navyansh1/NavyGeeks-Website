@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { GraduationCap, Trophy, Play } from 'lucide-react';
 import Reveal from './Reveal';
 import classXIIImage from '/src/assets/classxiimarksheet.png';
 import classXImage from '/src/assets/classxmarksheet.png';
-import vitImage from '/src/assets/vit-logo.png'; // Path to VIT image 🏫
-import chinmayaImage from '/src/assets/chinmaya-logo.png'; // Path to Chinmaya Vidyalaya image 🏫
-import collegeSheetImage from '/src/assets/collegesheet.png'; // Path to college degree certificate
+import vitImage from '/src/assets/vit-logo.png';
+import chinmayaImage from '/src/assets/chinmaya-logo.png';
+import collegeSheetImage from '/src/assets/collegesheet.png';
 
 // Education data
 const educations = [
     {
-        institution: 'Vellore Institute of Technology 🏛️ ㅤㅤ',
+        institution: 'Vellore Institute of Technology',
         period: 'Aug 2021 - Aug 2025',
         description: 'BTech in Computer Science & Engineering | CGPA: 8.3',
         icon: vitImage,
@@ -18,16 +19,17 @@ const educations = [
         graduationVideo: 'https://youtu.be/OOzMpIGSRWs',
     },
     {
-        institution: 'Chinmaya Vidyalaya 🏫ㅤㅤㅤㅤㅤ',
+        institution: 'Chinmaya Vidyalaya',
         period: 'Class XII - CBSE | Mar 2020 - Apr 2021',
-        description: 'Score: 94.8% | School Topper in Physics 🥇ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ',
+        description: 'Score: 94.8% | School Topper in Physics',
+        highlight: true,
         icon: chinmayaImage,
         marksheet: classXIIImage,
     },
     {
-        institution: 'Chinmaya Vidyalaya 🏫ㅤㅤㅤㅤㅤ',
+        institution: 'Chinmaya Vidyalaya',
         period: 'Class X - CBSE | Mar 2018 - Apr 2019',
-        description: 'Score: 91.5%ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ',
+        description: 'Score: 91.5%',
         icon: chinmayaImage,
         marksheet: classXImage,
     },
@@ -48,55 +50,60 @@ const Education = () => {
     };
 
     return (
-        <div className='p-8 max-w-[600px] mx-auto'>
-            <h1 className='text-5xl text-yellow-500 font-bold text-center mb-12'>Education:</h1>
+        <div className='p-8 max-w-[1000px] mx-auto'>
+            <h1 className='text-4xl md:text-5xl text-yellow-500 font-bold text-center mb-6 flex items-center justify-center gap-3'>
+                <GraduationCap size={36} /> Education:
+            </h1>
             <motion.div
-                className='space-y-8'
+                className='space-y-4'
                 initial="hidden"
                 animate="visible"
             >
                 {educations.map((education, index) => (
-                    <Reveal key={index}>
+                    <Reveal key={index} width="100%">
                         <motion.div
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: false, amount: 0.3}}
-                            transition={{ duration: 1}}
-                            className='border-4 border-yellow-500 p-6 rounded-2xl shadow-md
-                            hover:shadow-xl transition-shadow duration-300 bg-purple-800/30 shadow-lg w-full'
+                            viewport={{ once: false, amount: 0.3 }}
+                            transition={{ duration: 1 }}
+                            className='border-2 border-yellow-500/60 p-4 rounded-xl
+                            hover:shadow-xl hover:border-yellow-400 transition-all duration-300 bg-purple-800/20 max-w-[550px] w-full mx-auto'
                         >
-                            <div className='flex items-center justify-between mb-3'>
-                                <h2 className='text-gray-100 text-2xl font-semibold'>{education.institution}</h2>
-                                <img src={education.icon} alt={`${education.institution} icon`} className='w-14 h-14 rounded-full' />
+                            <div className='flex items-center justify-between mb-1'>
+                                <h2 className='text-gray-100 text-lg font-semibold'>{education.institution}</h2>
+                                <img src={education.icon} alt={`${education.institution} icon`} className='w-10 h-10 rounded-full' />
                             </div>
-                            <p className='text-gray-300 text-base mb-2 font-medium'>{education.period}</p>
-                            <p className='text-gray-400 mt-2 text-lg leading-relaxed'>{education.description}</p>
-                            
-                            <div className='mt-4 flex flex-wrap gap-3'>
+                            <p className='text-gray-400 text-sm mb-1 font-medium'>{education.period}</p>
+                            <p className='text-gray-300 text-sm leading-relaxed flex items-center gap-1'>
+                                {education.description}
+                                {education.highlight && <Trophy size={16} className='text-yellow-400 ml-1' />}
+                            </p>
+
+                            <div className='mt-3 flex flex-wrap gap-2'>
                                 {education.marksheet && (
-                                    <button 
+                                    <button
                                         onClick={() => openModal(education.marksheet)}
-                                        className='px-4 py-2 border-2 border-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
+                                        className='px-3 py-1.5 border border-yellow-500 text-white text-xs font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
                                     >
                                         View Marksheet
                                     </button>
                                 )}
-                                
+
                                 {education.degree && (
-                                    <button 
+                                    <button
                                         onClick={() => openModal(education.degree)}
-                                        className='px-4 py-2 border-2 border-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300 w-full sm:w-auto sm:min-w-[200px]'
+                                        className='px-3 py-1.5 border border-yellow-500 text-white text-xs font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
                                     >
                                         View Degree
                                     </button>
                                 )}
-                                
+
                                 {education.graduationVideo && (
-                                    <button 
+                                    <button
                                         onClick={() => window.open(education.graduationVideo, '_blank')}
-                                        className='px-4 py-2 border-2 border-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300 w-full sm:w-auto sm:min-w-[200px]'
+                                        className='px-3 py-1.5 border border-yellow-500 text-white text-xs font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300 flex items-center gap-1'
                                     >
-                                        View Graduation Video ▶️ 
+                                        Graduation Video <Play size={14} />
                                     </button>
                                 )}
                             </div>
@@ -112,12 +119,12 @@ const Education = () => {
                             onClick={closeModal}
                             className='absolute top-2 right-2 w-8 h-8 flex items-center justify-center bg-red-500 text-white rounded-full hover:bg-red-600 transition'
                         >
-                            ✖️
+                            <span className='text-lg font-bold'>×</span>
                         </button>
-                        <img 
-                            src={currentMarksheet} 
-                            alt="Marksheet" 
-                            className='max-w-full max-h-[80vh] rounded-lg object-contain' 
+                        <img
+                            src={currentMarksheet}
+                            alt="Marksheet"
+                            className='max-w-full max-h-[80vh] rounded-lg object-contain'
                         />
                     </div>
                 </div>

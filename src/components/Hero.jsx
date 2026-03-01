@@ -1,40 +1,26 @@
 import React, { useState } from "react";
 import profilepic from "../assets/profpic.png";
-import resume from "../assets/resume.pdf"; // Import your resume PDF
+import resume from "../assets/resume.pdf";
 import { TypeAnimation } from "react-type-animation";
 import ShinyEffect from "./ShinyEffect";
 
-import resumeImage from "../assets/resumeImage.png"; // Import your resume image
+import resumeImage from "../assets/resumeImage.png";
+import { Github, Linkedin, Instagram, Youtube, X } from "lucide-react";
 import {
-    AiOutlineGithub,
-    AiOutlineInstagram,
-    AiOutlineLink,
-    AiOutlineLinkedin,
-    AiOutlineYoutube,
-    AiOutlineClose, // Import close icon
-} from "react-icons/ai";
-import {
-    DiCss3,
-    DiHtml5,
-    DiJavascript1,
-    DiNodejsSmall,
-    DiReact,
     DiPython,
+    DiNodejsSmall,
     DiMongodb,
     DiAndroid,
 } from "react-icons/di";
 import {
-    SiMongodb,
-    SiSwift,
-    SiXcode,
-    SiAmazonaws,
-    SiGooglecloud,
+    SiScikitlearn,
     SiPandas,
     SiNumpy,
     SiFastapi,
     SiExpo,
     SiFirebase,
-    SiScikitlearn,
+    SiAmazonaws,
+    SiGooglecloud,
 } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 import { motion } from "framer-motion";
@@ -42,7 +28,7 @@ import { motion } from "framer-motion";
 const Hero = () => {
     const [modalOpen, setModalOpen] = useState(false);
 
-    const [resumeVisible, setResumeVisible] = useState(false); // State to control resume visibility
+    const [resumeVisible, setResumeVisible] = useState(false);
 
     const toggleResume = () => {
         setResumeVisible(!resumeVisible);
@@ -57,22 +43,6 @@ const Hero = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 1 }}
                 >
-                    {/* <TypeAnimation
-                    sequence={[
-                        "Fullstack Dev",
-                        1000,
-                        "Web Developer",
-                        1000,
-                        "Cloud Developer",
-                        1000,
-                        "Tech-Youtuber",
-                        1000,
-                    ]}
-                    speed={35}
-                    repeat={Infinity}
-                    className="font-bold text-gray-100 text-2xl md:text-5xl italic mb-4"
-                /> */}
-
                     <motion.p
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
@@ -84,15 +54,22 @@ const Hero = () => {
                         <span className="text-yellow-500 text-5xl font-bold">Navyansh Kothari</span>
                     </motion.p>
 
-                    <motion.p
+                    <motion.div
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: 1 }}
-                        className="text-gray-100 max-w-[300px] md:max-w-[500px] md:text-3xl text-lg mb-6 font-light pt-6 "
+                        className="text-gray-100 max-w-[300px] md:max-w-[500px] md:text-xl text-base mb-6 font-light pt-6"
                     >
-                        A geek with proficiency in  Data Science, Backend devlopment, Gen-AI, Web Dev, App Dev and Tech Content Creation
-                    </motion.p>
+                        <p className="mb-2 text-gray-300">A geek with proficiency in:</p>
+                        <ul className="list-disc list-inside space-y-1 text-gray-100">
+                            <li>Data Science</li>
+                            <li>Backend Development</li>
+                            <li>Gen AI Engineering</li>
+                            <li>Mobile App Development</li>
+                            <li>Tech Content Creation</li>
+                        </ul>
+                    </motion.div>
                     {resumeVisible && (
                         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
                             <div className="relative bg-white p-6 rounded-lg w-[90%] md:w-[60%] lg:w-[50%]">
@@ -100,11 +77,11 @@ const Hero = () => {
                                     className="absolute top-2 right-2 text-gray-600 hover:text-gray-900 bg-transparent border-none"
                                     onClick={toggleResume}
                                 >
-                                    <AiOutlineClose size={30} />
+                                    <X size={30} />
                                 </button>
                                 <img
                                     src={resumeImage}
-                                    className="w-full h-auto max-h-[80vh] object-contain" // Adjust the size here
+                                    className="w-full h-auto max-h-[80vh] object-contain"
                                     alt="Resume"
                                 />
                                 <div className="mt-4 text-center md:hidden">
@@ -129,20 +106,20 @@ const Hero = () => {
                             Resume
                         </motion.button>
 
-                        <div className="flex gap-6 flex-row text-4xl md:text-6xl text-yellow-400 z-20">
-                            <motion.a whileHover={{ scale: 1.4 }} href="https://github.com/navyansh1" className="text-3xl md:text-5xl">
-                                <AiOutlineGithub />
+                        <div className="flex gap-6 flex-row text-yellow-400 z-20">
+                            <motion.a whileHover={{ scale: 1.4 }} href="https://github.com/navyansh1">
+                                <Github size={32} className="md:w-10 md:h-10" />
                             </motion.a>
 
                             <motion.a whileHover={{ scale: 1.4 }} href="https://www.linkedin.com/in/navyansh/">
-                                <AiOutlineLinkedin />
+                                <Linkedin size={32} className="md:w-10 md:h-10" />
                             </motion.a>
 
                             <motion.a whileHover={{ scale: 1.4 }} href="https://www.instagram.com/navygeeks/">
-                                <AiOutlineInstagram />
+                                <Instagram size={32} className="md:w-10 md:h-10" />
                             </motion.a>
                             <motion.a whileHover={{ scale: 1.4 }} href="https://www.youtube.com/@navygeeks">
-                                <AiOutlineYoutube />
+                                <Youtube size={32} className="md:w-10 md:h-10" />
                             </motion.a>
                         </div>
                     </motion.div>
@@ -188,7 +165,7 @@ const Hero = () => {
                     <SiAmazonaws className="text-yellow-500 mx-2 text-6xl md:text-7xl" />
                     <SiGooglecloud className="text-blue-500 mx-2 text-6xl md:text-7xl" />
                     <SiFirebase className="text-yellow-500 mx-2 text-6xl md:text-7xl" />
-                    <AiOutlineGithub className="text-gray-300 mx-2 text-6xl md:text-7xl" />
+                    <Github className="text-gray-300 mx-2 w-14 h-14 md:w-16 md:h-16" />
                 </div>
             </motion.div>
 
@@ -203,13 +180,13 @@ const Hero = () => {
                             className="absolute top-2 right-2 text-gray-600 hover:text-gray-900 bg-transparent border-none"
                             onClick={toggleModal}
                         >
-                            <AiOutlineClose size={30} />
+                            <X size={30} />
                         </button>
                         <iframe
                             src={resume}
                             className="w-full h-[80vh] border-none"
                             title="Resume"
-                            style={{ border: "none" }} // Remove borders
+                            style={{ border: "none" }}
                         />
                         <div className="mt-4 text-center md:hidden">
                             <a href={resume} download className="text-blue-500 underline">Download Resume</a>

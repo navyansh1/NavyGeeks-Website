@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Briefcase } from 'lucide-react';
 import Reveal from './Reveal';
 import TestimonialsModal from './TestimonialsModal';
 
@@ -46,25 +47,25 @@ const experiences = [
     },
     {
         company: 'Microsoft Innovations Club VIT Chennai',
-        period: 'Dec 2022 - Dec 2024ㅤ||ㅤ2yrs',
+        period: 'Dec 2022 - Dec 2024 || 2yrs',
         description: 'Social Media Head, Podcaster, Video Editor, Content Lead',
         icon: microsoftimg,
     },
     {
         company: 'HackClub VIT Chennai',
-        period: 'Jun 2023 - Nov 2024ㅤ||ㅤ1yr 6mos',
+        period: 'Jun 2023 - Nov 2024 || 1yr 6mos',
         description: 'iOS App Developer. Tech Stack: SwiftUI, UIKit, Xcode',
         icon: hackclubimg,
     },
     {
         company: 'Ethnus Codemithra',
-        period: 'Aug 2023 - Nov 2023ㅤ||ㅤ4mos',
+        period: 'Aug 2023 - Nov 2023 || 4mos',
         description: 'Full Stack Web Development internship. Tech Stack: MERN (MongoDB, ExpressJS, React, NodeJS)',
         icon: ethnusimg,
     },
     {
         company: 'E-Cell VIT Chennai',
-        period: 'Aug 2022 - Nov 2023ㅤ||ㅤ8mos',
+        period: 'Aug 2022 - Nov 2023 || 8mos',
         description: 'Videographer & Video Editor ',
         icon: ec_cellimg,
         link: 'https://navyworks.vercel.app/',
@@ -75,103 +76,146 @@ const experiences = [
 const Experience = () => {
     const [isTestimonialsOpen, setIsTestimonialsOpen] = useState(false);
     const [isAwardModalOpen, setIsAwardModalOpen] = useState(false);
+    const [expandedCard, setExpandedCard] = useState(null);
+
+    const toggleCard = (index) => {
+        setExpandedCard(expandedCard === index ? null : index);
+    };
 
     return (
-        <div className='p-8 max-w-[600px] mx-auto'>
-            <h1 className='text-5xl text-yellow-500 font-bold text-center mb-12'>Experience:</h1>
-            <div className='space-y-8 flex flex-col items-center'>
-                {experiences.map((experience, index) => (
-                    <Reveal key={index}>
-                        <div
-                            className='border-4 border-yellow-500 p-6 rounded-2xl shadow-md
-                    hover:shadow-xl transition-shadow duration-300 bg-purple-800/30 shadow-lg mx-auto'
-                            style={{ width: '350px' }}
-                        >
-                            <div className='flex items-center justify-between mb-3'>
-                                <h2 className='text-gray-100 text-2xl font-semibold'>{experience.company}</h2>
-                                <div className="flex-shrink-0">
-                                    <img src={experience.icon} alt={`${experience.company} icon`} className={`rounded-full ${experience.company === 'Hitwicket' ? 'w-24 h-12' : experience.company === 'Ganit Inc' ? 'w-20 h-16' : 'w-12 h-12'}`} />
+        <div className='px-4 md:px-8 max-w-[1100px] mx-auto py-8 md:py-12'>
+            <h1 className='text-4xl md:text-5xl text-yellow-500 font-bold text-center mb-8 md:mb-12 flex items-center justify-center gap-3'><Briefcase size={40} /> Experience:</h1>
+
+            {/* Timeline Layout */}
+            <div className='relative'>
+                {/* Center timeline line - desktop only */}
+                <div className='hidden md:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-yellow-500/30 -translate-x-1/2' />
+
+                <div className='space-y-4 md:space-y-6'>
+                    {experiences.map((experience, index) => (
+                        <Reveal key={index} width="100%">
+                            <div className={`flex flex-col md:flex-row items-center gap-2 md:gap-8 ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}>
+                                {/* Card */}
+                                <div className='w-full md:w-[calc(50%-2rem)]'>
+                                    <motion.div
+                                        className='border-2 border-yellow-500/60 p-4 rounded-xl 
+                                        hover:shadow-xl hover:border-yellow-400 transition-all duration-300 
+                                        bg-purple-800/20 cursor-pointer'
+                                        onClick={() => toggleCard(index)}
+                                    >
+                                        {/* Header row */}
+                                        <div className='flex items-center gap-3'>
+                                            <img
+                                                src={experience.icon}
+                                                alt={`${experience.company} icon`}
+                                                className={`rounded-full flex-shrink-0 ${experience.company === 'Hitwicket' ? 'w-16 h-8 object-contain' :
+                                                    experience.company === 'Ganit Inc' ? 'w-14 h-10 object-contain' :
+                                                        'w-10 h-10'
+                                                    }`}
+                                            />
+                                            <div className='flex-1 min-w-0'>
+                                                <h2 className='text-gray-100 text-lg font-semibold leading-tight truncate'>{experience.company}</h2>
+                                                <p className='text-gray-400 text-xs mt-0.5 font-medium'>{experience.period}</p>
+                                            </div>
+                                            <div className='text-yellow-500 text-sm flex-shrink-0'>
+                                                {expandedCard === index ? '▲' : '▼'}
+                                            </div>
+                                        </div>
+
+                                        {/* Brief description (always visible) */}
+                                        <p className='text-gray-300 mt-2 text-sm leading-relaxed line-clamp-2'>
+                                            {Array.isArray(experience.description) ? experience.description[0] : experience.description}
+                                        </p>
+
+                                        {/* Expandable content */}
+                                        <div className={`transition-all duration-300 ease-in-out overflow-hidden ${expandedCard === index ? 'max-h-[500px] opacity-100 mt-2' : 'max-h-0 opacity-0'
+                                            }`}>
+                                            {Array.isArray(experience.description) && experience.description.length > 1 && (
+                                                <ul className='text-gray-400 text-sm leading-relaxed list-disc pl-4 space-y-1 border-t border-yellow-500/20 pt-2'>
+                                                    {experience.description.slice(1).map((point, idx) => (
+                                                        <li key={idx}>{point}</li>
+                                                    ))}
+                                                </ul>
+                                            )}
+
+                                            {/* Action buttons */}
+                                            <div className="flex gap-2 flex-wrap mt-3">
+                                                {experience.link && experience.company !== 'YouTube: NavyGeeks' && experience.company !== 'E-Cell VIT Chennai' && (
+                                                    <a
+                                                        href={experience.link}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className='px-3 py-1.5 border border-yellow-500 text-white text-xs font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
+                                                        onClick={(e) => e.stopPropagation()}
+                                                    >
+                                                        {experience.company === 'Hitwicket' ? 'View Website' : experience.company === 'Ganit Inc' ? 'View Website' : 'View Works'}
+                                                    </a>
+                                                )}
+                                                {experience.portfolioLink && (
+                                                    <a
+                                                        href={experience.portfolioLink}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className='px-3 py-1.5 border border-yellow-500 text-white text-xs font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
+                                                        onClick={(e) => e.stopPropagation()}
+                                                    >
+                                                        View Playable Ads
+                                                    </a>
+                                                )}
+                                                {experience.company === 'YouTube: NavyGeeks' && experience.link && (
+                                                    <a
+                                                        href={experience.link}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className='px-3 py-1.5 border border-yellow-500 text-white text-xs font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
+                                                        onClick={(e) => e.stopPropagation()}
+                                                    >
+                                                        View Channel
+                                                    </a>
+                                                )}
+                                                {experience.company === 'E-Cell VIT Chennai' && experience.link && (
+                                                    <a
+                                                        href={experience.link}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className='px-3 py-1.5 border border-yellow-500 text-white text-xs font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
+                                                        onClick={(e) => e.stopPropagation()}
+                                                    >
+                                                        View Works
+                                                    </a>
+                                                )}
+                                                {experience.company === 'Hitwicket' && (
+                                                    <button
+                                                        onClick={(e) => { e.stopPropagation(); setIsTestimonialsOpen(true); }}
+                                                        className='px-3 py-1.5 border border-yellow-500 text-white text-xs font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
+                                                    >
+                                                        View Testimonials
+                                                    </button>
+                                                )}
+                                                {experience.company === 'Microsoft Innovations Club VIT Chennai' && (
+                                                    <button
+                                                        onClick={(e) => { e.stopPropagation(); setIsAwardModalOpen(true); }}
+                                                        className='px-3 py-1.5 border border-yellow-500 text-white text-xs font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
+                                                    >
+                                                        View Award
+                                                    </button>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </motion.div>
                                 </div>
+
+                                {/* Timeline dot - desktop only */}
+                                <div className='hidden md:flex items-center justify-center flex-shrink-0'>
+                                    <div className='w-3 h-3 rounded-full bg-yellow-500 ring-4 ring-yellow-500/20 z-10' />
+                                </div>
+
+                                {/* Empty spacer for alternating layout */}
+                                <div className='hidden md:block w-[calc(50%-2rem)]' />
                             </div>
-                            <p className='text-gray-300 text-sm mb-2 font-medium'>{experience.period}</p>
-                            {Array.isArray(experience.description) ? (
-                                <ul className='text-gray-400 mt-2 text-base leading-relaxed list-disc pl-4 space-y-1'>
-                                    {experience.description.map((point, idx) => (
-                                        <li key={idx}>{point}</li>
-                                    ))}
-                                </ul>
-                            ) : (
-                                <p className='text-gray-400 mt-2 text-base leading-relaxed'>{experience.description}</p>
-                            )}
-                            <div className="flex gap-4 flex-wrap">
-                                {experience.link && experience.company !== 'YouTube: NavyGeeks' && experience.company !== 'E-Cell VIT Chennai' && (
-                                    <a
-                                        href={experience.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className='mt-4 inline-block px-3 py-1.5 border-2 border-yellow-500 text-white text-sm font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
-                                    >
-                                        {experience.company === 'Hitwicket' ? 'View Website' : experience.company === 'Ganit Inc' ? 'View Website' : 'View Works'}
-                                    </a>
-                                )}
-                                {experience.portfolioLink && (
-                                    <a
-                                        href={experience.portfolioLink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className='mt-4 inline-block px-3 py-1.5 border-2 border-yellow-500 text-white text-sm font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
-                                    >
-                                        View Playable Ads
-                                    </a>
-                                )}
-                            </div>
-                            {experience.company === 'YouTube: NavyGeeks' && experience.link && (
-                                <div className="w-full mt-4">
-                                    <a
-                                        href={experience.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className='w-full px-4 py-2 border-2 border-yellow-500 text-white text-sm font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300 inline-block text-center'
-                                    >
-                                        View Channel
-                                    </a>
-                                </div>
-                            )}
-                            {experience.company === 'E-Cell VIT Chennai' && experience.link && (
-                                <div className="w-full mt-4">
-                                    <a
-                                        href={experience.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className='w-full px-4 py-2 border-2 border-yellow-500 text-white text-sm font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300 inline-block text-center'
-                                    >
-                                        View Works
-                                    </a>
-                                </div>
-                            )}
-                            {experience.company === 'Hitwicket' && (
-                                <div className="w-full mt-4">
-                                    <button
-                                        onClick={() => setIsTestimonialsOpen(true)}
-                                        className='w-full px-4 py-2 border-2 border-yellow-500 text-white text-sm font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
-                                    >
-                                        View Testimonials
-                                    </button>
-                                </div>
-                            )}
-                            {experience.company === 'Microsoft Innovations Club VIT Chennai' && (
-                                <div className="w-full mt-4">
-                                    <button
-                                        onClick={() => setIsAwardModalOpen(true)}
-                                        className='w-full px-4 py-2 border-2 border-yellow-500 text-white text-sm font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
-                                    >
-                                        View Award
-                                    </button>
-                                </div>
-                            )}
-                        </div>
-                    </Reveal>
-                ))}
+                        </Reveal>
+                    ))}
+                </div>
             </div>
 
             <TestimonialsModal
