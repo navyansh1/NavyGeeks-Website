@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import project1 from "../assets/project1.png";
-import project2 from "../assets/project2.png";
-import project4 from "../assets/project4.png";
-import project5 from "../assets/project5.png";
-import portfolioimg from "../assets/portfolio.png";
-import mcqQuizImg from "../assets/mcq-quiz.png";
-import nextformsImg from "../assets/nextforms.png";
-import fmcg from "../assets/fmcg.png";
-import bfsi from "../assets/bfsi.png";
-import billsonicImg from "../assets/billsonic.png";
+import project1 from "../assets/projects/project1.png";
+import project2 from "../assets/projects/project2.png";
+import project4 from "../assets/projects/project4.png";
+import project5 from "../assets/projects/project5.png";
+import portfolioimg from "../assets/projects/portfolio.png";
+import mcqQuizImg from "../assets/projects/mcq-quiz.png";
+import nextformsImg from "../assets/projects/nextforms.png";
+import fmcg from "../assets/projects/fmcg.png";
+import bfsi from "../assets/projects/bfsi.png";
+import billsonicImg from "../assets/projects/billsonic.png";
 
 import { Github, FolderOpen, ExternalLink, X, MousePointerClick } from 'lucide-react';
 import Reveal from './Reveal';
@@ -132,7 +132,7 @@ const Portfolio = () => {
 
     return (
         <div className='max-w-[1000px] mx-auto p-6 md:my-20 relative' id="portfolio">
-            <h2 className='text-3xl md:text-5xl font-bold text-yellow-500 mb-8 flex items-center justify-center gap-3'><FolderOpen size={28} className='md:w-10 md:h-10' /> Projects:</h2>
+            <h2 className='text-3xl md:text-5xl font-bold text-yellow-500 mb-8 flex items-center justify-center gap-3'><FolderOpen size={28} className='md:w-10 md:h-10' /> Projects</h2>
             <ShinyEffect left={0} top={0} size={1900} />
 
             {/* Grid - all cards are uniform height */}
@@ -211,7 +211,7 @@ const Portfolio = () => {
                                 <p className='text-gray-300 leading-relaxed text-base md:text-lg mb-6'>
                                     {selectedProject.description}
                                 </p>
-                                <div className='flex flex-wrap gap-3'>
+                                <div className='flex flex-wrap gap-3 justify-center'>
                                     {selectedProject.links.site && (
                                         <a
                                             href={selectedProject.links.site}

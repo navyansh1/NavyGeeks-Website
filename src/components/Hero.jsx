@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import profilepic from "../assets/profpic.png";
-import resume from "../assets/resume.pdf";
+import profilepic from "../assets/profile/profpic.png";
+import resume from "../assets/profile/resume.pdf";
 import { TypeAnimation } from "react-type-animation";
 import ShinyEffect from "./ShinyEffect";
 
-import resumeImage from "../assets/resumeImage.png";
+import resumeImage from "../assets/profile/resumeImage.png";
 import { Github, Linkedin, Instagram, Youtube, X } from "lucide-react";
 import {
     DiPython,
@@ -143,7 +143,7 @@ const Hero = () => {
                 transition={{ duration: 1, delay: 1 }}
                 className="flex flex-col items-center py-24 md:flex-row md:text-7xl md:px-12 md:justify-center"
             >
-                <p className="text-gray-200 mb-4 md:mr-6 md:mb-0 text-3xl md:text-4xl">My Tech Stack:</p>
+                <p className="text-gray-200 mb-4 md:mr-6 md:mb-0 text-3xl md:text-4xl">My Tech Stack</p>
                 <div className="flex flex-wrap justify-center gap-4">
                     {/* Data Science & ML */}
                     <DiPython className="text-blue-400 mx-2 text-6xl md:text-7xl" />

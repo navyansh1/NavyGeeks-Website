@@ -4,14 +4,14 @@ import { Briefcase } from 'lucide-react';
 import Reveal from './Reveal';
 import TestimonialsModal from './TestimonialsModal';
 
-import youtubeimg from '/src/assets/youtube.png';
-import microsoftimg from '/src/assets/microsoft.png';
-import microsoftaward from '/src/assets/microsoft_award.png';
-import hackclubimg from '/src/assets/hackclub.png';
-import ethnusimg from '/src/assets/ethnus.png';
-import ec_cellimg from '/src/assets/e-cell.png';
-import hitwicketimg from '/src/assets/hitwicket.png';
-import ganitimg from '/src/assets/ganit.png';
+import youtubeimg from '/src/assets/experience/youtube.png';
+import microsoftimg from '/src/assets/experience/microsoft.png';
+import microsoftaward from '/src/assets/certifications/microsoft_award.png';
+import hackclubimg from '/src/assets/experience/hackclub.png';
+import ethnusimg from '/src/assets/experience/ethnus.png';
+import ec_cellimg from '/src/assets/experience/e-cell.png';
+import hitwicketimg from '/src/assets/experience/hitwicket.png';
+import ganitimg from '/src/assets/experience/ganit.png';
 
 const experiences = [
     {
@@ -84,7 +84,7 @@ const Experience = () => {
 
     return (
         <div className='px-4 md:px-8 max-w-[1100px] mx-auto py-8 md:py-12'>
-            <h1 className='text-4xl md:text-5xl text-yellow-500 font-bold text-center mb-8 md:mb-12 flex items-center justify-center gap-3'><Briefcase size={40} /> Experience:</h1>
+            <h1 className='text-4xl md:text-5xl text-yellow-500 font-bold text-center mb-8 md:mb-12 flex items-center justify-center gap-3'><Briefcase size={40} /> Experience</h1>
 
             {/* Timeline Layout */}
             <div className='relative'>

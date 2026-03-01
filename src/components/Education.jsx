@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Trophy, Play } from 'lucide-react';
 import Reveal from './Reveal';
-import classXIIImage from '/src/assets/classxiimarksheet.png';
-import classXImage from '/src/assets/classxmarksheet.png';
-import vitImage from '/src/assets/vit-logo.png';
-import chinmayaImage from '/src/assets/chinmaya-logo.png';
-import collegeSheetImage from '/src/assets/collegesheet.png';
+import classXIIImage from '/src/assets/education/classxiimarksheet.png';
+import classXImage from '/src/assets/education/classxmarksheet.png';
+import vitImage from '/src/assets/education/vit-logo.png';
+import chinmayaImage from '/src/assets/education/chinmaya-logo.png';
+import collegeSheetImage from '/src/assets/education/collegesheet.png';
 
 // Education data
 const educations = [
@@ -52,7 +52,7 @@ const Education = () => {
     return (
         <div className='p-8 max-w-[1000px] mx-auto'>
             <h1 className='text-4xl md:text-5xl text-yellow-500 font-bold text-center mb-6 flex items-center justify-center gap-3'>
-                <GraduationCap size={36} /> Education:
+                <GraduationCap size={36} /> Education
             </h1>
             <motion.div
                 className='space-y-4'
@@ -79,7 +79,7 @@ const Education = () => {
                                 {education.highlight && <Trophy size={16} className='text-yellow-400 ml-1' />}
                             </p>
 
-                            <div className='mt-3 flex flex-wrap gap-2'>
+                            <div className='mt-3 flex flex-wrap gap-2 justify-center'>
                                 {education.marksheet && (
                                     <button
                                         onClick={() => openModal(education.marksheet)}

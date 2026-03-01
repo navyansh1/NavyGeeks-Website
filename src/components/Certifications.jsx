@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import project1 from "../assets/certi1.png";
-import project2 from "../assets/certi2.png";
-import project4 from "../assets/certi3.png";
-import project5 from "../assets/project5.png";
-import project6 from "../assets/project6.png";
-import forestCert from "../assets/forest_cert.png";
-import iitKanpurImg from "../assets/iit_kanpur.png";
+import project1 from "../assets/certifications/certi1.png";
+import project2 from "../assets/certifications/certi2.png";
+import project4 from "../assets/certifications/certi3.png";
+import project5 from "../assets/projects/project5.png";
+import project6 from "../assets/projects/project6.png";
+import forestCert from "../assets/certifications/forest_cert.png";
+import iitKanpurImg from "../assets/experience/iit_kanpur.png";
 import { ChevronDown, ChevronUp, Award } from 'lucide-react';
 import Reveal from './Reveal';
 
@@ -116,7 +116,7 @@ const Certifications = () => {
                       project.description
                     )}
                   </div>
-                  <div className='flex flex-col gap-2 md:flex-row'>
+                  <div className='flex flex-col gap-2 md:flex-row items-center justify-center'>
                     {project.links.site && (
                       <a
                         href={project.links.site}

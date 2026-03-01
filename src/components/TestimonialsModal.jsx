@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import harshitImg from '/src/assets/harshit.png';
-import rahulImg from '/src/assets/rahul.png';
+import harshitImg from '/src/assets/experience/harshit.png';
+import rahulImg from '/src/assets/experience/rahul.png';
 
 const TestimonialsModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -13,7 +13,7 @@ const TestimonialsModal = ({ isOpen, onClose }) => {
       alt: "Harshit Testimonial"
     },
     {
-      name: "Rahul", 
+      name: "Rahul",
       image: rahulImg,
       alt: "Rahul Testimonial"
     }

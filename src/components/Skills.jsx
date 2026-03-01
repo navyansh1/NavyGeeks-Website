@@ -82,7 +82,7 @@ const Skills = () => {
     <div className="max-w-[1200px] mx-auto flex flex-col justify-center px-4 text-gray-200 pb-8 md:py-12" id="skills">
       <Reveal width="100%">
         <h2 className="text-5xl mb-8 text-center text-yellow-500 font-bold flex items-center justify-center gap-3">
-          <Wrench size={40} /> Skills:
+          <Wrench size={40} /> Skills
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
