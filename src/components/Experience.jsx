@@ -46,13 +46,13 @@ const experiences = [
         link: 'https://www.youtube.com/@Navygeeks',
     },
     {
-        company: 'Microsoft Innovations Club VIT Chennai',
+        company: 'Microsoft Innovations Club Vellore Institute of Technology',
         period: 'Dec 2022 - Dec 2024 || 2yrs',
         description: 'Social Media Head, Podcaster, Video Editor, Content Lead',
         icon: microsoftimg,
     },
     {
-        company: 'HackClub VIT Chennai',
+        company: 'HackClub Vellore Institute of Technology',
         period: 'Jun 2023 - Nov 2024 || 1yr 6mos',
         description: 'iOS App Developer. Tech Stack: SwiftUI, UIKit, Xcode',
         icon: hackclubimg,
@@ -64,7 +64,7 @@ const experiences = [
         icon: ethnusimg,
     },
     {
-        company: 'E-Cell VIT Chennai',
+        company: 'E-Cell Vellore Institute of Technology',
         period: 'Aug 2022 - Nov 2023 || 8mos',
         description: 'Videographer & Video Editor ',
         icon: ec_cellimg,
@@ -140,7 +140,7 @@ const Experience = () => {
 
                                             {/* Action buttons */}
                                             <div className="flex gap-2 flex-wrap mt-3">
-                                                {experience.link && experience.company !== 'YouTube: NavyGeeks' && experience.company !== 'E-Cell VIT Chennai' && (
+                                                {experience.link && experience.company !== 'YouTube: NavyGeeks' && experience.company !== 'E-Cell Vellore Institute of Technology' && (
                                                     <a
                                                         href={experience.link}
                                                         target="_blank"
@@ -173,7 +173,7 @@ const Experience = () => {
                                                         View Channel
                                                     </a>
                                                 )}
-                                                {experience.company === 'E-Cell VIT Chennai' && experience.link && (
+                                                {experience.company === 'E-Cell Vellore Institute of Technology' && experience.link && (
                                                     <a
                                                         href={experience.link}
                                                         target="_blank"
@@ -192,7 +192,7 @@ const Experience = () => {
                                                         View Testimonials
                                                     </button>
                                                 )}
-                                                {experience.company === 'Microsoft Innovations Club VIT Chennai' && (
+                                                {experience.company === 'Microsoft Innovations Club Vellore Institute of Technology' && (
                                                     <button
                                                         onClick={(e) => { e.stopPropagation(); setIsAwardModalOpen(true); }}
                                                         className='px-3 py-1.5 border border-yellow-500 text-white text-xs font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
