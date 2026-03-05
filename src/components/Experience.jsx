@@ -189,7 +189,7 @@ const Experience = () => {
                                                         onClick={(e) => { e.stopPropagation(); setIsTestimonialsOpen(true); }}
                                                         className='px-3 py-1.5 border border-yellow-500 text-white text-xs font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
                                                     >
-                                                        View Testimonials
+                                                        View Recommendations
                                                     </button>
                                                 )}
                                                 {experience.company === 'Microsoft Innovations Club VIT' && (
