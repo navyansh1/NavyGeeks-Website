@@ -24,11 +24,11 @@ export default function App() {
       </div>
 
 
-      <div id="experience" className="md:pt-16 pt-12">
+      <div id="experience" className="md:pt-12 pt-8">
         <Experience />
       </div>
 
-      <div id="education" className="md:pt-16 pt-12">
+      <div id="education" className="md:pt-12 pt-8">
         <Education />
       </div>
 
