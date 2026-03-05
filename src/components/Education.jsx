@@ -71,7 +71,7 @@ const Education = () => {
                         >
                             <div className='flex items-center justify-between mb-1'>
                                 <h2 className='text-gray-100 text-lg font-semibold'>{education.institution}</h2>
-                                <img src={education.icon} alt={`${education.institution} icon`} className='w-10 h-10 rounded-full' />
+                                <img src={education.icon} alt={`${education.institution} icon`} className='w-14 h-14 rounded-full' />
                             </div>
                             <p className='text-gray-400 text-sm mb-1 font-medium'>{education.period}</p>
                             <p className='text-gray-300 text-sm leading-relaxed flex items-center gap-1'>
