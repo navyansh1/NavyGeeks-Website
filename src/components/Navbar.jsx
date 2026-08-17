@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Menu, X, Home, Settings, Briefcase, GraduationCap, FolderOpen, Award, AtSign } from 'lucide-react';
+import { Menu, X, Home, Settings, Briefcase, GraduationCap, FolderOpen, Award, BookOpen, AtSign } from 'lucide-react';
 import { Link } from 'react-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -19,7 +19,7 @@ const Navbar = () => {
     // Handle scrolling and active section detection
     useEffect(() => {
         const handleScroll = () => {
-            const sections = ['hero', 'skills', 'experience', 'portfolio', 'education', 'certifications', 'contact'];
+            const sections = ['hero', 'skills', 'experience', 'portfolio', 'education', 'certifications', 'research', 'contact'];
 
             const scrollPosition = window.scrollY + 200; // Adding offset for better accuracy
 
@@ -69,6 +69,7 @@ const Navbar = () => {
         { to: 'education', label: 'Education', icon: <GraduationCap size={22} /> },
         { to: 'portfolio', label: 'Projects', icon: <FolderOpen size={22} /> },
         { to: 'certifications', label: 'Licenses', icon: <Award size={22} /> },
+        { to: 'research', label: 'Research', icon: <BookOpen size={22} /> },
         { to: 'contact', label: 'Contact', icon: <AtSign size={22} /> },
     ];
 
@@ -85,6 +86,7 @@ const Navbar = () => {
                         <li className={isActive('education') ? 'text-yellow-400' : ''}><Link to="education" smooth={true} offset={-80} duration={500}>Education</Link></li>
                         <li className={isActive('portfolio') ? 'text-yellow-400' : ''}><Link to="portfolio" smooth={true} offset={-80} duration={500}>Projects</Link></li>
                         <li className={isActive('certifications') ? 'text-yellow-400' : ''}><Link to="certifications" smooth={true} offset={-80} duration={500}>Licenses</Link></li>
+                        <li className={isActive('research') ? 'text-yellow-400' : ''}><Link to="research" smooth={true} offset={-80} duration={500}>Research</Link></li>
                         <li className={isActive('contact') ? 'text-yellow-400' : ''}><Link to="contact" smooth={true} offset={-160} duration={500}>Contact</Link></li>
                     </ul>
                 </div>
