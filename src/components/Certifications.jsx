@@ -6,10 +6,24 @@ import project5 from "../assets/projects/project5.png";
 import project6 from "../assets/projects/project6.png";
 import forestCert from "../assets/certifications/forest_cert.png";
 import iitKanpurImg from "../assets/experience/iit_kanpur.png";
+import awsAiPractitioner from "../assets/certifications/aws_ai_practitioner.png";
 import { ChevronDown, ChevronUp, Award } from 'lucide-react';
 import Reveal from './Reveal';
 
 const projects = [
+  {
+    img: awsAiPractitioner,
+    title: "AWS Certified AI Practitioner",
+    description: (
+      <>
+        <p>Issued: Jul 2026 &middot; Expires: Jul 2029</p>
+        <p className="mt-1 text-gray-400 text-sm break-all">Validation #: 7eb079ec8429481f8e23157fb725c23e</p>
+      </>
+    ),
+    links: {
+      site: "https://aws.amazon.com/verification",
+    },
+  },
   {
     img: project1,
     title: "AWS Certified Cloud Practitioner",
