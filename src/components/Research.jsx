@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { BookOpen, ChevronDown, ChevronUp, ExternalLink, Users, CalendarDays } from 'lucide-react';
+import { BookOpen, ChevronDown, ChevronUp, ExternalLink, User, CalendarDays, Building2 } from 'lucide-react';
 import Reveal from './Reveal';
 
 const papers = [
   {
     title: "Efficient Vector Database Management in Retrieval-Augmented Generation Systems: A Selective Embedding Update Approach",
-    authors: "Navyansh Kothari",
     venue: "2026 International Conference on Recent Advances in Electrical, Electronics, Ubiquitous Communication, and Computational Intelligence (RAEEUCCI)",
     date: "April 2026 · Chennai, India",
+    tags: ["Generative AI", "RAG", "Vector Databases", "Cloud Computing"],
     doi: "10.1109/RAEEUCCI67649.2026.11504894",
     link: "https://ieeexplore.ieee.org/document/11504894",
     abstract:
@@ -15,18 +15,18 @@ const papers = [
   },
   {
     title: "Leveraging Deep Neural Networks for Enhanced Otitis Media Diagnosis",
-    authors: "Navyansh Kothari",
     venue: "2026 International Conference on Emerging Systems and Intelligent Computing (ESIC)",
     date: "February 2026 · Bhubaneswar, India",
+    tags: ["Deep Learning", "Computer Vision", "Healthcare AI"],
     link: "https://ieeexplore.ieee.org/document/11495855",
     abstract:
       "Otitis media (OM) is a prevalent spectrum of middle ear inflammatory conditions and one of the most prevalent medical conditions, particularly in children. The majority of it is diagnosed through otoscopic images — a subjective and error-inclined process. Specialized diagnostic apparatuses are costly, with limited availability and reproducibility. This paper proposes a novel approach to eardrum infection diagnosis through deep learning and multimodal data analysis. It employs a scalable ensemble of four state-of-the-art models: RegNet-X 16GF and 3.2GF for high-resolution feature extraction, MobileNetV2 for light-weight real-time processing, and ResNeXt50 32×4d for advanced pattern recognition. Trained on heterogeneous otoscopic images augmented with demographics, symptoms, and medical histories, the ensemble achieved 92.56% accuracy — higher than single models (MobileNetV2: 89.2%, ResNeXt50: 91.5%, RegNet-X 16GF: 90.8%, RegNet-X 3.2GF: 90.1%) and benchmarks like VGG16 and DenseNet121. It demonstrated 96.12% sensitivity, 87.78% specificity, and an F1 score of 87.94%, distinguishing conditions with overlapping visual features and decreasing false positives, especially in chronic OM and earwax blockage. With computational efficiency, scalability, and clinical practicability, the model presents a trustworthy diagnostic tool for early treatment and improved outcomes, especially in resource-scarce environments.",
   },
   {
     title: "EfficientNet-DR: A Deep Learning Approach for Diabetic Retinopathy Detection and Classification",
-    authors: "Navyansh Kothari, Aryan Anand, Sandeep Kumar Satapathy, Shruti Mishra",
     venue: "2026 International Conference on Emerging Systems and Intelligent Computing (ESIC)",
     date: "February 2026 · Bhubaneswar, India",
+    tags: ["Deep Learning", "Computer Vision", "Healthcare AI"],
     doi: "10.1109/ESIC68176.2026.11495823",
     link: "https://ieeexplore.ieee.org/document/11495823",
     abstract:
@@ -34,9 +34,9 @@ const papers = [
   },
   {
     title: "Towards Insider Threat Resilience: A Proposed Mitigation Model",
-    authors: "Navyansh Kothari, Chanakya Bhardwaj, Shruti Mishra, Sandeep Kumar Satapathy, Sung-Bae Cho, Pradeep Kumar Mallick",
     venue: "2024 International Conference on Emerging Systems and Intelligent Computing (ESIC)",
     date: "February 2024 · Bhubaneswar, India",
+    tags: ["Cybersecurity", "Machine Learning", "Anomaly Detection"],
     doi: "10.1109/ESIC60604.2024.10481615",
     link: "https://ieeexplore.ieee.org/document/10481615",
     abstract:
@@ -72,34 +72,49 @@ const Research = () => {
                   </div>
                 </div>
 
-                <div className='mt-2 flex flex-col gap-1 text-xs md:text-sm text-gray-400'>
-                  <span className='flex items-center gap-1.5'>
-                    <Users size={14} className='text-yellow-500/70 flex-shrink-0' /> {paper.authors}
-                  </span>
-                  <span className='flex items-center gap-1.5'>
+                <div className='mt-2 flex flex-col gap-1'>
+                  <p className='flex items-center gap-1.5 text-xs md:text-sm text-gray-400'>
+                    <User size={14} className='text-yellow-500/70 flex-shrink-0' /> Navyansh Kothari
+                  </p>
+                  <p className='flex items-center gap-1.5 text-xs md:text-sm text-gray-400'>
                     <CalendarDays size={14} className='text-yellow-500/70 flex-shrink-0' /> {paper.venue} &middot; {paper.date}
-                  </span>
+                  </p>
+                  <p className='flex items-center gap-1.5 text-xs md:text-sm text-gray-400'>
+                    <Building2 size={14} className='text-yellow-500/70 flex-shrink-0' /> Publisher: IEEE
+                  </p>
+                </div>
+
+                <div className='mt-3 flex flex-wrap gap-1.5'>
+                  {paper.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className='text-[11px] leading-none font-medium text-yellow-400 bg-yellow-500/10 border border-yellow-500/30 rounded-full px-2.5 py-1'
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className='mt-3 flex justify-center'>
+                  <a
+                    href={paper.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className='px-4 py-1.5 bg-yellow-600 text-white text-sm rounded-lg font-semibold text-center hover:bg-yellow-700 transition duration-300 flex items-center gap-2'
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    View Publication <ExternalLink size={14} />
+                  </a>
                 </div>
               </div>
 
               <div className={`transition-all duration-300 ease-in-out overflow-hidden ${expandedCard === index ? 'max-h-[40rem] opacity-100' : 'max-h-0 opacity-0'
                 }`}>
                 <div className='px-4 md:px-5 pb-4 md:pb-5 border-t border-gray-700/50'>
-                  <p className='text-gray-300 mb-4 mt-4 leading-relaxed text-sm'>{paper.abstract}</p>
+                  <p className='text-gray-300 mb-3 mt-4 leading-relaxed text-sm'>{paper.abstract}</p>
                   {paper.doi && (
-                    <p className='text-gray-500 mb-4 text-xs'>DOI: {paper.doi}</p>
+                    <p className='text-gray-500 text-xs'>DOI: {paper.doi}</p>
                   )}
-                  <div className='flex justify-center'>
-                    <a
-                      href={paper.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className='px-4 py-2 bg-yellow-600 text-white rounded-lg font-semibold text-center hover:bg-yellow-700 transition duration-300 flex items-center gap-2'
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      View on IEEE Xplore <ExternalLink size={16} />
-                    </a>
-                  </div>
                 </div>
               </div>
             </div>
