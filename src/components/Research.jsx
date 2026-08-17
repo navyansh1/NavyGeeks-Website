@@ -16,8 +16,8 @@ const papers = [
   {
     title: "Leveraging Deep Neural Networks for Enhanced Otitis Media Diagnosis",
     authors: "Navyansh Kothari",
-    venue: "IEEE",
-    date: "2026",
+    venue: "2026 International Conference on Emerging Systems and Intelligent Computing (ESIC)",
+    date: "February 2026 · Bhubaneswar, India",
     link: "https://ieeexplore.ieee.org/document/11495855",
     abstract:
       "Otitis media (OM) is a prevalent spectrum of middle ear inflammatory conditions and one of the most prevalent medical conditions, particularly in children. The majority of it is diagnosed through otoscopic images — a subjective and error-inclined process. Specialized diagnostic apparatuses are costly, with limited availability and reproducibility. This paper proposes a novel approach to eardrum infection diagnosis through deep learning and multimodal data analysis. It employs a scalable ensemble of four state-of-the-art models: RegNet-X 16GF and 3.2GF for high-resolution feature extraction, MobileNetV2 for light-weight real-time processing, and ResNeXt50 32×4d for advanced pattern recognition. Trained on heterogeneous otoscopic images augmented with demographics, symptoms, and medical histories, the ensemble achieved 92.56% accuracy — higher than single models (MobileNetV2: 89.2%, ResNeXt50: 91.5%, RegNet-X 16GF: 90.8%, RegNet-X 3.2GF: 90.1%) and benchmarks like VGG16 and DenseNet121. It demonstrated 96.12% sensitivity, 87.78% specificity, and an F1 score of 87.94%, distinguishing conditions with overlapping visual features and decreasing false positives, especially in chronic OM and earwax blockage. With computational efficiency, scalability, and clinical practicability, the model presents a trustworthy diagnostic tool for early treatment and improved outcomes, especially in resource-scarce environments.",
