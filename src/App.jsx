@@ -7,6 +7,7 @@ import Portfolio from "./components/Portfolio";
 import Skills from "./components/Skills";
 import Education from "./components/Education";
 import Certifications from "./components/Certifications";
+import Research from "./components/Research";
 
 export default function App() {
   return (
@@ -38,6 +39,11 @@ export default function App() {
 
       <div id="certifications">
         <Certifications />
+      </div>
+
+
+      <div id="research" className="md:pt-4 pt-2">
+        <Research />
       </div>
 
 
