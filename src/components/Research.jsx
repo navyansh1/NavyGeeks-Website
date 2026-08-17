@@ -84,12 +84,7 @@ const Research = () => {
                 className='cursor-pointer p-4 md:p-5'
                 onClick={() => toggleCard(index)}
               >
-                <div className='flex items-start justify-between gap-3'>
-                  <h3 className='text-base md:text-lg font-semibold text-gray-200 leading-snug'>{paper.title}</h3>
-                  <div className='text-yellow-500 flex-shrink-0 mt-1'>
-                    {expandedCard === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                  </div>
-                </div>
+                <h3 className='text-base md:text-lg font-semibold text-gray-200 leading-snug'>{paper.title}</h3>
 
                 <div className='mt-2 flex flex-col gap-1'>
                   <p className='flex items-center gap-1.5 text-xs md:text-sm text-gray-400'>
@@ -114,7 +109,7 @@ const Research = () => {
                   ))}
                 </div>
 
-                <div className='mt-3 flex justify-center'>
+                <div className='mt-3 flex items-center justify-center relative'>
                   <a
                     href={paper.link}
                     target="_blank"
@@ -124,6 +119,9 @@ const Research = () => {
                   >
                     View Publication <ExternalLink size={14} />
                   </a>
+                  <div className='absolute right-0 text-yellow-500'>
+                    {expandedCard === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                  </div>
                 </div>
               </div>
 
