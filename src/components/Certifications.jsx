@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import project1 from "../assets/certifications/certi1.png";
 import project2 from "../assets/certifications/certi2.png";
 import project4 from "../assets/certifications/certi3.png";
@@ -11,8 +11,9 @@ import openaiTechnical from "../assets/certifications/openai_technical_practitio
 import openaiDeployment from "../assets/certifications/openai_deployment_practitioner.png";
 import openaiTechnicalPdf from "../assets/certifications/openai_technical_practitioner.pdf";
 import openaiDeploymentPdf from "../assets/certifications/openai_deployment_practitioner.pdf";
-import { ChevronDown, ChevronUp, Award } from 'lucide-react';
+import { Award, X, MousePointerClick } from 'lucide-react';
 import Reveal from './Reveal';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const projects = [
   {
@@ -115,74 +116,53 @@ const projects = [
 ];
 
 const Certifications = () => {
-  const [expandedCard, setExpandedCard] = useState(null);
+  const [selectedCert, setSelectedCert] = useState(null);
+  const scrollPosRef = useRef(0);
 
-  const toggleCard = (index) => {
-    setExpandedCard(expandedCard === index ? null : index);
-  };
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedCert) {
+      scrollPosRef.current = window.scrollY;
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      window.scrollTo(0, scrollPosRef.current);
+    }
+    return () => {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    };
+  }, [selectedCert]);
 
   return (
     <div className='max-w-[1000px] mx-auto p-6 md:my-20 relative' id="certifications">
       <h2 className='text-2xl md:text-5xl font-bold text-yellow-500 mb-8 flex items-center justify-center text-center gap-2 whitespace-nowrap'><Award size={22} className='md:w-10 md:h-10 flex-shrink-0' /> Certifications & Licenses:</h2>
 
-      <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6 items-start'>
+      <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6'>
         {projects.map((project, index) => (
           <Reveal key={index}>
-            <div className='bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700 hover:border-yellow-500/50 transition-all duration-300 overflow-hidden h-fit'>
-              {/* Card Header - Always Visible */}
-              <div
-                className='cursor-pointer p-3 md:p-4 h-auto'
-                onClick={() => toggleCard(index)}
-              >
-                <div className='aspect-video mb-2 md:mb-4 overflow-hidden rounded-lg'>
+            <div
+              className='bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700
+              hover:border-yellow-500/50 hover:shadow-yellow-500/10 hover:shadow-xl
+              transition-all duration-300 overflow-hidden cursor-pointer group'
+              onClick={() => setSelectedCert(project)}
+            >
+              <div className='p-2 md:p-4'>
+                <div className='aspect-video mb-3 overflow-hidden rounded-lg'>
                   <img
                     src={project.img}
                     alt={project.title}
-                    className='w-full h-full object-cover transition-transform duration-300 hover:scale-105'
+                    className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105'
                   />
                 </div>
-                <div className='flex items-start justify-between gap-2 min-h-[3.5rem] md:min-h-[4rem]'>
-                  <h3 className='text-base md:text-lg font-semibold text-gray-200 flex-1 leading-tight overflow-hidden' style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>{project.title}</h3>
-                  <div className='text-yellow-500 text-lg md:text-xl flex-shrink-0 mt-1'>
-                    {expandedCard === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                  </div>
-                </div>
-              </div>
-
-              {/* Expandable Content */}
-              <div className={`transition-all duration-300 ease-in-out overflow-hidden ${expandedCard === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                }`}>
-                <div className='px-3 md:px-4 pb-3 md:pb-4 border-t border-gray-700/50'>
-                  <div className='text-gray-300 mb-3 md:mb-4 mt-3 md:mt-4 leading-relaxed text-sm md:text-base'>
-                    {typeof project.description === 'string' ? (
-                      <p>{project.description}</p>
-                    ) : (
-                      project.description
-                    )}
-                  </div>
-                  <div className='flex flex-col gap-2 md:flex-row items-center justify-center'>
-                    {project.links.site && (
-                      <a
-                        href={project.links.site}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className='px-4 py-2 bg-yellow-600 text-white rounded-lg font-semibold text-center hover:bg-yellow-700 transition duration-300'
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        View Credentials
-                      </a>
-                    )}
-                    {project.links.certificate && (
-                      <a
-                        href={project.links.certificate}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className='px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300 text-center'
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        View Certificates
-                      </a>
-                    )}
+                <div className='flex items-center justify-between'>
+                  <h3 className='text-base md:text-lg font-semibold text-gray-200 leading-tight min-h-[2.5rem] flex items-center pr-2'>
+                    {project.title}
+                  </h3>
+                  <div className='text-yellow-500 bg-yellow-500/10 p-1.5 rounded-md flex-shrink-0'>
+                    <MousePointerClick size={20} />
                   </div>
                 </div>
               </div>
@@ -190,6 +170,82 @@ const Certifications = () => {
           </Reveal>
         ))}
       </div>
+
+      {/* Modal Overlay */}
+      <AnimatePresence>
+        {selectedCert && (
+          <motion.div
+            className='fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setSelectedCert(null)}
+          >
+            <motion.div
+              className='bg-gray-900 border border-gray-700 rounded-2xl max-w-[700px] w-full max-h-[90vh] overflow-y-auto shadow-2xl'
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 30 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Image */}
+              <div className='relative'>
+                <img
+                  src={selectedCert.img}
+                  alt={selectedCert.title}
+                  className='w-full aspect-video object-cover rounded-t-2xl'
+                />
+                <button
+                  onClick={() => setSelectedCert(null)}
+                  className='absolute top-3 right-3 w-9 h-9 flex items-center justify-center
+                  bg-black/60 backdrop-blur-sm text-white rounded-full
+                  hover:bg-black/80 transition-colors'
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              {/* Modal Content */}
+              <div className='p-6'>
+                <h3 className='text-2xl md:text-3xl font-bold text-gray-100 mb-4'>
+                  {selectedCert.title}
+                </h3>
+                <div className='text-gray-300 leading-relaxed text-base md:text-lg mb-6'>
+                  {typeof selectedCert.description === 'string' ? (
+                    <p>{selectedCert.description}</p>
+                  ) : (
+                    selectedCert.description
+                  )}
+                </div>
+                <div className='flex flex-wrap gap-3 justify-center'>
+                  {selectedCert.links.site && (
+                    <a
+                      href={selectedCert.links.site}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className='px-5 py-2.5 bg-yellow-600 text-white rounded-lg font-semibold hover:bg-yellow-700 transition duration-300'
+                    >
+                      View Credentials
+                    </a>
+                  )}
+                  {selectedCert.links.certificate && (
+                    <a
+                      href={selectedCert.links.certificate}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className='px-5 py-2.5 bg-slate-700 text-gray-200 rounded-lg font-semibold hover:bg-slate-600 transition duration-300'
+                    >
+                      View Certificates
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
