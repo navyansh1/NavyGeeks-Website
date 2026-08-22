@@ -9,7 +9,7 @@ import nextformsImg from "../assets/projects/nextforms.png";
 import fmcg from "../assets/projects/fmcg.png";
 import bfsi from "../assets/projects/bfsi.png";
 import billsonicImg from "../assets/projects/billsonic.png";
-import vedicflowImg from "../assets/projects/vedicflow.png";
+import vedicflowImg from "../assets/projects/vedicflow.jpg";
 
 import { Github, FolderOpen, ExternalLink, X, MousePointerClick, Apple, Play } from 'lucide-react';
 import Reveal from './Reveal';
