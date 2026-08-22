@@ -77,7 +77,7 @@ const Navbar = () => {
         <>
             {/* Desktop Navbar at top */}
             <div className='fixed top-0 left-0 w-full bg-opacity-70 backdrop-blur-md z-50 hidden md:block'>
-                <div className='max-w-[1300px] mx-auto flex justify-center items-center px-4 h-20 text-gray-200 text-xl'>
+                <div className='max-w-[1300px] mx-auto flex justify-center items-center px-4 h-14 text-gray-200 text-lg'>
                     <ul className='flex gap-4 lg:gap-12 z-10 cursor-pointer'>
                         <li className={isActive('hero') ? 'text-yellow-400' : ''}><Link to="hero" smooth={true} offset={-80} duration={500}>About</Link></li>
                         <li className={isActive('skills') ? 'text-yellow-400' : ''}><Link to="skills" smooth={true} offset={-80} duration={500}>Skills</Link></li>
