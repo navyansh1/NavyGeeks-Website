@@ -9,13 +9,25 @@ import nextformsImg from "../assets/projects/nextforms.png";
 import fmcg from "../assets/projects/fmcg.png";
 import bfsi from "../assets/projects/bfsi.png";
 import billsonicImg from "../assets/projects/billsonic.png";
+import vedicflowImg from "../assets/projects/vedicflow.png";
 
-import { Github, FolderOpen, ExternalLink, X, MousePointerClick } from 'lucide-react';
+import { Github, FolderOpen, ExternalLink, X, MousePointerClick, Apple, Play } from 'lucide-react';
 import Reveal from './Reveal';
 import ShinyEffect from './ShinyEffect';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const projects = [
+    {
+        img: vedicflowImg,
+        title: "VedicFlow - Hindu Calendar & Panchang",
+        description:
+            "A Hindu calendar and Panchang app that computes Vedic timekeeping on-device from your GPS location \u2014 no syndicated content. Features daily Tithi, Nakshatra, Yoga, Karana and Vaara, hour-by-hour Choghadiya derived from local sunrise and sunset, Rahu Kaal alerts, muhurat guidance, Kundli matching, and a 108-bead Naam Jaap mala with haptics. Works offline and ships on both iOS and Android.",
+        links: {
+            site: "https://www.vedicflow.co.in/",
+            ios: "https://apps.apple.com/in/app/vedic-flow-hindu-calendar-2026/id6760628104",
+            android: "https://play.google.com/store/apps/details?id=com.vedicflow.app",
+        },
+    },
     {
         img: billsonicImg,
         title: "Bill Sonic - Mobile POS App",
@@ -222,6 +234,30 @@ const Portfolio = () => {
                                         >
                                             <ExternalLink size={18} />
                                             View Demo
+                                        </a>
+                                    )}
+                                    {selectedProject.links.ios && (
+                                        <a
+                                            href={selectedProject.links.ios}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className='flex items-center gap-2 px-5 py-2.5 bg-slate-700 text-gray-200 rounded-lg 
+                                            font-semibold hover:bg-slate-600 transition duration-300'
+                                        >
+                                            <Apple size={18} />
+                                            App Store
+                                        </a>
+                                    )}
+                                    {selectedProject.links.android && (
+                                        <a
+                                            href={selectedProject.links.android}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className='flex items-center gap-2 px-5 py-2.5 bg-slate-700 text-gray-200 rounded-lg 
+                                            font-semibold hover:bg-slate-600 transition duration-300'
+                                        >
+                                            <Play size={18} />
+                                            Google Play
                                         </a>
                                     )}
                                     {selectedProject.links.github && (
