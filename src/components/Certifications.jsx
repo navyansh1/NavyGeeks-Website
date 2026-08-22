@@ -7,10 +7,40 @@ import project6 from "../assets/projects/project6.png";
 import forestCert from "../assets/certifications/forest_cert.png";
 import iitKanpurImg from "../assets/experience/iit_kanpur.png";
 import awsAiPractitioner from "../assets/certifications/aws_ai_practitioner.png";
+import openaiTechnical from "../assets/certifications/openai_technical_practitioner.png";
+import openaiDeployment from "../assets/certifications/openai_deployment_practitioner.png";
+import openaiTechnicalPdf from "../assets/certifications/openai_technical_practitioner.pdf";
+import openaiDeploymentPdf from "../assets/certifications/openai_deployment_practitioner.pdf";
 import { ChevronDown, ChevronUp, Award } from 'lucide-react';
 import Reveal from './Reveal';
 
 const projects = [
+  {
+    img: openaiTechnical,
+    title: "OpenAI Technical Practitioner",
+    description: (
+      <>
+        <p>Issued: Aug 2026 &middot; Valid through: Aug 2027</p>
+        <p className="mt-1 text-gray-400 text-sm">Issued by OpenAI</p>
+      </>
+    ),
+    links: {
+      certificate: openaiTechnicalPdf,
+    },
+  },
+  {
+    img: openaiDeployment,
+    title: "ChatGPT Deployment Practitioner",
+    description: (
+      <>
+        <p>Issued: Aug 2026 &middot; Valid through: Aug 2027</p>
+        <p className="mt-1 text-gray-400 text-sm">Issued by OpenAI</p>
+      </>
+    ),
+    links: {
+      certificate: openaiDeploymentPdf,
+    },
+  },
   {
     img: awsAiPractitioner,
     title: "AWS Certified AI Practitioner",
