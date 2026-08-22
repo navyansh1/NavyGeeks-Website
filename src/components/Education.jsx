@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Trophy, Play } from 'lucide-react';
+import { GraduationCap, Trophy, Play, X } from 'lucide-react';
 import Reveal from './Reveal';
 import classXIIImage from '/src/assets/education/classxiimarksheet.png';
 import classXImage from '/src/assets/education/classxmarksheet.png';
@@ -67,7 +67,7 @@ const Education = () => {
                             viewport={{ once: false, amount: 0.3 }}
                             transition={{ duration: 1 }}
                             className='border-2 border-yellow-500/60 p-4 rounded-xl
-                            hover:shadow-xl hover:border-yellow-400 transition-all duration-300 bg-purple-800/20 max-w-[550px] w-full mx-auto'
+                            hover:shadow-xl hover:border-yellow-400 transition-all duration-300 bg-slate-800/40 max-w-[550px] w-full mx-auto'
                         >
                             <div className='flex items-center justify-between mb-1'>
                                 <h2 className='text-gray-100 text-lg font-semibold'>{education.institution}</h2>
@@ -113,13 +113,13 @@ const Education = () => {
             </motion.div>
 
             {isModalOpen && (
-                <div className='fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4'>
-                    <div className='relative max-w-4xl max-h-[90vh] bg-purple-900/90 p-4 rounded-xl border-2 border-yellow-500'>
+                <div className='fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4'>
+                    <div className='relative max-w-4xl max-h-[90vh] bg-slate-900/95 p-4 rounded-xl border border-yellow-500/40 shadow-2xl'>
                         <button
                             onClick={closeModal}
-                            className='absolute top-2 right-2 w-8 h-8 flex items-center justify-center bg-red-500 text-white rounded-full hover:bg-red-600 transition'
+                            className='absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-black/60 backdrop-blur-sm text-white rounded-full hover:bg-black/80 transition-colors'
                         >
-                            <span className='text-lg font-bold'>×</span>
+                            <X size={18} />
                         </button>
                         <img
                             src={currentMarksheet}
