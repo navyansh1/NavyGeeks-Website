@@ -19,14 +19,13 @@ const experiences = [
         company: 'Ganit Inc',
         period: 'Sep 2025 - Present',
         description: [
-            'Data Scientist & Gen AI Engineer: AI products and ML models for BFSI and FMCG clients',
-            'GeoScout IQ: location intelligence that scores ~0.7 sq km map tiles and tells banks and retailers where to open next, with Gemini agents writing the verdict',
-            'CCTV IQ: face-recognition attendance on existing office cameras; cut processing from 9.86 s to 0.31 s per frame by moving the models to the Intel iGPU (OpenVINO)',
-            'OCR research on loan documents: Tesseract on AWS Lambda matched AWS Textract (103 vs 104 of 108 values) at about 3% of the cost, and was the only engine to read Indian scripts',
-            'Masker: redacts personal and health data from medical PDFs and images with Google Vision OCR + Gemini',
-            'Discount optimization for an FMCG client: one config-driven pipeline with DTW clustering, XGBoost + SHAP and a sales and P&L simulator in Streamlit',
-            'GenAI back ends and RAG pipelines with FastAPI, LangChain and LangGraph on AWS',
-            'Data cleaning, EDA, feature engineering and ML models on FMCG and BFSI data (pandas, NumPy, PostgreSQL)',
+            'Data Scientist & Gen AI Engineer',
+            'Build Gen AI products end to end: RAG pipelines, LLM agents and APIs with FastAPI, LangChain and LangGraph on AWS',
+            'Develop computer vision and document AI solutions such as OCR, face recognition and PII redaction',
+            'Build machine learning models for BFSI and FMCG clients, including forecasting, clustering and price elasticity, explained with SHAP',
+            'Benchmark models and infrastructure for accuracy, speed and cost, from GPU acceleration to serverless on AWS Lambda',
+            'Turn models into tools teams use: dashboards, simulators and web apps',
+            'Data cleaning, EDA and feature engineering with pandas, NumPy and PostgreSQL',
         ],
         projectsLink: '/projects/',
         icon: ganitimg,
@@ -79,17 +78,6 @@ const experiences = [
     },
 
 ];
-
-// "Project name: detail" bullets get the name in bold so the list is easy to scan.
-const BulletText = ({ text }) => {
-    const i = text.indexOf(': ');
-    if (i < 1 || i > 40) return text;
-    return (
-        <>
-            <strong className='font-semibold text-gray-200'>{text.slice(0, i)}</strong>{text.slice(i)}
-        </>
-    );
-};
 
 const Experience = ({ pageHeading = false }) => {
     const Heading = pageHeading ? 'h1' : 'h2';
@@ -152,7 +140,7 @@ const Experience = ({ pageHeading = false }) => {
                                             {Array.isArray(experience.description) && experience.description.length > 1 && (
                                                 <ul className='text-gray-400 text-sm leading-relaxed list-disc pl-4 space-y-1 border-t border-yellow-500/20 pt-2'>
                                                     {experience.description.slice(1).map((point, idx) => (
-                                                        <li key={idx}><BulletText text={point} /></li>
+                                                        <li key={idx}>{point}</li>
                                                     ))}
                                                 </ul>
                                             )}
