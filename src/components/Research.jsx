@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, ChevronDown, ChevronUp, ExternalLink, User, CalendarDays, Building2, ArrowRight } from 'lucide-react';
+import { BookOpen, ChevronDown, ChevronUp, ExternalLink, CalendarDays, Building2, ArrowRight } from 'lucide-react';
 import Reveal from './Reveal';
 import { papers } from '../data/research';
 import { pagePath } from '../data/site';
@@ -29,9 +29,6 @@ const Research = () => {
                 <h3 className='text-base md:text-lg font-semibold text-gray-200 leading-snug'>{paper.title}</h3>
 
                 <div className='mt-2 flex flex-col gap-1'>
-                  <p className='flex items-center gap-1.5 text-xs md:text-sm text-gray-400'>
-                    <User size={14} className='text-yellow-500/70 flex-shrink-0' /> {paper.authors.join(', ')}
-                  </p>
                   <p className='flex items-center gap-1.5 text-xs md:text-sm text-gray-400'>
                     <CalendarDays size={14} className='text-yellow-500/70 flex-shrink-0' /> {paper.venue} &middot; {paper.date}
                   </p>

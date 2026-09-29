@@ -141,18 +141,6 @@ export function PaperPage() {
             <table className="w-full text-left text-sm md:text-base border-collapse">
                 <tbody>
                     {[
-                        ['Author', (
-                            <>
-                                {paper.authors.map((name, i) => (
-                                    <React.Fragment key={name}>
-                                        {i > 0 && ', '}
-                                        {name === SITE_NAME ? (
-                                            <Link to="/" rel="author" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">{name}</Link>
-                                        ) : name}
-                                    </React.Fragment>
-                                ))}
-                            </>
-                        )],
                         ['Conference', paper.venue],
                         ['Where & when', paper.date],
                         ['Publisher', `IEEE (${year})`],
