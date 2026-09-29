@@ -1,22 +1,22 @@
-import project1 from "../assets/projects/project1.png";
-import project2 from "../assets/projects/project2.png";
-import project4 from "../assets/projects/project4.png";
-import project5 from "../assets/projects/project5.png";
-import portfolioimg from "../assets/projects/portfolio.png";
-import mcqQuizImg from "../assets/projects/mcq-quiz.png";
-import nextformsImg from "../assets/projects/nextforms.png";
-import fmcg from "../assets/projects/fmcg.png";
-import bfsi from "../assets/projects/bfsi.png";
-import billsonicImg from "../assets/projects/billsonic.png";
-import vedicflowImg from "../assets/projects/vedicflow.jpg";
-import maskerImg from "../assets/projects/masker.jpg";
-import geoscoutImg from "../assets/projects/geoscout.jpg";
-import guardnoteImg from "../assets/projects/guardnote.jpg";
-import cctvIqImg from "../assets/projects/cctv-iq.jpg";
-import discountImg from "../assets/projects/discount-optimization.jpg";
-import ocrImg from "../assets/projects/ocr-benchmark.jpg";
-import shopInventoryImg from "../assets/projects/kothari-electric.jpg";
-import cricketPlayablesImg from "../assets/projects/cricket-playables.jpg";
+import thumb_geoscout_iq from "../assets/projects/thumbs/geoscout-iq.jpg";
+import thumb_cctv_iq_face_attendance from "../assets/projects/thumbs/cctv-iq-face-attendance.jpg";
+import thumb_ocr_engine_benchmark from "../assets/projects/thumbs/ocr-engine-benchmark.jpg";
+import thumb_masker_pii_redaction from "../assets/projects/thumbs/masker-pii-redaction.jpg";
+import thumb_discount_spend_optimization from "../assets/projects/thumbs/discount-spend-optimization.jpg";
+import thumb_vedicflow from "../assets/projects/thumbs/vedicflow.jpg";
+import thumb_bill_sonic from "../assets/projects/thumbs/bill-sonic.jpg";
+import thumb_fmcg_demand_forecasting from "../assets/projects/thumbs/fmcg-demand-forecasting.jpg";
+import thumb_credit_card_fraud_detection_bfsi from "../assets/projects/thumbs/credit-card-fraud-detection-bfsi.jpg";
+import thumb_nextforms from "../assets/projects/thumbs/nextforms.jpg";
+import thumb_cricket_playable_ads from "../assets/projects/thumbs/cricket-playable-ads.jpg";
+import thumb_guardnote from "../assets/projects/thumbs/guardnote.jpg";
+import thumb_shop_inventory_web_app from "../assets/projects/thumbs/shop-inventory-web-app.jpg";
+import thumb_mcq_quiz_generator_ai from "../assets/projects/thumbs/mcq-quiz-generator-ai.jpg";
+import thumb_tictactoe_ios_app from "../assets/projects/thumbs/tictactoe-ios-app.jpg";
+import thumb_blockchain_lottery_dapp from "../assets/projects/thumbs/blockchain-lottery-dapp.jpg";
+import thumb_instasnap_ui_redesign from "../assets/projects/thumbs/instasnap-ui-redesign.jpg";
+import thumb_playing_cards_ios_app from "../assets/projects/thumbs/playing-cards-ios-app.jpg";
+import thumb_portfolio_website from "../assets/projects/thumbs/portfolio-website.jpg";
 
 import geoscoutDiagram from "../assets/diagrams/geoscout-iq.svg";
 import cctvIqDiagram from "../assets/diagrams/cctv-iq.svg";
@@ -48,7 +48,7 @@ export const projects = [
         featured: true,
         demo: true,
         kind: "location intelligence web app",
-        img: geoscoutImg,
+        img: thumb_geoscout_iq,
         title: "GeoScout IQ - Location Decision Intelligence",
         type: "WebApplication",
         stack: ["Google Maps", "H3", "Gemini", "Firebase"],
@@ -108,7 +108,7 @@ export const projects = [
         featured: true,
         isPrivate: true,
         kind: "computer vision system",
-        img: cctvIqImg,
+        img: thumb_cctv_iq_face_attendance,
         title: "CCTV IQ - Face ID Attendance",
         type: "SoftwareApplication",
         stack: ["Python", "InsightFace", "OpenVINO", "ONNX Runtime"],
@@ -175,7 +175,7 @@ export const projects = [
         isPrivate: true,
         repoName: "OCR_Research",
         kind: "OCR research study",
-        img: ocrImg,
+        img: thumb_ocr_engine_benchmark,
         title: "OCR Engine Benchmark for Indian Loan Documents",
         type: "CreativeWork",
         stack: ["Tesseract", "AWS Textract", "Qwen3-VL", "AWS Lambda"],
@@ -241,7 +241,7 @@ export const projects = [
         featured: true,
         demo: true,
         kind: "AI web app",
-        img: maskerImg,
+        img: thumb_masker_pii_redaction,
         title: "Masker - PII Redaction for Medical Documents",
         type: "WebApplication",
         stack: ["Google Vision OCR", "Gemini 2.5 Flash-Lite", "Firebase"],
@@ -280,7 +280,7 @@ export const projects = [
         featured: true,
         isPrivate: true,
         kind: "machine learning pipeline",
-        img: discountImg,
+        img: thumb_discount_spend_optimization,
         title: "Discount Spend Optimization",
         type: "SoftwareApplication",
         stack: ["Python", "pandas", "XGBoost", "SHAP", "Streamlit"],
@@ -323,8 +323,8 @@ export const projects = [
         slug: "vedicflow",
         featured: true,
         isPrivate: true,
-        kind: "mobile app on the App Store and Google Play",
-        img: vedicflowImg,
+        kind: "mobile app (iOS & Android)",
+        img: thumb_vedicflow,
         title: "VedicFlow - Hindu Calendar & Panchang",
         type: "MobileApplication",
         platforms: ["iOS", "Android"],
@@ -369,7 +369,7 @@ export const projects = [
         featured: true,
         isPrivate: true,
         kind: "point-of-sale app",
-        img: billsonicImg,
+        img: thumb_bill_sonic,
         title: "Bill Sonic - Mobile POS App",
         type: "MobileApplication",
         platforms: ["iOS", "Android", "Web"],
@@ -407,7 +407,7 @@ export const projects = [
     {
         slug: "fmcg-demand-forecasting",
         kind: "data science case study",
-        img: fmcg,
+        img: thumb_fmcg_demand_forecasting,
         title: "Demand Forecasting Analysis",
         type: "CreativeWork",
         stack: ["Python", "Time-series models", "Machine learning"],
@@ -434,7 +434,7 @@ export const projects = [
     {
         slug: "credit-card-fraud-detection-bfsi",
         kind: "machine learning case study",
-        img: bfsi,
+        img: thumb_credit_card_fraud_detection_bfsi,
         title: "Credit Card Modelling - BFSI Domain",
         type: "CreativeWork",
         stack: ["Python", "Machine learning"],
@@ -460,7 +460,7 @@ export const projects = [
     {
         slug: "nextforms",
         kind: "web app",
-        img: nextformsImg,
+        img: thumb_nextforms,
         title: "NextForms",
         type: "WebApplication",
         stack: [],
@@ -473,6 +473,12 @@ export const projects = [
             ["Collect responses", ""],
             ["Track + email alerts", ""],
         ],
+        highlights: [
+            "Custom themes and layouts for each form",
+            "Response tracking with analytics",
+            "Instant confirmation emails on submit",
+            "Export responses to Excel or Google Sheets",
+        ],
         tags: ["form builder", "Google Forms alternative", "web app"],
         links: {
             site: "https://nextforms.in",
@@ -481,7 +487,7 @@ export const projects = [
     {
         slug: "cricket-playable-ads",
         kind: "set of HTML5 playable ads",
-        img: cricketPlayablesImg,
+        img: thumb_cricket_playable_ads,
         title: "Cricket Playable Ads",
         type: "CreativeWork",
         stack: ["HTML5 Canvas", "JavaScript"],
@@ -513,7 +519,7 @@ export const projects = [
     {
         slug: "guardnote",
         kind: "privacy-first web app",
-        img: guardnoteImg,
+        img: thumb_guardnote,
         title: "GuardNote - Private Digital Notebook",
         type: "WebApplication",
         stack: ["JavaScript", "GitHub Gists"],
@@ -542,7 +548,7 @@ export const projects = [
         slug: "shop-inventory-web-app",
         isPrivate: true,
         kind: "inventory web app",
-        img: shopInventoryImg,
+        img: thumb_shop_inventory_web_app,
         title: "Shop Inventory Web App",
         type: "WebApplication",
         stack: ["JavaScript", "Firestore"],
@@ -566,7 +572,7 @@ export const projects = [
     {
         slug: "mcq-quiz-generator-ai",
         kind: "AI-powered web app",
-        img: mcqQuizImg,
+        img: thumb_mcq_quiz_generator_ai,
         title: "MCQ Quiz Generator using AI",
         type: "WebApplication",
         stack: ["Python", "Flask", "Google Generative AI"],
@@ -579,6 +585,11 @@ export const projects = [
             ["Gemini writes MCQs", ""],
             ["Download", "text or PDF"],
         ],
+        highlights: [
+            "Reads PDF, Word and text files",
+            "You choose how many questions to generate",
+            "Download the quiz as text or PDF",
+        ],
         tags: ["AI quiz generator", "MCQ generator", "Flask", "Gemini", "education"],
         links: {
             site: "https://mcqgen.vercel.app/",
@@ -587,7 +598,7 @@ export const projects = [
     {
         slug: "tictactoe-ios-app",
         kind: "iOS game app",
-        img: project1,
+        img: thumb_tictactoe_ios_app,
         title: "TicTacToe iOS App",
         type: "SoftwareSourceCode",
         platforms: ["iOS"],
@@ -600,6 +611,11 @@ export const projects = [
             ["Check win or draw", ""],
             ["Show result", "restart"],
         ],
+        highlights: [
+            "Two-player game on one phone",
+            "Detects wins and draws",
+            "Built with SwiftUI",
+        ],
         tags: ["iOS", "SwiftUI", "game"],
         links: {
             github: "https://github.com/navyansh1/TickTacToe",
@@ -608,7 +624,7 @@ export const projects = [
     {
         slug: "blockchain-lottery-dapp",
         kind: "blockchain dApp",
-        img: project2,
+        img: thumb_blockchain_lottery_dapp,
         title: "Blockchain Lottery dApp",
         type: "CreativeWork",
         stack: ["Solidity", "React"],
@@ -621,6 +637,11 @@ export const projects = [
             ["Winner picked", "by the contract"],
             ["Payout", ""],
         ],
+        highlights: [
+            "Smart contract written in Solidity",
+            "Deployed and tested in Remix",
+            "React front end to join the lottery",
+        ],
         tags: ["blockchain", "Solidity", "smart contract", "dApp", "React"],
         links: {
             site: "https://drive.google.com/file/d/1mwgChln8-jExcFmfVdADh5mv4pUMKU9W/view",
@@ -629,13 +650,25 @@ export const projects = [
     {
         slug: "instasnap-ui-redesign",
         kind: "UI/UX design concept",
-        img: project4,
+        img: thumb_instasnap_ui_redesign,
         title: "InstaSnap UI Redesign",
         type: "CreativeWork",
         stack: ["Figma"],
         metaDescription:
             "InstaSnap: a refined Instagram UI/UX concept designed in Figma for a sleek, user-friendly social media experience.",
         summary: "A cleaner Instagram-style social app concept designed in Figma.",
+        highlights: [
+            "Redesigned feed, comments, stories, search and activity screens",
+            "Cleaner layout with more space for photos",
+            "Designed in Figma",
+        ],
+        flow: [
+            ["Comments", ""],
+            ["Create story", ""],
+            ["Story", ""],
+            ["Search", ""],
+            ["Activity", ""],
+        ],
         tags: ["UI design", "UX design", "Figma", "social media app"],
         links: {
             site: "https://www.figma.com/design/4GnyQrrTZ7yhLqAFTm9Mmi/Social-Media-App-UI-UX-Project",
@@ -644,7 +677,7 @@ export const projects = [
     {
         slug: "playing-cards-ios-app",
         kind: "iOS card game app",
-        img: project5,
+        img: thumb_playing_cards_ios_app,
         title: "Playing Cards iOS App",
         type: "SoftwareSourceCode",
         platforms: ["iOS"],
@@ -652,6 +685,17 @@ export const projects = [
         metaDescription:
             "A playing cards iOS app built with SwiftUI, UIKit and Figma that brings card games to your fingertips. Source on GitHub.",
         summary: "A card game app for iPhone, designed in Figma and built with SwiftUI.",
+        highlights: [
+            "Player vs CPU card game",
+            "Tap Deal to draw cards; the higher card scores",
+            "Screens designed in Figma, built in SwiftUI",
+        ],
+        flow: [
+            ["Tap Deal", ""],
+            ["Player and CPU draw", ""],
+            ["Higher card scores", ""],
+            ["Scores update", ""],
+        ],
         tags: ["iOS", "SwiftUI", "card game"],
         links: {
             github: "https://github.com/navyansh1/cards-Game",
@@ -660,7 +704,7 @@ export const projects = [
     {
         slug: "portfolio-website",
         kind: "portfolio website",
-        img: portfolioimg,
+        img: thumb_portfolio_website,
         title: "Portfolio Website",
         type: "SoftwareSourceCode",
         stack: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
@@ -672,6 +716,12 @@ export const projects = [
             ["Pre-render", "every route to HTML"],
             ["Sitemap + SEO tags", ""],
             ["Deploy", "Vercel"],
+        ],
+        highlights: [
+            "Every page pre-rendered to static HTML for search engines",
+            "A page for each project and research paper",
+            "Sitemap, structured data and link previews",
+            "Deployed on Vercel from GitHub",
         ],
         tags: ["React", "Vite", "Tailwind CSS", "SEO", "static site generation"],
         links: {

@@ -156,9 +156,6 @@ export function ProjectPage() {
         ...(project.repoName ? [['Code', `${project.repoName} (private repository)`]] : []),
     ];
 
-    const related = (project.featured ? featuredProjects : projects)
-        .filter((p) => p.slug !== project.slug)
-        .slice(0, 3);
 
     return (
         <article className="pt-20 md:pt-24 max-w-[860px] mx-auto px-4 md:px-6 pb-8">
@@ -273,9 +270,6 @@ export function ProjectPage() {
                     )}
                 </div>
             )}
-
-            <h2 className={h2Class}>More projects</h2>
-            <ProjectGrid projects={related} />
 
             <Link to={pagePath('projects')} className="mt-8 inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold">
                 <ArrowLeft size={18} /> All projects

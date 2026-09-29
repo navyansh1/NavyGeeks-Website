@@ -1,7 +1,5 @@
-// Generates the architecture diagrams in src/assets/diagrams/ (SVG) and matching
-// 1280x720 JPG thumbnails in src/assets/projects/. Run: node scripts/make-diagrams.mjs
+// Generates the architecture diagrams in src/assets/diagrams/ (SVG). Run: node scripts/make-diagrams.mjs
 import fs from 'node:fs'
-import sharp from 'sharp'
 
 const C = { bg: '#162121', box: '#213130', line: '#3E5654', text: '#E5E7EB', muted: '#9CA3AF', accent: '#EAB308', accentBg: '#3A3314' }
 const FONT = "DejaVu Sans, Helvetica, Arial, sans-serif"
@@ -139,9 +137,5 @@ const diagrams = {
 
 for (const [name, s] of Object.entries(diagrams)) {
   fs.writeFileSync(`src/assets/diagrams/${name}.svg`, s)
-}
-// the two private repos have no screenshots we can show, so their diagram is the thumbnail
-for (const name of ['discount-optimization', 'cctv-iq']) {
-  await sharp(Buffer.from(diagrams[name])).jpeg({ quality: 85, mozjpeg: true }).toFile(`src/assets/projects/${name}.jpg`)
 }
 console.log('diagrams written')
