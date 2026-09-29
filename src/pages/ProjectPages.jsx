@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Github, ExternalLink, Apple, Play, ArrowLeft, Lock, ChevronDown } from 'lucide-react';
 import Seo from '../components/Seo';
@@ -6,6 +6,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import ProjectCard from '../components/ProjectCard';
 import Flow from '../components/Flow';
 import MoreProjects from '../components/MoreProjects';
+import ProjectModal from '../components/ProjectModal';
 import NotFound from './NotFound';
 import { projects, featuredProjects, getProject } from '../data/projects';
 import { PERSON_ID, SITE_NAME, absoluteUrl, imageUrl, pagePath, breadcrumbSchema } from '../data/site';
@@ -42,6 +43,8 @@ const projectSchema = (project, path) => {
 };
 
 export function ProjectsIndexPage() {
+    const [open, setOpen] = useState(null);
+    const close = useCallback(() => setOpen(null), []);
     const crumbs = [{ name: 'Home', path: '/' }, { name: 'Projects', path: '/projects' }];
     const description =
         'Projects by Navyansh Kothari: GeoScout IQ, CCTV IQ face-ID attendance, an OCR benchmark, Masker PII redaction, discount optimization, VedicFlow and more.';
@@ -74,11 +77,13 @@ export function ProjectsIndexPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {featuredProjects.map((project) => (
-                    <ProjectCard key={project.slug} project={project} headingLevel="h2" />
+                    <ProjectCard key={project.slug} project={project} headingLevel="h2" onOpen={setOpen} />
                 ))}
             </div>
 
-            <MoreProjects />
+            <MoreProjects onOpen={setOpen} />
+
+            <ProjectModal project={open} onClose={close} />
         </div>
     );
 }

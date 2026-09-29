@@ -3,12 +3,18 @@ import { Link } from 'react-router-dom';
 import { Lock } from 'lucide-react';
 import { pagePath } from '../data/site';
 
-// Card linking to a project's own page. `compact` is the smaller variant used in "More projects".
-const ProjectCard = ({ project, compact = false, headingLevel = 'h3' }) => {
+// Card linking to a project's own page (with `onOpen`, a click opens a quick view instead). `compact` is the smaller variant used in "More projects".
+const ProjectCard = ({ project, compact = false, headingLevel = 'h3', onOpen }) => {
     const Heading = headingLevel;
     return (
         <Link
             to={pagePath(`projects/${project.slug}`)}
+            onClick={(e) => {
+                // Plain click opens the quick view; ctrl/cmd/middle click still opens the page.
+                if (!onOpen || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+                e.preventDefault();
+                onOpen(project);
+            }}
             className='group flex flex-col h-full bg-gray-800/50 rounded-lg border border-gray-700 hover:border-yellow-500/50 hover:shadow-xl hover:shadow-yellow-500/10 transition-all duration-300 overflow-hidden'
         >
             <div className='aspect-video overflow-hidden'>
