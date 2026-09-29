@@ -53,7 +53,7 @@ const Education = ({ pageHeading = false }) => {
     return (
         <div className='p-8 max-w-[1000px] mx-auto'>
             <Heading className='text-4xl md:text-5xl text-yellow-500 font-bold text-center mb-6 flex items-center justify-center gap-3'>
-                <GraduationCap size={36} /> Education
+                <GraduationCap size={36} /> {pageHeading && "Navyansh Kothari's "}Education
             </Heading>
             <motion.div
                 className='space-y-4'

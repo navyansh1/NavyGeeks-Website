@@ -35,7 +35,7 @@ export function ExperiencePage() {
     return (
         <>
             <Seo
-                title={`Experience | ${SITE_NAME}`}
+                title={`${SITE_NAME} – Experience | AI/ML Engineer at Ganit`}
                 description={description}
                 path="/experience"
                 schema={[collectionSchema('Experience', '/experience', description), breadcrumbSchema(crumbs)]}
@@ -54,7 +54,7 @@ export function EducationPage() {
     return (
         <>
             <Seo
-                title={`Education | ${SITE_NAME}`}
+                title={`${SITE_NAME} – Education | B.Tech CSE, VIT`}
                 description={description}
                 path="/education"
                 schema={[collectionSchema('Education', '/education', description), breadcrumbSchema(crumbs)]}
@@ -86,7 +86,7 @@ export function CertificationsPage() {
     return (
         <>
             <Seo
-                title={`Certifications & Licenses | ${SITE_NAME}`}
+                title={`${SITE_NAME} – Certifications | AWS, OpenAI`}
                 description={description}
                 path="/certifications"
                 schema={[collectionSchema('Certifications & Licenses', '/certifications', description), itemList, breadcrumbSchema(crumbs)]}
@@ -117,7 +117,7 @@ export function SkillsPage() {
     return (
         <>
             <Seo
-                title={`Skills | ${SITE_NAME}`}
+                title={`${SITE_NAME} – Skills | AI/ML, Gen AI, Mobile`}
                 description={description}
                 path="/skills"
                 schema={[collectionSchema('Skills', '/skills', description), breadcrumbSchema(crumbs)]}
@@ -136,7 +136,7 @@ export function AboutPage() {
     return (
         <>
             <Seo
-                title={`About & Contact | ${SITE_NAME}`}
+                title={`${SITE_NAME} – About & Contact`}
                 description={description}
                 path="/about"
                 schema={[

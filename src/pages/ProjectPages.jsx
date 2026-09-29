@@ -16,6 +16,21 @@ const h2Class = 'text-xl md:text-2xl font-semibold text-gray-100 mt-10 mb-3';
 
 const shortName = (title) => title.split(' - ')[0];
 
+// "<Project> by Navyansh Kothari", plus the project type when it still fits in ~60 characters.
+const projectTitle = (project) => {
+    const base = `${shortName(project.title)} by ${SITE_NAME}`;
+    const k = project.kind;
+    const kind = /^[a-z][a-z]/.test(k) ? k.charAt(0).toUpperCase() + k.slice(1) : k; // keeps "iOS"
+    if (shortName(project.title).toLowerCase() === k.toLowerCase()) return base;
+    return `${base} | ${kind}`.length <= 60 ? `${base} | ${kind}` : base;
+};
+
+// Descriptions carry the owner's name so name searches match every project page.
+const withName = (text, name) => {
+    if (text.startsWith(`${name} `)) return `${name}, by ${SITE_NAME},${text.slice(name.length)}`;
+    return text.length <= 132 ? `${text} A project by ${SITE_NAME}.` : `By ${SITE_NAME}: ${text}`;
+};
+
 const projectSchema = (project, path) => {
     const base = {
         '@type': project.type,
@@ -71,9 +86,9 @@ export function ProjectsIndexPage() {
 
     return (
         <div className="pt-20 md:pt-24 max-w-[1100px] mx-auto px-4 md:px-6 pb-8">
-            <Seo title={`Projects | ${SITE_NAME}`} description={description} path="/projects" schema={schema} />
+            <Seo title={`${SITE_NAME} – Projects | AI, ML & App Portfolio`} description={description} path="/projects" schema={schema} />
             <Breadcrumbs items={crumbs} />
-            <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-8">Projects</h1>
+            <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-8">{SITE_NAME}&apos;s Projects</h1>
 
             <ProjectGrid projects={featuredProjects} onOpen={setOpen} headingLevel="h2" />
 
@@ -160,8 +175,8 @@ export function ProjectPage() {
     return (
         <article className="pt-20 md:pt-24 max-w-[860px] mx-auto px-4 md:px-6 pb-8">
             <Seo
-                title={`${project.title} | ${SITE_NAME}`}
-                description={project.metaDescription}
+                title={projectTitle(project)}
+                description={withName(project.metaDescription, shortName(project.title))}
                 path={path}
                 image={imageUrl(project.img)}
                 keywords={project.tags}

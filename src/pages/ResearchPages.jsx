@@ -55,9 +55,9 @@ export function ResearchIndexPage() {
 
     return (
         <div className="pt-20 md:pt-24 max-w-[1000px] mx-auto px-6 pb-8">
-            <Seo title={`Research & Publications | ${SITE_NAME}`} description={description} path="/research" schema={schema} />
+            <Seo title={`${SITE_NAME} – Research & IEEE Publications`} description={description} path="/research" schema={schema} />
             <Breadcrumbs items={crumbs} />
-            <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-8">Research & Publications</h1>
+            <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-8">{SITE_NAME}&apos;s Research & Publications</h1>
 
             <ul className="space-y-4">
                 {papers.map((paper) => (
@@ -88,7 +88,7 @@ export function PaperPage() {
         { name: paper.title, path },
     ];
     const year = paper.published.slice(0, 4);
-    const title = paper.title.length > 55 ? paper.title : `${paper.title} | ${SITE_NAME}`;
+    const title = `${SITE_NAME} – IEEE Paper: ${paper.title}`;
 
     const schema = [
         {

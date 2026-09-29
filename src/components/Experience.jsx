@@ -91,7 +91,7 @@ const Experience = ({ pageHeading = false }) => {
 
     return (
         <div className='px-4 md:px-8 max-w-[1100px] mx-auto py-8 md:py-12'>
-            <Heading className='text-4xl md:text-5xl text-yellow-500 font-bold text-center mb-8 md:mb-12 flex items-center justify-center gap-3'><Briefcase size={40} /> Experience</Heading>
+            <Heading className='text-4xl md:text-5xl text-yellow-500 font-bold text-center mb-8 md:mb-12 flex items-center justify-center gap-3'><Briefcase size={40} /> {pageHeading && "Navyansh Kothari's "}Experience</Heading>
 
             {/* Timeline Layout */}
             <div className='relative'>

@@ -83,7 +83,7 @@ const Skills = ({ pageHeading = false }) => {
     <div className="max-w-[1200px] mx-auto flex flex-col justify-center px-4 text-gray-200 pb-8 md:py-12" id="skills">
       <Reveal width="100%">
         <Heading className="text-5xl mb-8 text-center text-yellow-500 font-bold flex items-center justify-center gap-3">
-          <Wrench size={40} /> Skills
+          <Wrench size={40} /> {pageHeading && "Navyansh Kothari's "}Skills
         </Heading>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">

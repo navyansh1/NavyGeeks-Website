@@ -13,7 +13,7 @@ export const papers = [
     doi: "10.1109/RAEEUCCI67649.2026.11504894",
     link: "https://ieeexplore.ieee.org/document/11504894",
     metaDescription:
-      "IEEE paper on cutting RAG embedding-update cost by up to 85% with document versioning and PDF diffing on AWS OpenSearch and Amazon Bedrock.",
+      "IEEE paper by Navyansh Kothari on cutting RAG embedding-update cost by up to 85% with document versioning and PDF diffing on AWS OpenSearch and Amazon Bedrock.",
     abstract: [
       "Classic RAG systems re-embed entire document collections on every update — slow and computationally wasteful.",
       "Introduces a RAG chatbot with intelligent document versioning and differential processing for selective embedding updates.",
@@ -33,7 +33,7 @@ export const papers = [
     tags: ["Deep Learning", "Computer Vision", "Healthcare AI"],
     link: "https://ieeexplore.ieee.org/document/11495855",
     metaDescription:
-      "IEEE paper: a 4-model deep learning ensemble (RegNet, MobileNetV2, ResNeXt) that reaches 92.56% accuracy diagnosing otitis media from otoscopic images.",
+      "IEEE paper by Navyansh Kothari: a 4-model deep learning ensemble (RegNet, MobileNetV2, ResNeXt) that reaches 92.56% accuracy diagnosing otitis media from otoscopic images.",
     abstract: [
       "Otitis media is common, especially in children, but diagnosis from otoscopic images is subjective, error-prone, and specialized equipment is costly.",
       "Proposes a 4-model ensemble: RegNet-X 16GF & 3.2GF for high-res features, MobileNetV2 for lightweight speed, ResNeXt50 32×4d for pattern recognition.",
@@ -54,7 +54,7 @@ export const papers = [
     doi: "10.1109/ESIC68176.2026.11495823",
     link: "https://ieeexplore.ieee.org/document/11495823",
     metaDescription:
-      "IEEE paper: EfficientNet-B0 detects and grades diabetic retinopathy (0-4) on the IDRiD dataset with 84.2% accuracy, built to run on low-end hardware.",
+      "IEEE paper by Navyansh Kothari: EfficientNet-B0 detects and grades diabetic retinopathy (0-4) on the IDRiD dataset with 84.2% accuracy, built to run on low-end hardware.",
     abstract: [
       "Diabetic Retinopathy (DR) is a leading cause of preventable vision loss, especially among working-age adults.",
       "Builds an automated DR detector and severity classifier (grades 0-4), optimized to run on low-end hardware.",
@@ -75,7 +75,7 @@ export const papers = [
     doi: "10.1109/ESIC60604.2024.10481615",
     link: "https://ieeexplore.ieee.org/document/10481615",
     metaDescription:
-      "IEEE paper proposing an insider threat mitigation model that combines behavior analytics, security culture and training, with a Flutter-based Windows tool.",
+      "IEEE paper by Navyansh Kothari proposing an insider threat mitigation model that combines behavior analytics, security culture and training, with a Flutter-based Windows tool.",
     abstract: [
       "Insider threats are a growing business risk, requiring both technical and human-side mitigation.",
       "Surveys threat types and motives, proposing a framework combining behavior analytics, security culture, and employee training.",
