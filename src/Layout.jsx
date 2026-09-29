@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { MotionConfig } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -30,6 +31,8 @@ export default function Layout() {
                 </main>
                 <Footer />
             </div>
+            {/* Vercel Web Analytics (free tier): page views and visitors, no cookies */}
+            <Analytics />
         </MotionConfig>
     );
 }
