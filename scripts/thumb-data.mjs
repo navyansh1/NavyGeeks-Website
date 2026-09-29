@@ -138,17 +138,6 @@ export const projects = [
     "isPrivate": false
   },
   {
-    "slug": "shop-inventory-web-app",
-    "title": "Shop Inventory Web App",
-    "kind": "inventory web app",
-    "stack": [
-      "JavaScript",
-      "Firestore"
-    ],
-    "isPrivate": true,
-    "frame": "phone"
-  },
-  {
     "slug": "mcq-quiz-generator-ai",
     "title": "MCQ Quiz Generator using AI",
     "kind": "AI-powered web app",

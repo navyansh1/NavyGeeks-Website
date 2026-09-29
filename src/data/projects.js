@@ -10,7 +10,6 @@ import thumb_credit_card_fraud_detection_bfsi from "../assets/projects/thumbs/cr
 import thumb_nextforms from "../assets/projects/thumbs/nextforms.jpg";
 import thumb_cricket_playable_ads from "../assets/projects/thumbs/cricket-playable-ads.jpg";
 import thumb_guardnote from "../assets/projects/thumbs/guardnote.jpg";
-import thumb_shop_inventory_web_app from "../assets/projects/thumbs/shop-inventory-web-app.jpg";
 import thumb_mcq_quiz_generator_ai from "../assets/projects/thumbs/mcq-quiz-generator-ai.jpg";
 import thumb_tictactoe_ios_app from "../assets/projects/thumbs/tictactoe-ios-app.jpg";
 import thumb_blockchain_lottery_dapp from "../assets/projects/thumbs/blockchain-lottery-dapp.jpg";
@@ -237,45 +236,6 @@ export const projects = [
         links: {},
     },
     {
-        slug: "masker-pii-redaction",
-        featured: true,
-        demo: true,
-        kind: "AI web app",
-        img: thumb_masker_pii_redaction,
-        title: "Masker - PII Redaction for Medical Documents",
-        type: "WebApplication",
-        stack: ["Google Vision OCR", "Gemini 2.5 Flash-Lite", "Firebase"],
-        metaDescription:
-            "Masker blacks out personal and health information in medical images and PDFs, using Google Vision OCR for exact boxes and Gemini to decide what is PII.",
-        summary: "Upload a medical document and Masker blacks out every piece of personal information on every page, then gives the file back.",
-        facts: [
-            ["Problem", "Medical reports must be shared without names, IDs or contact details, and hand redaction is slow and easy to get wrong."],
-            ["What it does", "Finds personal and health information in images and PDFs and covers it with solid black boxes."],
-            ["How it works", "OCR gives the exact position of every word. Gemini reads only the text and decides which words are personal data. Those boxes get blacked out."],
-            ["Why this design", "AI vision models read well but their boxes drift between runs. Letting OCR own the positions makes the redaction land on the exact pixels every time."],
-            ["Tech", "Google Vision OCR, Gemini 2.5 Flash-Lite, Firebase Hosting, Cloud Functions"],
-        ],
-        highlights: [
-            "Handles JPG, PNG and multi-page PDFs",
-            "Detects names, addresses, phone numbers, emails, dates of birth, patient IDs, Aadhaar / SSN, insurance numbers and signatures",
-            "Returns the same format it received: PDF in, PDF out",
-            "Shows the original and the redacted version side by side",
-        ],
-        diagram: maskerDiagram,
-        flow: [
-            ["Upload", "image or PDF"],
-            ["Vision OCR", "exact box per word"],
-            ["Gemini", "flags which words are PII"],
-            ["Black out", "every flagged box"],
-            ["Download", "same format as uploaded"],
-        ],
-        tags: ["PII redaction", "PHI", "data privacy", "healthcare AI", "document AI", "OCR", "Google Vision API", "Gemini", "Firebase"],
-        links: {
-            site: "https://masker-ganit.web.app",
-            github: "https://github.com/navyansh1/PII-Masker-Ganit",
-        },
-    },
-    {
         slug: "discount-spend-optimization",
         featured: true,
         isPrivate: true,
@@ -400,6 +360,45 @@ export const projects = [
         tags: ["POS app", "billing software", "GST invoice", "inventory management", "barcode scanner", "retail app", "React Native", "Expo", "Firebase"],
         links: {
             site: "https://billsonic.vercel.app/",
+        },
+    },
+    {
+        slug: "masker-pii-redaction",
+        featured: true,
+        demo: true,
+        kind: "AI web app",
+        img: thumb_masker_pii_redaction,
+        title: "Masker - PII Redaction for Medical Documents",
+        type: "WebApplication",
+        stack: ["Google Vision OCR", "Gemini 2.5 Flash-Lite", "Firebase"],
+        metaDescription:
+            "Masker blacks out personal and health information in medical images and PDFs, using Google Vision OCR for exact boxes and Gemini to decide what is PII.",
+        summary: "Upload a medical document and Masker blacks out every piece of personal information on every page, then gives the file back.",
+        facts: [
+            ["Problem", "Medical reports must be shared without names, IDs or contact details, and hand redaction is slow and easy to get wrong."],
+            ["What it does", "Finds personal and health information in images and PDFs and covers it with solid black boxes."],
+            ["How it works", "OCR gives the exact position of every word. Gemini reads only the text and decides which words are personal data. Those boxes get blacked out."],
+            ["Why this design", "AI vision models read well but their boxes drift between runs. Letting OCR own the positions makes the redaction land on the exact pixels every time."],
+            ["Tech", "Google Vision OCR, Gemini 2.5 Flash-Lite, Firebase Hosting, Cloud Functions"],
+        ],
+        highlights: [
+            "Handles JPG, PNG and multi-page PDFs",
+            "Detects names, addresses, phone numbers, emails, dates of birth, patient IDs, Aadhaar / SSN, insurance numbers and signatures",
+            "Returns the same format it received: PDF in, PDF out",
+            "Shows the original and the redacted version side by side",
+        ],
+        diagram: maskerDiagram,
+        flow: [
+            ["Upload", "image or PDF"],
+            ["Vision OCR", "exact box per word"],
+            ["Gemini", "flags which words are PII"],
+            ["Black out", "every flagged box"],
+            ["Download", "same format as uploaded"],
+        ],
+        tags: ["PII redaction", "PHI", "data privacy", "healthcare AI", "document AI", "OCR", "Google Vision API", "Gemini", "Firebase"],
+        links: {
+            site: "https://masker-ganit.web.app",
+            github: "https://github.com/navyansh1/PII-Masker-Ganit",
         },
     },
 
@@ -543,31 +542,6 @@ export const projects = [
             site: "https://guardnote.vercel.app",
             github: "https://github.com/navyansh1/writing-pad",
         },
-    },
-    {
-        slug: "shop-inventory-web-app",
-        isPrivate: true,
-        kind: "inventory web app",
-        img: thumb_shop_inventory_web_app,
-        title: "Shop Inventory Web App",
-        type: "WebApplication",
-        stack: ["JavaScript", "Firestore"],
-        metaDescription:
-            "A simple stock-in and stock-out web app for an electrical shop, with search, quantity controls and a live product list on Firestore.",
-        summary: "A simple stock-in and stock-out app for an electrical shop.",
-        highlights: [
-            "Add stock or reduce it with quick plus and minus buttons",
-            "Search products by name and brand as you type",
-            "Live stock list stored in Firestore",
-        ],
-        flow: [
-            ["Search product", "name or brand"],
-            ["Add or reduce stock", "+ / − buttons"],
-            ["Saved", "Firestore"],
-            ["Live stock list", ""],
-        ],
-        tags: ["inventory management", "stock tracking", "small business", "Firestore", "JavaScript"],
-        links: {},
     },
     {
         slug: "mcq-quiz-generator-ai",
