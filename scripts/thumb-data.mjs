@@ -11,7 +11,8 @@ export const projects = [
       "Firebase"
     ],
     "isPrivate": false,
-    "diagram": "geoscout-iq"
+    "diagram": "geoscout-iq",
+    "bg": "#f6f7fb"
   },
   {
     "slug": "cctv-iq-face-attendance",

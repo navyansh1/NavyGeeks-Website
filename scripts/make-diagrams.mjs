@@ -23,6 +23,27 @@ function svg(title, subtitle, body) {
   ${body}</svg>`
 }
 
+// GeoScout IQ uses its own app theme (from its styles.css): light panels, Ganit indigo and orange.
+const G = { bg: '#f6f7fb', panel: '#ffffff', border: '#c2c8d6', text: '#1a1d2b', muted: '#6b7390', blue: '#1a00d9', blueBg: '#eeebfd', orange: '#fe6e06', orangeBg: '#fff1e6' }
+function gbox(x, y, w, h, title, lines = [], tone) {
+  const stroke = tone === 'blue' ? G.blue : tone === 'orange' ? G.orange : G.border
+  const fill = tone === 'blue' ? G.blueBg : tone === 'orange' ? G.orangeBg : G.panel
+  const head = tone === 'blue' ? G.blue : tone === 'orange' ? G.orange : G.text
+  const t = lines.map((l, i) => `<text x="${x + 16}" y="${y + 52 + i * 20}" font-size="15" fill="${G.muted}">${esc(l)}</text>`).join('')
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" fill="${fill}" stroke="${stroke}" stroke-width="${tone ? 2 : 1.5}"/>
+  <text x="${x + 16}" y="${y + 28}" font-size="17" font-weight="bold" fill="${head}">${esc(title)}</text>${t}`
+}
+const garrow = (x1, y1, x2, y2) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${G.muted}" stroke-width="2" marker-end="url(#g)"/>`
+const glabel = (x, y, s) => `<text x="${x}" y="${y}" font-size="13" fill="${G.orange}" font-weight="bold" letter-spacing="1">${esc(s)}</text>`
+function gsvg(subtitle, body) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" font-family="${FONT}">
+  <defs><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${G.muted}"/></marker></defs>
+  <rect width="1280" height="720" fill="${G.bg}"/>
+  <text x="48" y="64" font-size="30" font-weight="bold"><tspan fill="${G.blue}">GeoScout </tspan><tspan fill="${G.orange}">IQ</tspan></text>
+  <text x="48" y="94" font-size="16" fill="${G.muted}">${esc(subtitle)}</text>
+  ${body}</svg>`
+}
+
 const diagrams = {
   'discount-optimization': svg('Discount Spend Optimization', 'One config-driven pipeline on Databricks, from raw data to a P&L simulator', `
     <rect x="48" y="128" width="1184" height="50" rx="12" fill="${C.accentBg}" stroke="${C.accent}" stroke-dasharray="6 6"/>
@@ -107,21 +128,21 @@ const diagrams = {
     <text x="48" y="668" font-size="16" fill="${C.text}">Firebase Hosting + Cloud Functions</text>
   `),
 
-  'geoscout-iq': svg('GeoScout IQ', 'Where to open the next ATM, branch, store or warehouse in India', `
-    ${box(48, 150, 200, 150, 'Ask', ['a place in India', 'the industry', 'your company', '(optional)'])}
-    ${arrow(248, 225, 284, 225)}
-    ${box(286, 150, 260, 300, 'Data sources', ['Google Places: competitors', 'WorldPop: population', 'NASA night lights: activity', 'OpenStreetMap: malls,', 'transit, schools, land', 'you cannot build on', 'Property listings: rents', 'Google Search: upcoming', 'metro, roads, projects'])}
-    ${arrow(546, 245, 582, 245)}
-    ${box(584, 150, 300, 190, 'H3 hex scoring', ['~0.7 sq km tiles, each scored', 'demand 45% · access 25%', 'open space 15% · growth 15%', 'water and no-build land removed', 'same input, same score'], true)}
-    ${arrow(734, 340, 734, 368)}
-    ${box(584, 370, 300, 80, 'Gemini grounding agents', ['nearby context and the summary'], true)}
-    ${arrow(884, 245, 920, 245)}
-    ${arrow(884, 410, 920, 410)}
-    ${box(922, 150, 310, 300, 'Answer', ['colour-coded hex heatmap', 'competitor and own-store pins', 'what is nearby, per tile', 'property listings for sale', 'summary with a star rating', 'GO / CAUTION / AVOID'])}
-    ${label(48, 510, 'WHY IT WORKS', 13, C.accent, 'bold')}
-    ${box(48, 526, 370, 136, 'About 30 seconds', ['from a place name to a', 'scored map and a decision'])}
-    ${box(442, 526, 370, 136, 'Scores you can check', ['the weights and maths are shown,', 'nothing is a black box'])}
-    ${box(836, 526, 396, 136, 'Built for banks and FMCG', ['ATMs and branches,', 'stores and warehouses'])}
+  'geoscout-iq': gsvg('Where to open the next ATM, branch, store or warehouse in India', `
+    ${gbox(48, 150, 200, 150, 'Ask', ['a place in India', 'the industry', 'your company', '(optional)'])}
+    ${garrow(248, 225, 284, 225)}
+    ${gbox(286, 150, 260, 300, 'Data sources', ['Google Places: competitors', 'WorldPop: population', 'NASA night lights: activity', 'OpenStreetMap: malls,', 'transit, schools, land', 'you cannot build on', 'Property listings: rents', 'Google Search: upcoming', 'metro, roads, projects'])}
+    ${garrow(546, 245, 582, 245)}
+    ${gbox(584, 150, 300, 190, 'H3 hex scoring', ['~0.7 sq km tiles, each scored', 'demand 45% · access 25%', 'open space 15% · growth 15%', 'water and no-build land removed', 'same input, same score'], 'blue')}
+    ${garrow(734, 340, 734, 368)}
+    ${gbox(584, 370, 300, 80, 'Gemini grounding agents', ['nearby context and the summary'], 'orange')}
+    ${garrow(884, 245, 920, 245)}
+    ${garrow(884, 410, 920, 410)}
+    ${gbox(922, 150, 310, 300, 'Answer', ['colour-coded hex heatmap', 'competitor and own-store pins', 'what is nearby, per tile', 'property listings for sale', 'summary with a star rating', 'GO / CAUTION / AVOID'])}
+    ${glabel(48, 510, 'WHY IT WORKS')}
+    ${gbox(48, 526, 370, 136, 'About 30 seconds', ['from a place name to a', 'scored map and a decision'])}
+    ${gbox(442, 526, 370, 136, 'Scores you can check', ['the weights and maths are shown,', 'nothing is a black box'])}
+    ${gbox(836, 526, 396, 136, 'Built for banks and FMCG', ['ATMs and branches,', 'stores and warehouses'])}
   `),
   'paper-odm-rag': svg('On-Demand Multimodal RAG', 'Search text cheaply, then show the LLM only the pages that matter', `
     ${label(48, 140, 'ONCE PER DOCUMENT')}

@@ -1,7 +1,7 @@
 // One thumbnail style for every project, with no text added: the architecture diagram
 // (title cropped off) where the project has one, otherwise the screenshot in a
 // browser or phone frame on the site's dark background.
-// Sources live in scripts/thumb-sources/<slug>.jpg. `frame: 'none'` uses the screenshot as it is, just cropped to 16:9. Run: node scripts/make-thumbnails.mjs
+// Sources live in scripts/thumb-sources/<slug>.jpg. `frame: 'none'` uses the screenshot as it is, just cropped to 16:9; `bg` sets the card background (GeoScout uses its own light theme). Run: node scripts/make-thumbnails.mjs
 import fs from 'node:fs'
 import sharp from 'sharp'
 import { projects } from './thumb-data.mjs'
@@ -41,7 +41,7 @@ for (const p of projects) {
   const f = await frameImage(p)
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
     <defs><radialGradient id="r" cx=".85" cy=".1" r=".8"><stop offset="0" stop-color="${C.accent}" stop-opacity=".10"/><stop offset="1" stop-color="${C.accent}" stop-opacity="0"/></radialGradient></defs>
-    <rect width="100%" height="100%" fill="${C.bg}"/><rect width="100%" height="100%" fill="url(#r)"/>
+    <rect width="100%" height="100%" fill="${p.bg || C.bg}"/>${p.bg ? '' : '<rect width="100%" height="100%" fill="url(#r)"/>'}
     ${f.svg}</svg>`
   await sharp(Buffer.from(svg)).composite([{ input: f.img, left: f.left, top: f.top }])
     .jpeg({ quality: 84, mozjpeg: true }).toFile(`src/assets/projects/thumbs/${p.slug}.jpg`)
