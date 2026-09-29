@@ -1,121 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import project1 from "../assets/certifications/certi1.png";
-import project2 from "../assets/certifications/certi2.png";
-import project4 from "../assets/certifications/certi3.png";
-import project5 from "../assets/projects/project5.png";
-import project6 from "../assets/projects/project6.png";
-import forestCert from "../assets/certifications/forest_cert.png";
-import iitKanpurImg from "../assets/experience/iit_kanpur.png";
-import awsAiPractitioner from "../assets/certifications/aws_ai_practitioner.png";
-import openaiTechnical from "../assets/certifications/openai_technical_practitioner.png";
-import openaiDeployment from "../assets/certifications/openai_deployment_practitioner.png";
-import openaiTechnicalPdf from "../assets/certifications/openai_technical_practitioner.pdf";
-import openaiDeploymentPdf from "../assets/certifications/openai_deployment_practitioner.pdf";
 import { Award, X, MousePointerClick } from 'lucide-react';
 import Reveal from './Reveal';
+import CertDetails from './CertDetails';
+import { certifications as projects } from '../data/certifications';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const projects = [
-  {
-    img: openaiTechnical,
-    title: "OpenAI Technical Practitioner",
-    description: (
-      <>
-        <p>Issued: Aug 2026 &middot; Valid through: Aug 2027</p>
-        <p className="mt-1 text-gray-400 text-sm">Issued by OpenAI</p>
-      </>
-    ),
-    links: {
-      certificate: openaiTechnicalPdf,
-    },
-  },
-  {
-    img: openaiDeployment,
-    title: "ChatGPT Deployment Practitioner",
-    description: (
-      <>
-        <p>Issued: Aug 2026 &middot; Valid through: Aug 2027</p>
-        <p className="mt-1 text-gray-400 text-sm">Issued by OpenAI</p>
-      </>
-    ),
-    links: {
-      certificate: openaiDeploymentPdf,
-    },
-  },
-  {
-    img: awsAiPractitioner,
-    title: "AWS Certified AI Practitioner",
-    description: (
-      <>
-        <p>Issued: Jul 2026 &middot; Expires: Jul 2029</p>
-        <p className="mt-1 text-gray-400 text-sm break-all">Validation #: 7eb079ec8429481f8e23157fb725c23e</p>
-      </>
-    ),
-    links: {
-      site: "https://aws.amazon.com/verification",
-    },
-  },
-  {
-    img: project1,
-    title: "AWS Certified Cloud Practitioner",
-    description: "Issued: Dec 2023",
-    links: {
-      site: "https://cp.certmetrics.com/amazon/en/public/verify/credential/",
-      github: "#",
-    },
-  },
-  {
-    img: project2,
-    title: "Google Cloud Computing Foundations",
-    description: (
-      <>
-        <p>Issued: Sep 2023</p>
-        <ul className="list-disc list-inside text-gray-300">
-          <li>Ranked in the top 5% of the course</li>
-          <li>Offered by IIT Kharagpur</li>
-        </ul>
-      </>
-    ),
-    links: {
-      site: "https://archive.nptel.ac.in/noc/Ecertificate/?q=NPTEL23CS90S73340588620273725",
-    },
-  },
-  {
-    img: project4,
-    title: "Spoken Tutorial Training",
-    description: "Training in: MySQL, Python, Java, PHP by IIT Bombay",
-    links: {
-      site: "https://drive.google.com/drive/folders/1wyXBEZ--NbDvgRyYy-vmbBPdL3ewjTiN?usp=sharing",
-    },
-  },
-  {
-    img: project6,
-    title: "Crash Course on Python",
-    description: "Data Science course by Google on Coursera",
-    links: {
-      site: "https://www.coursera.org/account/accomplishments/verify/Y9KAPCPSKXXA?utm_source=ln&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course",
-    },
-  },
-  {
-    img: iitKanpurImg,
-    title: "NPTEL Certification - IIT Kanpur",
-    description: (
-      <>
-        <p>Courses:</p>
-        <ul className="list-disc list-inside text-gray-300">
-          <li>Forest and its Management - Scored 97%</li>
-          <li>Wildlife Ecology - Scored 100%</li>
-        </ul>
-      </>
-    ),
-    links: {
-      site: "https://drive.google.com/drive/folders/1H-yG8Td1Qk_Tcxfgqa4XV4WyXCRiIDc1?usp=sharing",
-
-    },
-  },
-];
-
-const Certifications = () => {
+const Certifications = ({ pageHeading = false }) => {
+  const Heading = pageHeading ? 'h1' : 'h2';
   const [selectedCert, setSelectedCert] = useState(null);
   const scrollPosRef = useRef(0);
 
@@ -138,11 +29,11 @@ const Certifications = () => {
 
   return (
     <div className='max-w-[1000px] mx-auto p-6 md:my-20 relative' id="certifications">
-      <h2 className='text-2xl md:text-5xl font-bold text-yellow-500 mb-8 flex items-center justify-center text-center gap-2 whitespace-nowrap'><Award size={22} className='md:w-10 md:h-10 flex-shrink-0' /> Certifications & Licenses:</h2>
+      <Heading className='text-2xl md:text-5xl font-bold text-yellow-500 mb-8 flex items-center justify-center text-center gap-2 whitespace-nowrap'><Award size={22} className='md:w-10 md:h-10 flex-shrink-0' /> Certifications & Licenses:</Heading>
 
       <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6'>
         {projects.map((project, index) => (
-          <Reveal key={index}>
+          <Reveal key={project.title}>
             <div
               className='bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700
               hover:border-yellow-500/50 hover:shadow-yellow-500/10 hover:shadow-xl
@@ -153,7 +44,9 @@ const Certifications = () => {
                 <div className='aspect-video mb-3 overflow-hidden rounded-lg'>
                   <img
                     src={project.img}
-                    alt={project.title}
+                    alt={`${project.title} certificate`}
+                    loading="lazy"
+                    decoding="async"
                     className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105'
                   />
                 </div>
@@ -213,11 +106,7 @@ const Certifications = () => {
                   {selectedCert.title}
                 </h3>
                 <div className='text-gray-300 leading-relaxed text-base md:text-lg mb-6'>
-                  {typeof selectedCert.description === 'string' ? (
-                    <p>{selectedCert.description}</p>
-                  ) : (
-                    selectedCert.description
-                  )}
+                  <CertDetails cert={selectedCert} />
                 </div>
                 <div className='flex flex-wrap gap-3 justify-center'>
                   {selectedCert.links.site && (

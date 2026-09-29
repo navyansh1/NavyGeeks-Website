@@ -1,67 +1,9 @@
 import React, { useState } from 'react';
-import { BookOpen, ChevronDown, ChevronUp, ExternalLink, User, CalendarDays, Building2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { BookOpen, ChevronDown, ChevronUp, ExternalLink, User, CalendarDays, Building2, ArrowRight } from 'lucide-react';
 import Reveal from './Reveal';
-
-const papers = [
-  {
-    title: "Efficient Vector Database Management in Retrieval-Augmented Generation Systems: A Selective Embedding Update Approach",
-    venue: "2026 International Conference on Recent Advances in Electrical, Electronics, Ubiquitous Communication, and Computational Intelligence (RAEEUCCI)",
-    date: "April 2026 · Chennai, India",
-    tags: ["Generative AI", "RAG", "Vector Databases", "Cloud Computing"],
-    doi: "10.1109/RAEEUCCI67649.2026.11504894",
-    link: "https://ieeexplore.ieee.org/document/11504894",
-    abstract: [
-      "Classic RAG systems re-embed entire document collections on every update — slow and computationally wasteful.",
-      "Introduces a RAG chatbot with intelligent document versioning and differential processing for selective embedding updates.",
-      "Built on AWS OpenSearch for vector storage, Amazon Bedrock for embeddings and inference, and a smart PDF-diffing pipeline.",
-      "Cuts embedding-update overhead by up to 85% while keeping retrieval accuracy intact.",
-      "Delivers sub-second query response with real-time document updates and no downtime.",
-    ],
-  },
-  {
-    title: "Leveraging Deep Neural Networks for Enhanced Otitis Media Diagnosis",
-    venue: "2026 International Conference on Emerging Systems and Intelligent Computing (ESIC)",
-    date: "February 2026 · Bhubaneswar, India",
-    tags: ["Deep Learning", "Computer Vision", "Healthcare AI"],
-    link: "https://ieeexplore.ieee.org/document/11495855",
-    abstract: [
-      "Otitis media is common, especially in children, but diagnosis from otoscopic images is subjective, error-prone, and specialized equipment is costly.",
-      "Proposes a 4-model ensemble: RegNet-X 16GF & 3.2GF for high-res features, MobileNetV2 for lightweight speed, ResNeXt50 32×4d for pattern recognition.",
-      "Trained on otoscopic images enriched with demographics, symptoms, and medical history.",
-      "Reaches 92.56% accuracy, beating every individual model and benchmarks like VGG16/DenseNet121, with 96.12% sensitivity.",
-      "Cuts false positives on tricky cases like chronic OM and earwax blockage — a practical tool for resource-scarce clinics.",
-    ],
-  },
-  {
-    title: "EfficientNet-DR: A Deep Learning Approach for Diabetic Retinopathy Detection and Classification",
-    venue: "2026 International Conference on Emerging Systems and Intelligent Computing (ESIC)",
-    date: "February 2026 · Bhubaneswar, India",
-    tags: ["Deep Learning", "Computer Vision", "Healthcare AI"],
-    doi: "10.1109/ESIC68176.2026.11495823",
-    link: "https://ieeexplore.ieee.org/document/11495823",
-    abstract: [
-      "Diabetic Retinopathy (DR) is a leading cause of preventable vision loss, especially among working-age adults.",
-      "Builds an automated DR detector and severity classifier (grades 0-4), optimized to run on low-end hardware.",
-      "Trained on IDRiD, the first Indian-population DR dataset, using cleaning, normalization, and augmentation.",
-      "EfficientNet-B0 reaches 84.2% testing accuracy across all severity stages.",
-      "Shows deep learning can meaningfully improve DR screening where specialist access is limited.",
-    ],
-  },
-  {
-    title: "Towards Insider Threat Resilience: A Proposed Mitigation Model",
-    venue: "2024 International Conference on Emerging Systems and Intelligent Computing (ESIC)",
-    date: "February 2024 · Bhubaneswar, India",
-    tags: ["Cybersecurity", "Machine Learning", "Anomaly Detection"],
-    doi: "10.1109/ESIC60604.2024.10481615",
-    link: "https://ieeexplore.ieee.org/document/10481615",
-    abstract: [
-      "Insider threats are a growing business risk, requiring both technical and human-side mitigation.",
-      "Surveys threat types and motives, proposing a framework combining behavior analytics, security culture, and employee training.",
-      "Implements a Windows tool (Flutter + Dart) that takes a target IP, modifies and protects a Python script, then packages it as a standalone executable.",
-      "Evaluates the resulting executable's behavior across different networks to test its security posture.",
-    ],
-  },
-];
+import { papers } from '../data/research';
+import { pagePath } from '../data/site';
 
 const Research = () => {
   const [expandedCard, setExpandedCard] = useState(null);
@@ -78,7 +20,7 @@ const Research = () => {
 
       <div className='space-y-4'>
         {papers.map((paper, index) => (
-          <Reveal key={index} width="100%">
+          <Reveal key={paper.slug} width="100%">
             <div className='bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700 hover:border-yellow-500/50 transition-all duration-300 overflow-hidden max-w-[750px] w-full mx-auto'>
               <div
                 className='cursor-pointer p-4 md:p-5'
@@ -88,7 +30,7 @@ const Research = () => {
 
                 <div className='mt-2 flex flex-col gap-1'>
                   <p className='flex items-center gap-1.5 text-xs md:text-sm text-gray-400'>
-                    <User size={14} className='text-yellow-500/70 flex-shrink-0' /> Navyansh Kothari
+                    <User size={14} className='text-yellow-500/70 flex-shrink-0' /> {paper.authors.join(', ')}
                   </p>
                   <p className='flex items-center gap-1.5 text-xs md:text-sm text-gray-400'>
                     <CalendarDays size={14} className='text-yellow-500/70 flex-shrink-0' /> {paper.venue} &middot; {paper.date}
@@ -133,14 +75,28 @@ const Research = () => {
                       <li key={i}>{point}</li>
                     ))}
                   </ul>
-                  {paper.doi && (
-                    <p className='text-gray-500 text-xs'>DOI: {paper.doi}</p>
-                  )}
+                  <div className='flex flex-wrap items-center justify-between gap-2'>
+                    {paper.doi && (
+                      <p className='text-gray-500 text-xs'>DOI: {paper.doi}</p>
+                    )}
+                    <Link
+                      to={pagePath(`research/${paper.slug}`)}
+                      className='text-yellow-400 hover:text-yellow-300 text-sm font-semibold inline-flex items-center gap-1'
+                    >
+                      Read full summary <ArrowRight size={14} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </Reveal>
         ))}
+      </div>
+
+      <div className='mt-8 text-center'>
+        <Link to={pagePath('research')} className='inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold'>
+          See all publications <ArrowRight size={18} />
+        </Link>
       </div>
     </div>
   );

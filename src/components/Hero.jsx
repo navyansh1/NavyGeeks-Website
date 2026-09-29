@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import profilepic from "../assets/profile/profpic.png";
+import profilepic from "../assets/profile/profpic-web.jpg";
 import resume from "../assets/profile/resume.pdf";
 import { TypeAnimation } from "react-type-animation";
 import ShinyEffect from "./ShinyEffect";
@@ -43,16 +43,17 @@ const Hero = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 1 }}
                 >
-                    <motion.p
+                    <motion.h1
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: 0.5 }}
-                        className="text-gray-200 md:text-2xl text-2xl tracking-tight mb-4 mt-6 pt-2"
+                        className="text-gray-200 md:text-2xl text-2xl font-normal tracking-tight leading-relaxed mb-4 mt-6 pt-2"
                     >
                         hey, I am <br />
                         <span className="text-yellow-500 text-5xl font-bold">Navyansh Kothari</span>
-                    </motion.p>
+                        <span className="sr-only"> - Data Scientist, Gen AI Engineer and Mobile App Developer</span>
+                    </motion.h1>
 
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -82,7 +83,7 @@ const Hero = () => {
                                 <img
                                     src={resumeImage}
                                     className="w-full h-auto max-h-[80vh] object-contain"
-                                    alt="Resume"
+                                    alt="Navyansh Kothari resume"
                                 />
                                 <div className="mt-4 text-center md:hidden">
                                     <a href={resumeImage} download className="text-blue-500 underline">Download Resume</a>
@@ -107,18 +108,18 @@ const Hero = () => {
                         </motion.button>
 
                         <div className="flex gap-6 flex-row text-yellow-400 z-20">
-                            <motion.a whileHover={{ scale: 1.4 }} href="https://github.com/navyansh1">
+                            <motion.a whileHover={{ scale: 1.4 }} href="https://github.com/navyansh1" aria-label="GitHub" target="_blank" rel="noopener noreferrer me">
                                 <Github size={32} className="md:w-10 md:h-10" />
                             </motion.a>
 
-                            <motion.a whileHover={{ scale: 1.4 }} href="https://www.linkedin.com/in/navyansh/">
+                            <motion.a whileHover={{ scale: 1.4 }} href="https://www.linkedin.com/in/navyansh/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer me">
                                 <Linkedin size={32} className="md:w-10 md:h-10" />
                             </motion.a>
 
-                            <motion.a whileHover={{ scale: 1.4 }} href="https://www.instagram.com/navygeeks/">
+                            <motion.a whileHover={{ scale: 1.4 }} href="https://www.instagram.com/navygeeks/" aria-label="Instagram" target="_blank" rel="noopener noreferrer me">
                                 <Instagram size={32} className="md:w-10 md:h-10" />
                             </motion.a>
-                            <motion.a whileHover={{ scale: 1.4 }} href="https://www.youtube.com/@navygeeks">
+                            <motion.a whileHover={{ scale: 1.4 }} href="https://www.youtube.com/@navygeeks" aria-label="YouTube" target="_blank" rel="noopener noreferrer me">
                                 <Youtube size={32} className="md:w-10 md:h-10" />
                             </motion.a>
                         </div>
@@ -127,6 +128,7 @@ const Hero = () => {
 
                 <motion.img
                     src={profilepic}
+                    alt="Navyansh Kothari, Data Scientist and Gen AI Engineer"
                     className="w-[250px] md:w-[350px] rounded-xl"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -143,7 +145,7 @@ const Hero = () => {
                 transition={{ duration: 1, delay: 1 }}
                 className="flex flex-col items-center py-24 md:flex-row md:text-7xl md:px-12 md:justify-center"
             >
-                <p className="text-gray-200 mb-4 md:mr-6 md:mb-0 text-3xl md:text-4xl">My Tech Stack</p>
+                <h2 className="text-gray-200 mb-4 md:mr-6 md:mb-0 text-3xl md:text-4xl font-normal">My Tech Stack</h2>
                 <div className="flex flex-wrap justify-center gap-4">
                     {/* Data Science & ML */}
                     <DiPython className="text-blue-400 mx-2 text-6xl md:text-7xl" />

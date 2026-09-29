@@ -35,7 +35,8 @@ const educations = [
     },
 ];
 
-const Education = () => {
+const Education = ({ pageHeading = false }) => {
+    const Heading = pageHeading ? 'h1' : 'h2';
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentMarksheet, setCurrentMarksheet] = useState('');
 
@@ -51,9 +52,9 @@ const Education = () => {
 
     return (
         <div className='p-8 max-w-[1000px] mx-auto'>
-            <h1 className='text-4xl md:text-5xl text-yellow-500 font-bold text-center mb-6 flex items-center justify-center gap-3'>
+            <Heading className='text-4xl md:text-5xl text-yellow-500 font-bold text-center mb-6 flex items-center justify-center gap-3'>
                 <GraduationCap size={36} /> Education
-            </h1>
+            </Heading>
             <motion.div
                 className='space-y-4'
                 initial="hidden"
@@ -70,7 +71,7 @@ const Education = () => {
                             hover:shadow-xl hover:border-yellow-400 transition-all duration-300 bg-slate-800/40 max-w-[550px] w-full mx-auto'
                         >
                             <div className='flex items-center justify-between mb-1'>
-                                <h2 className='text-gray-100 text-lg font-semibold'>{education.institution}</h2>
+                                <h3 className='text-gray-100 text-lg font-semibold'>{education.institution}</h3>
                                 <img src={education.icon} alt={`${education.institution} icon`} className='w-14 h-14 rounded-full' />
                             </div>
                             <p className='text-gray-400 text-sm mb-1 font-medium'>{education.period}</p>

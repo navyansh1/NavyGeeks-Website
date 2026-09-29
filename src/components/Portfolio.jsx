@@ -1,125 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import project1 from "../assets/projects/project1.png";
-import project2 from "../assets/projects/project2.png";
-import project4 from "../assets/projects/project4.png";
-import project5 from "../assets/projects/project5.png";
-import portfolioimg from "../assets/projects/portfolio.png";
-import mcqQuizImg from "../assets/projects/mcq-quiz.png";
-import nextformsImg from "../assets/projects/nextforms.png";
-import fmcg from "../assets/projects/fmcg.png";
-import bfsi from "../assets/projects/bfsi.png";
-import billsonicImg from "../assets/projects/billsonic.png";
-import vedicflowImg from "../assets/projects/vedicflow.jpg";
-
-import { Github, FolderOpen, ExternalLink, X, MousePointerClick, Apple, Play } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Github, FolderOpen, ExternalLink, X, MousePointerClick, Apple, Play, ArrowRight } from 'lucide-react';
 import Reveal from './Reveal';
 import ShinyEffect from './ShinyEffect';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const projects = [
-    {
-        img: vedicflowImg,
-        title: "VedicFlow - Hindu Calendar & Panchang",
-        description:
-            "A Hindu calendar and Panchang app that computes Vedic timekeeping on-device from your GPS location \u2014 no syndicated content. Features daily Tithi, Nakshatra, Yoga, Karana and Vaara, hour-by-hour Choghadiya derived from local sunrise and sunset, Rahu Kaal alerts, muhurat guidance, Kundli matching, and a 108-bead Naam Jaap mala with haptics. Works offline and ships on both iOS and Android.",
-        links: {
-            site: "https://www.vedicflow.co.in/",
-            ios: "https://apps.apple.com/in/app/vedic-flow-hindu-calendar-2026/id6760628104",
-            android: "https://play.google.com/store/apps/details?id=com.vedicflow.app",
-        },
-    },
-    {
-        img: billsonicImg,
-        title: "Bill Sonic - Mobile POS App",
-        description:
-            "A smart, full-featured Point of Sale (POS) mobile app for modern retailers. Features barcode scanning, GST-compliant PDF billing, bulk product import from Excel/CSV, real-time inventory tracking, sales analytics, Admin/Cashier role management with PIN auth, and cloud sync. Built with React Native & Firebase.",
-        links: {
-            site: "https://billsonic.vercel.app/",
-        },
-    },
-    {
-        img: fmcg,
-        title: "Demand Forecasting Analysis",
-        description:
-            "A comprehensive FMCG demand forecasting project that analyzes seasonality and sales patterns, applies statistical and machine learning models, and converts accurate forecasts into actionable business decisions.",
-        links: {
-            site: "https://navyansh1.github.io/ML_Demand_Forecasting_FMCG/",
-        },
-    },
-    {
-        img: bfsi,
-        title: "Credit Card Modelling - BFSI Domain",
-        description:
-            "A machine learning–based fraud detection system for the BFSI domain that analyzes transaction patterns, handles highly imbalanced data, and builds interpretable predictive models to identify fraudulent activities.",
-        links: {
-            site: "https://navyansh1.github.io/ML_Fraud_Detection_BFSI/",
-        },
-    },
-    {
-        img: nextformsImg,
-        title: "NextForms",
-        description:
-            "A fully customizable alternative to Google Forms with seamless response tracking and advanced email notifications.",
-        links: {
-            site: "https://nextforms.in",
-        },
-    },
-    {
-        img: project1,
-        title: "TicTacToe iOS App",
-        description:
-            "An iOS game app using SwiftUI and UIKit for a fun, interactive experience.",
-        links: {
-            github: "https://github.com/navyansh1/TickTacToe",
-        },
-    },
-    {
-        img: project2,
-        title: "Blockchain Lottery dApp",
-        description:
-            "A decentralized lottery system built with Solidity and React, leveraging blockchain technology.",
-        links: {
-            site: "https://drive.google.com/file/d/1mwgChln8-jExcFmfVdADh5mv4pUMKU9W/view",
-        },
-    },
-    {
-        img: mcqQuizImg,
-        title: "MCQ Quiz Generator using AI",
-        description:
-            "An intelligent quiz generator that uses Gemini Pro 1.5 to access PDFs, text files, etc., and create MCQ quizzes.",
-        links: {
-            site: "https://mcqgen.vercel.app/",
-        },
-    },
-    {
-        img: project4,
-        title: "InstaSnap UI Redesign",
-        description:
-            "A refined Instagram UI concept designed in Figma for a sleek and user-friendly experience.",
-        links: {
-            site: "https://www.figma.com/design/4GnyQrrTZ7yhLqAFTm9Mmi/Social-Media-App-UI-UX-Project",
-        },
-    },
-    {
-        img: project5,
-        title: "Playing Cards iOS App",
-        description:
-            "An iOS app using SwiftUI, UIKit, and Figma that brings card games to your fingertips.",
-        links: {
-            github: "https://github.com/navyansh1/cards-Game",
-        },
-    },
-    {
-        img: portfolioimg,
-        title: "Portfolio Website",
-        description:
-            "A portfolio built using React, Tailwind CSS, and Framer Motion to showcase my projects and skills.",
-        links: {
-            github: "https://github.com/navyansh1/NavyGeeks-Website",
-        },
-    },
-];
-
+import { projects } from '../data/projects';
+import { pagePath } from '../data/site';
 
 const Portfolio = () => {
     const [selectedProject, setSelectedProject] = useState(null);
@@ -150,7 +36,7 @@ const Portfolio = () => {
             {/* Grid - all cards are uniform height */}
             <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6'>
                 {projects.map((project, index) => (
-                    <Reveal key={index}>
+                    <Reveal key={project.slug}>
                         <div
                             className='bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700 
                             hover:border-yellow-500/50 hover:shadow-yellow-500/10 hover:shadow-xl
@@ -161,7 +47,9 @@ const Portfolio = () => {
                                 <div className='aspect-video mb-3 overflow-hidden rounded-lg'>
                                     <img
                                         src={project.img}
-                                        alt={project.title}
+                                        alt={`${project.title} screenshot`}
+                                        loading="lazy"
+                                        decoding="async"
                                         className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105'
                                     />
                                 </div>
@@ -177,6 +65,12 @@ const Portfolio = () => {
                         </div>
                     </Reveal>
                 ))}
+            </div>
+
+            <div className='mt-8 text-center'>
+                <Link to={pagePath('projects')} className='inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold'>
+                    See all projects <ArrowRight size={18} />
+                </Link>
             </div>
 
             {/* Modal Overlay */}
@@ -224,6 +118,13 @@ const Portfolio = () => {
                                     {selectedProject.description}
                                 </p>
                                 <div className='flex flex-wrap gap-3 justify-center'>
+                                    <Link
+                                        to={pagePath(`projects/${selectedProject.slug}`)}
+                                        className='flex items-center gap-2 px-5 py-2.5 border border-yellow-500 text-gray-100 rounded-lg
+                                        font-semibold hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
+                                    >
+                                        Project details
+                                    </Link>
                                     {selectedProject.links.site && (
                                         <a
                                             href={selectedProject.links.site}

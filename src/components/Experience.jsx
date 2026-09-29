@@ -73,7 +73,8 @@ const experiences = [
 
 ];
 
-const Experience = () => {
+const Experience = ({ pageHeading = false }) => {
+    const Heading = pageHeading ? 'h1' : 'h2';
     const [isTestimonialsOpen, setIsTestimonialsOpen] = useState(false);
     const [isAwardModalOpen, setIsAwardModalOpen] = useState(false);
     const [expandedCard, setExpandedCard] = useState(null);
@@ -84,7 +85,7 @@ const Experience = () => {
 
     return (
         <div className='px-4 md:px-8 max-w-[1100px] mx-auto py-8 md:py-12'>
-            <h1 className='text-4xl md:text-5xl text-yellow-500 font-bold text-center mb-8 md:mb-12 flex items-center justify-center gap-3'><Briefcase size={40} /> Experience</h1>
+            <Heading className='text-4xl md:text-5xl text-yellow-500 font-bold text-center mb-8 md:mb-12 flex items-center justify-center gap-3'><Briefcase size={40} /> Experience</Heading>
 
             {/* Timeline Layout */}
             <div className='relative'>
@@ -114,7 +115,7 @@ const Experience = () => {
                                                     }`}
                                             />
                                             <div className='flex-1 min-w-0'>
-                                                <h2 className='text-gray-100 text-lg font-semibold leading-tight truncate'>{experience.company}</h2>
+                                                <h3 className='text-gray-100 text-lg font-semibold leading-tight truncate'>{experience.company}</h3>
                                                 <p className='text-gray-400 text-xs mt-0.5 font-medium'>{experience.period}</p>
                                             </div>
                                             <div className='text-yellow-500 text-sm flex-shrink-0'>
@@ -236,7 +237,7 @@ const Experience = () => {
                         <div className="flex justify-center mt-12 md:mt-8">
                             <img
                                 src={microsoftaward}
-                                alt="Microsoft Innovation Club Award"
+                                alt="Microsoft Innovation Club Award certificate"
                                 className="w-full md:max-w-4xl h-auto rounded-lg shadow-lg object-contain"
                             />
                         </div>
