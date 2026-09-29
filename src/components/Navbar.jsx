@@ -28,7 +28,7 @@ const pageSections = {
 
 const NavLink = ({ isHome, to, offset = -80, ...props }) =>
     isHome
-        ? <ScrollLink to={to} smooth={true} offset={offset} duration={500} {...props} />
+        ? <ScrollLink to={to} smooth={true} offset={offset} duration={400} {...props} />
         : <RouterLink to={pageRoutes[to]} {...props} />;
 
 const sectionLabels = { hero: 'Home', portfolio: 'Projects', certifications: 'Licenses' };

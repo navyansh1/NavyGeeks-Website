@@ -34,16 +34,16 @@ const Hero = () => {
         <div className="mt-24 md:mt-32 max-w-[1200px] mx-auto relative px-6 md:px-0">
             <div className="grid md:grid-cols-2 place-items-center gap-8">
                 <motion.div
-                    initial={{ opacity: 0, y: -50 }}
+                    initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1 }}
+                    transition={{ duration: 0.5, ease: 'easeOut' }}
                 >
                     <motion.h1
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.5 }}
+                        transition={{ duration: 0.45, delay: 0.1 }}
                         className="text-gray-200 md:text-2xl text-2xl font-normal tracking-tight leading-relaxed mb-4 mt-6 pt-2"
                     >
                         hey, I am <br />
@@ -54,7 +54,7 @@ const Hero = () => {
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 1 }}
+                        transition={{ duration: 0.45, delay: 0.2 }}
                         className="text-gray-100 max-w-[300px] md:max-w-[500px] md:text-xl text-base mb-6 font-light pt-6"
                     >
                         <p className="mb-2 text-gray-300">A geek with proficiency in:</p>
@@ -88,10 +88,10 @@ const Hero = () => {
                     )}
 
                     <motion.div
-                        initial={{ opacity: 0, y: 50 }}
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 1.5 }}
+                        transition={{ duration: 0.45, delay: 0.3, ease: 'easeOut' }}
                         className="flex flex-row items-center gap-6 my-4 md:mb-0"
                     >
                         <motion.button
@@ -125,10 +125,10 @@ const Hero = () => {
                     src={profilepic}
                     alt="Navyansh Kothari, Data Scientist and Gen AI Engineer"
                     className="w-[250px] md:w-[350px] rounded-xl"
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1 }}
+                    transition={{ duration: 0.5, ease: 'easeOut' }}
                 />
 
             </div>
@@ -137,7 +137,7 @@ const Hero = () => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, delay: 1 }}
+                transition={{ duration: 0.45, delay: 0.2 }}
                 className="flex flex-col items-center py-24 md:flex-row md:text-7xl md:px-12 md:justify-center"
             >
                 <h2 className="text-gray-200 mb-4 md:mr-6 md:mb-0 text-3xl md:text-4xl font-normal">My Tech Stack</h2>

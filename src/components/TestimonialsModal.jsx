@@ -30,9 +30,9 @@ const TestimonialsModal = ({ isOpen, onClose }) => {
           onClick={onClose}
         >
           <motion.div
-            initial={{ scale: 0.7, opacity: 0 }}
+            initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.7, opacity: 0 }}
+            exit={{ scale: 0.95, opacity: 0 }}
             className="bg-gray-800 rounded-2xl p-3 md:p-6 max-w-4xl w-full max-h-[95vh] overflow-y-auto border-2 border-yellow-500"
             onClick={(e) => e.stopPropagation()}
           >
@@ -52,9 +52,9 @@ const TestimonialsModal = ({ isOpen, onClose }) => {
               {testimonials.map((testimonial, index) => (
                 <motion.div
                   key={testimonial.name}
-                  initial={{ y: 50, opacity: 0 }}
+                  initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: index * 0.2 }}
+                  transition={{ duration: 0.3, delay: index * 0.08 }}
                   className="flex justify-center"
                 >
                   <img

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import { MotionConfig } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -20,12 +21,15 @@ export default function Layout() {
     useScrollOnNavigate();
 
     return (
-        <div className="min-h-screen w-full overflow-x-hidden pb-16 md:pb-0">
-            <Navbar />
-            <main>
-                <Outlet />
-            </main>
-            <Footer />
-        </div>
+        // reducedMotion="user" turns animations off for visitors who set "reduce motion" in their OS
+        <MotionConfig reducedMotion="user">
+            <div className="min-h-screen w-full overflow-x-hidden pb-16 md:pb-0">
+                <Navbar />
+                <main>
+                    <Outlet />
+                </main>
+                <Footer />
+            </div>
+        </MotionConfig>
     );
 }

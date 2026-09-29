@@ -65,8 +65,8 @@ const Education = ({ pageHeading = false }) => {
                         <motion.div
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: false, amount: 0.3 }}
-                            transition={{ duration: 1 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ duration: 0.4 }}
                             className='border-2 border-yellow-500/60 p-4 rounded-xl
                             hover:shadow-xl hover:border-yellow-400 transition-all duration-300 bg-slate-800/40 max-w-[550px] w-full mx-auto'
                         >

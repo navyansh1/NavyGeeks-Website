@@ -5,7 +5,7 @@ const Reveal = ({ children, width = 'fit-content' }) => {
 
     const ref = useRef(null)
 
-    const isInView = useInView(ref, { once: true })
+    const isInView = useInView(ref, { once: true, margin: '0px 0px -40px 0px' })
 
     const mainControls = useAnimation()
 
@@ -20,12 +20,12 @@ const Reveal = ({ children, width = 'fit-content' }) => {
 
         <motion.div
         variants={{
-            hidden: { opacity: 0, y: 75 },
+            hidden: { opacity: 0, y: 24 },
             visible: { opacity: 1, y: 0 }, 
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.5, delay: 0.25 }}
+        transition={{ duration: 0.35, delay: 0.05, ease: 'easeOut' }}
         >
             {children}
         </motion.div>
