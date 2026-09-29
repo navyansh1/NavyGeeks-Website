@@ -31,7 +31,7 @@ const Hero = () => {
     };
 
     return (
-        <div className="mt-24 md:mt-32 max-w-[1200px] mx-auto relative px-6 md:px-0">
+        <div className="mt-10 md:mt-32 max-w-[1200px] mx-auto relative px-6 md:px-0">
             <div className="grid md:grid-cols-2 place-items-center gap-8">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
@@ -44,7 +44,7 @@ const Hero = () => {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.45, delay: 0.1 }}
-                        className="text-gray-200 md:text-2xl text-2xl font-normal tracking-tight leading-relaxed mb-4 mt-6 pt-2"
+                        className="text-gray-200 md:text-2xl text-2xl font-normal tracking-tight leading-relaxed mb-4 mt-0 md:mt-6 md:pt-2"
                     >
                         hey, I am <br />
                         <span className="text-yellow-500 text-5xl font-bold">Navyansh Kothari</span>
