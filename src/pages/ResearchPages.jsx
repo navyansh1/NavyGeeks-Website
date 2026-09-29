@@ -165,6 +165,11 @@ export function PaperPage() {
 
             <Tags tags={paper.tags} />
 
+            <p className="mt-6 text-base text-gray-300 leading-relaxed">
+                This paper by {paper.authors.join(', ')} was published by IEEE for the {paper.venue}, held in {paper.location} in {paper.date.split(' · ')[0]}.
+                Topics: {paper.tags.join(', ')}.
+            </p>
+
             <h2 className="text-xl md:text-2xl font-semibold text-gray-100 mt-8 mb-3">Summary</h2>
             <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300 text-base leading-relaxed">
                 {paper.abstract.map((point) => (

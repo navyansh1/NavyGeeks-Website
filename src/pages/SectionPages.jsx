@@ -60,6 +60,9 @@ export function EducationPage() {
                 schema={[collectionSchema('Education', '/education', description), breadcrumbSchema(crumbs)]}
             />
             <PageFrame crumbs={crumbs}>
+                <p className="max-w-[900px] mx-auto px-6 -mb-4 text-base md:text-lg text-gray-300 text-center">
+                    B.Tech in Computer Science &amp; Engineering at VIT (2021&ndash;2025, CGPA 8.3), after CBSE Class XII (94.8%) and Class X (91.5%) at Chinmaya Vidyalaya.
+                </p>
                 <Education pageHeading />
             </PageFrame>
         </>
@@ -123,6 +126,9 @@ export function SkillsPage() {
                 schema={[collectionSchema('Skills', '/skills', description), breadcrumbSchema(crumbs)]}
             />
             <PageFrame crumbs={crumbs}>
+                <p className="max-w-[900px] mx-auto px-6 -mb-2 text-base md:text-lg text-gray-300 text-center">
+                    Tools and methods I use across data science, machine learning, Gen AI and backend work, mobile apps, and cloud.
+                </p>
                 <Skills pageHeading />
             </PageFrame>
         </>

@@ -15,6 +15,7 @@ import vedicflowImg from "../assets/projects/vedicflow.jpg";
 export const projects = [
     {
         slug: "vedicflow",
+        kind: "mobile app (iOS and Android)",
         img: vedicflowImg,
         title: "VedicFlow - Hindu Calendar & Panchang",
         type: "MobileApplication",
@@ -32,6 +33,7 @@ export const projects = [
     },
     {
         slug: "bill-sonic",
+        kind: "mobile point-of-sale app",
         img: billsonicImg,
         title: "Bill Sonic - Mobile POS App",
         type: "MobileApplication",
@@ -46,6 +48,7 @@ export const projects = [
     },
     {
         slug: "fmcg-demand-forecasting",
+        kind: "data science case study",
         img: fmcg,
         title: "Demand Forecasting Analysis",
         type: "CreativeWork",
@@ -60,6 +63,7 @@ export const projects = [
     },
     {
         slug: "credit-card-fraud-detection-bfsi",
+        kind: "machine learning case study",
         img: bfsi,
         title: "Credit Card Modelling - BFSI Domain",
         type: "CreativeWork",
@@ -74,6 +78,7 @@ export const projects = [
     },
     {
         slug: "nextforms",
+        kind: "web app",
         img: nextformsImg,
         title: "NextForms",
         type: "WebApplication",
@@ -88,6 +93,7 @@ export const projects = [
     },
     {
         slug: "tictactoe-ios-app",
+        kind: "iOS game app",
         img: project1,
         title: "TicTacToe iOS App",
         type: "SoftwareSourceCode",
@@ -103,6 +109,7 @@ export const projects = [
     },
     {
         slug: "blockchain-lottery-dapp",
+        kind: "blockchain dApp",
         img: project2,
         title: "Blockchain Lottery dApp",
         type: "CreativeWork",
@@ -117,6 +124,7 @@ export const projects = [
     },
     {
         slug: "mcq-quiz-generator-ai",
+        kind: "AI-powered web app",
         img: mcqQuizImg,
         title: "MCQ Quiz Generator using AI",
         type: "WebApplication",
@@ -131,6 +139,7 @@ export const projects = [
     },
     {
         slug: "instasnap-ui-redesign",
+        kind: "UI/UX design concept",
         img: project4,
         title: "InstaSnap UI Redesign",
         type: "CreativeWork",
@@ -145,6 +154,7 @@ export const projects = [
     },
     {
         slug: "playing-cards-ios-app",
+        kind: "iOS card game app",
         img: project5,
         title: "Playing Cards iOS App",
         type: "SoftwareSourceCode",
@@ -160,6 +170,7 @@ export const projects = [
     },
     {
         slug: "portfolio-website",
+        kind: "portfolio website",
         img: portfolioimg,
         title: "Portfolio Website",
         type: "SoftwareSourceCode",

@@ -126,13 +126,18 @@ export function ProjectPage() {
                 className="w-full aspect-video object-cover rounded-xl border border-gray-700"
             />
 
-            <p className="mt-6 text-base md:text-lg text-gray-300 leading-relaxed">{project.description}</p>
+            <p className="mt-6 text-base md:text-lg text-gray-300 leading-relaxed">
+                {project.title.split(' - ')[0]} is a {project.kind} by Navyansh Kothari.
+            </p>
+            <p className="mt-3 text-base md:text-lg text-gray-300 leading-relaxed">{project.description}</p>
 
-            {project.stack.length > 0 && (
+            {(project.stack.length > 0 || project.platforms) && (
                 <>
-                    <h2 className="text-xl md:text-2xl font-semibold text-gray-100 mt-8 mb-3">Built with</h2>
+                    <h2 className="text-xl md:text-2xl font-semibold text-gray-100 mt-8 mb-3">
+                        {project.platforms ? 'Platforms & tech' : 'Built with'}
+                    </h2>
                     <ul className="flex flex-wrap gap-2">
-                        {project.stack.map((tech) => (
+                        {[...(project.platforms || []), ...project.stack].map((tech) => (
                             <li key={tech} className="text-sm font-medium text-yellow-400 bg-yellow-500/10 border border-yellow-500/30 rounded-full px-3 py-1">
                                 {tech}
                             </li>
