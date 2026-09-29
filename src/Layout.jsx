@@ -58,6 +58,7 @@ export default function Layout() {
     return (
         // reducedMotion="user" turns animations off for visitors who set "reduce motion" in their OS
         <MotionConfig reducedMotion="user">
+            <div className="page-glow" aria-hidden="true" />
             <div className="min-h-screen w-full overflow-x-hidden pb-16 md:pb-0">
                 <Navbar />
                 <main>
