@@ -147,6 +147,11 @@ export function ProjectPage() {
             ...(project.platforms ? [['Platforms', project.platforms.join(', ')]] : []),
             ...(project.stack.length ? [['Built with', project.stack.join(', ')]] : []),
         ]),
+        ...(project.demo && site ? [['Live demo', (
+            <a key="demo" href={site} target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2 break-all">
+                {site.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+            </a>
+        )]] : []),
         ...(project.repoName ? [['Code', `${project.repoName} (private repository)`]] : []),
     ];
 
@@ -247,7 +252,7 @@ export function ProjectPage() {
                 <div className="mt-6 flex flex-wrap gap-3">
                     {site && (
                         <a href={site} target="_blank" rel="noopener noreferrer" className={`${linkClass} bg-yellow-600 text-white hover:bg-yellow-700`}>
-                            <ExternalLink size={18} /> {project.type === 'CreativeWork' ? 'View' : 'Live site'}
+                            <ExternalLink size={18} /> {project.type === 'CreativeWork' ? 'View' : 'Live demo'}
                         </a>
                     )}
                     {ios && (

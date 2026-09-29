@@ -15,10 +15,6 @@ import guardnoteImg from "../assets/projects/guardnote.jpg";
 import cctvIqImg from "../assets/projects/cctv-iq.jpg";
 import discountImg from "../assets/projects/discount-optimization.jpg";
 import ocrImg from "../assets/projects/ocr-benchmark.jpg";
-import referoImg from "../assets/projects/refero.jpg";
-import quickCommerceImg from "../assets/projects/quick-commerce.jpg";
-import multiOwnerImg from "../assets/projects/multi-owner-shop.jpg";
-import promptHubImg from "../assets/projects/prompt-hub.jpg";
 import shopInventoryImg from "../assets/projects/kothari-electric.jpg";
 import cricketPlayablesImg from "../assets/projects/cricket-playables.jpg";
 
@@ -32,6 +28,7 @@ import ocrDiagram from "../assets/diagrams/ocr-benchmark.svg";
  * Projects. Each one gets its own page at /projects/<slug>/.
  *
  * featured    shown in the main grid; the rest sit in a collapsed "More projects" list
+ * demo        show the live site as a "Live demo" row in the table
  * isPrivate   code is in a private repo: no GitHub link, the page says so
  * summary     one line, shown as the first row of the "At a glance" table
  * repoName    optional repository name to mention (never linked)
@@ -49,6 +46,7 @@ export const projects = [
     {
         slug: "geoscout-iq",
         featured: true,
+        demo: true,
         kind: "location intelligence web app",
         img: geoscoutImg,
         title: "GeoScout IQ - Location Decision Intelligence",
@@ -241,6 +239,7 @@ export const projects = [
     {
         slug: "masker-pii-redaction",
         featured: true,
+        demo: true,
         kind: "AI web app",
         img: maskerImg,
         title: "Masker - PII Redaction for Medical Documents",
@@ -402,148 +401,6 @@ export const projects = [
         links: {
             site: "https://billsonic.vercel.app/",
         },
-    },
-    {
-        slug: "refero",
-        featured: true,
-        isPrivate: true,
-        kind: "mobile app",
-        img: referoImg,
-        title: "Refero - Job Referral Marketplace",
-        type: "MobileApplication",
-        platforms: ["iOS", "Android", "Web"],
-        stack: ["Expo", "TypeScript", "Firebase", "Gemini"],
-        metaDescription:
-            "Refero connects people who can give job referrals with candidates. Gemini parses resumes and scores each applicant, with real-time chat and push alerts.",
-        summary: "A referral marketplace that connects people who can give job referrals with candidates who need one, with AI resume matching.",
-        facts: [
-            ["Problem", "Referrals get jobs, but finding someone willing to refer you, and sorting many requests, is hard."],
-            ["What it does", "Givers post referrals, takers apply with a resume, and Gemini scores how well each applicant fits."],
-            ["How it works", "Gemini parses the resume (PDF, image or Word), scores the match with a short reason, and sorts new referrals into categories to notify the right people."],
-            ["Tech", "Expo SDK 54, React Native, Expo Router, TypeScript, Firebase (Auth, Firestore, Storage, Cloud Functions), Gemini on Vertex AI, Skia"],
-        ],
-        highlights: [
-            "AI match score and summary, visible only to the person giving the referral",
-            "Real-time chat with read receipts, opened automatically on approval",
-            "Push notifications on iOS and Android",
-            "Givers stay anonymous with usernames and generated avatars",
-        ],
-        details: [
-            "Firestore security rules check ownership on every query, for example only a referral's giver can list its applicants",
-            "Liquid, animated colour bands drawn with Skia, and native tab bars on iOS",
-            "Resumes open in the system browser sheet, which works in every build",
-        ],
-        flow: [
-            ["Giver posts", "a referral"],
-            ["Gemini tags", "category, alerts matching takers"],
-            ["Taker applies", "with a resume"],
-            ["Gemini scores", "parse resume, match score"],
-            ["Giver approves", ""],
-            ["Chat opens", "real time"],
-        ],
-        tags: ["job referral app", "recruitment", "resume parsing", "AI matching", "Gemini", "React Native", "Expo", "Firebase", "TypeScript"],
-        links: {},
-    },
-    {
-        slug: "prompt-hub",
-        featured: true,
-        isPrivate: true,
-        kind: "web app for teams",
-        img: promptHubImg,
-        title: "Prompt Hub - Version Control for AI Prompts",
-        type: "WebApplication",
-        stack: ["JavaScript", "Firebase", "Firestore"],
-        metaDescription:
-            "Prompt Hub is a web app for teams to write, version, compare and share LLM prompts, with diffs, a shared prompt library and Word export.",
-        summary: "A web app where a team can write, version, compare and share the prompts they use with AI models.",
-        facts: [
-            ["Problem", "Prompts live in chat threads and docs, so nobody knows which version is current or what changed."],
-            ["What it does", "Projects hold prompt groups, groups hold versions, and every change is saved as a new version with a comment."],
-            ["Tech", "Vanilla JavaScript, Firebase Hosting, Cloud Firestore, jsdiff, docx export"],
-        ],
-        highlights: [
-            "Major and minor versions with required change notes",
-            "Side-by-side diff with synced scrolling",
-            "Share projects by link, with live presence and an access log",
-            "Organisation-wide prompt library with search and model badges",
-        ],
-        flow: [
-            ["Project", ""],
-            ["Prompt group", "with its source LLM"],
-            ["New version", "with a change note"],
-            ["Compare", "side-by-side diff"],
-            ["Share or export", "link, Word file"],
-        ],
-        tags: ["prompt management", "prompt engineering", "LLM ops", "version control", "Firebase", "JavaScript"],
-        links: {},
-    },
-    {
-        slug: "quick-commerce-app",
-        featured: true,
-        isPrivate: true,
-        kind: "mobile app",
-        img: quickCommerceImg,
-        title: "Quick Commerce Delivery App",
-        type: "MobileApplication",
-        platforms: ["iOS", "Android"],
-        stack: ["React Native", "Expo", "Firebase"],
-        metaDescription:
-            "A quick-commerce delivery app with five roles: customers, drivers, inventory admins, store admins and a super admin, with live order tracking and analytics.",
-        summary: "A delivery business in one app, with five roles from customer to super admin, all updating in real time.",
-        facts: [
-            ["Roles", "Customer, driver, inventory admin, store admin and super admin"],
-            ["What it does", "Ordering, live tracking, deliveries, stock, barcode-checked picking, support chat and sales reports."],
-            ["Tech", "React Native, Expo, Firebase (Auth, Firestore), React Navigation, react-native-maps"],
-        ],
-        highlights: [
-            "Live order status and support chat with Firestore listeners",
-            "Barcode scanning to verify items while picking",
-            "Low-stock alerts and PDF sales reports",
-            "Driver earnings and delivery performance tracking",
-        ],
-        flow: [
-            ["Customer orders", ""],
-            ["Store picks", "barcode check"],
-            ["Driver delivers", "status updates"],
-            ["Customer tracks", "live"],
-            ["Admin reports", "analytics, PDF"],
-        ],
-        tags: ["quick commerce", "delivery app", "grocery delivery", "order tracking", "React Native", "Expo", "Firebase"],
-        links: {},
-    },
-    {
-        slug: "multi-owner-shopping-platform",
-        featured: true,
-        isPrivate: true,
-        kind: "e-commerce platform",
-        img: multiOwnerImg,
-        title: "Multi-Owner Shopping Platform",
-        type: "SoftwareApplication",
-        platforms: ["iOS", "Android", "Web"],
-        stack: ["Expo", "React", "Firebase", "PWA"],
-        metaDescription:
-            "An e-commerce platform where each shop owner runs their store from a mobile admin app and gets their own installable online store with GST-ready checkout.",
-        summary: "An e-commerce platform where each shop owner runs their business from a phone and gets their own online store.",
-        facts: [
-            ["For shop owners", "A mobile admin app for products and variants, orders, PDF invoices, stock, GST and shipping settings, and sales charts."],
-            ["For customers", "A fast store website for each shop, installable as an app, with filters, size and colour choice, and guest checkout."],
-            ["Tech", "React Native + Expo (admin app), React + Vite PWA (store), Firebase (Firestore, Storage, Cloud Functions)"],
-        ],
-        highlights: [
-            "Every shop gets its own store link and theme colours",
-            "Stock goes down automatically when an order is placed",
-            "Order status from pending to delivered, with shareable PDF invoices",
-            "Works offline with service-worker caching",
-        ],
-        flow: [
-            ["Owner sets up shop", "admin app"],
-            ["Adds products", "sizes, colours, stock"],
-            ["Store goes live", "own link, installable"],
-            ["Customer checks out", "GST breakdown"],
-            ["Order handled", "stock, invoice, tracking"],
-        ],
-        tags: ["e-commerce", "online store builder", "PWA", "shop management app", "GST invoice", "React", "React Native", "Firebase"],
-        links: {},
     },
 
     // ---------------------------------------------------------------- more projects
