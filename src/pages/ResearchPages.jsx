@@ -92,7 +92,7 @@ export function PaperPage() {
         { name: paper.title, path },
     ];
     const year = paper.published.slice(0, 4);
-    const title = `${paper.title} | ${SITE_NAME}`;
+    const title = paper.title.length > 55 ? paper.title : `${paper.title} | ${SITE_NAME}`;
 
     const schema = [
         {

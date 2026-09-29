@@ -50,7 +50,7 @@ export function ExperiencePage() {
 export function EducationPage() {
     const crumbs = [{ name: 'Home', path: '/' }, { name: 'Education', path: '/education' }];
     const description =
-        'Education of Navyansh Kothari: B.Tech in Computer Science & Engineering (CGPA 8.3) from Vellore Institute of Technology, and CBSE Class X and XII from Chinmaya Vidyalaya.';
+        'Education of Navyansh Kothari: B.Tech in Computer Science & Engineering (CGPA 8.3) from VIT Vellore, and CBSE Class X and XII from Chinmaya Vidyalaya.';
     return (
         <>
             <Seo
@@ -69,7 +69,7 @@ export function EducationPage() {
 export function CertificationsPage() {
     const crumbs = [{ name: 'Home', path: '/' }, { name: 'Certifications', path: '/certifications' }];
     const description =
-        'Certifications of Navyansh Kothari: AWS Certified AI Practitioner, AWS Cloud Practitioner, OpenAI Technical and ChatGPT Deployment Practitioner, Google Cloud, NPTEL and Coursera.';
+        'Certifications of Navyansh Kothari: AWS AI and Cloud Practitioner, OpenAI Technical and ChatGPT Deployment Practitioner, Google Cloud, NPTEL and Coursera.';
     const itemList = {
         '@type': 'ItemList',
         itemListElement: certifications.map((cert, i) => ({
@@ -113,7 +113,7 @@ export function CertificationsPage() {
 export function SkillsPage() {
     const crumbs = [{ name: 'Home', path: '/' }, { name: 'Skills', path: '/skills' }];
     const description =
-        'Skills of Navyansh Kothari: Python, pandas, scikit-learn, LangChain, LangGraph, RAG, FastAPI, React Native, Swift, AWS, GCP and Firebase across data science, Gen AI and mobile.';
+        'Skills of Navyansh Kothari: Python, scikit-learn, LangChain, LangGraph, RAG, FastAPI, React Native, Swift, AWS, GCP and Firebase across data science, Gen AI and mobile.';
     return (
         <>
             <Seo

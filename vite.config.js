@@ -31,8 +31,8 @@ export default defineConfig({
     // /research/index.html style output works on every static host.
     dirStyle: 'nested',
     includedRoutes(paths) {
-      // the catch-all 404 route is not a real page
-      renderedRoutes = paths.filter((p) => p !== '*' && !p.includes('*'))
+      // drop the catch-all and the un-expanded /:slug templates - they are not real pages
+      renderedRoutes = paths.filter((p) => !p.includes('*') && !p.includes(':'))
       return renderedRoutes
     },
     // vite-react-ssg preloads every imported image on every page (36 on each one, ~20 MB).
