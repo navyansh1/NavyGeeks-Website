@@ -1,13 +1,18 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Github, ExternalLink, Apple, Play, ArrowLeft } from 'lucide-react';
+import { Github, ExternalLink, Apple, Play, ArrowLeft, Lock, ChevronDown } from 'lucide-react';
 import Seo from '../components/Seo';
 import Breadcrumbs from '../components/Breadcrumbs';
+import ProjectCard from '../components/ProjectCard';
+import MoreProjects from '../components/MoreProjects';
 import NotFound from './NotFound';
-import { projects, getProject } from '../data/projects';
+import { projects, featuredProjects, getProject } from '../data/projects';
 import { PERSON_ID, SITE_NAME, absoluteUrl, imageUrl, pagePath, breadcrumbSchema } from '../data/site';
 
 const linkClass = 'flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold transition duration-300';
+const h2Class = 'text-xl md:text-2xl font-semibold text-gray-100 mt-10 mb-3';
+
+const shortName = (title) => title.split(' - ')[0];
 
 const projectSchema = (project, path) => {
     const base = {
@@ -17,10 +22,11 @@ const projectSchema = (project, path) => {
         image: imageUrl(project.img),
         mainEntityOfPage: absoluteUrl(path),
         author: { '@id': PERSON_ID },
+        keywords: project.tags?.join(', '),
     };
     const { site, github, ios, android } = project.links;
 
-    if (project.type === 'MobileApplication' || project.type === 'WebApplication') {
+    if (['MobileApplication', 'WebApplication', 'SoftwareApplication'].includes(project.type)) {
         return {
             ...base,
             url: site,
@@ -31,13 +37,13 @@ const projectSchema = (project, path) => {
     if (project.type === 'SoftwareSourceCode') {
         return { ...base, codeRepository: github, url: github };
     }
-    return { ...base, url: site, keywords: project.stack.join(', ') || undefined };
+    return { ...base, url: site };
 };
 
 export function ProjectsIndexPage() {
     const crumbs = [{ name: 'Home', path: '/' }, { name: 'Projects', path: '/projects' }];
     const description =
-        'Projects by Navyansh Kothari: GeoScout IQ location intelligence, CCTV IQ face-ID attendance, Masker PII redaction, BTL spend optimization, VedicFlow and more.';
+        'Projects by Navyansh Kothari: GeoScout IQ, CCTV IQ face-ID attendance, an OCR benchmark, Masker PII redaction, discount optimization, VedicFlow and more.';
 
     const schema = [
         {
@@ -60,38 +66,66 @@ export function ProjectsIndexPage() {
     ];
 
     return (
-        <div className="pt-20 md:pt-24 max-w-[1000px] mx-auto px-6 pb-8">
+        <div className="pt-20 md:pt-24 max-w-[1100px] mx-auto px-4 md:px-6 pb-8">
             <Seo title={`Projects | ${SITE_NAME}`} description={description} path="/projects" schema={schema} />
             <Breadcrumbs items={crumbs} />
             <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-3">Projects</h1>
             <p className="text-base md:text-lg text-gray-300 mb-8 max-w-[750px]">
-                Gen AI and machine learning systems, computer vision, mobile apps and web apps.
+                Gen AI and machine learning systems, computer vision, research, and mobile and web apps. Open any project for a short write-up.
             </p>
 
-            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                {projects.map((project) => (
-                    <li key={project.slug} className="bg-gray-800/50 rounded-lg border border-gray-700 hover:border-yellow-500/50 transition-colors overflow-hidden">
-                        <Link to={pagePath(`projects/${project.slug}`)} className="block p-3 md:p-4 group">
-                            <div className="aspect-video mb-3 overflow-hidden rounded-lg">
-                                <img
-                                    src={project.img}
-                                    alt={`${project.title} screenshot`}
-                                    loading="lazy"
-                                    decoding="async"
-                                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                />
-                            </div>
-                            <h2 className="text-base md:text-lg font-semibold text-gray-200 leading-tight group-hover:text-yellow-400 transition-colors">
-                                {project.title}
-                            </h2>
-                            <p className="mt-2 text-sm text-gray-400 line-clamp-3">{project.metaDescription}</p>
-                        </Link>
-                    </li>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                {featuredProjects.map((project) => (
+                    <ProjectCard key={project.slug} project={project} headingLevel="h2" />
                 ))}
-            </ul>
+            </div>
+
+            <MoreProjects />
         </div>
     );
 }
+
+// Two-column label/value table; on phones each row stacks label above value.
+const FactsTable = ({ rows }) => (
+    <table className="w-full text-left text-sm md:text-base border-collapse">
+        <tbody>
+            {rows.map(([label, value]) => (
+                <tr key={label} className="block sm:table-row border-b border-gray-700/70 py-2 sm:py-0">
+                    <th scope="row" className="block sm:table-cell align-top font-semibold text-yellow-400 sm:py-3 sm:pr-6 sm:w-44 whitespace-nowrap">
+                        {label}
+                    </th>
+                    <td className="block sm:table-cell align-top text-gray-300 leading-relaxed sm:py-3">{value}</td>
+                </tr>
+            ))}
+        </tbody>
+    </table>
+);
+
+const ResultTable = ({ table }) => (
+    <figure className="mt-6">
+        <figcaption className="text-base font-semibold text-gray-200 mb-2">{table.title}</figcaption>
+        <div className="overflow-x-auto rounded-lg border border-gray-700">
+            <table className="w-full text-left text-sm border-collapse">
+                <thead className="bg-gray-800/80">
+                    <tr>
+                        {table.head.map((h) => (
+                            <th key={h} scope="col" className="px-3 py-2 font-semibold text-yellow-400 whitespace-nowrap">{h}</th>
+                        ))}
+                    </tr>
+                </thead>
+                <tbody>
+                    {table.rows.map((row) => (
+                        <tr key={row[0]} className="border-t border-gray-700/70">
+                            {row.map((cell, i) => (
+                                <td key={i} className={`px-3 py-2 text-gray-300 ${i === 0 ? 'font-medium text-gray-100' : 'whitespace-nowrap tabular-nums'}`}>{cell}</td>
+                            ))}
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    </figure>
+);
 
 export function ProjectPage() {
     const { slug } = useParams();
@@ -102,50 +136,70 @@ export function ProjectPage() {
     const crumbs = [
         { name: 'Home', path: '/' },
         { name: 'Projects', path: '/projects' },
-        { name: project.title, path },
+        { name: shortName(project.title), path },
     ];
     const { site, github, ios, android } = project.links;
-    const related = projects.filter((p) => p.slug !== project.slug).slice(0, 4);
+    const hasLinks = site || github || ios || android;
+
+    // Default table for smaller projects that have no hand-written facts.
+    const facts = project.facts || [
+        ['Type', project.kind.charAt(0).toUpperCase() + project.kind.slice(1)],
+        ...(project.platforms ? [['Platforms', project.platforms.join(', ')]] : []),
+        ...(project.stack.length ? [['Built with', project.stack.join(', ')]] : []),
+    ];
+
+    const related = (project.featured ? featuredProjects : projects)
+        .filter((p) => p.slug !== project.slug)
+        .slice(0, 3);
 
     return (
-        <article className="pt-20 md:pt-24 max-w-[900px] mx-auto px-6 pb-8">
+        <article className="pt-20 md:pt-24 max-w-[860px] mx-auto px-4 md:px-6 pb-8">
             <Seo
                 title={`${project.title} | ${SITE_NAME}`}
                 description={project.metaDescription}
                 path={path}
                 image={imageUrl(project.img)}
+                keywords={project.tags}
                 schema={[projectSchema(project, path), breadcrumbSchema(crumbs)]}
             />
             <Breadcrumbs items={crumbs} />
 
-            <h1 className="text-2xl md:text-4xl font-bold text-yellow-500 leading-tight mb-5">{project.title}</h1>
+            <h1 className="text-2xl md:text-4xl font-bold text-yellow-500 leading-tight mb-3">{project.title}</h1>
+            <p className="text-base md:text-lg text-gray-300 leading-relaxed">{project.intro}</p>
 
             <img
                 src={project.img}
-                alt={`${project.title} screenshot`}
-                className="w-full aspect-video object-cover rounded-xl border border-gray-700"
+                alt={`${shortName(project.title)} preview`}
+                className="mt-6 w-full aspect-video object-cover rounded-xl border border-gray-700"
             />
 
-            <p className="mt-6 text-base md:text-lg text-gray-300 leading-relaxed">
-                {project.title.split(' - ')[0]} is a {project.kind} by Navyansh Kothari.
-            </p>
-            {project.gist && (
+            <h2 className={h2Class}>At a glance</h2>
+            <FactsTable rows={facts} />
+
+            {project.highlights && (
                 <>
-                    <h2 className="text-xl md:text-2xl font-semibold text-gray-100 mt-8 mb-3">At a glance</h2>
+                    <h2 className={h2Class}>Key points</h2>
                     <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300 text-base leading-relaxed">
-                        {project.gist.map((point) => <li key={point}>{point}</li>)}
+                        {project.highlights.map((point) => <li key={point}>{point}</li>)}
                     </ul>
                 </>
             )}
 
-            <p className={`${project.gist ? 'mt-6' : 'mt-3'} text-base md:text-lg text-gray-300 leading-relaxed`}>{project.description}</p>
+            {project.tables && (
+                <>
+                    <h2 className={h2Class}>Results</h2>
+                    {project.tables.map((table) => <ResultTable key={table.title} table={table} />)}
+                </>
+            )}
 
             {project.diagram && (
                 <>
-                    <h2 className="text-xl md:text-2xl font-semibold text-gray-100 mt-8 mb-3">How it works</h2>
+                    <h2 className={h2Class}>How it works</h2>
                     <img
                         src={project.diagram}
-                        alt={`${project.title.split(' - ')[0]} architecture diagram`}
+                        alt={`${shortName(project.title)} architecture diagram`}
+                        width="1280"
+                        height="720"
                         loading="lazy"
                         decoding="async"
                         className="w-full rounded-xl border border-gray-700"
@@ -153,54 +207,63 @@ export function ProjectPage() {
                 </>
             )}
 
-            {(project.stack.length > 0 || project.platforms) && (
-                <>
-                    <h2 className="text-xl md:text-2xl font-semibold text-gray-100 mt-8 mb-3">
-                        {project.platforms ? 'Platforms & tech' : 'Built with'}
-                    </h2>
-                    <ul className="flex flex-wrap gap-2">
-                        {[...(project.platforms || []), ...project.stack].map((tech) => (
-                            <li key={tech} className="text-sm font-medium text-yellow-400 bg-yellow-500/10 border border-yellow-500/30 rounded-full px-3 py-1">
-                                {tech}
-                            </li>
-                        ))}
+            {project.details && (
+                <details className="group mt-8 rounded-lg border border-gray-700 bg-gray-800/30">
+                    <summary className="flex items-center justify-between gap-3 cursor-pointer list-none px-4 py-3 text-gray-200 font-semibold hover:text-yellow-400 transition-colors [&::-webkit-details-marker]:hidden">
+                        <span className="text-base md:text-lg font-semibold text-inherit">Technical details</span>
+                        <ChevronDown size={20} className="transition-transform group-open:rotate-180" />
+                    </summary>
+                    <ul className="list-disc list-outside pl-9 pr-4 pb-4 space-y-2 text-gray-300 text-sm md:text-base leading-relaxed">
+                        {project.details.map((point) => <li key={point}>{point}</li>)}
                     </ul>
-                </>
+                </details>
             )}
 
-            <div className="mt-8 flex flex-wrap gap-3">
-                {site && (
-                    <a href={site} target="_blank" rel="noopener noreferrer" className={`${linkClass} bg-yellow-600 text-white hover:bg-yellow-700`}>
-                        <ExternalLink size={18} /> View Demo
-                    </a>
-                )}
-                {ios && (
-                    <a href={ios} target="_blank" rel="noopener noreferrer" className={`${linkClass} bg-slate-700 text-gray-200 hover:bg-slate-600`}>
-                        <Apple size={18} /> App Store
-                    </a>
-                )}
-                {android && (
-                    <a href={android} target="_blank" rel="noopener noreferrer" className={`${linkClass} bg-slate-700 text-gray-200 hover:bg-slate-600`}>
-                        <Play size={18} /> Google Play
-                    </a>
-                )}
-                {github && (
-                    <a href={github} target="_blank" rel="noopener noreferrer" className={`${linkClass} bg-slate-700 text-gray-200 hover:bg-slate-600`}>
-                        <Github size={18} /> GitHub
-                    </a>
-                )}
-            </div>
+            {project.tags && (
+                <ul className="mt-8 flex flex-wrap gap-2" aria-label="Tags">
+                    {project.tags.map((tag) => (
+                        <li key={tag} className="text-xs md:text-sm font-medium text-yellow-400 bg-yellow-500/10 border border-yellow-500/30 rounded-full px-3 py-1">
+                            {tag}
+                        </li>
+                    ))}
+                </ul>
+            )}
 
-            <h2 className="text-xl md:text-2xl font-semibold text-gray-100 mt-12 mb-3">More projects</h2>
-            <ul className="space-y-2">
-                {related.map((p) => (
-                    <li key={p.slug}>
-                        <Link to={pagePath(`projects/${p.slug}`)} className="text-base text-gray-300 hover:text-yellow-400 transition-colors">
-                            {p.title}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            {project.isPrivate && (
+                <p className="mt-6 flex items-center gap-2 text-sm text-gray-400">
+                    <Lock size={14} className="flex-shrink-0" /> The code for this project is private{hasLinks ? '.' : ', so there is no public link.'}
+                </p>
+            )}
+
+            {hasLinks && (
+                <div className="mt-6 flex flex-wrap gap-3">
+                    {site && (
+                        <a href={site} target="_blank" rel="noopener noreferrer" className={`${linkClass} bg-yellow-600 text-white hover:bg-yellow-700`}>
+                            <ExternalLink size={18} /> {project.type === 'CreativeWork' ? 'View' : 'Live site'}
+                        </a>
+                    )}
+                    {ios && (
+                        <a href={ios} target="_blank" rel="noopener noreferrer" className={`${linkClass} bg-slate-700 text-gray-200 hover:bg-slate-600`}>
+                            <Apple size={18} /> App Store
+                        </a>
+                    )}
+                    {android && (
+                        <a href={android} target="_blank" rel="noopener noreferrer" className={`${linkClass} bg-slate-700 text-gray-200 hover:bg-slate-600`}>
+                            <Play size={18} /> Google Play
+                        </a>
+                    )}
+                    {github && (
+                        <a href={github} target="_blank" rel="noopener noreferrer" className={`${linkClass} bg-slate-700 text-gray-200 hover:bg-slate-600`}>
+                            <Github size={18} /> GitHub
+                        </a>
+                    )}
+                </div>
+            )}
+
+            <h2 className={h2Class}>More projects</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {related.map((p) => <ProjectCard key={p.slug} project={p} compact />)}
+            </div>
 
             <Link to={pagePath('projects')} className="mt-8 inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold">
                 <ArrowLeft size={18} /> All projects

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9CA3AF"/></marker></defs>
+  <rect width="1280" height="720" fill="#162121"/>
+  <text x="48" y="64" font-size="30" font-weight="bold" fill="#E5E7EB">OCR for Indian Loan Documents</text>
+  <text x="48" y="94" font-size="16" fill="#9CA3AF">The pipeline the benchmark recommended</text>
+  
+    <text x="48" y="140" font-size="13" fill="#9CA3AF" font-weight="normal" letter-spacing="1">TEXT PAGES</text>
+    <rect x="48" y="152" width="240" height="96" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="180" font-size="17" font-weight="bold" fill="#E5E7EB">Page image</text><text x="64" y="204" font-size="15" fill="#9CA3AF">trim blank margins</text>
+    <line x1="288" y1="200" x2="336" y2="200" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="338" y="152" width="330" height="96" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="354" y="180" font-size="17" font-weight="bold" fill="#EAB308">Tesseract on AWS Lambda</text><text x="354" y="204" font-size="15" fill="#9CA3AF">English + Indian scripts</text><text x="354" y="224" font-size="15" fill="#9CA3AF">OMP_THREAD_LIMIT=1: 2.5-2.9× faster</text>
+    <line x1="668" y1="200" x2="716" y2="200" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="718" y="152" width="514" height="96" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="734" y="180" font-size="17" font-weight="bold" fill="#E5E7EB">Text with a box per word</text><text x="734" y="204" font-size="15" fill="#9CA3AF">103/108 values (Textract 104/108), ₹4.90 vs ₹142.50</text><text x="734" y="224" font-size="15" fill="#9CA3AF">per 1,000 pages</text>
+    <text x="48" y="300" font-size="13" fill="#9CA3AF" font-weight="normal" letter-spacing="1">TABLE PAGES</text>
+    <rect x="48" y="312" width="240" height="188" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="340" font-size="17" font-weight="bold" fill="#E5E7EB">Page image</text><text x="64" y="364" font-size="15" fill="#9CA3AF">erase table lines</text><text x="64" y="384" font-size="15" fill="#9CA3AF">(word detection 89% → 98%)</text>
+    <line x1="288" y1="340" x2="336" y2="340" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="338" y="312" width="330" height="76" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="354" y="340" font-size="17" font-weight="bold" fill="#E5E7EB">Tesseract</text><text x="354" y="364" font-size="15" fill="#9CA3AF">every word and its position</text>
+    <line x1="288" y1="440" x2="336" y2="440" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="338" y="404" width="330" height="96" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="354" y="432" font-size="17" font-weight="bold" fill="#EAB308">Qwen3-VL on Amazon Bedrock</text><text x="354" y="456" font-size="15" fill="#9CA3AF">reads tables as rows and</text><text x="354" y="476" font-size="15" fill="#9CA3AF">columns (30 s timeout, 1 retry)</text>
+    <line x1="668" y1="350" x2="716" y2="400" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="668" y1="452" x2="716" y2="420" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="718" y="350" width="250" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="734" y="378" font-size="17" font-weight="bold" fill="#E5E7EB">Match</text><text x="734" y="402" font-size="15" fill="#9CA3AF">rows to OCR lines,</text><text x="734" y="422" font-size="15" fill="#9CA3AF">cells to words</text>
+    <line x1="968" y1="405" x2="1016" y2="405" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="1018" y="350" width="214" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="1034" y="378" font-size="17" font-weight="bold" fill="#E5E7EB">Table cells</text><text x="1034" y="402" font-size="15" fill="#9CA3AF">model text +</text><text x="1034" y="422" font-size="15" fill="#9CA3AF">page position</text>
+    <text x="48" y="560" font-size="13" fill="#EAB308" font-weight="bold" letter-spacing="1">ON 30 UNSEEN TABLE PAGES</text>
+    <text x="48" y="588" font-size="16" fill="#E5E7EB">178/183 values right vs AWS Textract Tables 163/183, at ~₹225-450 instead of ₹1,425 per 1,000 pages.</text>
+    <text x="48" y="614" font-size="16" fill="#E5E7EB">Trade-off: ~17 s per table page instead of 6.5 s, so it suits batch work.</text>
+  </svg>

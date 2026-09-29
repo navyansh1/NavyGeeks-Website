@@ -26,9 +26,9 @@ function svg(title, subtitle, body) {
 }
 
 const diagrams = {
-  'btl-optimization': svg('BTL Spend Optimization', 'Config-driven pipeline from raw data to a BTL what-if simulator', `
+  'discount-optimization': svg('Discount Spend Optimization', 'Config-driven pipeline from raw data to a discount what-if simulator', `
     ${label(48, 140, 'INPUTS')}
-    ${box(48, 152, 250, 70, 'Sales & BTL spend', ['distributor level, monthly'])}
+    ${box(48, 152, 250, 70, 'Sales & discounts', ['distributor level, monthly'])}
     ${box(48, 234, 250, 70, 'Retail audit data', ['Nielsen, by state & channel'])}
     ${box(48, 316, 250, 70, 'Media spend')}
     ${box(48, 398, 250, 70, 'Weather', ['temp, humidity, rain by state'])}
@@ -42,18 +42,41 @@ const diagrams = {
     ${label(668, 140, 'MODELLING')}
     ${box(668, 152, 270, 130, 'DTW clustering', ['groups segments with similar', 'sales-over-time shapes'])}
     ${arrow(803, 282, 803, 312)}
-    ${box(668, 314, 270, 110, 'Per-cluster ML models', ['r², MAPE, wMAPE per cluster'])}
+    ${box(668, 314, 270, 110, 'XGBoost per cluster', ['r², MAPE, wMAPE per cluster'])}
     ${arrow(803, 424, 803, 454)}
     ${box(668, 456, 270, 94, 'Explainability', ['SHAP and feature importance'])}
     ${arrow(938, 369, 986, 300)}
     ${label(988, 140, 'SIMULATION')}
-    ${box(988, 152, 244, 150, 'BTL elasticity', ['saturation curve per', 'segment: where extra', 'spend stops paying'])}
+    ${box(988, 152, 244, 150, 'Discount elasticity', ['saturation curve per', 'segment: where extra', 'discount stops paying'])}
     ${arrow(1110, 302, 1110, 332)}
-    ${box(988, 334, 244, 216, 'GSV simulator', ['type a BTL % per segment,', 'see sales and P&L', 'recompute live,', 'segment and all-India', 'views'], true)}
+    ${box(988, 334, 244, 216, 'Sales & P&L simulator', ['type a discount % per', 'segment, see sales and', 'P&L recompute live,', 'segment and all-India', 'views'], true)}
     <rect x="48" y="590" width="1184" height="74" rx="12" fill="none" stroke="${C.line}" stroke-dasharray="6 6"/>
     ${label(72, 622, 'DELIVERY', 13, C.accent, 'bold')}
     <text x="200" y="622" font-size="16" fill="${C.text}">Two Streamlit dashboards: EDA, model performance, SHAP, elasticity, saturation and the simulator.</text>
     <text x="200" y="648" font-size="16" fill="${C.text}">Deployed on Hugging Face Spaces with Docker; the data stays in a private repo.</text>
+  `),
+
+  'ocr-benchmark': svg('OCR for Indian Loan Documents', 'The pipeline the benchmark recommended', `
+    ${label(48, 140, 'TEXT PAGES')}
+    ${box(48, 152, 240, 96, 'Page image', ['trim blank margins'])}
+    ${arrow(288, 200, 336, 200)}
+    ${box(338, 152, 330, 96, 'Tesseract on AWS Lambda', ['English + Indian scripts', 'OMP_THREAD_LIMIT=1: 2.5-2.9× faster'], true)}
+    ${arrow(668, 200, 716, 200)}
+    ${box(718, 152, 514, 96, 'Text with a box per word', ['103/108 values (Textract 104/108), ₹4.90 vs ₹142.50', 'per 1,000 pages'])}
+    ${label(48, 300, 'TABLE PAGES')}
+    ${box(48, 312, 240, 188, 'Page image', ['erase table lines', '(word detection 89% → 98%)'])}
+    ${arrow(288, 340, 336, 340)}
+    ${box(338, 312, 330, 76, 'Tesseract', ['every word and its position'])}
+    ${arrow(288, 440, 336, 440)}
+    ${box(338, 404, 330, 96, 'Qwen3-VL on Amazon Bedrock', ['reads tables as rows and', 'columns (30 s timeout, 1 retry)'], true)}
+    ${arrow(668, 350, 716, 400)}
+    ${arrow(668, 452, 716, 420)}
+    ${box(718, 350, 250, 110, 'Match', ['rows to OCR lines,', 'cells to words'])}
+    ${arrow(968, 405, 1016, 405)}
+    ${box(1018, 350, 214, 110, 'Table cells', ['model text +', 'page position'])}
+    ${label(48, 560, 'ON 30 UNSEEN TABLE PAGES', 13, C.accent, 'bold')}
+    <text x="48" y="588" font-size="16" fill="${C.text}">178/183 values right vs AWS Textract Tables 163/183, at ~₹225-450 instead of ₹1,425 per 1,000 pages.</text>
+    <text x="48" y="614" font-size="16" fill="${C.text}">Trade-off: ~17 s per table page instead of 6.5 s, so it suits batch work.</text>
   `),
 
   'cctv-iq': svg('CCTV IQ: Face ID Attendance', 'Recognise enrolled people on office CCTV and log arrivals, tuned for accuracy', `
@@ -118,7 +141,7 @@ for (const [name, s] of Object.entries(diagrams)) {
   fs.writeFileSync(`src/assets/diagrams/${name}.svg`, s)
 }
 // the two private repos have no screenshots we can show, so their diagram is the thumbnail
-for (const name of ['btl-optimization', 'cctv-iq']) {
+for (const name of ['discount-optimization', 'cctv-iq']) {
   await sharp(Buffer.from(diagrams[name])).jpeg({ quality: 85, mozjpeg: true }).toFile(`src/assets/projects/${name}.jpg`)
 }
 console.log('diagrams written')

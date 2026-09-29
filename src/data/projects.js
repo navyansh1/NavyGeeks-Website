@@ -12,39 +12,87 @@ import vedicflowImg from "../assets/projects/vedicflow.jpg";
 import maskerImg from "../assets/projects/masker.jpg";
 import geoscoutImg from "../assets/projects/geoscout.jpg";
 import guardnoteImg from "../assets/projects/guardnote.jpg";
-import mlClassifierImg from "../assets/projects/ml-classifier.jpg";
 import cctvIqImg from "../assets/projects/cctv-iq.jpg";
-import btlImg from "../assets/projects/btl-optimization.jpg";
+import discountImg from "../assets/projects/discount-optimization.jpg";
+import ocrImg from "../assets/projects/ocr-benchmark.jpg";
+import referoImg from "../assets/projects/refero.jpg";
+import edtechImg from "../assets/projects/edtech.jpg";
+import quickCommerceImg from "../assets/projects/quick-commerce.jpg";
+import multiOwnerImg from "../assets/projects/multi-owner-shop.jpg";
+import promptHubImg from "../assets/projects/prompt-hub.jpg";
+import shopInventoryImg from "../assets/projects/kothari-electric.jpg";
 import cricketPlayablesImg from "../assets/projects/cricket-playables.jpg";
 
 import geoscoutDiagram from "../assets/diagrams/geoscout-iq.svg";
 import cctvIqDiagram from "../assets/diagrams/cctv-iq.svg";
 import maskerDiagram from "../assets/diagrams/masker-pii-redaction.svg";
-import btlDiagram from "../assets/diagrams/btl-optimization.svg";
+import discountDiagram from "../assets/diagrams/discount-optimization.svg";
+import ocrDiagram from "../assets/diagrams/ocr-benchmark.svg";
 
-// Projects. `slug` becomes the URL: /projects/<slug>/
-// `gist` (optional) is a few one-line highlights shown as "At a glance" on the project page.
-// `diagram` (optional) is an architecture diagram shown on the project page.
-// `type` picks the schema.org type: MobileApplication | WebApplication | SoftwareSourceCode | CreativeWork
+/*
+ * Projects. Each one gets its own page at /projects/<slug>/.
+ *
+ * featured    shown in the main grid; the rest sit in a collapsed "More projects" list
+ * isPrivate   code is in a private repo: no GitHub link, the page says so
+ * intro       one or two plain sentences at the top of the page
+ * facts       [label, value] rows for the "At a glance" table
+ * highlights  "Key points" bullets
+ * tables      optional result tables ({ title, head, rows })
+ * details     optional bullets inside the collapsed "Technical details" section
+ * diagram     optional architecture diagram
+ * tags        keywords: shown as chips and used for meta keywords / structured data
+ * type        schema.org type: MobileApplication | WebApplication | SoftwareApplication | SoftwareSourceCode | CreativeWork
+ */
 export const projects = [
+    // ---------------------------------------------------------------- featured
     {
         slug: "geoscout-iq",
+        featured: true,
         kind: "location intelligence web app",
         img: geoscoutImg,
         title: "GeoScout IQ - Location Decision Intelligence",
         type: "WebApplication",
-        stack: ["Google Maps", "H3 hex grid", "Gemini", "Firebase"],
+        stack: ["Google Maps", "H3", "Gemini", "Firebase"],
         metaDescription:
             "GeoScout IQ recommends where banks should open ATMs or branches and where retailers should open stores in India, using maps, web data and Gemini agents.",
-        description:
-            "Type any Indian location, pick an industry and a company, and in about 30 seconds GeoScout IQ scores the neighbourhood on a colour-coded H3 hex heatmap. It maps competitors and your own locations, checks what is nearby (metro, malls, schools, highways), pulls property listings, and writes an executive summary with a GO / CAUTION / AVOID recommendation. Built for BFSI and FMCG site selection with Google Maps, multi-source web data and Gemini grounding agents.",
-        gist: [
-            "Recommends where to open ATMs, branches, stores and warehouses anywhere in India",
-            "Scores ~0.7 sq km H3 hex tiles on demand, open space, access and growth",
-            "Blends Google Places, WorldPop, NASA night lights, OpenStreetMap and property data",
-            "Gemini grounding agents write a GO / CAUTION / AVOID executive summary in about 30 seconds",
+        intro:
+            "A location intelligence tool that tells banks and retailers where in India to open their next ATM, branch, store or warehouse.",
+        facts: [
+            ["Problem", "Picking a new site means checking footfall, competitors, rent and access by hand, one area at a time."],
+            ["What it does", "Type a location, pick an industry and company, and get a scored map with a GO / CAUTION / AVOID call in about 30 seconds."],
+            ["How it works", "The area is split into small hexagon tiles. Each tile is scored on demand, open space, access and growth, and Gemini writes the summary."],
+            ["Built for", "Banks (ATMs, branches) and FMCG companies (stores, warehouses)"],
+            ["Tech", "Google Maps Platform, H3 hex grid, Gemini, Firebase Hosting, Cloud Functions, Firestore"],
+        ],
+        highlights: [
+            "Colour-coded hex heatmap: strong tiles stand out, weak ones fade",
+            "Competitor pins with brand names, plus your own existing locations",
+            "Knows what is nearby for each tile, like \"320 m from a metro\", and picks the amenities by use case",
+            "Real property listings for sale at each tile",
+            "Executive summary with a star rating and GO / CAUTION / AVOID",
+        ],
+        tables: [
+            {
+                title: "Data it uses",
+                head: ["Source", "What it adds", "How fresh"],
+                rows: [
+                    ["Google Places", "Competitor stores, ratings, closures", "Live"],
+                    ["WorldPop", "Population around the site (drives demand)", "Yearly"],
+                    ["NASA night lights", "How busy an area is at night, and if it is growing", "Monthly"],
+                    ["OpenStreetMap", "Malls, schools, transit, parking, land you cannot build on", "Live"],
+                    ["Property listings", "Rent and property rates for payback", "Live"],
+                    ["Google Search", "Upcoming metro, roads and projects, with sources", "Live"],
+                ],
+            },
+        ],
+        details: [
+            "Each hex is about 0.7 sq km; the same input always gives the same score, and the maths is visible",
+            "Nearby amenities change by use case: ATMs look at footfall and transit, warehouses at ports, railheads and highways, groceries at schools and housing",
+            "Gemini grounding agents add the written narrative on top of the scores",
+            "Google Elevation stops the map from suggesting a site on water",
         ],
         diagram: geoscoutDiagram,
+        tags: ["location intelligence", "site selection", "geospatial analytics", "H3 hexagons", "Google Maps API", "Gemini", "retail expansion", "ATM placement", "BFSI", "FMCG"],
         links: {
             site: "https://toursensi-ganit-71c77.web.app",
             github: "https://github.com/navyansh1/TourSensi-Scout-ganit",
@@ -52,6 +100,8 @@ export const projects = [
     },
     {
         slug: "cctv-iq-face-attendance",
+        featured: true,
+        isPrivate: true,
         kind: "computer vision system",
         img: cctvIqImg,
         title: "CCTV IQ - Face ID Attendance",
@@ -59,19 +109,115 @@ export const projects = [
         stack: ["Python", "InsightFace", "OpenVINO", "ONNX Runtime"],
         metaDescription:
             "CCTV IQ recognises enrolled people on office CCTV and logs arrivals. Moving both face models to the Intel iGPU cut processing from 9.86 to 0.31 s per frame.",
-        description:
-            "A face-recognition attendance system that identifies enrolled people on existing office CCTV and logs their arrivals, built with accuracy as the priority. Faces are detected with SCRFD and embedded with antelopev2, both running on the Intel integrated GPU through OpenVINO, then matched against a 182-person gallery. A match is only accepted when it clearly beats the runner-up, and arrivals are debounced on absence rather than a timer, so the register does not log wrong names or duplicates. Measured over 17,842 real sightings, face size turned out to decide accuracy far more than the model: four recognition models tied within noise, while faces 32-48 px between the eyes were identified twice as often as faces at 20-32 px.",
-        gist: [
-            "Identifies enrolled people on existing office CCTV and writes a daily attendance register",
-            "9.86 → 0.31 s per frame by moving detection and recognition to the idle Intel iGPU with OpenVINO",
-            "Refuses a match when the runner-up is too close, so it never logs a confident wrong name",
-            "Benchmarked 4 face-recognition models on 17,842 real sightings: camera placement mattered more than the model",
+        intro:
+            "A face-recognition attendance system that runs on an office's existing CCTV cameras and logs who arrived and when.",
+        facts: [
+            ["Problem", "Track office arrivals automatically, using the cameras that are already on the wall."],
+            ["What it does", "Recognises enrolled people in the live feed, logs each arrival once, and writes a daily attendance register with a live dashboard."],
+            ["How it works", "Detect faces, turn each face into an embedding, compare it with a gallery of 182 people, and accept a name only when it clearly beats the runner-up."],
+            ["Result", "0.31 s per frame, down from 9.86 s, on an ordinary laptop. A verified test run logged 3 arrivals, all correct, with no false positives."],
+            ["Tech", "Python, InsightFace (SCRFD + antelopev2), OpenVINO on the Intel iGPU, ONNX Runtime, RTSP"],
+        ],
+        highlights: [
+            "Both face models run on the laptop's idle Intel graphics chip: about 30× faster, same scores",
+            "Refuses a name when two people look too alike, because a wrong name on an attendance record is worse than none",
+            "Counts an arrival only after someone has been away, so one person is never logged twice",
+            "Ignore zones mask desks so the same seated people are not re-scanned all day (2-3× faster)",
+        ],
+        tables: [
+            {
+                title: "Speed: where the models run",
+                head: ["Setup", "Seconds per frame"],
+                rows: [
+                    ["Both models on CPU", "9.86"],
+                    ["Recogniser on iGPU, detector on CPU", "0.69"],
+                    ["Both on iGPU", "0.31"],
+                ],
+            },
+            {
+                title: "Accuracy: face size matters most (17,842 real sightings)",
+                head: ["Distance between the eyes", "Share of sightings", "Identified"],
+                rows: [
+                    ["0-20 px", "26%", "15.8%"],
+                    ["20-32 px", "54%", "18.1%"],
+                    ["32-48 px", "20%", "38.9%"],
+                    ["48 px +", "0.3%", "44.4%"],
+                ],
+            },
+        ],
+        details: [
+            "Compared four recognition models (antelopev2, AdaFace IR-101, buffalo_l, AuraFace): all tied within noise, so camera placement matters more than the model",
+            "AdaFace was exported to ONNX just to test it (torch vs ONNX cosine 1.000000); it beat antelopev2 by only 0.009",
+            "A bigger detector input found fewer usable faces, and GPU batching was slower (28 s per frame), so both were rejected",
+            "Real phone photos matched about 9.5 points better than AI-edited directory photos",
+            "Recognition runs in its own thread; the dashboard only reads snapshots, so closing the browser changes nothing",
+            "Regression tests cover the arrival logic (9 scenarios) and the ignore-zone geometry",
         ],
         diagram: cctvIqDiagram,
+        tags: ["computer vision", "face recognition", "CCTV analytics", "attendance system", "InsightFace", "OpenVINO", "edge AI", "Intel iGPU", "ONNX", "Python"],
+        links: {},
+    },
+    {
+        slug: "ocr-engine-benchmark",
+        featured: true,
+        kind: "OCR research study",
+        img: ocrImg,
+        title: "OCR Engine Benchmark for Indian Loan Documents",
+        type: "CreativeWork",
+        stack: ["Tesseract", "AWS Textract", "Qwen3-VL", "AWS Lambda"],
+        metaDescription:
+            "A benchmark of OCR engines on Indian education-loan documents: Tesseract on AWS Lambda matched AWS Textract at about 3% of the cost and read 4 Indian scripts.",
+        intro:
+            "A research study to choose the OCR engine for reading education-loan paperwork, measuring accuracy, Indian scripts, tables, speed and cost on real documents.",
+        facts: [
+            ["Question", "Build on a managed service like AWS Textract, or on open-source OCR?"],
+            ["What I measured", "4 engines on 108 checked values across 11 documents, 4 Indian scripts, and table values on 12 + 30 unseen pages."],
+            ["Answer for text", "Tesseract on AWS Lambda: 103/108 values vs Textract's 104/108, at ₹4.90 instead of ₹142.50 per 1,000 pages."],
+            ["Answer for tables", "Tesseract + Qwen3-VL: 178/183 values on unseen pages vs Textract Tables' 163/183, at a third of the cost or less."],
+            ["Trade-off", "Table pages take about 17 s instead of 6.5 s, so it suits batch work."],
+            ["Tech", "Python, Tesseract 5.4, AWS Textract, RapidOCR, PaddleOCR, Qwen3-VL on Amazon Bedrock, AWS Lambda"],
+        ],
+        highlights: [
+            "Tesseract was the only engine that read Telugu, Tamil, Devanagari and Kannada; the others returned nothing, without an error",
+            "Deployed and timed on AWS Lambda (Mumbai), not estimated",
+            "Self-hosting came out about 10× cheaper at every volume",
+            "Erasing table lines before OCR raised word detection inside tables from 89% to 98%",
+        ],
+        tables: [
+            {
+                title: "General text: 108 values, 11 documents",
+                head: ["Engine", "Values found", "Sec / page", "Indian scripts"],
+                rows: [
+                    ["AWS Textract", "104/108", "3.3", "None"],
+                    ["Tesseract 5.4", "103/108", "1.9", "All four"],
+                    ["RapidOCR", "101/108", "5.1", "None"],
+                    ["PaddleOCR PP-OCRv5", "99/108", "17.7", "None"],
+                ],
+            },
+            {
+                title: "Tables: 30 unseen pages",
+                head: ["Method", "Values right", "₹ per 1,000 pages"],
+                rows: [
+                    ["Tesseract + Qwen3-VL", "178/183", "~225-450"],
+                    ["Qwen3-VL alone", "178/183", "~445"],
+                    ["AWS Textract Tables", "163/183", "1,425"],
+                ],
+            },
+        ],
+        details: [
+            "Setting OMP_THREAD_LIMIT=1 made Tesseract 2.5-2.9× faster on Lambda; without it Lambda was slower than a 2019 laptop",
+            "Tesseract with six language packs fits in a 14 MB Lambda zip",
+            "How the table hybrid works: erase lines, Tesseract finds every word and its box, Qwen3-VL reads rows and columns, then each cell is matched to its words",
+            "The unseen-page answer key was written before either system ran, and those pages were not used for tuning",
+            "Things that did not work: asking the model for word ids, and splitting pages into strips (slower and less accurate)",
+        ],
+        diagram: ocrDiagram,
+        tags: ["OCR", "document AI", "Tesseract", "AWS Textract", "Qwen3-VL", "Amazon Bedrock", "AWS Lambda", "Indic OCR", "table extraction", "cost optimization"],
         links: {},
     },
     {
         slug: "masker-pii-redaction",
+        featured: true,
         kind: "AI web app",
         img: maskerImg,
         title: "Masker - PII Redaction for Medical Documents",
@@ -79,52 +225,98 @@ export const projects = [
         stack: ["Google Vision OCR", "Gemini 2.5 Flash-Lite", "Firebase"],
         metaDescription:
             "Masker blacks out personal and health information in medical images and PDFs, using Google Vision OCR for exact boxes and Gemini to decide what is PII.",
-        description:
-            "Upload a medical image or PDF and Masker finds every piece of personal information on every page and blacks it out: names, addresses, phone numbers, dates of birth, patient IDs, Aadhaar and insurance numbers. Google Vision OCR gives the exact pixel box of every word, and Gemini 2.5 Flash-Lite reads the word list and decides which words are PII, so the redaction is pixel-accurate every time. Returns the file in the same format it received. Deployed on Firebase Hosting and Cloud Functions.",
-        gist: [
-            "Redacts names, IDs, phone numbers, addresses and other PII from medical images and PDFs",
-            "Google Vision OCR owns the pixel geometry, Gemini only decides which words are PII",
-            "Pixel-accurate every run, because LLM bounding boxes are never used",
-            "Returns the same format it received, on Firebase Hosting and Cloud Functions",
+        intro:
+            "Upload a medical document and Masker blacks out every piece of personal information on every page, then gives the file back.",
+        facts: [
+            ["Problem", "Medical reports must be shared without names, IDs or contact details, and hand redaction is slow and easy to get wrong."],
+            ["What it does", "Finds personal and health information in images and PDFs and covers it with solid black boxes."],
+            ["How it works", "OCR gives the exact position of every word. Gemini reads only the text and decides which words are personal data. Those boxes get blacked out."],
+            ["Why this design", "AI vision models read well but their boxes drift between runs. Letting OCR own the positions makes the redaction land on the exact pixels every time."],
+            ["Tech", "Google Vision OCR, Gemini 2.5 Flash-Lite, Firebase Hosting, Cloud Functions"],
+        ],
+        highlights: [
+            "Handles JPG, PNG and multi-page PDFs",
+            "Detects names, addresses, phone numbers, emails, dates of birth, patient IDs, Aadhaar / SSN, insurance numbers and signatures",
+            "Returns the same format it received: PDF in, PDF out",
+            "Shows the original and the redacted version side by side",
         ],
         diagram: maskerDiagram,
+        tags: ["PII redaction", "PHI", "data privacy", "healthcare AI", "document AI", "OCR", "Google Vision API", "Gemini", "Firebase"],
         links: {
             site: "https://masker-ganit.web.app",
             github: "https://github.com/navyansh1/PII-Masker-Ganit",
         },
     },
     {
-        slug: "btl-spend-optimization",
-        kind: "marketing mix modelling pipeline",
-        img: btlImg,
-        title: "BTL Spend Optimization",
+        slug: "discount-spend-optimization",
+        featured: true,
+        isPrivate: true,
+        kind: "machine learning pipeline",
+        img: discountImg,
+        title: "Discount Spend Optimization",
         type: "SoftwareApplication",
-        stack: ["Python", "pandas", "DTW clustering", "SHAP", "Streamlit"],
+        stack: ["Python", "pandas", "XGBoost", "SHAP", "Streamlit"],
         metaDescription:
-            "An ML pipeline for an FMCG company that measures how below-the-line trade spend drives sales and simulates the P&L impact of changing it, per state, pack and channel.",
-        description:
-            "A modelling pipeline for an FMCG company that measures how below-the-line (BTL) trade spend drives sales, and what happens to sales and P&L if it changes. Separate per-product notebooks were rebuilt as one config-driven, local-pandas pipeline: a data merge that adds weather and festival features, dynamic time warping clustering of State × Pack × Channel segments, per-cluster ML models explained with SHAP, and BTL elasticity and saturation curves. The results feed two Streamlit dashboards, including a simulator where you type a BTL % per segment and see sales and P&L recompute live, deployed on Hugging Face Spaces with the data kept in a private repo.",
-        gist: [
-            "Measures where below-the-line trade spend actually lifts sales, per state, pack and channel",
-            "Rebuilt per-product notebooks into one config-driven pandas pipeline that runs for any product",
-            "DTW clustering + per-cluster ML models with SHAP, then elasticity and saturation curves",
-            "Streamlit simulator: change BTL % per segment and see sales and P&L recompute live",
+            "An ML pipeline for an FMCG company that shows where trade discounts lift sales and simulates the sales and P&L impact of changing them, by state, pack and channel.",
+        intro:
+            "A modelling pipeline for an FMCG company that shows where trade discounts actually lift sales, and what happens to sales and profit if they change.",
+        facts: [
+            ["Problem", "Discount budgets are spread across states, packs and channels, and it is hard to see which ones pay back."],
+            ["What I built", "One config-driven pipeline, two dashboards, and a simulator to test discount changes before spending."],
+            ["How it works", "Merge sales, discounts, retail audit, weather and festival data. Group similar segments, model each group, then draw elasticity and saturation curves."],
+            ["Result", "Separate hand-edited notebooks per product became one pipeline that runs for any product by editing a config. Mature products reached 11-22% wMAPE."],
+            ["Tech", "Python, pandas, DTW clustering, XGBoost, SHAP, Streamlit, Docker, Hugging Face Spaces"],
         ],
-        diagram: btlDiagram,
+        highlights: [
+            "Clusters State × Pack × Channel segments by the shape of their sales over time (dynamic time warping)",
+            "Explains every cluster model with SHAP and feature importance",
+            "Saturation curves show where extra discount stops paying",
+            "Simulator: type a discount % per segment and watch sales and P&L recompute live",
+        ],
+        details: [
+            "Replaced Spark and cloud-storage code with pure pandas that runs locally",
+            "Added weather features (temperature, humidity, rain) and one flag per festival, and dropped an old seasonality index",
+            "Each segment is filled to continuous months so gaps do not distort the models",
+            "Model quality is tracked per cluster with r², MAPE and wMAPE",
+            "Dashboards run in Docker on Hugging Face Spaces; the data stays in a private repository",
+        ],
+        diagram: discountDiagram,
+        tags: ["discount optimization", "trade promotion", "price elasticity", "marketing mix modelling", "time series clustering", "DTW", "XGBoost", "SHAP", "Streamlit", "FMCG analytics"],
         links: {},
     },
     {
         slug: "vedicflow",
-        kind: "mobile app (iOS and Android)",
+        featured: true,
+        isPrivate: true,
+        kind: "mobile app on the App Store and Google Play",
         img: vedicflowImg,
         title: "VedicFlow - Hindu Calendar & Panchang",
         type: "MobileApplication",
         platforms: ["iOS", "Android"],
-        stack: [],
+        stack: ["React Native", "Expo", "TypeScript", "Firebase"],
         metaDescription:
-            "VedicFlow is an offline Hindu calendar and Panchang app for iOS and Android with Tithi, Choghadiya, Rahu Kaal, muhurat and Kundli matching, computed on-device.",
-        description:
-            "A Hindu calendar and Panchang app that computes Vedic timekeeping on-device from your GPS location — no syndicated content. Features daily Tithi, Nakshatra, Yoga, Karana and Vaara, hour-by-hour Choghadiya derived from local sunrise and sunset, Rahu Kaal alerts, muhurat guidance, Kundli matching, and a 108-bead Naam Jaap mala with haptics. Works offline and ships on both iOS and Android.",
+            "VedicFlow is a Hindu calendar and Panchang app for iOS and Android with Tithi, Choghadiya, Rahu Kaal, muhurat and Kundli matching, computed on-device.",
+        intro:
+            "A Hindu calendar and Panchang app that works out daily timings on your phone from your location, live on the App Store and Google Play.",
+        facts: [
+            ["What it does", "Daily Panchang, Choghadiya, Rahu Kaal alerts, festivals, muhurat, Kundli matching, horoscope and a 108-bead mala."],
+            ["How it works", "Timings are calculated on-device from GPS and local sunrise, sunset and moonrise, so it works offline."],
+            ["AI features", "Ask the Stars and palm reading, powered by Gemini through Firebase (no API key inside the app)."],
+            ["Languages", "English, Hindi, Gujarati, Kannada, Tamil and Telugu"],
+            ["Tech", "Expo SDK 54, React Native, TypeScript, Firebase, astronomy-engine, TanStack Query, EAS updates"],
+        ],
+        highlights: [
+            "Daily Tithi, Nakshatra, Yoga, Karana and Vaara from your own location",
+            "Nine notification types you can switch on or off",
+            "Shareable image cards for Panchang, Choghadiya and horoscopes",
+            "Fixes ship over the air without an app store release",
+        ],
+        details: [
+            "Sankatahara Chaturthi is worked out at moonrise, not sunrise; every 2026 date was checked against Drik Panchang",
+            "Follows classical rules, for example no Abhijit Muhurta alert on Wednesdays",
+            "Palm reading uses the camera with flash and zoom controls",
+        ],
+        tags: ["Hindu calendar", "Panchang app", "Choghadiya", "Rahu Kaal", "muhurat", "astrology app", "React Native", "Expo", "Firebase", "Gemini"],
         links: {
             site: "https://www.vedicflow.co.in/",
             ios: "https://apps.apple.com/in/app/vedic-flow-hindu-calendar-2026/id6760628104",
@@ -133,19 +325,188 @@ export const projects = [
     },
     {
         slug: "bill-sonic",
-        kind: "mobile point-of-sale app",
+        featured: true,
+        isPrivate: true,
+        kind: "point-of-sale app",
         img: billsonicImg,
         title: "Bill Sonic - Mobile POS App",
         type: "MobileApplication",
-        stack: ["React Native", "Firebase"],
+        platforms: ["iOS", "Android", "Web"],
+        stack: ["React Native", "Expo", "Firebase"],
         metaDescription:
             "Bill Sonic is a React Native and Firebase point-of-sale app with barcode scanning, GST-compliant PDF billing, inventory tracking, analytics and cloud sync.",
-        description:
-            "A smart, full-featured Point of Sale (POS) mobile app for modern retailers. Features barcode scanning, GST-compliant PDF billing, bulk product import from Excel/CSV, real-time inventory tracking, sales analytics, Admin/Cashier role management with PIN auth, and cloud sync. Built with React Native & Firebase.",
+        intro:
+            "A point-of-sale app for small shops: scan, bill and track stock from a phone, on Android, iOS and the web from one codebase.",
+        facts: [
+            ["Problem", "Small retailers need fast billing and stock tracking without a costly billing machine."],
+            ["What it does", "Barcode scanning, GST-ready PDF bills, bulk product import from Excel or CSV, stock tracking and sales analytics."],
+            ["Who uses it", "Shop owners (admin) and cashiers, each with their own access and a PIN"],
+            ["Languages", "English, Hindi, Spanish and Portuguese"],
+            ["Tech", "React Native, Expo SDK 54, Expo Router, Firebase Auth and Firestore, EAS builds"],
+        ],
+        highlights: [
+            "Sign in with email, Google or Apple, plus a PIN lock for staff",
+            "Real-time cloud sync across devices",
+            "Import hundreds of products at once from a spreadsheet",
+            "Works in the browser as well as on phones",
+        ],
+        tags: ["POS app", "billing software", "GST invoice", "inventory management", "barcode scanner", "retail app", "React Native", "Expo", "Firebase"],
         links: {
             site: "https://billsonic.vercel.app/",
         },
     },
+    {
+        slug: "refero",
+        featured: true,
+        isPrivate: true,
+        kind: "mobile app",
+        img: referoImg,
+        title: "Refero - Job Referral Marketplace",
+        type: "MobileApplication",
+        platforms: ["iOS", "Android", "Web"],
+        stack: ["Expo", "TypeScript", "Firebase", "Gemini"],
+        metaDescription:
+            "Refero connects people who can give job referrals with candidates. Gemini parses resumes and scores each applicant, with real-time chat and push alerts.",
+        intro:
+            "A referral marketplace that connects people who can give job referrals with candidates who need one, with AI resume matching.",
+        facts: [
+            ["Problem", "Referrals get jobs, but finding someone willing to refer you, and sorting many requests, is hard."],
+            ["What it does", "Givers post referrals, takers apply with a resume, and Gemini scores how well each applicant fits."],
+            ["How it works", "Gemini parses the resume (PDF, image or Word), scores the match with a short reason, and sorts new referrals into categories to notify the right people."],
+            ["Tech", "Expo SDK 54, React Native, Expo Router, TypeScript, Firebase (Auth, Firestore, Storage, Cloud Functions), Gemini on Vertex AI, Skia"],
+        ],
+        highlights: [
+            "AI match score and summary, visible only to the person giving the referral",
+            "Real-time chat with read receipts, opened automatically on approval",
+            "Push notifications on iOS and Android",
+            "Givers stay anonymous with usernames and generated avatars",
+        ],
+        details: [
+            "Firestore security rules check ownership on every query, for example only a referral's giver can list its applicants",
+            "Liquid, animated colour bands drawn with Skia, and native tab bars on iOS",
+            "Resumes open in the system browser sheet, which works in every build",
+        ],
+        tags: ["job referral app", "recruitment", "resume parsing", "AI matching", "Gemini", "React Native", "Expo", "Firebase", "TypeScript"],
+        links: {},
+    },
+    {
+        slug: "ed-tech-app",
+        featured: true,
+        isPrivate: true,
+        kind: "white-label mobile and web app",
+        img: edtechImg,
+        title: "Ed-Tech App - Live Tutoring Platform",
+        type: "MobileApplication",
+        platforms: ["iOS", "Android", "Web"],
+        stack: ["Expo", "LiveKit", "Firebase"],
+        metaDescription:
+            "A white-label tutoring app for Indian coaching institutes: live video classes, recordings, chat, assignments, fees and attendance on iOS, Android and web.",
+        intro:
+            "A white-label tutoring platform for coaching institutes and tuition teachers, built once and rebranded for each client.",
+        facts: [
+            ["Problem", "Tutors juggle Zoom or Meet, WhatsApp, spreadsheets and payment apps, and video costs rise with every teacher."],
+            ["What it does", "Live classes, recordings, chat, notes, assignments, tests, attendance and fee collection in one branded app."],
+            ["Key decision", "Self-hosted LiveKit for video: a flat server cost instead of per-minute billing (about ₹5,000 a month for one busy teacher)."],
+            ["Tech", "Expo SDK 54, React Native, Firebase (Auth, Firestore, Storage, FCM, Cloud Functions), LiveKit, Reanimated"],
+        ],
+        highlights: [
+            "Students: book classes or a free demo, join live, chat, submit work and track progress",
+            "Teachers: create courses and pricing, run and record classes, mark work, see earnings",
+            "Screen sharing, in-class chat and batch group chats",
+            "Recorded classes saved to object storage for playback",
+        ],
+        details: [
+            "Razorpay and UPI payment code is written but not switched on yet",
+            "One codebase for iOS, Android and the web",
+        ],
+        tags: ["ed-tech app", "online tutoring", "live classes", "LiveKit", "WebRTC", "coaching institute app", "React Native", "Expo", "Firebase"],
+        links: {},
+    },
+    {
+        slug: "prompt-hub",
+        featured: true,
+        isPrivate: true,
+        kind: "web app for teams",
+        img: promptHubImg,
+        title: "Prompt Hub - Version Control for AI Prompts",
+        type: "WebApplication",
+        stack: ["JavaScript", "Firebase", "Firestore"],
+        metaDescription:
+            "Prompt Hub is a web app for teams to write, version, compare and share LLM prompts, with diffs, a shared prompt library and Word export.",
+        intro:
+            "A web app where a team can write, version, compare and share the prompts they use with AI models.",
+        facts: [
+            ["Problem", "Prompts live in chat threads and docs, so nobody knows which version is current or what changed."],
+            ["What it does", "Projects hold prompt groups, groups hold versions, and every change is saved as a new version with a comment."],
+            ["Tech", "Vanilla JavaScript, Firebase Hosting, Cloud Firestore, jsdiff, docx export"],
+        ],
+        highlights: [
+            "Major and minor versions with required change notes",
+            "Side-by-side diff with synced scrolling",
+            "Share projects by link, with live presence and an access log",
+            "Organisation-wide prompt library with search and model badges",
+        ],
+        tags: ["prompt management", "prompt engineering", "LLM ops", "version control", "Firebase", "JavaScript"],
+        links: {},
+    },
+    {
+        slug: "quick-commerce-app",
+        featured: true,
+        isPrivate: true,
+        kind: "mobile app",
+        img: quickCommerceImg,
+        title: "Quick Commerce Delivery App",
+        type: "MobileApplication",
+        platforms: ["iOS", "Android"],
+        stack: ["React Native", "Expo", "Firebase"],
+        metaDescription:
+            "A quick-commerce delivery app with five roles: customers, drivers, inventory admins, store admins and a super admin, with live order tracking and analytics.",
+        intro:
+            "A delivery business in one app, with five roles from customer to super admin, all updating in real time.",
+        facts: [
+            ["Roles", "Customer, driver, inventory admin, store admin and super admin"],
+            ["What it does", "Ordering, live tracking, deliveries, stock, barcode-checked picking, support chat and sales reports."],
+            ["Tech", "React Native, Expo, Firebase (Auth, Firestore), React Navigation, react-native-maps"],
+        ],
+        highlights: [
+            "Live order status and support chat with Firestore listeners",
+            "Barcode scanning to verify items while picking",
+            "Low-stock alerts and PDF sales reports",
+            "Driver earnings and delivery performance tracking",
+        ],
+        tags: ["quick commerce", "delivery app", "grocery delivery", "order tracking", "React Native", "Expo", "Firebase"],
+        links: {},
+    },
+    {
+        slug: "multi-owner-shopping-platform",
+        featured: true,
+        isPrivate: true,
+        kind: "e-commerce platform",
+        img: multiOwnerImg,
+        title: "Multi-Owner Shopping Platform",
+        type: "SoftwareApplication",
+        platforms: ["iOS", "Android", "Web"],
+        stack: ["Expo", "React", "Firebase", "PWA"],
+        metaDescription:
+            "An e-commerce platform where each shop owner runs their store from a mobile admin app and gets their own installable online store with GST-ready checkout.",
+        intro:
+            "An e-commerce platform where each shop owner runs their business from a phone and gets their own online store.",
+        facts: [
+            ["For shop owners", "A mobile admin app for products and variants, orders, PDF invoices, stock, GST and shipping settings, and sales charts."],
+            ["For customers", "A fast store website for each shop, installable as an app, with filters, size and colour choice, and guest checkout."],
+            ["Tech", "React Native + Expo (admin app), React + Vite PWA (store), Firebase (Firestore, Storage, Cloud Functions)"],
+        ],
+        highlights: [
+            "Every shop gets its own store link and theme colours",
+            "Stock goes down automatically when an order is placed",
+            "Order status from pending to delivered, with shareable PDF invoices",
+            "Works offline with service-worker caching",
+        ],
+        tags: ["e-commerce", "online store builder", "PWA", "shop management app", "GST invoice", "React", "React Native", "Firebase"],
+        links: {},
+    },
+
+    // ---------------------------------------------------------------- more projects
     {
         slug: "fmcg-demand-forecasting",
         kind: "data science case study",
@@ -155,8 +516,14 @@ export const projects = [
         stack: ["Python", "Time-series models", "Machine learning"],
         metaDescription:
             "FMCG demand forecasting project: seasonality and sales-pattern analysis, statistical and machine learning models, and forecasts turned into business decisions.",
-        description:
-            "A comprehensive FMCG demand forecasting project that analyzes seasonality and sales patterns, applies statistical and machine learning models, and converts accurate forecasts into actionable business decisions.",
+        intro:
+            "An FMCG demand forecasting case study that turns sales history into forecasts a business can act on.",
+        highlights: [
+            "Analyses seasonality and sales patterns",
+            "Compares statistical and machine learning models",
+            "Turns forecasts into business recommendations",
+        ],
+        tags: ["demand forecasting", "time series", "FMCG", "machine learning", "Python"],
         links: {
             site: "https://navyansh1.github.io/ML_Demand_Forecasting_FMCG/",
         },
@@ -170,8 +537,14 @@ export const projects = [
         stack: ["Python", "Machine learning"],
         metaDescription:
             "BFSI credit card fraud detection: analyses transaction patterns, handles heavily imbalanced data and builds interpretable models to flag fraudulent activity.",
-        description:
-            "A machine learning–based fraud detection system for the BFSI domain that analyzes transaction patterns, handles highly imbalanced data, and builds interpretable predictive models to identify fraudulent activities.",
+        intro:
+            "A fraud detection case study for banking that flags suspicious credit card transactions.",
+        highlights: [
+            "Studies transaction patterns",
+            "Handles heavily imbalanced data",
+            "Builds interpretable models",
+        ],
+        tags: ["fraud detection", "BFSI", "imbalanced data", "credit risk", "machine learning"],
         links: {
             site: "https://navyansh1.github.io/ML_Fraud_Detection_BFSI/",
         },
@@ -185,8 +558,9 @@ export const projects = [
         stack: [],
         metaDescription:
             "NextForms is a fully customizable alternative to Google Forms with seamless response tracking and advanced email notifications.",
-        description:
-            "A fully customizable alternative to Google Forms with seamless response tracking and advanced email notifications.",
+        intro:
+            "A customisable alternative to Google Forms with response tracking and email notifications.",
+        tags: ["form builder", "Google Forms alternative", "web app"],
         links: {
             site: "https://nextforms.in",
         },
@@ -200,8 +574,19 @@ export const projects = [
         stack: ["HTML5 Canvas", "JavaScript"],
         metaDescription:
             "Cricket-themed HTML5 playable ads built at Hitwicket for Unity Ads, AppLovin and Google Ads, with 7M+ impressions and 40K+ installs.",
-        description:
-            "Interactive cricket-themed HTML5 playable ads built at Hitwicket: PvP matches, team building, a timed Australia vs England challenge and a special-powers mode. Optimized for fast loading and mobile touch controls and compliant with Unity Ads, AppLovin and Google Ads. The campaigns delivered 7M+ impressions and 40K+ installs.",
+        intro:
+            "Mini cricket games that run inside mobile ads, built at Hitwicket.",
+        facts: [
+            ["Result", "7M+ impressions and 40K+ installs"],
+            ["Ad networks", "Unity Ads, AppLovin, Google Ads"],
+            ["Tech", "HTML5 Canvas, JavaScript"],
+        ],
+        highlights: [
+            "PvP match, team building, a timed Australia vs England challenge and a special-powers mode",
+            "Small, compressed builds for fast ad loading",
+            "Touch controls tuned for phones",
+        ],
+        tags: ["playable ads", "HTML5 games", "mobile advertising", "user acquisition", "Unity Ads", "AppLovin"],
         links: {
             site: "https://navyansh1.github.io/playable-portfolio/",
             github: "https://github.com/navyansh1/playable-portfolio",
@@ -216,26 +601,54 @@ export const projects = [
         stack: ["JavaScript", "GitHub Gists"],
         metaDescription:
             "GuardNote is a privacy-first digital notebook that runs in the browser, with drawing tools, PDF export and optional sync through your own private GitHub Gists.",
-        description:
-            "A secure digital notebook that runs entirely in the browser. Notes are saved locally by default, and optional cloud sync uses your own private GitHub Gists, so data never touches a third-party server. Includes pen and eraser tools, unlimited notebooks and pages, plain, ruled or grid paper, and PDF export, with no tracking.",
+        intro:
+            "A handwriting notebook that runs in the browser and syncs through your own private GitHub Gists.",
+        highlights: [
+            "Saved on your device by default; cloud sync is optional",
+            "Pen, eraser, and plain, ruled or grid pages",
+            "Export a whole notebook as a PDF",
+            "No tracking or analytics",
+        ],
+        tags: ["note taking app", "privacy", "local-first", "GitHub Gists", "JavaScript"],
         links: {
             site: "https://guardnote.vercel.app",
             github: "https://github.com/navyansh1/writing-pad",
         },
     },
     {
-        slug: "ml-classification-web-app",
-        kind: "browser-based machine learning tool",
-        img: mlClassifierImg,
-        title: "ML Classification Web App",
+        slug: "shop-inventory-web-app",
+        isPrivate: true,
+        kind: "inventory web app",
+        img: shopInventoryImg,
+        title: "Shop Inventory Web App",
         type: "WebApplication",
-        stack: ["JavaScript", "ml.js", "Papa Parse"],
+        stack: ["JavaScript", "Firestore"],
         metaDescription:
-            "A browser-based ML tool: upload a CSV, clean missing values, and compare Logistic Regression, KNN, Decision Tree, Random Forest and Naive Bayes accuracy.",
-        description:
-            "Upload a CSV and train classifiers entirely in the browser. The app cleans missing values (interpolation for numbers, mode for categories), lets you pick features and a target, and compares Logistic Regression, K-Nearest Neighbors, Decision Tree, Random Forest and Naive Bayes on a chart. No server required.",
+            "A simple stock-in and stock-out web app for an electrical shop, with search, quantity controls and a live product list on Firestore.",
+        intro:
+            "A simple stock-in and stock-out app for an electrical shop.",
+        highlights: [
+            "Add stock or reduce it with quick plus and minus buttons",
+            "Search products by name and brand as you type",
+            "Live stock list stored in Firestore",
+        ],
+        tags: ["inventory management", "stock tracking", "small business", "Firestore", "JavaScript"],
+        links: {},
+    },
+    {
+        slug: "mcq-quiz-generator-ai",
+        kind: "AI-powered web app",
+        img: mcqQuizImg,
+        title: "MCQ Quiz Generator using AI",
+        type: "WebApplication",
+        stack: ["Python", "Flask", "Google Generative AI"],
+        metaDescription:
+            "An AI quiz generator that reads PDFs, Word files and text files and turns them into multiple-choice quizzes you can download as text or PDF.",
+        intro:
+            "Upload a PDF, Word or text file and get multiple-choice questions generated by AI.",
+        tags: ["AI quiz generator", "MCQ generator", "Flask", "Gemini", "education"],
         links: {
-            github: "https://github.com/navyansh1/Classification-Web-ML",
+            site: "https://mcqgen.vercel.app/",
         },
     },
     {
@@ -248,8 +661,8 @@ export const projects = [
         stack: ["SwiftUI", "UIKit"],
         metaDescription:
             "A TicTacToe iOS game app built with SwiftUI and UIKit, with source code on GitHub.",
-        description:
-            "An iOS game app using SwiftUI and UIKit for a fun, interactive experience.",
+        intro: "A TicTacToe game for iPhone built with SwiftUI and UIKit.",
+        tags: ["iOS", "SwiftUI", "game"],
         links: {
             github: "https://github.com/navyansh1/TickTacToe",
         },
@@ -263,25 +676,10 @@ export const projects = [
         stack: ["Solidity", "React"],
         metaDescription:
             "A decentralized lottery system built with Solidity smart contracts and a React front end, leveraging blockchain technology.",
-        description:
-            "A decentralized lottery system built with Solidity and React, leveraging blockchain technology.",
+        intro: "A lottery that runs on a Solidity smart contract, with a React front end.",
+        tags: ["blockchain", "Solidity", "smart contract", "dApp", "React"],
         links: {
             site: "https://drive.google.com/file/d/1mwgChln8-jExcFmfVdADh5mv4pUMKU9W/view",
-        },
-    },
-    {
-        slug: "mcq-quiz-generator-ai",
-        kind: "AI-powered web app",
-        img: mcqQuizImg,
-        title: "MCQ Quiz Generator using AI",
-        type: "WebApplication",
-        stack: ["Gemini Pro 1.5"],
-        metaDescription:
-            "An AI quiz generator that uses Gemini Pro 1.5 to read PDFs and text files and turn them into multiple-choice quizzes.",
-        description:
-            "An intelligent quiz generator that uses Gemini Pro 1.5 to access PDFs, text files, etc., and create MCQ quizzes.",
-        links: {
-            site: "https://mcqgen.vercel.app/",
         },
     },
     {
@@ -293,8 +691,8 @@ export const projects = [
         stack: ["Figma"],
         metaDescription:
             "InstaSnap: a refined Instagram UI/UX concept designed in Figma for a sleek, user-friendly social media experience.",
-        description:
-            "A refined Instagram UI concept designed in Figma for a sleek and user-friendly experience.",
+        intro: "A cleaner Instagram-style social app concept designed in Figma.",
+        tags: ["UI design", "UX design", "Figma", "social media app"],
         links: {
             site: "https://www.figma.com/design/4GnyQrrTZ7yhLqAFTm9Mmi/Social-Media-App-UI-UX-Project",
         },
@@ -309,8 +707,8 @@ export const projects = [
         stack: ["SwiftUI", "UIKit", "Figma"],
         metaDescription:
             "A playing cards iOS app built with SwiftUI, UIKit and Figma that brings card games to your fingertips. Source on GitHub.",
-        description:
-            "An iOS app using SwiftUI, UIKit, and Figma that brings card games to your fingertips.",
+        intro: "A card game app for iPhone, designed in Figma and built with SwiftUI.",
+        tags: ["iOS", "SwiftUI", "card game"],
         links: {
             github: "https://github.com/navyansh1/cards-Game",
         },
@@ -321,15 +719,18 @@ export const projects = [
         img: portfolioimg,
         title: "Portfolio Website",
         type: "SoftwareSourceCode",
-        stack: ["React", "Tailwind CSS", "Framer Motion"],
+        stack: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
         metaDescription:
             "The source of this portfolio website, built with React, Tailwind CSS and Framer Motion and pre-rendered for search engines.",
-        description:
-            "A portfolio built using React, Tailwind CSS, and Framer Motion to showcase my projects and skills.",
+        intro: "This website: React and Tailwind CSS, pre-rendered to static pages so search engines can read every page.",
+        tags: ["React", "Vite", "Tailwind CSS", "SEO", "static site generation"],
         links: {
             github: "https://github.com/navyansh1/NavyGeeks-Website",
         },
     },
 ];
+
+export const featuredProjects = projects.filter((p) => p.featured);
+export const moreProjects = projects.filter((p) => !p.featured);
 
 export const getProject = (slug) => projects.find((p) => p.slug === slug);

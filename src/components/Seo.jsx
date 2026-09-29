@@ -10,6 +10,7 @@ const jsonLd = (data) => JSON.stringify({ '@context': 'https://schema.org', ...d
  * - `title` is used as-is (include the site name yourself where wanted).
  * - `path` is the route path, e.g. "/research/some-paper".
  * - `schema` is one JSON-LD object or an array of them (without "@context").
+ * - `keywords` is an optional array of keywords for the page.
  * - `meta` is an array of extra { name, content } tags (e.g. Google Scholar citation_* tags).
  */
 const Seo = ({
@@ -19,6 +20,7 @@ const Seo = ({
     image = DEFAULT_IMAGE,
     type = 'website',
     noindex = false,
+    keywords,
     schema,
     meta = [],
 }) => {
@@ -29,6 +31,7 @@ const Seo = ({
         <Head>
             <title>{title}</title>
             <meta name="description" content={description} />
+            {keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
             <link rel="canonical" href={url} />
             {noindex && <meta name="robots" content="noindex, follow" />}
 
