@@ -88,7 +88,7 @@ export function ProjectsIndexPage() {
         <div className="pt-20 md:pt-24 max-w-[1100px] mx-auto px-4 md:px-6 pb-8">
             <Seo title={`${SITE_NAME} – Projects | AI, ML & App Portfolio`} description={description} path="/projects" schema={schema} />
             <Breadcrumbs items={crumbs} />
-            <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-8">{SITE_NAME}&apos;s Projects</h1>
+            <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-8">Projects</h1>
 
             <ProjectGrid projects={featuredProjects} onOpen={setOpen} headingLevel="h2" />
 

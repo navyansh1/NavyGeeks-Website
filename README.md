@@ -80,7 +80,7 @@ All content lives in `src/data/`. Adding an entry there creates its page, sitema
 
 - Every route is pre-rendered at build time (`dist/<route>/index.html`), plus `sitemap.xml` and `404.html`.
 - `src/components/Seo.jsx` sets the title, description, keywords, canonical URL, Open Graph and Twitter tags, and JSON-LD for each page.
-- Titles lead with "Navyansh Kothari". Schemas: Person, WebSite, ProfilePage, CollectionPage/ItemList, BreadcrumbList, ScholarlyArticle for papers, and SoftwareApplication, WebApplication, MobileApplication or CreativeWork for projects.
+- Browser-tab and Google titles lead with "Navyansh Kothari"; headings on the page stay short ("Experience", "Projects"). Schemas: Person, WebSite, ProfilePage, CollectionPage/ItemList, BreadcrumbList, ScholarlyArticle for papers, and SoftwareApplication, WebApplication, MobileApplication or CreativeWork for projects.
 - Paper pages also carry Google Scholar `citation_*` meta tags.
 - Canonical domain is **www**; the bare domain redirects to it. Submit `https://www.navygeeks.in/sitemap.xml` in Google Search Console.
 

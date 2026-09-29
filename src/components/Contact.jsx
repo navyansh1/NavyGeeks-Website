@@ -12,7 +12,7 @@ const Contact = ({ pageHeading = false }) => {
           <div className="w-full">
             <div className="text-gray-300 my-2 md:my-3">
               <Heading className="text-2xl md:text-4xl text-yellow-400 font-bold mb-3 md:mb-5 flex items-center gap-2">
-                <UserCircle size={26} className="md:w-9 md:h-9 flex-shrink-0" /> {pageHeading ? "About Navyansh Kothari" : "About Me"}
+                <UserCircle size={26} className="md:w-9 md:h-9 flex-shrink-0" /> About Me
               </Heading>
               <p className="text-justify text-sm md:text-base leading-6 md:leading-7 w-full md:w-11/12 md:mx-auto px-2 md:px-0">
                 I am an AI/ML Engineer who builds Gen AI products, machine learning models, backends and mobile apps, and an AWS-certified cloud developer. Through my YouTube channel, NavyGeeks, I create content to explain tech concepts and share practical tutorials that help viewers engage with tech better. I approach tasks with a balance of technical skill, creativity and a learner's mindset.

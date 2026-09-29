@@ -31,7 +31,7 @@ const Certifications = ({ pageHeading = false }) => {
 
   return (
     <div className='max-w-[1000px] mx-auto p-6 md:my-20 relative' id="certifications">
-      <Heading className='text-2xl md:text-5xl font-bold text-yellow-500 mb-8 flex items-center justify-center text-center gap-2 flex-wrap'><Award size={22} className='md:w-10 md:h-10 flex-shrink-0' /> {pageHeading && "Navyansh Kothari's "}Certifications & Licenses</Heading>
+      <Heading className='text-2xl md:text-5xl font-bold text-yellow-500 mb-8 flex items-center justify-center text-center gap-2 flex-wrap'><Award size={22} className='md:w-10 md:h-10 flex-shrink-0' /> Certifications & Licenses</Heading>
 
       <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6'>
         {projects.map((project) => (
