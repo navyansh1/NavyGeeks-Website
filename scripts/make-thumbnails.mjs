@@ -1,7 +1,7 @@
 // One thumbnail style for every project, with no text added: the architecture diagram
 // (title cropped off) where the project has one, otherwise the screenshot in a
 // browser or phone frame on the site's dark background.
-// Sources live in scripts/thumb-sources/<slug>.jpg. Entries marked `custom` are skipped. Run: node scripts/make-thumbnails.mjs
+// Sources live in scripts/thumb-sources/<slug>.jpg. `frame: 'none'` uses the screenshot as it is, just cropped to 16:9. Run: node scripts/make-thumbnails.mjs
 import fs from 'node:fs'
 import sharp from 'sharp'
 import { projects } from './thumb-data.mjs'
@@ -17,6 +17,10 @@ async function diagramImage(p) {
 
 async function frameImage(p) {
   if (p.diagram) return diagramImage(p)
+  if (p.frame === 'none') {
+    const img = await sharp(`scripts/thumb-sources/${p.slug}.jpg`).resize(W, H, { fit: 'cover', position: 'top' }).png().toBuffer()
+    return { svg: '', img, left: 0, top: 0 }
+  }
   const src = `scripts/thumb-sources/${p.slug}.jpg`
   if (p.frame === 'phone') {
     const sw = 300, sh = 624
@@ -34,7 +38,6 @@ async function frameImage(p) {
 
 fs.mkdirSync('src/assets/projects/thumbs', { recursive: true })
 for (const p of projects) {
-  if (p.custom) continue // drawn by its own script, e.g. make-geoscout-thumb.mjs
   const f = await frameImage(p)
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
     <defs><radialGradient id="r" cx=".85" cy=".1" r=".8"><stop offset="0" stop-color="${C.accent}" stop-opacity=".10"/><stop offset="1" stop-color="${C.accent}" stop-opacity="0"/></radialGradient></defs>

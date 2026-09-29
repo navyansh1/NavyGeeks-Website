@@ -11,7 +11,7 @@ export const projects = [
       "Firebase"
     ],
     "isPrivate": false,
-    "custom": true
+    "frame": "none"
   },
   {
     "slug": "cctv-iq-face-attendance",
@@ -75,7 +75,8 @@ export const projects = [
       "TypeScript",
       "Firebase"
     ],
-    "isPrivate": true
+    "isPrivate": true,
+    "frame": "none"
   },
   {
     "slug": "bill-sonic",
@@ -86,7 +87,8 @@ export const projects = [
       "Expo",
       "Firebase"
     ],
-    "isPrivate": true
+    "isPrivate": true,
+    "frame": "none"
   },
   {
     "slug": "fmcg-demand-forecasting",
