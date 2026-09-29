@@ -144,7 +144,15 @@ export function PaperPage() {
 
             <div className="flex flex-col gap-1.5 text-sm md:text-base text-gray-300">
                 <p className="flex items-center gap-2 text-sm md:text-base">
-                    <User size={16} className="text-yellow-500/70 flex-shrink-0" /> {paper.authors.join(', ')}
+                    <User size={16} className="text-yellow-500/70 flex-shrink-0" />
+                    {paper.authors.map((name, i) => (
+                        <React.Fragment key={name}>
+                            {i > 0 && ', '}
+                            {name === SITE_NAME ? (
+                                <Link to="/" rel="author" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">{name}</Link>
+                            ) : name}
+                        </React.Fragment>
+                    ))}
                 </p>
                 <p className="flex items-center gap-2 text-sm md:text-base">
                     <CalendarDays size={16} className="text-yellow-500/70 flex-shrink-0" />
