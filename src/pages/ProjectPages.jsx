@@ -171,11 +171,14 @@ export function ProjectPage() {
 
             <h1 className="text-2xl md:text-4xl font-bold text-yellow-500 leading-tight">{project.title}</h1>
 
-            <img
-                src={project.img}
-                alt={`${shortName(project.title)} preview`}
-                className="mt-5 w-full aspect-video object-cover rounded-xl border border-gray-700"
-            />
+            {/* Diagram projects use the diagram as their thumbnail; it is shown under Architecture instead. */}
+            {!project.diagram && (
+                <img
+                    src={project.img}
+                    alt={`${shortName(project.title)} preview`}
+                    className="mt-5 w-full aspect-video object-cover rounded-xl border border-gray-700"
+                />
+            )}
 
             <h2 className={h2Class}>At a glance</h2>
             <FactsTable rows={facts} />

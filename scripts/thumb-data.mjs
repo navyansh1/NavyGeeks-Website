@@ -10,7 +10,8 @@ export const projects = [
       "Gemini",
       "Firebase"
     ],
-    "isPrivate": false
+    "isPrivate": false,
+    "diagram": "geoscout-iq"
   },
   {
     "slug": "cctv-iq-face-attendance",
@@ -22,7 +23,8 @@ export const projects = [
       "OpenVINO",
       "ONNX Runtime"
     ],
-    "isPrivate": true
+    "isPrivate": true,
+    "diagram": "cctv-iq"
   },
   {
     "slug": "ocr-engine-benchmark",
@@ -34,7 +36,8 @@ export const projects = [
       "Qwen3-VL",
       "AWS Lambda"
     ],
-    "isPrivate": true
+    "isPrivate": true,
+    "diagram": "ocr-benchmark"
   },
   {
     "slug": "masker-pii-redaction",
@@ -45,7 +48,8 @@ export const projects = [
       "Gemini 2.5 Flash-Lite",
       "Firebase"
     ],
-    "isPrivate": false
+    "isPrivate": false,
+    "diagram": "masker-pii-redaction"
   },
   {
     "slug": "discount-spend-optimization",
@@ -58,7 +62,8 @@ export const projects = [
       "SHAP",
       "Streamlit"
     ],
-    "isPrivate": true
+    "isPrivate": true,
+    "diagram": "discount-optimization"
   },
   {
     "slug": "vedicflow",
