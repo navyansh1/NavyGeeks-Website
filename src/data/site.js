@@ -1,5 +1,5 @@
 // Central site configuration used by the SEO components, sitemap and structured data.
-export const SITE_URL = 'https://navygeeks.in';
+export const SITE_URL = 'https://www.navygeeks.in';
 export const SITE_NAME = 'Navyansh Kothari';
 export const SITE_TAGLINE = 'AI/ML Engineer & App Developer';
 export const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`;

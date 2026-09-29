@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
-const SITE_URL = 'https://navygeeks.in'
+const SITE_URL = 'https://www.navygeeks.in'
 // Keep in sync with TRAILING_SLASH in src/data/site.js
 const TRAILING_SLASH = true
 

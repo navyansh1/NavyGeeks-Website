@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://navygeeks.in/sitemap.xml
+Sitemap: https://www.navygeeks.in/sitemap.xml
