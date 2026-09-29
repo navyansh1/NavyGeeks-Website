@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Reveal from './Reveal';
 import TestimonialsModal from './TestimonialsModal';
 
@@ -18,10 +19,16 @@ const experiences = [
         company: 'Ganit Inc',
         period: 'Sep 2025 - Present',
         description: [
-            'Data Scientist | Gen AI Engineer',
-            'Worked on FMCG and BFSI domain datasets, performing data cleaning, feature engineering, and exploratory data analysis (EDA) using Pandas and NumPy, and built machine learning models on financial data leveraging PostgreSQL for analytics',
-            'Developed production-grade GenAI applications using FastAPI, LangChain, LangGraph, and AWS, supporting scalable data ingestion and retrieval pipelines'
+            'Data Scientist & Gen AI Engineer: AI products and ML models for BFSI and FMCG clients',
+            'GeoScout IQ: location intelligence that scores ~0.7 sq km map tiles and tells banks and retailers where to open next, with Gemini agents writing the verdict',
+            'CCTV IQ: face-recognition attendance on existing office cameras; cut processing from 9.86 s to 0.31 s per frame by moving the models to the Intel iGPU (OpenVINO)',
+            'OCR research on loan documents: Tesseract on AWS Lambda matched AWS Textract (103 vs 104 of 108 values) at about 3% of the cost, and was the only engine to read Indian scripts',
+            'Masker: redacts personal and health data from medical PDFs and images with Google Vision OCR + Gemini',
+            'Discount optimization for an FMCG client: one config-driven pipeline with DTW clustering, XGBoost + SHAP and a sales and P&L simulator in Streamlit',
+            'GenAI back ends and RAG pipelines with FastAPI, LangChain and LangGraph on AWS',
+            'Data cleaning, EDA, feature engineering and ML models on FMCG and BFSI data (pandas, NumPy, PostgreSQL)',
         ],
+        projectsLink: '/projects/',
         icon: ganitimg,
         link: 'https://www.ganitinc.com',
     },
@@ -72,6 +79,17 @@ const experiences = [
     },
 
 ];
+
+// "Project name: detail" bullets get the name in bold so the list is easy to scan.
+const BulletText = ({ text }) => {
+    const i = text.indexOf(': ');
+    if (i < 1 || i > 40) return text;
+    return (
+        <>
+            <strong className='font-semibold text-gray-200'>{text.slice(0, i)}</strong>{text.slice(i)}
+        </>
+    );
+};
 
 const Experience = ({ pageHeading = false }) => {
     const Heading = pageHeading ? 'h1' : 'h2';
@@ -129,12 +147,12 @@ const Experience = ({ pageHeading = false }) => {
                                         </p>
 
                                         {/* Expandable content */}
-                                        <div className={`transition-all duration-300 ease-in-out overflow-hidden ${expandedCard === index ? 'max-h-[500px] opacity-100 mt-2' : 'max-h-0 opacity-0'
+                                        <div className={`transition-all duration-300 ease-in-out overflow-hidden ${expandedCard === index ? 'max-h-[1200px] opacity-100 mt-2' : 'max-h-0 opacity-0'
                                             }`}>
                                             {Array.isArray(experience.description) && experience.description.length > 1 && (
                                                 <ul className='text-gray-400 text-sm leading-relaxed list-disc pl-4 space-y-1 border-t border-yellow-500/20 pt-2'>
                                                     {experience.description.slice(1).map((point, idx) => (
-                                                        <li key={idx}>{point}</li>
+                                                        <li key={idx}><BulletText text={point} /></li>
                                                     ))}
                                                 </ul>
                                             )}
@@ -151,6 +169,15 @@ const Experience = ({ pageHeading = false }) => {
                                                     >
                                                         {experience.company === 'Hitwicket' ? 'View Website' : experience.company === 'Ganit Inc' ? 'View Website' : 'View Works'}
                                                     </a>
+                                                )}
+                                                {experience.projectsLink && (
+                                                    <Link
+                                                        to={experience.projectsLink}
+                                                        className='px-3 py-1.5 border border-yellow-500 text-white text-xs font-semibold rounded-lg hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
+                                                        onClick={(e) => e.stopPropagation()}
+                                                    >
+                                                        View Projects
+                                                    </Link>
                                                 )}
                                                 {experience.portfolioLink && (
                                                     <a
