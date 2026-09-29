@@ -52,15 +52,17 @@ const Research = () => {
                   <span className='text-yellow-400 text-sm font-semibold inline-flex items-center gap-1'>
                     Read full summary <ArrowRight size={14} />
                   </span>
-                  <a
-                    href={paper.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className='px-4 py-1.5 bg-yellow-600 text-white text-sm rounded-lg font-semibold text-center hover:bg-yellow-700 transition duration-300 flex items-center gap-2'
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    View on IEEE <ExternalLink size={14} />
-                  </a>
+                  {paper.link && (
+                    <a
+                      href={paper.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className='px-4 py-1.5 bg-yellow-600 text-white text-sm rounded-lg font-semibold text-center hover:bg-yellow-700 transition duration-300 flex items-center gap-2'
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      View on IEEE <ExternalLink size={14} />
+                    </a>
+                  )}
                 </div>
               </div>
             </Reveal>

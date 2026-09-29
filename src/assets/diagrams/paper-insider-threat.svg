@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9CA3AF"/></marker></defs>
+  <rect width="1280" height="720" fill="#162121"/>
+  <text x="48" y="64" font-size="30" font-weight="bold" fill="#E5E7EB">Insider Threat Mitigation</text>
+  <text x="48" y="94" font-size="16" fill="#9CA3AF">A file that opens only on the company network</text>
+  
+    <text x="48" y="140" font-size="13" fill="#9CA3AF" font-weight="normal" letter-spacing="1">BUILD THE PROTECTED FILE (FLUTTER WINDOWS APP)</text>
+    <rect x="48" y="152" width="210" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="180" font-size="17" font-weight="bold" fill="#E5E7EB">Allowed IPs</text><text x="64" y="204" font-size="15" fill="#9CA3AF">typed into the app</text>
+    <line x1="258" y1="207" x2="290" y2="207" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="292" y="152" width="210" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="308" y="180" font-size="17" font-weight="bold" fill="#E5E7EB">Pick the file</text><text x="308" y="204" font-size="15" fill="#9CA3AF">name and path</text>
+    <line x1="502" y1="207" x2="534" y2="207" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="536" y="152" width="210" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="552" y="180" font-size="17" font-weight="bold" fill="#E5E7EB">Checker script</text><text x="552" y="204" font-size="15" fill="#9CA3AF">IPs and path written</text><text x="552" y="224" font-size="15" fill="#9CA3AF">into Python code</text>
+    <line x1="746" y1="207" x2="778" y2="207" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="780" y="152" width="210" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="796" y="180" font-size="17" font-weight="bold" fill="#E5E7EB">Standalone .exe</text><text x="796" y="204" font-size="15" fill="#9CA3AF">PyInstaller, no</text><text x="796" y="224" font-size="15" fill="#9CA3AF">installs needed</text>
+    <line x1="990" y1="207" x2="1020" y2="207" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="1022" y="152" width="210" height="110" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="1038" y="180" font-size="17" font-weight="bold" fill="#EAB308">Hide in file</text><text x="1038" y="204" font-size="15" fill="#9CA3AF">self-extracting</text><text x="1038" y="224" font-size="15" fill="#9CA3AF">archive: .exe runs</text><text x="1038" y="244" font-size="15" fill="#9CA3AF">first</text>
+    <text x="48" y="320" font-size="13" fill="#9CA3AF" font-weight="normal" letter-spacing="1">WHEN SOMEONE OPENS IT</text>
+    <rect x="48" y="332" width="300" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="360" font-size="17" font-weight="bold" fill="#E5E7EB">Checker runs first</text><text x="64" y="384" font-size="15" fill="#9CA3AF">reads this machine’s IP</text>
+    <line x1="348" y1="387" x2="396" y2="387" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="398" y="332" width="300" height="110" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="414" y="360" font-size="17" font-weight="bold" fill="#EAB308">On an allowed network?</text><text x="414" y="384" font-size="15" fill="#9CA3AF">office LAN or</text><text x="414" y="404" font-size="15" fill="#9CA3AF">company VPN</text>
+    <line x1="698" y1="360" x2="776" y2="340" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="698" y1="414" x2="776" y2="434" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="778" y="300" width="454" height="70" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="794" y="328" font-size="17" font-weight="bold" fill="#E5E7EB">Yes: the file opens normally</text>
+    <rect x="778" y="404" width="454" height="70" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="794" y="432" font-size="17" font-weight="bold" fill="#EAB308">No: the file’s contents are erased</text>
+    <text x="48" y="520" font-size="13" fill="#EAB308" font-weight="bold" letter-spacing="1">PART OF A WIDER PLAN</text>
+    <text x="48" y="552" font-size="16" fill="#E5E7EB">Behaviour analytics and anomaly detection · access reviews · security culture · staff training</text>
+    <text x="48" y="584" font-size="16" fill="#E5E7EB">Next: pack the file inside the app itself, and alert the security team when an open is blocked.</text>
+  </svg>

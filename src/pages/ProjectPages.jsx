@@ -1,10 +1,11 @@
 import React, { useState, useCallback } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Github, ExternalLink, Apple, Play, ArrowLeft, Lock, ChevronDown } from 'lucide-react';
+import { useParams } from 'react-router-dom';
+import { Github, ExternalLink, Apple, Play, Lock } from 'lucide-react';
 import Seo from '../components/Seo';
 import Breadcrumbs from '../components/Breadcrumbs';
 import ProjectGrid from '../components/ProjectGrid';
 import Flow from '../components/Flow';
+import { h2Class, FactsTable, ResultTable, Bullets, Diagram, Details, TagList, BackLink } from '../components/DetailBlocks';
 import MoreProjects from '../components/MoreProjects';
 import ProjectModal from '../components/ProjectModal';
 import NotFound from './NotFound';
@@ -12,7 +13,6 @@ import { projects, featuredProjects, getProject } from '../data/projects';
 import { PERSON_ID, SITE_NAME, absoluteUrl, imageUrl, pagePath, breadcrumbSchema } from '../data/site';
 
 const linkClass = 'flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold transition duration-300';
-const h2Class = 'text-xl md:text-2xl font-semibold text-gray-100 mt-10 mb-3';
 
 const shortName = (title) => title.split(' - ')[0];
 
@@ -99,48 +99,6 @@ export function ProjectsIndexPage() {
     );
 }
 
-// Two-column label/value table; on phones each row stacks label above value.
-const FactsTable = ({ rows }) => (
-    <table className="w-full text-left text-sm md:text-base border-collapse">
-        <tbody>
-            {rows.map(([label, value]) => (
-                <tr key={label} className="block sm:table-row border-b border-gray-700/70 py-2 sm:py-0">
-                    <th scope="row" className="block sm:table-cell align-top font-semibold text-yellow-400 sm:py-3 sm:pr-6 sm:w-44 whitespace-nowrap">
-                        {label}
-                    </th>
-                    <td className="block sm:table-cell align-top text-gray-300 leading-relaxed sm:py-3">{value}</td>
-                </tr>
-            ))}
-        </tbody>
-    </table>
-);
-
-const ResultTable = ({ table }) => (
-    <figure className="mt-6">
-        <figcaption className="text-base font-semibold text-gray-200 mb-2">{table.title}</figcaption>
-        <div className="overflow-x-auto rounded-lg border border-gray-700">
-            <table className="w-full text-left text-sm border-collapse">
-                <thead className="bg-gray-800/80">
-                    <tr>
-                        {table.head.map((h) => (
-                            <th key={h} scope="col" className="px-3 py-2 font-semibold text-yellow-400 whitespace-nowrap">{h}</th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody>
-                    {table.rows.map((row) => (
-                        <tr key={row[0]} className="border-t border-gray-700/70">
-                            {row.map((cell, i) => (
-                                <td key={i} className={`px-3 py-2 text-gray-300 ${i === 0 ? 'font-medium text-gray-100' : 'whitespace-nowrap tabular-nums'}`}>{cell}</td>
-                            ))}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    </figure>
-);
-
 export function ProjectPage() {
     const { slug } = useParams();
     const project = getProject(slug);
@@ -208,9 +166,7 @@ export function ProjectPage() {
             {project.highlights && (
                 <>
                     <h2 className={h2Class}>Key points</h2>
-                    <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300 text-base leading-relaxed">
-                        {project.highlights.map((point) => <li key={point}>{point}</li>)}
-                    </ul>
+                    <Bullets items={project.highlights} />
                 </>
             )}
 
@@ -224,39 +180,13 @@ export function ProjectPage() {
             {project.diagram && (
                 <>
                     <h2 className={h2Class}>Architecture</h2>
-                    <img
-                        src={project.diagram}
-                        alt={`${shortName(project.title)} architecture diagram`}
-                        width="1280"
-                        height="720"
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full rounded-xl border border-gray-700"
-                    />
+                    <Diagram src={project.diagram} alt={`${shortName(project.title)} architecture diagram`} />
                 </>
             )}
 
-            {project.details && (
-                <details className="group mt-8 rounded-lg border border-gray-700 bg-gray-800/30">
-                    <summary className="flex items-center justify-between gap-3 cursor-pointer list-none px-4 py-3 text-gray-200 font-semibold hover:text-yellow-400 transition-colors [&::-webkit-details-marker]:hidden">
-                        <span className="text-base md:text-lg font-semibold text-inherit">Technical details</span>
-                        <ChevronDown size={20} className="transition-transform group-open:rotate-180" />
-                    </summary>
-                    <ul className="list-disc list-outside pl-9 pr-4 pb-4 space-y-2 text-gray-300 text-sm md:text-base leading-relaxed">
-                        {project.details.map((point) => <li key={point}>{point}</li>)}
-                    </ul>
-                </details>
-            )}
+            {project.details && <Details items={project.details} />}
 
-            {project.tags && (
-                <ul className="mt-8 flex flex-wrap gap-2" aria-label="Tags">
-                    {project.tags.map((tag) => (
-                        <li key={tag} className="text-xs md:text-sm font-medium text-yellow-400 bg-yellow-500/10 border border-yellow-500/30 rounded-full px-3 py-1">
-                            {tag}
-                        </li>
-                    ))}
-                </ul>
-            )}
+            {project.tags && <TagList tags={project.tags} />}
 
             {project.isPrivate && (
                 <p className="mt-6 flex items-center gap-2 text-sm text-gray-400">
@@ -289,9 +219,7 @@ export function ProjectPage() {
                 </div>
             )}
 
-            <Link to={pagePath('projects')} className="mt-8 inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold">
-                <ArrowLeft size={18} /> All projects
-            </Link>
+            <BackLink to={pagePath('projects')} label="All projects" />
         </article>
     );
 }

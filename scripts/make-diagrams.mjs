@@ -24,34 +24,25 @@ function svg(title, subtitle, body) {
 }
 
 const diagrams = {
-  'discount-optimization': svg('Discount Spend Optimization', 'Config-driven pipeline from raw data to a discount what-if simulator', `
-    ${label(48, 140, 'INPUTS')}
-    ${box(48, 152, 250, 70, 'Sales & discounts', ['distributor level, monthly'])}
-    ${box(48, 234, 250, 70, 'Retail audit data', ['Nielsen, by state & channel'])}
-    ${box(48, 316, 250, 70, 'Media spend')}
-    ${box(48, 398, 250, 70, 'Weather', ['temp, humidity, rain by state'])}
-    ${box(48, 480, 250, 70, 'Festival calendar', ['one flag per festival'])}
-    ${arrow(298, 351, 346, 351)}
-    ${label(348, 140, 'DATA MERGE')}
-    ${box(348, 152, 270, 240, 'Config-driven merge', ['one notebook for every product', 'pure pandas (no Spark)', 'monthly continuity per segment', 'weather + festival features'], true)}
-    ${arrow(483, 392, 483, 440)}
-    ${box(348, 442, 270, 108, 'Analytical dataset', ['State × Pack × Channel', 'segments by month'])}
-    ${arrow(618, 496, 666, 300)}
-    ${label(668, 140, 'MODELLING')}
-    ${box(668, 152, 270, 130, 'DTW clustering', ['groups segments with similar', 'sales-over-time shapes'])}
-    ${arrow(803, 282, 803, 312)}
-    ${box(668, 314, 270, 110, 'XGBoost per cluster', ['r², MAPE, wMAPE per cluster'])}
-    ${arrow(803, 424, 803, 454)}
-    ${box(668, 456, 270, 94, 'Explainability', ['SHAP and feature importance'])}
-    ${arrow(938, 369, 986, 300)}
-    ${label(988, 140, 'SIMULATION')}
-    ${box(988, 152, 244, 150, 'Discount elasticity', ['saturation curve per', 'segment: where extra', 'discount stops paying'])}
-    ${arrow(1110, 302, 1110, 332)}
-    ${box(988, 334, 244, 216, 'Sales & P&L simulator', ['type a discount % per', 'segment, see sales and', 'P&L recompute live,', 'segment and all-India', 'views'], true)}
-    <rect x="48" y="590" width="1184" height="74" rx="12" fill="none" stroke="${C.line}" stroke-dasharray="6 6"/>
-    ${label(72, 622, 'DELIVERY', 13, C.accent, 'bold')}
-    <text x="200" y="622" font-size="16" fill="${C.text}">Two Streamlit dashboards: EDA, model performance, SHAP, elasticity, saturation and the simulator.</text>
-    <text x="200" y="648" font-size="16" fill="${C.text}">Deployed on Hugging Face Spaces with Docker; the data stays in a private repo.</text>
+  'discount-optimization': svg('Discount Spend Optimization', 'One config-driven pipeline on Databricks, from raw data to a P&L simulator', `
+    <rect x="48" y="128" width="1184" height="50" rx="12" fill="${C.accentBg}" stroke="${C.accent}" stroke-dasharray="6 6"/>
+    ${label(72, 159, 'ONE EXCEL CONFIG', 13, C.accent, 'bold')}
+    <text x="232" y="159" font-size="16" fill="${C.text}">drives every stage: product lines, queries, features, sweep range. Change a cell, not the code.</text>
+    ${box(48, 206, 216, 190, '1. Data pull', ['SQL warehouse', 'sales, discounts, price', 'retail audit', 'search share', 'household reach'])}
+    ${arrow(264, 301, 290, 301)}
+    ${box(292, 206, 216, 190, '2. Merge', ['one table per product', 'state × pack × channel', 'by month', '+ weather, festivals'])}
+    ${arrow(508, 301, 534, 301)}
+    ${box(536, 206, 216, 190, '3. Model', ['DTW clusters', 'feature sweep', 'XGBoost per cluster', 'SHAP explanations', 'saturation curves'], true)}
+    ${arrow(752, 301, 778, 301)}
+    ${box(780, 206, 216, 190, '4. Simulate', ['reuses saved models', '±0.5 pt elasticity', 'Low / Medium / High', 'full what-if sweep'], true)}
+    ${arrow(996, 301, 1022, 301)}
+    ${box(1024, 206, 208, 190, '5. Dashboards', ['Databricks Apps', 'EDA, model results', 'P&L simulator runs', 'the real models'])}
+    ${box(48, 424, 580, 116, 'Two-model track for packs that compete', ['model 1: how sales split between small and large packs', 'model 2: total sales, the headline (R² 0.81-0.97)'])}
+    ${box(652, 424, 580, 116, 'Tracked and stored', ['MLflow: nested run per product, a model per cluster', 'Azure Blob: one folder per quarterly data release'])}
+    <rect x="48" y="568" width="1184" height="96" rx="12" fill="none" stroke="${C.line}" stroke-dasharray="6 6"/>
+    ${label(72, 604, 'SCALE', 13, C.accent, 'bold')}
+    <text x="200" y="604" font-size="16" fill="${C.text}">18 product lines through one pipeline, refreshed every quarter.</text>
+    <text x="200" y="632" font-size="16" fill="${C.text}">Before: separate hand-edited notebooks per product. Re-run only the stage that changed.</text>
   `),
 
   'ocr-benchmark': svg('OCR for Indian Loan Documents', 'The pipeline the benchmark recommended', `
@@ -77,28 +68,26 @@ const diagrams = {
     <text x="48" y="614" font-size="16" fill="${C.text}">Trade-off: ~17 s per table page instead of 6.5 s, so it suits batch work.</text>
   `),
 
-  'cctv-iq': svg('CCTV IQ: Face ID Attendance', 'Recognise enrolled people on office CCTV and log arrivals, tuned for accuracy', `
-    ${box(48, 150, 210, 96, 'RTSP camera', ['2560×1440 stream', 'threaded capture'])}
-    ${arrow(258, 198, 296, 198)}
-    ${box(298, 150, 210, 96, 'Ignore zones', ['desks masked before', 'embedding: 2-3× faster'])}
-    ${arrow(508, 198, 546, 198)}
-    ${box(548, 150, 210, 96, 'Face detection', ['SCRFD'])}
-    ${arrow(758, 198, 796, 198)}
-    ${box(798, 150, 210, 96, 'Face embedding', ['antelopev2'])}
-    ${arrow(1008, 198, 1046, 198)}
-    ${box(1048, 150, 184, 96, 'Gallery match', ['182 people'], true)}
-    <rect x="538" y="136" width="480" height="124" rx="16" fill="none" stroke="${C.accent}" stroke-dasharray="6 6"/>
-    ${label(548, 282, 'BOTH MODELS ON THE INTEL iGPU VIA OPENVINO', 13, C.accent, 'bold')}
-    ${arrow(1140, 246, 1140, 330)}
-    ${box(900, 332, 332, 110, 'Margin check', ['refuse a name when the runner-up', 'is too close: silence beats', 'a confident wrong name'], true)}
-    ${arrow(900, 387, 842, 387)}
-    ${box(560, 332, 280, 110, 'Arrival tracker', ['debounce on absence, not a', 'cooldown timer (regression-', 'tested across 9 scenarios)'])}
-    ${arrow(560, 387, 502, 387)}
-    ${box(48, 332, 452, 110, 'Outputs', ['daily attendance register (xlsx + csv)', 'live dashboard; recognition runs in its', 'own thread and never waits on the UI'])}
-    ${label(48, 500, 'WHAT THE MEASUREMENTS SHOWED', 13, C.accent, 'bold')}
-    ${box(48, 516, 370, 150, '9.86 → 0.31 s/frame', ['moving both models from the CPU', 'to the idle Intel iGPU, with', 'identical scores'])}
-    ${box(442, 516, 370, 150, 'Face size decides accuracy', ['32-48 px between the eyes: 38.9%', '20-32 px: 18.1% identified', '(17,842 real sightings)'])}
-    ${box(836, 516, 396, 150, '4 recognition models tied', ['antelopev2, AdaFace, buffalo_l and', 'AuraFace within noise: camera', 'placement matters more than the model'])}
+  'cctv-iq': svg('CCTV IQ: Face ID Attendance', 'Two doorway cameras, one attendance record per person per day', `
+    ${box(48, 140, 200, 118, 'Doorway cameras', ['entry cam: inside,', 'looking out', 'lobby cam: looking in'])}
+    ${arrow(248, 199, 284, 199)}
+    ${box(286, 140, 200, 118, 'Capture threads', ['one per camera', 'stall watchdog', 'auto camera reboot'])}
+    ${arrow(486, 199, 522, 199)}
+    ${box(524, 140, 200, 118, 'Ignore zones', ['desks and the clear', 'glass strip masked', 'before any AI runs'])}
+    ${arrow(724, 199, 760, 199)}
+    ${box(762, 140, 220, 118, 'Detect + embed', ['SCRFD + antelopev2', 'both on the Intel iGPU', '(OpenVINO)'], true)}
+    ${arrow(982, 199, 1018, 199)}
+    ${box(1020, 140, 212, 118, 'Gallery match', ['182 people', 'score floor 0.41', 'runner-up margin'], true)}
+    ${arrow(1126, 258, 1126, 300)}
+    ${box(860, 302, 372, 124, 'Attendance logic', ['clock in = first sighting, either camera', 'clock out = last sighting, either camera', 'time inside = span minus breaks seen'], true)}
+    ${arrow(860, 364, 808, 364)}
+    ${box(560, 302, 246, 124, 'Storage', ['SQLite on local disk', 'face photo at every', 'clock-in and clock-out'])}
+    ${arrow(560, 364, 508, 364)}
+    ${box(48, 302, 458, 124, 'Outputs', ['live dashboard + one Excel file per day', 'Ask Iris: plain-English questions; Claude', 'Haiku 4.5 on Bedrock writes one SQL query'])}
+    ${label(48, 480, 'WHAT THE MEASUREMENTS SHOWED', 13, C.accent, 'bold')}
+    ${box(48, 496, 370, 136, '9.86 → 0.31 s per frame', ['both models moved from the CPU', 'to the idle Intel iGPU,', 'with identical scores'])}
+    ${box(442, 496, 370, 136, 'Threshold from real data', ['a day checked by hand: 0.41', 'removed all 24 false rows', 'and lost no real person'])}
+    ${box(836, 496, 396, 136, 'Built to keep running', ['a supervisor restarts it in ~15 s', 'switching the cameras to H.264', 'fixed 60-73% broken frames'])}
   `),
 
   'masker-pii-redaction': svg('Masker: PII Redaction', 'Pixel-accurate redaction of medical documents', `
@@ -132,6 +121,121 @@ const diagrams = {
     <text x="48" y="548" font-size="16" fill="${C.text}">BFSI (ATM and branch placement) and FMCG (stores and warehouses). Same input gives the same score, and the scoring maths is visible.</text>
     ${label(48, 610, 'STACK', 13, C.accent, 'bold')}
     <text x="48" y="638" font-size="16" fill="${C.text}">Google Maps · H3 · Gemini · Firebase (Hosting, Functions, Firestore)</text>
+  `),
+  'paper-odm-rag': svg('On-Demand Multimodal RAG', 'Search text cheaply, then show the LLM only the pages that matter', `
+    ${label(48, 140, 'ONCE PER DOCUMENT')}
+    ${box(48, 152, 220, 96, 'PDF', ['165-page manual', 'diagrams, tables'])}
+    ${arrow(268, 200, 306, 200)}
+    ${box(308, 152, 220, 96, 'Text + page no.', ['PyMuPDF'])}
+    ${arrow(528, 200, 566, 200)}
+    ${box(568, 152, 220, 96, 'Chunks', ['1000 chars', '200 overlap'])}
+    ${arrow(788, 200, 826, 200)}
+    ${box(828, 152, 404, 96, 'FAISS index', ['Google embedding-001, 768-dim', 'every chunk keeps its page number'])}
+    ${label(48, 296, 'PER QUESTION')}
+    ${box(48, 308, 220, 110, 'Question', ['from Streamlit', 'via FastAPI'])}
+    ${arrow(268, 363, 306, 363)}
+    ${box(308, 308, 220, 110, 'Search', ['top 3 chunks', 'L2 distance'])}
+    ${arrow(528, 363, 566, 363)}
+    ${box(568, 308, 220, 110, 'Pick pages', ['unique page', 'numbers only'])}
+    ${arrow(788, 363, 826, 363)}
+    ${box(828, 308, 190, 110, 'Render', ['those pages', 'only, 150 DPI'], true)}
+    ${arrow(1018, 363, 1040, 363)}
+    ${box(1042, 308, 190, 110, 'Gemini 2.0', ['Flash reads the', 'page images'], true)}
+    ${label(48, 480, 'RESULTS ON 50 QUESTIONS', 13, C.accent, 'bold')}
+    ${box(48, 496, 280, 136, '94.2% accuracy', ['whole-document: 96.8%', 'text-only RAG: 67.4%'])}
+    ${box(348, 496, 280, 136, '$0.014 per query', ['97.3% cheaper than', 'sending the whole PDF'])}
+    ${box(648, 496, 280, 136, '2.8 s per answer', ['89.5% faster than', 'OCR pipelines (26.7 s)'])}
+    ${box(948, 496, 284, 136, '0.8 MB sent', ['instead of 28.4 MB', 'cost nearly flat up', 'to 2,000 pages'])}
+  `),
+
+  'paper-selective-rag': svg('Selective Embedding Update for RAG', 'Replace only the changed document, never the whole index', `
+    ${box(48, 150, 200, 110, 'Upload PDF', ['Streamlit UI'])}
+    ${arrow(248, 205, 286, 205)}
+    ${box(288, 150, 220, 110, 'Already in S3?', ['one HEAD request', 'O(1) check'], true)}
+    ${arrow(508, 205, 546, 205)}
+    ${label(512, 190, 'yes', 12)}
+    ${box(548, 150, 220, 110, 'Delete old chunks', ['1 delete-by-query', 'instead of 250'], true)}
+    ${arrow(398, 260, 398, 300)}
+    ${label(408, 288, 'no: new file', 12)}
+    ${arrow(768, 205, 806, 205)}
+    ${box(808, 150, 200, 110, 'Save to S3', ['versioned,', 'so it can roll back'])}
+    ${arrow(1008, 205, 1030, 205)}
+    ${box(1032, 150, 200, 110, 'Extract + chunk', ['PyPDF', '1000 / 200'])}
+    ${arrow(1132, 260, 1132, 300)}
+    ${box(288, 302, 220, 100, 'Process new', ['same steps, no delete'])}
+    ${box(912, 302, 320, 100, 'Titan embeddings', ['Bedrock, 1536-dim, batched'])}
+    ${arrow(912, 352, 830, 352)}
+    ${box(548, 302, 280, 100, 'OpenSearch', ['kNN (HNSW), 1 bulk insert'], true)}
+    ${label(48, 440, 'QUESTIONS KEEP WORKING DURING AN UPDATE')}
+    <text x="48" y="468" font-size="16" fill="${C.text}">question → Titan embedding → kNN search in OpenSearch → Claude 3 Haiku on Bedrock → answer</text>
+    ${label(48, 510, 'RESULTS (50 PDFs, 5-150 PAGES)', 13, C.accent, 'bold')}
+    ${box(48, 526, 370, 140, '84.9% faster updates', ['150 pages: 625.8 s → 94.3 s'])}
+    ${box(442, 526, 370, 140, '99.6% fewer calls', ['500 requests → 2'])}
+    ${box(836, 526, 396, 140, 'Same answer quality', ['Recall@5 0.87, Precision@5 0.82', '~40% less memory'])}
+  `),
+
+  'paper-otitis': svg('Otitis Media Ensemble', 'Four CNNs and the patient history, combined into one diagnosis', `
+    ${box(48, 150, 240, 110, 'Otoscope image', ['224×224, ImageNet', 'normalised, augmented'])}
+    ${box(48, 300, 240, 110, 'Patient details', ['age, symptoms,', 'history, treatments'])}
+    ${arrow(288, 205, 356, 290)}
+    ${arrow(288, 355, 356, 300)}
+    ${box(358, 140, 300, 62, 'RegNet-X 16GF', ['fine texture and colour'])}
+    ${box(358, 212, 300, 62, 'RegNet-X 3.2GF', ['accurate and efficient'])}
+    ${box(358, 284, 300, 62, 'MobileNetV2', ['fast, 15 ms per image'])}
+    ${box(358, 356, 300, 62, 'ResNeXt50 32×4d', ['subtle look-alike patterns'])}
+    ${arrow(658, 280, 716, 280)}
+    ${box(718, 214, 240, 132, 'Weighted vote', ['weights learned', 'on validation data'], true)}
+    ${arrow(958, 280, 1016, 280)}
+    ${box(1018, 214, 214, 132, 'Diagnosis', ['acute otitis media', 'chronic otitis media', 'normal / earwax'], true)}
+    ${label(48, 480, 'RESULTS', 13, C.accent, 'bold')}
+    ${box(48, 496, 280, 136, '92.56% accuracy', ['best single model:', 'ResNeXt50 at 91.5%'])}
+    ${box(348, 496, 280, 136, '96.12% sensitivity', ['few missed infections', 'specificity 87.78%'])}
+    ${box(648, 496, 280, 136, 'Earwax errors', ['12.8% → 4.2%', 'fewer needless', 'antibiotics'])}
+    ${box(948, 496, 284, 136, 'Agrees with ENTs', ['κ = 0.85 on 200 cases', '2.1 GB, 180 images/min'])}
+  `),
+
+  'paper-efficientnet-dr': svg('EfficientNet-DR', 'A small CNN that grades diabetic retinopathy on low-end devices', `
+    ${box(48, 150, 200, 120, 'Retina scans', ['IDRiD dataset', 'Indian population'])}
+    ${arrow(248, 210, 286, 210)}
+    ${box(288, 150, 200, 120, 'Clean', ['drop blurry and', 'too-dark scans'])}
+    ${arrow(488, 210, 526, 210)}
+    ${box(528, 150, 200, 120, 'Preprocess', ['224×224, contrast', 'rotate, flip, zoom,', 'brightness'])}
+    ${arrow(728, 210, 766, 210)}
+    ${box(768, 150, 240, 120, 'EfficientNet-B0', ['MBConv blocks with', 'squeeze-and-excitation', 'ImageNet weights'], true)}
+    ${arrow(1008, 210, 1030, 210)}
+    ${box(1032, 150, 200, 120, 'Grade 0-4', ['healthy → mild →', 'moderate → severe', '→ proliferative'], true)}
+    ${label(48, 320, 'WHY IT FITS CHEAP HARDWARE')}
+    <text x="48" y="350" font-size="16" fill="${C.text}">Compound scaling grows depth, width and image size together, so accuracy comes with few parameters.</text>
+    <text x="48" y="378" font-size="16" fill="${C.text}">Training: batch 32 · Adam 0.001 · early stopping · learning rate halves when validation loss stalls.</text>
+    ${label(48, 480, 'RESULTS', 13, C.accent, 'bold')}
+    ${box(48, 496, 280, 136, '84.2% accuracy', ['on the test set,', 'all 5 stages'])}
+    ${box(348, 496, 280, 136, '5.3 M parameters', ['others: 9.2 M to', '15.7 M'])}
+    ${box(648, 496, 280, 136, '20 ms per image', ['others: 25 to 40 ms'])}
+    ${box(948, 496, 284, 136, '20 MB model', ['runs with 4 GB RAM', 'and 2 GB storage'])}
+  `),
+
+  'paper-insider-threat': svg('Insider Threat Mitigation', 'A file that opens only on the company network', `
+    ${label(48, 140, 'BUILD THE PROTECTED FILE (FLUTTER WINDOWS APP)')}
+    ${box(48, 152, 210, 110, 'Allowed IPs', ['typed into the app'])}
+    ${arrow(258, 207, 290, 207)}
+    ${box(292, 152, 210, 110, 'Pick the file', ['name and path'])}
+    ${arrow(502, 207, 534, 207)}
+    ${box(536, 152, 210, 110, 'Checker script', ['IPs and path written', 'into Python code'])}
+    ${arrow(746, 207, 778, 207)}
+    ${box(780, 152, 210, 110, 'Standalone .exe', ['PyInstaller, no', 'installs needed'])}
+    ${arrow(990, 207, 1020, 207)}
+    ${box(1022, 152, 210, 110, 'Hide in file', ['self-extracting', 'archive: .exe runs', 'first'], true)}
+    ${label(48, 320, 'WHEN SOMEONE OPENS IT')}
+    ${box(48, 332, 300, 110, 'Checker runs first', ['reads this machine’s IP'])}
+    ${arrow(348, 387, 396, 387)}
+    ${box(398, 332, 300, 110, 'On an allowed network?', ['office LAN or', 'company VPN'], true)}
+    ${arrow(698, 360, 776, 340)}
+    ${arrow(698, 414, 776, 434)}
+    ${box(778, 300, 454, 70, 'Yes: the file opens normally')}
+    ${box(778, 404, 454, 70, 'No: the file’s contents are erased', [], true)}
+    ${label(48, 520, 'PART OF A WIDER PLAN', 13, C.accent, 'bold')}
+    <text x="48" y="552" font-size="16" fill="${C.text}">Behaviour analytics and anomaly detection · access reviews · security culture · staff training</text>
+    <text x="48" y="584" font-size="16" fill="${C.text}">Next: pack the file inside the app itself, and alert the security team when an open is blocked.</text>
   `),
 }
 

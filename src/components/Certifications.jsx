@@ -8,9 +8,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Certifications = ({ pageHeading = false }) => {
   const Heading = pageHeading ? 'h1' : 'h2';
   const [selectedCert, setSelectedCert] = useState(null);
-  const scrollPosRef = useRef(0);
+  const scrollPosRef = useRef(null);
 
-  // Lock body scroll when modal is open
+  // Lock body scroll when modal is open; on close, return to where the visitor was.
+  // (Only after a real close: on first render there is nothing to restore.)
   useEffect(() => {
     if (selectedCert) {
       scrollPosRef.current = window.scrollY;
@@ -19,7 +20,8 @@ const Certifications = ({ pageHeading = false }) => {
     } else {
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
-      window.scrollTo(0, scrollPosRef.current);
+      if (scrollPosRef.current !== null) window.scrollTo(0, scrollPosRef.current);
+      scrollPosRef.current = null;
     }
     return () => {
       document.documentElement.style.overflow = '';

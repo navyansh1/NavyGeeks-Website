@@ -1,21 +1,55 @@
-import React, { useEffect } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import React, { useEffect, useLayoutEffect } from 'react';
+import { Outlet, useLocation, useNavigationType } from 'react-router-dom';
 import { MotionConfig } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-// Scroll to the #hash target when there is one, otherwise back to the top on navigation.
+// Layout effect in the browser (runs before paint, so the old page's position is saved
+// before the new page can change it); plain effect during pre-rendering.
+const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+
+// Where each visited page was scrolled to, keyed by history entry.
+const scrollPositions = new Map();
+
+// New page: scroll to the #hash target, or to the top.
+// Back/forward: return to where the visitor was on that page (e.g. the home page's
+// Research section), so one Back tap undoes one click.
 const useScrollOnNavigate = () => {
-    const { pathname, hash } = useLocation();
+    const { key, pathname, hash } = useLocation();
+    const navType = useNavigationType();
+
     useEffect(() => {
-        const target = hash ? document.getElementById(hash.slice(1)) : null;
-        if (target) {
-            window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80 });
+        if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
+    }, []);
+
+    useIsoLayoutEffect(() => {
+        const saved = scrollPositions.get(key);
+        let restoring = false;
+        let frame;
+        if (navType === 'POP' && saved !== undefined) {
+            // The page may still be loading, so keep trying for up to ~1 s until it is tall enough.
+            restoring = true;
+            let tries = 0;
+            const attempt = () => {
+                window.scrollTo(0, saved);
+                if (Math.abs(window.scrollY - saved) > 2 && tries++ < 60) frame = requestAnimationFrame(attempt);
+                else restoring = false;
+            };
+            attempt();
         } else {
-            window.scrollTo(0, 0);
+            const target = hash ? document.getElementById(hash.slice(1)) : null;
+            window.scrollTo(0, target ? target.getBoundingClientRect().top + window.scrollY - 80 : 0);
         }
-    }, [pathname, hash]);
+        const save = () => {
+            if (!restoring) scrollPositions.set(key, window.scrollY);
+        };
+        window.addEventListener('scroll', save, { passive: true });
+        return () => {
+            cancelAnimationFrame(frame);
+            window.removeEventListener('scroll', save);
+        };
+    }, [key, pathname, hash, navType]);
 };
 
 export default function Layout() {

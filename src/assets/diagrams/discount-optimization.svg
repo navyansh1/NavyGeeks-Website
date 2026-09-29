@@ -2,45 +2,31 @@
   <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9CA3AF"/></marker></defs>
   <rect width="1280" height="720" fill="#162121"/>
   <text x="48" y="64" font-size="30" font-weight="bold" fill="#E5E7EB">Discount Spend Optimization</text>
-  <text x="48" y="94" font-size="16" fill="#9CA3AF">Config-driven pipeline from raw data to a discount what-if simulator</text>
+  <text x="48" y="94" font-size="16" fill="#9CA3AF">One config-driven pipeline on Databricks, from raw data to a P&amp;L simulator</text>
   
-    <text x="48" y="140" font-size="13" fill="#9CA3AF" font-weight="normal" letter-spacing="1">INPUTS</text>
-    <rect x="48" y="152" width="250" height="70" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
-  <text x="64" y="180" font-size="17" font-weight="bold" fill="#E5E7EB">Sales &amp; discounts</text><text x="64" y="204" font-size="15" fill="#9CA3AF">distributor level, monthly</text>
-    <rect x="48" y="234" width="250" height="70" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
-  <text x="64" y="262" font-size="17" font-weight="bold" fill="#E5E7EB">Retail audit data</text><text x="64" y="286" font-size="15" fill="#9CA3AF">Nielsen, by state &amp; channel</text>
-    <rect x="48" y="316" width="250" height="70" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
-  <text x="64" y="344" font-size="17" font-weight="bold" fill="#E5E7EB">Media spend</text>
-    <rect x="48" y="398" width="250" height="70" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
-  <text x="64" y="426" font-size="17" font-weight="bold" fill="#E5E7EB">Weather</text><text x="64" y="450" font-size="15" fill="#9CA3AF">temp, humidity, rain by state</text>
-    <rect x="48" y="480" width="250" height="70" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
-  <text x="64" y="508" font-size="17" font-weight="bold" fill="#E5E7EB">Festival calendar</text><text x="64" y="532" font-size="15" fill="#9CA3AF">one flag per festival</text>
-    <line x1="298" y1="351" x2="346" y2="351" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
-    <text x="348" y="140" font-size="13" fill="#9CA3AF" font-weight="normal" letter-spacing="1">DATA MERGE</text>
-    <rect x="348" y="152" width="270" height="240" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
-  <text x="364" y="180" font-size="17" font-weight="bold" fill="#EAB308">Config-driven merge</text><text x="364" y="204" font-size="15" fill="#9CA3AF">one notebook for every product</text><text x="364" y="224" font-size="15" fill="#9CA3AF">pure pandas (no Spark)</text><text x="364" y="244" font-size="15" fill="#9CA3AF">monthly continuity per segment</text><text x="364" y="264" font-size="15" fill="#9CA3AF">weather + festival features</text>
-    <line x1="483" y1="392" x2="483" y2="440" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
-    <rect x="348" y="442" width="270" height="108" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
-  <text x="364" y="470" font-size="17" font-weight="bold" fill="#E5E7EB">Analytical dataset</text><text x="364" y="494" font-size="15" fill="#9CA3AF">State × Pack × Channel</text><text x="364" y="514" font-size="15" fill="#9CA3AF">segments by month</text>
-    <line x1="618" y1="496" x2="666" y2="300" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
-    <text x="668" y="140" font-size="13" fill="#9CA3AF" font-weight="normal" letter-spacing="1">MODELLING</text>
-    <rect x="668" y="152" width="270" height="130" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
-  <text x="684" y="180" font-size="17" font-weight="bold" fill="#E5E7EB">DTW clustering</text><text x="684" y="204" font-size="15" fill="#9CA3AF">groups segments with similar</text><text x="684" y="224" font-size="15" fill="#9CA3AF">sales-over-time shapes</text>
-    <line x1="803" y1="282" x2="803" y2="312" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
-    <rect x="668" y="314" width="270" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
-  <text x="684" y="342" font-size="17" font-weight="bold" fill="#E5E7EB">XGBoost per cluster</text><text x="684" y="366" font-size="15" fill="#9CA3AF">r², MAPE, wMAPE per cluster</text>
-    <line x1="803" y1="424" x2="803" y2="454" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
-    <rect x="668" y="456" width="270" height="94" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
-  <text x="684" y="484" font-size="17" font-weight="bold" fill="#E5E7EB">Explainability</text><text x="684" y="508" font-size="15" fill="#9CA3AF">SHAP and feature importance</text>
-    <line x1="938" y1="369" x2="986" y2="300" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
-    <text x="988" y="140" font-size="13" fill="#9CA3AF" font-weight="normal" letter-spacing="1">SIMULATION</text>
-    <rect x="988" y="152" width="244" height="150" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
-  <text x="1004" y="180" font-size="17" font-weight="bold" fill="#E5E7EB">Discount elasticity</text><text x="1004" y="204" font-size="15" fill="#9CA3AF">saturation curve per</text><text x="1004" y="224" font-size="15" fill="#9CA3AF">segment: where extra</text><text x="1004" y="244" font-size="15" fill="#9CA3AF">discount stops paying</text>
-    <line x1="1110" y1="302" x2="1110" y2="332" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
-    <rect x="988" y="334" width="244" height="216" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
-  <text x="1004" y="362" font-size="17" font-weight="bold" fill="#EAB308">Sales &amp; P&amp;L simulator</text><text x="1004" y="386" font-size="15" fill="#9CA3AF">type a discount % per</text><text x="1004" y="406" font-size="15" fill="#9CA3AF">segment, see sales and</text><text x="1004" y="426" font-size="15" fill="#9CA3AF">P&amp;L recompute live,</text><text x="1004" y="446" font-size="15" fill="#9CA3AF">segment and all-India</text><text x="1004" y="466" font-size="15" fill="#9CA3AF">views</text>
-    <rect x="48" y="590" width="1184" height="74" rx="12" fill="none" stroke="#3E5654" stroke-dasharray="6 6"/>
-    <text x="72" y="622" font-size="13" fill="#EAB308" font-weight="bold" letter-spacing="1">DELIVERY</text>
-    <text x="200" y="622" font-size="16" fill="#E5E7EB">Two Streamlit dashboards: EDA, model performance, SHAP, elasticity, saturation and the simulator.</text>
-    <text x="200" y="648" font-size="16" fill="#E5E7EB">Deployed on Hugging Face Spaces with Docker; the data stays in a private repo.</text>
+    <rect x="48" y="128" width="1184" height="50" rx="12" fill="#3A3314" stroke="#EAB308" stroke-dasharray="6 6"/>
+    <text x="72" y="159" font-size="13" fill="#EAB308" font-weight="bold" letter-spacing="1">ONE EXCEL CONFIG</text>
+    <text x="232" y="159" font-size="16" fill="#E5E7EB">drives every stage: product lines, queries, features, sweep range. Change a cell, not the code.</text>
+    <rect x="48" y="206" width="216" height="190" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="234" font-size="17" font-weight="bold" fill="#E5E7EB">1. Data pull</text><text x="64" y="258" font-size="15" fill="#9CA3AF">SQL warehouse</text><text x="64" y="278" font-size="15" fill="#9CA3AF">sales, discounts, price</text><text x="64" y="298" font-size="15" fill="#9CA3AF">retail audit</text><text x="64" y="318" font-size="15" fill="#9CA3AF">search share</text><text x="64" y="338" font-size="15" fill="#9CA3AF">household reach</text>
+    <line x1="264" y1="301" x2="290" y2="301" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="292" y="206" width="216" height="190" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="308" y="234" font-size="17" font-weight="bold" fill="#E5E7EB">2. Merge</text><text x="308" y="258" font-size="15" fill="#9CA3AF">one table per product</text><text x="308" y="278" font-size="15" fill="#9CA3AF">state × pack × channel</text><text x="308" y="298" font-size="15" fill="#9CA3AF">by month</text><text x="308" y="318" font-size="15" fill="#9CA3AF">+ weather, festivals</text>
+    <line x1="508" y1="301" x2="534" y2="301" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="536" y="206" width="216" height="190" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="552" y="234" font-size="17" font-weight="bold" fill="#EAB308">3. Model</text><text x="552" y="258" font-size="15" fill="#9CA3AF">DTW clusters</text><text x="552" y="278" font-size="15" fill="#9CA3AF">feature sweep</text><text x="552" y="298" font-size="15" fill="#9CA3AF">XGBoost per cluster</text><text x="552" y="318" font-size="15" fill="#9CA3AF">SHAP explanations</text><text x="552" y="338" font-size="15" fill="#9CA3AF">saturation curves</text>
+    <line x1="752" y1="301" x2="778" y2="301" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="780" y="206" width="216" height="190" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="796" y="234" font-size="17" font-weight="bold" fill="#EAB308">4. Simulate</text><text x="796" y="258" font-size="15" fill="#9CA3AF">reuses saved models</text><text x="796" y="278" font-size="15" fill="#9CA3AF">±0.5 pt elasticity</text><text x="796" y="298" font-size="15" fill="#9CA3AF">Low / Medium / High</text><text x="796" y="318" font-size="15" fill="#9CA3AF">full what-if sweep</text>
+    <line x1="996" y1="301" x2="1022" y2="301" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="1024" y="206" width="208" height="190" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="1040" y="234" font-size="17" font-weight="bold" fill="#E5E7EB">5. Dashboards</text><text x="1040" y="258" font-size="15" fill="#9CA3AF">Databricks Apps</text><text x="1040" y="278" font-size="15" fill="#9CA3AF">EDA, model results</text><text x="1040" y="298" font-size="15" fill="#9CA3AF">P&amp;L simulator runs</text><text x="1040" y="318" font-size="15" fill="#9CA3AF">the real models</text>
+    <rect x="48" y="424" width="580" height="116" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="452" font-size="17" font-weight="bold" fill="#E5E7EB">Two-model track for packs that compete</text><text x="64" y="476" font-size="15" fill="#9CA3AF">model 1: how sales split between small and large packs</text><text x="64" y="496" font-size="15" fill="#9CA3AF">model 2: total sales, the headline (R² 0.81-0.97)</text>
+    <rect x="652" y="424" width="580" height="116" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="668" y="452" font-size="17" font-weight="bold" fill="#E5E7EB">Tracked and stored</text><text x="668" y="476" font-size="15" fill="#9CA3AF">MLflow: nested run per product, a model per cluster</text><text x="668" y="496" font-size="15" fill="#9CA3AF">Azure Blob: one folder per quarterly data release</text>
+    <rect x="48" y="568" width="1184" height="96" rx="12" fill="none" stroke="#3E5654" stroke-dasharray="6 6"/>
+    <text x="72" y="604" font-size="13" fill="#EAB308" font-weight="bold" letter-spacing="1">SCALE</text>
+    <text x="200" y="604" font-size="16" fill="#E5E7EB">18 product lines through one pipeline, refreshed every quarter.</text>
+    <text x="200" y="632" font-size="16" fill="#E5E7EB">Before: separate hand-edited notebooks per product. Re-run only the stage that changed.</text>
   </svg>

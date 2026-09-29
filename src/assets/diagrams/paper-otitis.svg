@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9CA3AF"/></marker></defs>
+  <rect width="1280" height="720" fill="#162121"/>
+  <text x="48" y="64" font-size="30" font-weight="bold" fill="#E5E7EB">Otitis Media Ensemble</text>
+  <text x="48" y="94" font-size="16" fill="#9CA3AF">Four CNNs and the patient history, combined into one diagnosis</text>
+  
+    <rect x="48" y="150" width="240" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="178" font-size="17" font-weight="bold" fill="#E5E7EB">Otoscope image</text><text x="64" y="202" font-size="15" fill="#9CA3AF">224×224, ImageNet</text><text x="64" y="222" font-size="15" fill="#9CA3AF">normalised, augmented</text>
+    <rect x="48" y="300" width="240" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="328" font-size="17" font-weight="bold" fill="#E5E7EB">Patient details</text><text x="64" y="352" font-size="15" fill="#9CA3AF">age, symptoms,</text><text x="64" y="372" font-size="15" fill="#9CA3AF">history, treatments</text>
+    <line x1="288" y1="205" x2="356" y2="290" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="288" y1="355" x2="356" y2="300" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="358" y="140" width="300" height="62" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="374" y="168" font-size="17" font-weight="bold" fill="#E5E7EB">RegNet-X 16GF</text><text x="374" y="192" font-size="15" fill="#9CA3AF">fine texture and colour</text>
+    <rect x="358" y="212" width="300" height="62" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="374" y="240" font-size="17" font-weight="bold" fill="#E5E7EB">RegNet-X 3.2GF</text><text x="374" y="264" font-size="15" fill="#9CA3AF">accurate and efficient</text>
+    <rect x="358" y="284" width="300" height="62" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="374" y="312" font-size="17" font-weight="bold" fill="#E5E7EB">MobileNetV2</text><text x="374" y="336" font-size="15" fill="#9CA3AF">fast, 15 ms per image</text>
+    <rect x="358" y="356" width="300" height="62" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="374" y="384" font-size="17" font-weight="bold" fill="#E5E7EB">ResNeXt50 32×4d</text><text x="374" y="408" font-size="15" fill="#9CA3AF">subtle look-alike patterns</text>
+    <line x1="658" y1="280" x2="716" y2="280" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="718" y="214" width="240" height="132" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="734" y="242" font-size="17" font-weight="bold" fill="#EAB308">Weighted vote</text><text x="734" y="266" font-size="15" fill="#9CA3AF">weights learned</text><text x="734" y="286" font-size="15" fill="#9CA3AF">on validation data</text>
+    <line x1="958" y1="280" x2="1016" y2="280" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="1018" y="214" width="214" height="132" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="1034" y="242" font-size="17" font-weight="bold" fill="#EAB308">Diagnosis</text><text x="1034" y="266" font-size="15" fill="#9CA3AF">acute otitis media</text><text x="1034" y="286" font-size="15" fill="#9CA3AF">chronic otitis media</text><text x="1034" y="306" font-size="15" fill="#9CA3AF">normal / earwax</text>
+    <text x="48" y="480" font-size="13" fill="#EAB308" font-weight="bold" letter-spacing="1">RESULTS</text>
+    <rect x="48" y="496" width="280" height="136" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="524" font-size="17" font-weight="bold" fill="#E5E7EB">92.56% accuracy</text><text x="64" y="548" font-size="15" fill="#9CA3AF">best single model:</text><text x="64" y="568" font-size="15" fill="#9CA3AF">ResNeXt50 at 91.5%</text>
+    <rect x="348" y="496" width="280" height="136" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="364" y="524" font-size="17" font-weight="bold" fill="#E5E7EB">96.12% sensitivity</text><text x="364" y="548" font-size="15" fill="#9CA3AF">few missed infections</text><text x="364" y="568" font-size="15" fill="#9CA3AF">specificity 87.78%</text>
+    <rect x="648" y="496" width="280" height="136" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="664" y="524" font-size="17" font-weight="bold" fill="#E5E7EB">Earwax errors</text><text x="664" y="548" font-size="15" fill="#9CA3AF">12.8% → 4.2%</text><text x="664" y="568" font-size="15" fill="#9CA3AF">fewer needless</text><text x="664" y="588" font-size="15" fill="#9CA3AF">antibiotics</text>
+    <rect x="948" y="496" width="284" height="136" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="964" y="524" font-size="17" font-weight="bold" fill="#E5E7EB">Agrees with ENTs</text><text x="964" y="548" font-size="15" fill="#9CA3AF">κ = 0.85 on 200 cases</text><text x="964" y="568" font-size="15" fill="#9CA3AF">2.1 GB, 180 images/min</text>
+  </svg>

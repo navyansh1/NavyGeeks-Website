@@ -10,7 +10,8 @@ export const projects = [
       "Gemini",
       "Firebase"
     ],
-    "isPrivate": false
+    "isPrivate": false,
+    "custom": true
   },
   {
     "slug": "cctv-iq-face-attendance",

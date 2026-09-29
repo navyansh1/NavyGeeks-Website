@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9CA3AF"/></marker></defs>
+  <rect width="1280" height="720" fill="#162121"/>
+  <text x="48" y="64" font-size="30" font-weight="bold" fill="#E5E7EB">EfficientNet-DR</text>
+  <text x="48" y="94" font-size="16" fill="#9CA3AF">A small CNN that grades diabetic retinopathy on low-end devices</text>
+  
+    <rect x="48" y="150" width="200" height="120" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="178" font-size="17" font-weight="bold" fill="#E5E7EB">Retina scans</text><text x="64" y="202" font-size="15" fill="#9CA3AF">IDRiD dataset</text><text x="64" y="222" font-size="15" fill="#9CA3AF">Indian population</text>
+    <line x1="248" y1="210" x2="286" y2="210" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="288" y="150" width="200" height="120" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="304" y="178" font-size="17" font-weight="bold" fill="#E5E7EB">Clean</text><text x="304" y="202" font-size="15" fill="#9CA3AF">drop blurry and</text><text x="304" y="222" font-size="15" fill="#9CA3AF">too-dark scans</text>
+    <line x1="488" y1="210" x2="526" y2="210" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="528" y="150" width="200" height="120" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="544" y="178" font-size="17" font-weight="bold" fill="#E5E7EB">Preprocess</text><text x="544" y="202" font-size="15" fill="#9CA3AF">224×224, contrast</text><text x="544" y="222" font-size="15" fill="#9CA3AF">rotate, flip, zoom,</text><text x="544" y="242" font-size="15" fill="#9CA3AF">brightness</text>
+    <line x1="728" y1="210" x2="766" y2="210" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="768" y="150" width="240" height="120" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="784" y="178" font-size="17" font-weight="bold" fill="#EAB308">EfficientNet-B0</text><text x="784" y="202" font-size="15" fill="#9CA3AF">MBConv blocks with</text><text x="784" y="222" font-size="15" fill="#9CA3AF">squeeze-and-excitation</text><text x="784" y="242" font-size="15" fill="#9CA3AF">ImageNet weights</text>
+    <line x1="1008" y1="210" x2="1030" y2="210" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="1032" y="150" width="200" height="120" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="1048" y="178" font-size="17" font-weight="bold" fill="#EAB308">Grade 0-4</text><text x="1048" y="202" font-size="15" fill="#9CA3AF">healthy → mild →</text><text x="1048" y="222" font-size="15" fill="#9CA3AF">moderate → severe</text><text x="1048" y="242" font-size="15" fill="#9CA3AF">→ proliferative</text>
+    <text x="48" y="320" font-size="13" fill="#9CA3AF" font-weight="normal" letter-spacing="1">WHY IT FITS CHEAP HARDWARE</text>
+    <text x="48" y="350" font-size="16" fill="#E5E7EB">Compound scaling grows depth, width and image size together, so accuracy comes with few parameters.</text>
+    <text x="48" y="378" font-size="16" fill="#E5E7EB">Training: batch 32 · Adam 0.001 · early stopping · learning rate halves when validation loss stalls.</text>
+    <text x="48" y="480" font-size="13" fill="#EAB308" font-weight="bold" letter-spacing="1">RESULTS</text>
+    <rect x="48" y="496" width="280" height="136" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="524" font-size="17" font-weight="bold" fill="#E5E7EB">84.2% accuracy</text><text x="64" y="548" font-size="15" fill="#9CA3AF">on the test set,</text><text x="64" y="568" font-size="15" fill="#9CA3AF">all 5 stages</text>
+    <rect x="348" y="496" width="280" height="136" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="364" y="524" font-size="17" font-weight="bold" fill="#E5E7EB">5.3 M parameters</text><text x="364" y="548" font-size="15" fill="#9CA3AF">others: 9.2 M to</text><text x="364" y="568" font-size="15" fill="#9CA3AF">15.7 M</text>
+    <rect x="648" y="496" width="280" height="136" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="664" y="524" font-size="17" font-weight="bold" fill="#E5E7EB">20 ms per image</text><text x="664" y="548" font-size="15" fill="#9CA3AF">others: 25 to 40 ms</text>
+    <rect x="948" y="496" width="284" height="136" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="964" y="524" font-size="17" font-weight="bold" fill="#E5E7EB">20 MB model</text><text x="964" y="548" font-size="15" fill="#9CA3AF">runs with 4 GB RAM</text><text x="964" y="568" font-size="15" fill="#9CA3AF">and 2 GB storage</text>
+  </svg>

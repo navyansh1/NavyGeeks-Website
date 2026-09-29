@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9CA3AF"/></marker></defs>
+  <rect width="1280" height="720" fill="#162121"/>
+  <text x="48" y="64" font-size="30" font-weight="bold" fill="#E5E7EB">On-Demand Multimodal RAG</text>
+  <text x="48" y="94" font-size="16" fill="#9CA3AF">Search text cheaply, then show the LLM only the pages that matter</text>
+  
+    <text x="48" y="140" font-size="13" fill="#9CA3AF" font-weight="normal" letter-spacing="1">ONCE PER DOCUMENT</text>
+    <rect x="48" y="152" width="220" height="96" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="180" font-size="17" font-weight="bold" fill="#E5E7EB">PDF</text><text x="64" y="204" font-size="15" fill="#9CA3AF">165-page manual</text><text x="64" y="224" font-size="15" fill="#9CA3AF">diagrams, tables</text>
+    <line x1="268" y1="200" x2="306" y2="200" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="308" y="152" width="220" height="96" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="324" y="180" font-size="17" font-weight="bold" fill="#E5E7EB">Text + page no.</text><text x="324" y="204" font-size="15" fill="#9CA3AF">PyMuPDF</text>
+    <line x1="528" y1="200" x2="566" y2="200" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="568" y="152" width="220" height="96" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="584" y="180" font-size="17" font-weight="bold" fill="#E5E7EB">Chunks</text><text x="584" y="204" font-size="15" fill="#9CA3AF">1000 chars</text><text x="584" y="224" font-size="15" fill="#9CA3AF">200 overlap</text>
+    <line x1="788" y1="200" x2="826" y2="200" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="828" y="152" width="404" height="96" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="844" y="180" font-size="17" font-weight="bold" fill="#E5E7EB">FAISS index</text><text x="844" y="204" font-size="15" fill="#9CA3AF">Google embedding-001, 768-dim</text><text x="844" y="224" font-size="15" fill="#9CA3AF">every chunk keeps its page number</text>
+    <text x="48" y="296" font-size="13" fill="#9CA3AF" font-weight="normal" letter-spacing="1">PER QUESTION</text>
+    <rect x="48" y="308" width="220" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="336" font-size="17" font-weight="bold" fill="#E5E7EB">Question</text><text x="64" y="360" font-size="15" fill="#9CA3AF">from Streamlit</text><text x="64" y="380" font-size="15" fill="#9CA3AF">via FastAPI</text>
+    <line x1="268" y1="363" x2="306" y2="363" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="308" y="308" width="220" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="324" y="336" font-size="17" font-weight="bold" fill="#E5E7EB">Search</text><text x="324" y="360" font-size="15" fill="#9CA3AF">top 3 chunks</text><text x="324" y="380" font-size="15" fill="#9CA3AF">L2 distance</text>
+    <line x1="528" y1="363" x2="566" y2="363" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="568" y="308" width="220" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="584" y="336" font-size="17" font-weight="bold" fill="#E5E7EB">Pick pages</text><text x="584" y="360" font-size="15" fill="#9CA3AF">unique page</text><text x="584" y="380" font-size="15" fill="#9CA3AF">numbers only</text>
+    <line x1="788" y1="363" x2="826" y2="363" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="828" y="308" width="190" height="110" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="844" y="336" font-size="17" font-weight="bold" fill="#EAB308">Render</text><text x="844" y="360" font-size="15" fill="#9CA3AF">those pages</text><text x="844" y="380" font-size="15" fill="#9CA3AF">only, 150 DPI</text>
+    <line x1="1018" y1="363" x2="1040" y2="363" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="1042" y="308" width="190" height="110" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="1058" y="336" font-size="17" font-weight="bold" fill="#EAB308">Gemini 2.0</text><text x="1058" y="360" font-size="15" fill="#9CA3AF">Flash reads the</text><text x="1058" y="380" font-size="15" fill="#9CA3AF">page images</text>
+    <text x="48" y="480" font-size="13" fill="#EAB308" font-weight="bold" letter-spacing="1">RESULTS ON 50 QUESTIONS</text>
+    <rect x="48" y="496" width="280" height="136" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="524" font-size="17" font-weight="bold" fill="#E5E7EB">94.2% accuracy</text><text x="64" y="548" font-size="15" fill="#9CA3AF">whole-document: 96.8%</text><text x="64" y="568" font-size="15" fill="#9CA3AF">text-only RAG: 67.4%</text>
+    <rect x="348" y="496" width="280" height="136" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="364" y="524" font-size="17" font-weight="bold" fill="#E5E7EB">$0.014 per query</text><text x="364" y="548" font-size="15" fill="#9CA3AF">97.3% cheaper than</text><text x="364" y="568" font-size="15" fill="#9CA3AF">sending the whole PDF</text>
+    <rect x="648" y="496" width="280" height="136" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="664" y="524" font-size="17" font-weight="bold" fill="#E5E7EB">2.8 s per answer</text><text x="664" y="548" font-size="15" fill="#9CA3AF">89.5% faster than</text><text x="664" y="568" font-size="15" fill="#9CA3AF">OCR pipelines (26.7 s)</text>
+    <rect x="948" y="496" width="284" height="136" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="964" y="524" font-size="17" font-weight="bold" fill="#E5E7EB">0.8 MB sent</text><text x="964" y="548" font-size="15" fill="#9CA3AF">instead of 28.4 MB</text><text x="964" y="568" font-size="15" fill="#9CA3AF">cost nearly flat up</text><text x="964" y="588" font-size="15" fill="#9CA3AF">to 2,000 pages</text>
+  </svg>

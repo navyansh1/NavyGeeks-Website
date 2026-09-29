@@ -1,7 +1,7 @@
 // One thumbnail style for every project, with no text added: the architecture diagram
 // (title cropped off) where the project has one, otherwise the screenshot in a
 // browser or phone frame on the site's dark background.
-// Sources live in scripts/thumb-sources/<slug>.jpg. Run: node scripts/make-thumbnails.mjs
+// Sources live in scripts/thumb-sources/<slug>.jpg. Entries marked `custom` are skipped. Run: node scripts/make-thumbnails.mjs
 import fs from 'node:fs'
 import sharp from 'sharp'
 import { projects } from './thumb-data.mjs'
@@ -34,6 +34,7 @@ async function frameImage(p) {
 
 fs.mkdirSync('src/assets/projects/thumbs', { recursive: true })
 for (const p of projects) {
+  if (p.custom) continue // drawn by its own script, e.g. make-geoscout-thumb.mjs
   const f = await frameImage(p)
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
     <defs><radialGradient id="r" cx=".85" cy=".1" r=".8"><stop offset="0" stop-color="${C.accent}" stop-opacity=".10"/><stop offset="1" stop-color="${C.accent}" stop-opacity="0"/></radialGradient></defs>

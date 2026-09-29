@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ExternalLink, ArrowLeft } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import Seo from '../components/Seo';
 import Breadcrumbs from '../components/Breadcrumbs';
+import Flow from '../components/Flow';
+import { h2Class, FactsTable, ResultTable, Bullets, Diagram, Details, TagList, BackLink } from '../components/DetailBlocks';
 import NotFound from './NotFound';
 import { papers, getPaper } from '../data/research';
 import { PERSON_ID, SITE_NAME, SITE_URL, absoluteUrl, pagePath, breadcrumbSchema } from '../data/site';
@@ -31,7 +33,7 @@ const scholarName = (name) => {
 export function ResearchIndexPage() {
     const crumbs = [{ name: 'Home', path: '/' }, { name: 'Research', path: '/research' }];
     const description =
-        'Peer-reviewed IEEE research by Navyansh Kothari on RAG vector databases, deep learning for otitis media and diabetic retinopathy, and insider threat mitigation.';
+        'IEEE research by Navyansh Kothari: multimodal RAG, RAG vector database updates, deep learning for ear infections and diabetic retinopathy, and insider threat mitigation.';
 
     const schema = [
         {
@@ -129,61 +131,76 @@ export function PaperPage() {
         ...(paper.doi ? [{ name: 'citation_doi', content: paper.doi }] : []),
     ];
 
+    const facts = [
+        ...(paper.facts || []),
+        ['Published in', paper.venue],
+        ['Where & when', paper.date],
+        ['Publisher', `IEEE (${year})`],
+        ...(paper.doi ? [['DOI', paper.doi]] : []),
+    ];
+
     return (
-        <article className="pt-20 md:pt-24 max-w-[900px] mx-auto px-6 pb-8">
-            <Seo title={title} description={paper.metaDescription} path={path} type="article" schema={schema} meta={meta} />
+        <article className="pt-20 md:pt-24 max-w-[860px] mx-auto px-4 md:px-6 pb-8">
+            <Seo title={title} description={paper.metaDescription} path={path} type="article" keywords={paper.tags} schema={schema} meta={meta} />
             <Breadcrumbs items={crumbs} />
 
-            <h1 className="text-2xl md:text-4xl font-bold text-yellow-500 leading-tight mb-5">{paper.title}</h1>
+            <h1 className="text-2xl md:text-4xl font-bold text-yellow-500 leading-tight">{paper.title}</h1>
 
-            <table className="w-full text-left text-sm md:text-base border-collapse">
-                <tbody>
-                    {[
-                        ['Conference', paper.venue],
-                        ['Where & when', paper.date],
-                        ['Publisher', `IEEE (${year})`],
-                        ['Topics', <Tags key="t" tags={paper.tags} />],
-                        ...(paper.doi ? [['DOI', paper.doi]] : []),
-                    ].map(([label, value]) => (
-                        <tr key={label} className="block sm:table-row border-b border-gray-700/70 py-2 sm:py-0">
-                            <th scope="row" className="block sm:table-cell align-top font-semibold text-yellow-400 sm:py-3 sm:pr-6 sm:w-40 whitespace-nowrap">{label}</th>
-                            <td className="block sm:table-cell align-top text-gray-300 leading-relaxed sm:py-3">{value}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <h2 className={h2Class}>At a glance</h2>
+            <FactsTable rows={facts} />
 
-            <h2 className="text-xl md:text-2xl font-semibold text-gray-100 mt-8 mb-3">Key points</h2>
-            <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300 text-base leading-relaxed">
-                {paper.abstract.map((point) => (
-                    <li key={point}>{point}</li>
-                ))}
-            </ul>
+            {paper.flow && (
+                <>
+                    <h2 className={h2Class}>How it works</h2>
+                    <Flow steps={paper.flow} />
+                </>
+            )}
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-                <a
-                    href={paper.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-5 py-2.5 bg-yellow-600 text-white rounded-lg font-semibold hover:bg-yellow-700 transition duration-300 flex items-center gap-2"
-                >
-                    View on IEEE Xplore <ExternalLink size={16} />
-                </a>
-                {paper.doi && (
+            <h2 className={h2Class}>Key points</h2>
+            <Bullets items={paper.abstract} />
+
+            {paper.tables && (
+                <>
+                    <h2 className={h2Class}>Results</h2>
+                    {paper.tables.map((table) => <ResultTable key={table.title} table={table} />)}
+                </>
+            )}
+
+            {paper.diagram && (
+                <>
+                    <h2 className={h2Class}>Architecture</h2>
+                    <Diagram src={paper.diagram} alt={`Architecture diagram: ${paper.title}`} />
+                </>
+            )}
+
+            {paper.details && <Details title="More numbers and details" items={paper.details} />}
+
+            <TagList tags={paper.tags} />
+
+            {paper.link && (
+                <div className="mt-6 flex flex-wrap items-center gap-4">
                     <a
-                        href={`https://doi.org/${paper.doi}`}
+                        href={paper.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm text-gray-400 hover:text-yellow-400 underline"
+                        className="px-5 py-2.5 bg-yellow-600 text-white rounded-lg font-semibold hover:bg-yellow-700 transition duration-300 flex items-center gap-2"
                     >
-                        DOI: {paper.doi}
+                        View on IEEE Xplore <ExternalLink size={16} />
                     </a>
-                )}
-            </div>
+                    {paper.doi && (
+                        <a
+                            href={`https://doi.org/${paper.doi}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-gray-400 hover:text-yellow-400 underline"
+                        >
+                            DOI: {paper.doi}
+                        </a>
+                    )}
+                </div>
+            )}
 
-            <Link to={pagePath('research')} className="mt-12 inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold">
-                <ArrowLeft size={18} /> All publications
-            </Link>
+            <BackLink to={pagePath('research')} label="All publications" />
         </article>
     );
 }
