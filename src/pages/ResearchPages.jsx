@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ExternalLink, User, CalendarDays, Building2, ArrowLeft } from 'lucide-react';
+import { ExternalLink, ArrowLeft } from 'lucide-react';
 import Seo from '../components/Seo';
 import Breadcrumbs from '../components/Breadcrumbs';
 import NotFound from './NotFound';
@@ -57,10 +57,7 @@ export function ResearchIndexPage() {
         <div className="pt-20 md:pt-24 max-w-[1000px] mx-auto px-6 pb-8">
             <Seo title={`Research & Publications | ${SITE_NAME}`} description={description} path="/research" schema={schema} />
             <Breadcrumbs items={crumbs} />
-            <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-3">Research & Publications</h1>
-            <p className="text-base md:text-lg text-gray-300 mb-8 max-w-[750px]">
-                Peer-reviewed conference papers published by IEEE, spanning generative AI, deep learning for healthcare, and cybersecurity.
-            </p>
+            <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-8">Research & Publications</h1>
 
             <ul className="space-y-4">
                 {papers.map((paper) => (
@@ -71,7 +68,6 @@ export function ResearchIndexPage() {
                             </Link>
                         </h2>
                         <p className="mt-2 text-sm text-gray-400">{paper.venue} &middot; {paper.date}</p>
-                        <p className="mt-2 text-sm text-gray-300">{paper.abstract[0]}</p>
                         <Tags tags={paper.tags} />
                     </li>
                 ))}
@@ -142,35 +138,36 @@ export function PaperPage() {
 
             <h1 className="text-2xl md:text-4xl font-bold text-yellow-500 leading-tight mb-5">{paper.title}</h1>
 
-            <div className="flex flex-col gap-1.5 text-sm md:text-base text-gray-300">
-                <p className="flex items-center gap-2 text-sm md:text-base">
-                    <User size={16} className="text-yellow-500/70 flex-shrink-0" />
-                    {paper.authors.map((name, i) => (
-                        <React.Fragment key={name}>
-                            {i > 0 && ', '}
-                            {name === SITE_NAME ? (
-                                <Link to="/" rel="author" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">{name}</Link>
-                            ) : name}
-                        </React.Fragment>
+            <table className="w-full text-left text-sm md:text-base border-collapse">
+                <tbody>
+                    {[
+                        ['Author', (
+                            <>
+                                {paper.authors.map((name, i) => (
+                                    <React.Fragment key={name}>
+                                        {i > 0 && ', '}
+                                        {name === SITE_NAME ? (
+                                            <Link to="/" rel="author" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">{name}</Link>
+                                        ) : name}
+                                    </React.Fragment>
+                                ))}
+                            </>
+                        )],
+                        ['Conference', paper.venue],
+                        ['Where & when', paper.date],
+                        ['Publisher', `IEEE (${year})`],
+                        ['Topics', <Tags key="t" tags={paper.tags} />],
+                        ...(paper.doi ? [['DOI', paper.doi]] : []),
+                    ].map(([label, value]) => (
+                        <tr key={label} className="block sm:table-row border-b border-gray-700/70 py-2 sm:py-0">
+                            <th scope="row" className="block sm:table-cell align-top font-semibold text-yellow-400 sm:py-3 sm:pr-6 sm:w-40 whitespace-nowrap">{label}</th>
+                            <td className="block sm:table-cell align-top text-gray-300 leading-relaxed sm:py-3">{value}</td>
+                        </tr>
                     ))}
-                </p>
-                <p className="flex items-center gap-2 text-sm md:text-base">
-                    <CalendarDays size={16} className="text-yellow-500/70 flex-shrink-0" />
-                    <span className="text-sm md:text-base font-normal text-gray-300">{paper.venue} &middot; {paper.date}</span>
-                </p>
-                <p className="flex items-center gap-2 text-sm md:text-base">
-                    <Building2 size={16} className="text-yellow-500/70 flex-shrink-0" /> Publisher: IEEE ({year})
-                </p>
-            </div>
+                </tbody>
+            </table>
 
-            <Tags tags={paper.tags} />
-
-            <p className="mt-6 text-base text-gray-300 leading-relaxed">
-                This paper by {paper.authors.join(', ')} was published by IEEE for the {paper.venue}, held in {paper.location} in {paper.date.split(' · ')[0]}.
-                Topics: {paper.tags.join(', ')}.
-            </p>
-
-            <h2 className="text-xl md:text-2xl font-semibold text-gray-100 mt-8 mb-3">Summary</h2>
+            <h2 className="text-xl md:text-2xl font-semibold text-gray-100 mt-8 mb-3">Key points</h2>
             <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300 text-base leading-relaxed">
                 {paper.abstract.map((point) => (
                     <li key={point}>{point}</li>

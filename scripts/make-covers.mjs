@@ -42,7 +42,6 @@ async function iconTile(icon) {
 
 const covers = [
   { out: 'refero', title: 'Refero', sub: ['Job referral marketplace'], chips: ['Expo', 'Firebase', 'Gemini'], from: '#0f5132', to: '#1f8a5b', icon: { file: 'scripts/cover-icons/refero.png' } },
-  { out: 'edtech', title: 'Ed-Tech App', sub: ['White-label tutoring platform'], chips: ['Expo', 'LiveKit', 'Firebase'], from: '#b45309', to: '#f59e0b', icon: { file: 'scripts/cover-icons/edtech.png' } },
   { out: 'quick-commerce', title: 'Quick Commerce', sub: ['Delivery app with 5 roles'], chips: ['React Native', 'Firebase', 'Maps'], from: '#1e3a8a', to: '#2563eb', icon: { glyph: 'cart' } },
   { out: 'multi-owner-shop', title: 'Multi-Owner Shop', sub: ['Admin app + online store', 'for every shop'], chips: ['Expo', 'React PWA', 'Firebase'], from: '#6b21a8', to: '#a855f7', icon: { glyph: 'store' } },
   { out: 'prompt-hub', title: 'Prompt Hub', sub: ['Version control for AI prompts'], chips: ['JavaScript', 'Firestore', 'jsdiff'], from: '#1a3fc7', to: '#3b6cf0', icon: { glyph: 'compare' } },

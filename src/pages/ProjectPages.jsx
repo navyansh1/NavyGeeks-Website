@@ -4,6 +4,7 @@ import { Github, ExternalLink, Apple, Play, ArrowLeft, Lock, ChevronDown } from 
 import Seo from '../components/Seo';
 import Breadcrumbs from '../components/Breadcrumbs';
 import ProjectCard from '../components/ProjectCard';
+import Flow from '../components/Flow';
 import MoreProjects from '../components/MoreProjects';
 import NotFound from './NotFound';
 import { projects, featuredProjects, getProject } from '../data/projects';
@@ -69,10 +70,7 @@ export function ProjectsIndexPage() {
         <div className="pt-20 md:pt-24 max-w-[1100px] mx-auto px-4 md:px-6 pb-8">
             <Seo title={`Projects | ${SITE_NAME}`} description={description} path="/projects" schema={schema} />
             <Breadcrumbs items={crumbs} />
-            <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-3">Projects</h1>
-            <p className="text-base md:text-lg text-gray-300 mb-8 max-w-[750px]">
-                Gen AI and machine learning systems, computer vision, research, and mobile and web apps. Open any project for a short write-up.
-            </p>
+            <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-8">Projects</h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {featuredProjects.map((project) => (
@@ -142,10 +140,14 @@ export function ProjectPage() {
     const hasLinks = site || github || ios || android;
 
     // Default table for smaller projects that have no hand-written facts.
-    const facts = project.facts || [
-        ['Type', project.kind.charAt(0).toUpperCase() + project.kind.slice(1)],
-        ...(project.platforms ? [['Platforms', project.platforms.join(', ')]] : []),
-        ...(project.stack.length ? [['Built with', project.stack.join(', ')]] : []),
+    const facts = [
+        ['In short', project.summary],
+        ...(project.facts || [
+            ['Type', project.kind.charAt(0).toUpperCase() + project.kind.slice(1)],
+            ...(project.platforms ? [['Platforms', project.platforms.join(', ')]] : []),
+            ...(project.stack.length ? [['Built with', project.stack.join(', ')]] : []),
+        ]),
+        ...(project.repoName ? [['Code', `${project.repoName} (private repository)`]] : []),
     ];
 
     const related = (project.featured ? featuredProjects : projects)
@@ -164,17 +166,23 @@ export function ProjectPage() {
             />
             <Breadcrumbs items={crumbs} />
 
-            <h1 className="text-2xl md:text-4xl font-bold text-yellow-500 leading-tight mb-3">{project.title}</h1>
-            <p className="text-base md:text-lg text-gray-300 leading-relaxed">{project.intro}</p>
+            <h1 className="text-2xl md:text-4xl font-bold text-yellow-500 leading-tight">{project.title}</h1>
 
             <img
                 src={project.img}
                 alt={`${shortName(project.title)} preview`}
-                className="mt-6 w-full aspect-video object-cover rounded-xl border border-gray-700"
+                className="mt-5 w-full aspect-video object-cover rounded-xl border border-gray-700"
             />
 
             <h2 className={h2Class}>At a glance</h2>
             <FactsTable rows={facts} />
+
+            {project.flow && (
+                <>
+                    <h2 className={h2Class}>Flow</h2>
+                    <Flow steps={project.flow} />
+                </>
+            )}
 
             {project.highlights && (
                 <>
@@ -194,7 +202,7 @@ export function ProjectPage() {
 
             {project.diagram && (
                 <>
-                    <h2 className={h2Class}>How it works</h2>
+                    <h2 className={h2Class}>Architecture</h2>
                     <img
                         src={project.diagram}
                         alt={`${shortName(project.title)} architecture diagram`}

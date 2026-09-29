@@ -25,7 +25,7 @@ const ProjectCard = ({ project, compact = false, headingLevel = 'h3' }) => {
                     {project.title}
                 </Heading>
                 {!compact && (
-                    <p className='text-sm text-gray-400 leading-relaxed line-clamp-3'>{project.metaDescription}</p>
+                    <span className='text-xs uppercase tracking-wide font-medium text-gray-400'>{project.kind}</span>
                 )}
                 <div className='mt-auto flex flex-wrap items-center gap-1.5 pt-1'>
                     {project.isPrivate && (
