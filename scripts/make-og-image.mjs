@@ -21,7 +21,7 @@ const text = Buffer.from(`
   <text x="70" y="190" font-family="DejaVu Sans, Arial, sans-serif" font-size="30" fill="#e5e7eb">hey, I am</text>
   <text x="70" y="270" font-family="DejaVu Sans, Arial, sans-serif" font-weight="bold" font-size="76" fill="#eab308">Navyansh</text>
   <text x="70" y="352" font-family="DejaVu Sans, Arial, sans-serif" font-weight="bold" font-size="76" fill="#eab308">Kothari</text>
-  <text x="70" y="425" font-family="DejaVu Sans, Arial, sans-serif" font-size="28" fill="#f3f4f6">Data Scientist · Gen AI Engineer</text>
+  <text x="70" y="425" font-family="DejaVu Sans, Arial, sans-serif" font-size="28" fill="#f3f4f6">AI/ML Engineer · Gen AI · Data Science</text>
   <text x="70" y="468" font-family="DejaVu Sans, Arial, sans-serif" font-size="28" fill="#f3f4f6">App Developer · IEEE Researcher</text>
   <text x="70" y="560" font-family="DejaVu Sans, Arial, sans-serif" font-size="28" fill="#eab308">navygeeks.in</text>
 </svg>`)

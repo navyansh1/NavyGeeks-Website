@@ -1,7 +1,7 @@
 // Central site configuration used by the SEO components, sitemap and structured data.
 export const SITE_URL = 'https://navygeeks.in';
 export const SITE_NAME = 'Navyansh Kothari';
-export const SITE_TAGLINE = 'Data Scientist, Gen AI Engineer & App Developer';
+export const SITE_TAGLINE = 'AI/ML Engineer & App Developer';
 export const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`;
 
 export const SOCIAL_LINKS = {
@@ -32,9 +32,9 @@ export const personSchema = {
     alternateName: 'NavyGeeks',
     url: `${SITE_URL}/`,
     image: `${SITE_URL}/profile.jpg`,
-    jobTitle: 'Data Scientist & Gen AI Engineer',
+    jobTitle: 'AI/ML Engineer',
     description:
-        'Data Scientist and Gen AI Engineer building RAG systems, machine learning models and mobile apps, and creating tech content as NavyGeeks.',
+        'AI/ML engineer building Gen AI products, RAG systems, machine learning models and mobile apps, and creating tech content as NavyGeeks.',
     worksFor: { '@type': 'Organization', name: 'Ganit Inc', url: 'https://www.ganitinc.com' },
     alumniOf: { '@type': 'CollegeOrUniversity', name: 'Vellore Institute of Technology' },
     knowsAbout: [

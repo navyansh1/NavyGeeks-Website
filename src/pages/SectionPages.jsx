@@ -31,7 +31,7 @@ const collectionSchema = (name, path, description) => ({
 export function ExperiencePage() {
     const crumbs = [{ name: 'Home', path: '/' }, { name: 'Experience', path: '/experience' }];
     const description =
-        'Work experience of Navyansh Kothari: Data Scientist & Gen AI Engineer at Ganit Inc, Technical Growth Analyst at Hitwicket, and the NavyGeeks YouTube channel.';
+        'Work experience of Navyansh Kothari: AI/ML Engineer at Ganit Inc, Technical Growth Analyst at Hitwicket, and the NavyGeeks YouTube channel.';
     return (
         <>
             <Seo
@@ -132,7 +132,7 @@ export function SkillsPage() {
 export function AboutPage() {
     const crumbs = [{ name: 'Home', path: '/' }, { name: 'About & Contact', path: '/about' }];
     const description =
-        'About Navyansh Kothari: Data Scientist, backend and mobile developer, and creator of the NavyGeeks YouTube channel. Get in touch for projects and collaborations.';
+        'About Navyansh Kothari: AI/ML engineer, backend and mobile developer, and creator of the NavyGeeks YouTube channel. Get in touch for projects and collaborations.';
     return (
         <>
             <Seo

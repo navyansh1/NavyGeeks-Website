@@ -123,7 +123,7 @@ const Hero = () => {
 
                 <motion.img
                     src={profilepic}
-                    alt="Navyansh Kothari, Data Scientist and Gen AI Engineer"
+                    alt="Navyansh Kothari, AI/ML Engineer"
                     className="w-[250px] md:w-[350px] rounded-xl"
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}

@@ -19,7 +19,7 @@ const experiences = [
         company: 'Ganit Inc',
         period: 'Sep 2025 - Present',
         description: [
-            'Data Scientist & Gen AI Engineer',
+            'AI/ML Engineer',
             'Build Gen AI products end to end: RAG pipelines, LLM agents and APIs with FastAPI, LangChain and LangGraph on AWS',
             'Develop computer vision and document AI solutions such as OCR, face recognition and PII redaction',
             'Build machine learning models for BFSI and FMCG clients, including forecasting, clustering and price elasticity, explained with SHAP',
