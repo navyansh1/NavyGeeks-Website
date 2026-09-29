@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { FolderOpen, ArrowRight } from 'lucide-react';
 import ShinyEffect from './ShinyEffect';
 import ProjectGrid from './ProjectGrid';
-import MoreProjects from './MoreProjects';
 import ProjectModal from './ProjectModal';
-import { featuredProjects } from '../data/projects';
+import { featuredProjects, projects } from '../data/projects';
 import { pagePath } from '../data/site';
+
+// The home page shows only the best few; the rest are on /projects/.
+const HOME_COUNT = 6;
 
 const Portfolio = () => {
     const [open, setOpen] = useState(null);
@@ -18,13 +20,14 @@ const Portfolio = () => {
         </h2>
         <ShinyEffect left={0} top={0} size={1900} />
 
-        <ProjectGrid projects={featuredProjects} onOpen={setOpen} />
-
-        <MoreProjects onOpen={setOpen} />
+        <ProjectGrid projects={featuredProjects.slice(0, HOME_COUNT)} onOpen={setOpen} />
 
         <div className='mt-8 text-center'>
-            <Link to={pagePath('projects')} className='inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold'>
-                See all projects <ArrowRight size={18} />
+            <Link
+                to={pagePath('projects')}
+                className='inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-yellow-500 text-yellow-400 font-semibold hover:bg-yellow-500 hover:text-gray-900 transition duration-300'
+            >
+                See all {projects.length} projects <ArrowRight size={18} />
             </Link>
         </div>
 
