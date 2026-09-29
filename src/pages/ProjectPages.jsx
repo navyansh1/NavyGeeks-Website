@@ -37,7 +37,7 @@ const projectSchema = (project, path) => {
 export function ProjectsIndexPage() {
     const crumbs = [{ name: 'Home', path: '/' }, { name: 'Projects', path: '/projects' }];
     const description =
-        'Projects by Navyansh Kothari: VedicFlow Hindu calendar app, Bill Sonic POS, ML demand forecasting and fraud detection, NextForms, an AI quiz generator and iOS apps.';
+        'Projects by Navyansh Kothari: VedicFlow, Bill Sonic, Masker PII redaction, GeoScout IQ, AI expense and meal trackers, ML forecasting and fraud models, and more.';
 
     const schema = [
         {
