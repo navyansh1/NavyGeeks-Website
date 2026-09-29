@@ -11,17 +11,108 @@ import billsonicImg from "../assets/projects/billsonic.png";
 import vedicflowImg from "../assets/projects/vedicflow.jpg";
 import maskerImg from "../assets/projects/masker.jpg";
 import geoscoutImg from "../assets/projects/geoscout.jpg";
-import toursensiImg from "../assets/projects/toursensi.jpg";
-import moneytrackImg from "../assets/projects/moneytrack.jpg";
-import nutrisnapImg from "../assets/projects/nutrisnap.jpg";
 import guardnoteImg from "../assets/projects/guardnote.jpg";
-import digitalMalaImg from "../assets/projects/digital-mala.jpg";
 import mlClassifierImg from "../assets/projects/ml-classifier.jpg";
+import cctvIqImg from "../assets/projects/cctv-iq.jpg";
+import btlImg from "../assets/projects/btl-optimization.jpg";
 import cricketPlayablesImg from "../assets/projects/cricket-playables.jpg";
 
+import geoscoutDiagram from "../assets/diagrams/geoscout-iq.svg";
+import cctvIqDiagram from "../assets/diagrams/cctv-iq.svg";
+import maskerDiagram from "../assets/diagrams/masker-pii-redaction.svg";
+import btlDiagram from "../assets/diagrams/btl-optimization.svg";
+
 // Projects. `slug` becomes the URL: /projects/<slug>/
+// `gist` (optional) is a few one-line highlights shown as "At a glance" on the project page.
+// `diagram` (optional) is an architecture diagram shown on the project page.
 // `type` picks the schema.org type: MobileApplication | WebApplication | SoftwareSourceCode | CreativeWork
 export const projects = [
+    {
+        slug: "geoscout-iq",
+        kind: "location intelligence web app",
+        img: geoscoutImg,
+        title: "GeoScout IQ - Location Decision Intelligence",
+        type: "WebApplication",
+        stack: ["Google Maps", "H3 hex grid", "Gemini", "Firebase"],
+        metaDescription:
+            "GeoScout IQ recommends where banks should open ATMs or branches and where retailers should open stores in India, using maps, web data and Gemini agents.",
+        description:
+            "Type any Indian location, pick an industry and a company, and in about 30 seconds GeoScout IQ scores the neighbourhood on a colour-coded H3 hex heatmap. It maps competitors and your own locations, checks what is nearby (metro, malls, schools, highways), pulls property listings, and writes an executive summary with a GO / CAUTION / AVOID recommendation. Built for BFSI and FMCG site selection with Google Maps, multi-source web data and Gemini grounding agents.",
+        gist: [
+            "Recommends where to open ATMs, branches, stores and warehouses anywhere in India",
+            "Scores ~0.7 sq km H3 hex tiles on demand, open space, access and growth",
+            "Blends Google Places, WorldPop, NASA night lights, OpenStreetMap and property data",
+            "Gemini grounding agents write a GO / CAUTION / AVOID executive summary in about 30 seconds",
+        ],
+        diagram: geoscoutDiagram,
+        links: {
+            site: "https://toursensi-ganit-71c77.web.app",
+            github: "https://github.com/navyansh1/TourSensi-Scout-ganit",
+        },
+    },
+    {
+        slug: "cctv-iq-face-attendance",
+        kind: "computer vision system",
+        img: cctvIqImg,
+        title: "CCTV IQ - Face ID Attendance",
+        type: "SoftwareApplication",
+        stack: ["Python", "InsightFace", "OpenVINO", "ONNX Runtime"],
+        metaDescription:
+            "CCTV IQ recognises enrolled people on office CCTV and logs arrivals. Moving both face models to the Intel iGPU cut processing from 9.86 to 0.31 s per frame.",
+        description:
+            "A face-recognition attendance system that identifies enrolled people on existing office CCTV and logs their arrivals, built with accuracy as the priority. Faces are detected with SCRFD and embedded with antelopev2, both running on the Intel integrated GPU through OpenVINO, then matched against a 182-person gallery. A match is only accepted when it clearly beats the runner-up, and arrivals are debounced on absence rather than a timer, so the register does not log wrong names or duplicates. Measured over 17,842 real sightings, face size turned out to decide accuracy far more than the model: four recognition models tied within noise, while faces 32-48 px between the eyes were identified twice as often as faces at 20-32 px.",
+        gist: [
+            "Identifies enrolled people on existing office CCTV and writes a daily attendance register",
+            "9.86 → 0.31 s per frame by moving detection and recognition to the idle Intel iGPU with OpenVINO",
+            "Refuses a match when the runner-up is too close, so it never logs a confident wrong name",
+            "Benchmarked 4 face-recognition models on 17,842 real sightings: camera placement mattered more than the model",
+        ],
+        diagram: cctvIqDiagram,
+        links: {},
+    },
+    {
+        slug: "masker-pii-redaction",
+        kind: "AI web app",
+        img: maskerImg,
+        title: "Masker - PII Redaction for Medical Documents",
+        type: "WebApplication",
+        stack: ["Google Vision OCR", "Gemini 2.5 Flash-Lite", "Firebase"],
+        metaDescription:
+            "Masker blacks out personal and health information in medical images and PDFs, using Google Vision OCR for exact boxes and Gemini to decide what is PII.",
+        description:
+            "Upload a medical image or PDF and Masker finds every piece of personal information on every page and blacks it out: names, addresses, phone numbers, dates of birth, patient IDs, Aadhaar and insurance numbers. Google Vision OCR gives the exact pixel box of every word, and Gemini 2.5 Flash-Lite reads the word list and decides which words are PII, so the redaction is pixel-accurate every time. Returns the file in the same format it received. Deployed on Firebase Hosting and Cloud Functions.",
+        gist: [
+            "Redacts names, IDs, phone numbers, addresses and other PII from medical images and PDFs",
+            "Google Vision OCR owns the pixel geometry, Gemini only decides which words are PII",
+            "Pixel-accurate every run, because LLM bounding boxes are never used",
+            "Returns the same format it received, on Firebase Hosting and Cloud Functions",
+        ],
+        diagram: maskerDiagram,
+        links: {
+            site: "https://masker-ganit.web.app",
+            github: "https://github.com/navyansh1/PII-Masker-Ganit",
+        },
+    },
+    {
+        slug: "btl-spend-optimization",
+        kind: "marketing mix modelling pipeline",
+        img: btlImg,
+        title: "BTL Spend Optimization",
+        type: "SoftwareApplication",
+        stack: ["Python", "pandas", "DTW clustering", "SHAP", "Streamlit"],
+        metaDescription:
+            "An ML pipeline for an FMCG company that measures how below-the-line trade spend drives sales and simulates the P&L impact of changing it, per state, pack and channel.",
+        description:
+            "A modelling pipeline for an FMCG company that measures how below-the-line (BTL) trade spend drives sales, and what happens to sales and P&L if it changes. Separate per-product notebooks were rebuilt as one config-driven, local-pandas pipeline: a data merge that adds weather and festival features, dynamic time warping clustering of State × Pack × Channel segments, per-cluster ML models explained with SHAP, and BTL elasticity and saturation curves. The results feed two Streamlit dashboards, including a simulator where you type a BTL % per segment and see sales and P&L recompute live, deployed on Hugging Face Spaces with the data kept in a private repo.",
+        gist: [
+            "Measures where below-the-line trade spend actually lifts sales, per state, pack and channel",
+            "Rebuilt per-product notebooks into one config-driven pandas pipeline that runs for any product",
+            "DTW clustering + per-cluster ML models with SHAP, then elasticity and saturation curves",
+            "Streamlit simulator: change BTL % per segment and see sales and P&L recompute live",
+        ],
+        diagram: btlDiagram,
+        links: {},
+    },
     {
         slug: "vedicflow",
         kind: "mobile app (iOS and Android)",
@@ -53,85 +144,6 @@ export const projects = [
             "A smart, full-featured Point of Sale (POS) mobile app for modern retailers. Features barcode scanning, GST-compliant PDF billing, bulk product import from Excel/CSV, real-time inventory tracking, sales analytics, Admin/Cashier role management with PIN auth, and cloud sync. Built with React Native & Firebase.",
         links: {
             site: "https://billsonic.vercel.app/",
-        },
-    },
-    {
-        slug: "masker-pii-redaction",
-        kind: "AI web app",
-        img: maskerImg,
-        title: "Masker - PII Redaction for Medical Documents",
-        type: "WebApplication",
-        stack: ["Google Vision OCR", "Gemini 2.5 Flash-Lite", "Firebase"],
-        metaDescription:
-            "Masker blacks out personal and health information in medical images and PDFs, using Google Vision OCR for exact boxes and Gemini to decide what is PII.",
-        description:
-            "Upload a medical image or PDF and Masker finds every piece of personal information on every page and blacks it out: names, addresses, phone numbers, dates of birth, patient IDs, Aadhaar and insurance numbers. Google Vision OCR gives the exact pixel box of every word, and Gemini 2.5 Flash-Lite reads the word list and decides which words are PII, so the redaction is pixel-accurate every time. Returns the file in the same format it received. Deployed on Firebase Hosting and Cloud Functions.",
-        links: {
-            site: "https://masker-ganit.web.app",
-            github: "https://github.com/navyansh1/PII-Masker-Ganit",
-        },
-    },
-    {
-        slug: "geoscout-iq",
-        kind: "location intelligence web app",
-        img: geoscoutImg,
-        title: "GeoScout IQ - Location Decision Intelligence",
-        type: "WebApplication",
-        stack: ["Google Maps", "H3 hex grid", "Gemini", "Firebase"],
-        metaDescription:
-            "GeoScout IQ recommends where banks should open ATMs or branches and where retailers should open stores in India, using maps, web data and Gemini agents.",
-        description:
-            "Type any Indian location, pick an industry and a company, and in about 30 seconds GeoScout IQ scores the neighbourhood on a colour-coded H3 hex heatmap. It maps competitors and your own locations, checks what is nearby (metro, malls, schools, highways), pulls property listings, and writes an executive summary with a GO / CAUTION / AVOID recommendation. Built for BFSI and FMCG site selection with Google Maps, multi-source web data and Gemini grounding agents.",
-        links: {
-            site: "https://toursensi-ganit-71c77.web.app",
-            github: "https://github.com/navyansh1/TourSensi-Scout-ganit",
-        },
-    },
-    {
-        slug: "moneytrack-ai-expense-tracker",
-        kind: "AI mobile app",
-        img: moneytrackImg,
-        title: "MoneyTrack - AI Receipt Scanner & Expense Tracker",
-        type: "MobileApplication",
-        platforms: ["iOS", "Android", "Web"],
-        stack: ["React Native", "Expo", "Gemini Vision"],
-        metaDescription:
-            "MoneyTrack is a cross-platform expense tracker that scans receipts with Gemini Vision and extracts merchant, amount, category, date and payment method.",
-        description:
-            "A cross-platform expense tracker built with Expo. Upload one or more receipt photos and Gemini Vision extracts the merchant, total, date, category, currency and payment method (cash, card or UPI). Includes editable transactions, month and custom date filters, custom categories and currencies, and light and dark themes. Needs no backend: the API key stays on the device and receipt images are never stored on a server.",
-        links: {
-            github: "https://github.com/navyansh1/Budget-Tracker-Mobile-App",
-        },
-    },
-    {
-        slug: "nutrisnap-ai-meal-tracker",
-        kind: "AI mobile app",
-        img: nutrisnapImg,
-        title: "NutriSnap - AI Meal & Health Tracker",
-        type: "MobileApplication",
-        platforms: ["iOS", "Android"],
-        stack: ["React Native", "Expo", "Gemini", "Firebase"],
-        metaDescription:
-            "NutriSnap is an AI meal tracker: snap a photo of your food and Gemini identifies it and calculates calories, protein, carbs, fat, fiber, sugar and sodium.",
-        description:
-            "Snap a photo of a meal and Gemini identifies the food and calculates its calories and macros. NutriSnap tracks daily calories, protein, carbs and fat against goals you set, shows fiber, sugar and sodium per meal, and sends smart reminders. Firebase Authentication and Firestore sync your data across devices, with offline handling and multiple colour themes.",
-        links: {
-            github: "https://github.com/navyansh1/Health-Tracker-Mobile-App",
-        },
-    },
-    {
-        slug: "toursensi-destination-intelligence",
-        kind: "web app",
-        img: toursensiImg,
-        title: "TourSensi - Destination Intelligence",
-        type: "WebApplication",
-        stack: ["JavaScript", "Leaflet", "Chart.js", "Gemini"],
-        metaDescription:
-            "TourSensi predicts crowd buildup at Indian tourist spots from weather, holidays and news, giving authorities a Destination Health Score and AI advisories.",
-        description:
-            "A command center that predicts crowd buildup at Indian tourist destinations so authorities can act before overcrowding or safety incidents. It combines live weather, public holidays, local news and a transparent crowd model into a single Destination Health Score, with maps, forecasts and AI-generated advisories. Plain HTML, CSS and JavaScript with no build step.",
-        links: {
-            github: "https://github.com/navyansh1/TourSensi-Ganit",
         },
     },
     {
@@ -224,21 +236,6 @@ export const projects = [
             "Upload a CSV and train classifiers entirely in the browser. The app cleans missing values (interpolation for numbers, mode for categories), lets you pick features and a target, and compares Logistic Regression, K-Nearest Neighbors, Decision Tree, Random Forest and Naive Bayes on a chart. No server required.",
         links: {
             github: "https://github.com/navyansh1/Classification-Web-ML",
-        },
-    },
-    {
-        slug: "digital-mala",
-        kind: "mobile-first web app (PWA)",
-        img: digitalMalaImg,
-        title: "Digital Mala - 108 Beads",
-        type: "WebApplication",
-        stack: ["JavaScript", "PWA"],
-        metaDescription:
-            "Digital Mala is a mobile-first PWA for chanting: tap to move through 108 beads with sound, vibration and progress tracking. Installable on iOS and Android.",
-        description:
-            "A mobile-first digital mala for chanting and meditation when your physical mala is not around. Tap to rotate through 108 beads with an active-bead highlight, progress ring, marker beads every 27, sound and vibration feedback. Installable as a PWA on iOS and Android.",
-        links: {
-            github: "https://github.com/navyansh1/my-mala",
         },
     },
     {

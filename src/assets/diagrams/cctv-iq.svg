@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9CA3AF"/></marker></defs>
+  <rect width="1280" height="720" fill="#162121"/>
+  <text x="48" y="64" font-size="30" font-weight="bold" fill="#E5E7EB">CCTV IQ: Face ID Attendance</text>
+  <text x="48" y="94" font-size="16" fill="#9CA3AF">Recognise enrolled people on office CCTV and log arrivals, tuned for accuracy</text>
+  
+    <rect x="48" y="150" width="210" height="96" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="178" font-size="17" font-weight="bold" fill="#E5E7EB">RTSP camera</text><text x="64" y="202" font-size="15" fill="#9CA3AF">2560×1440 stream</text><text x="64" y="222" font-size="15" fill="#9CA3AF">threaded capture</text>
+    <line x1="258" y1="198" x2="296" y2="198" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="298" y="150" width="210" height="96" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="314" y="178" font-size="17" font-weight="bold" fill="#E5E7EB">Ignore zones</text><text x="314" y="202" font-size="15" fill="#9CA3AF">desks masked before</text><text x="314" y="222" font-size="15" fill="#9CA3AF">embedding: 2-3× faster</text>
+    <line x1="508" y1="198" x2="546" y2="198" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="548" y="150" width="210" height="96" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="564" y="178" font-size="17" font-weight="bold" fill="#E5E7EB">Face detection</text><text x="564" y="202" font-size="15" fill="#9CA3AF">SCRFD</text>
+    <line x1="758" y1="198" x2="796" y2="198" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="798" y="150" width="210" height="96" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="814" y="178" font-size="17" font-weight="bold" fill="#E5E7EB">Face embedding</text><text x="814" y="202" font-size="15" fill="#9CA3AF">antelopev2</text>
+    <line x1="1008" y1="198" x2="1046" y2="198" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="1048" y="150" width="184" height="96" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="1064" y="178" font-size="17" font-weight="bold" fill="#EAB308">Gallery match</text><text x="1064" y="202" font-size="15" fill="#9CA3AF">182 people</text>
+    <rect x="538" y="136" width="480" height="124" rx="16" fill="none" stroke="#EAB308" stroke-dasharray="6 6"/>
+    <text x="548" y="282" font-size="13" fill="#EAB308" font-weight="bold" letter-spacing="1">BOTH MODELS ON THE INTEL iGPU VIA OPENVINO</text>
+    <line x1="1140" y1="246" x2="1140" y2="330" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="900" y="332" width="332" height="110" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="916" y="360" font-size="17" font-weight="bold" fill="#EAB308">Margin check</text><text x="916" y="384" font-size="15" fill="#9CA3AF">refuse a name when the runner-up</text><text x="916" y="404" font-size="15" fill="#9CA3AF">is too close: silence beats</text><text x="916" y="424" font-size="15" fill="#9CA3AF">a confident wrong name</text>
+    <line x1="900" y1="387" x2="842" y2="387" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="560" y="332" width="280" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="576" y="360" font-size="17" font-weight="bold" fill="#E5E7EB">Arrival tracker</text><text x="576" y="384" font-size="15" fill="#9CA3AF">debounce on absence, not a</text><text x="576" y="404" font-size="15" fill="#9CA3AF">cooldown timer (regression-</text><text x="576" y="424" font-size="15" fill="#9CA3AF">tested across 9 scenarios)</text>
+    <line x1="560" y1="387" x2="502" y2="387" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="48" y="332" width="452" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="360" font-size="17" font-weight="bold" fill="#E5E7EB">Outputs</text><text x="64" y="384" font-size="15" fill="#9CA3AF">daily attendance register (xlsx + csv)</text><text x="64" y="404" font-size="15" fill="#9CA3AF">live dashboard; recognition runs in its</text><text x="64" y="424" font-size="15" fill="#9CA3AF">own thread and never waits on the UI</text>
+    <text x="48" y="500" font-size="13" fill="#EAB308" font-weight="bold" letter-spacing="1">WHAT THE MEASUREMENTS SHOWED</text>
+    <rect x="48" y="516" width="370" height="150" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="544" font-size="17" font-weight="bold" fill="#E5E7EB">9.86 → 0.31 s/frame</text><text x="64" y="568" font-size="15" fill="#9CA3AF">moving both models from the CPU</text><text x="64" y="588" font-size="15" fill="#9CA3AF">to the idle Intel iGPU, with</text><text x="64" y="608" font-size="15" fill="#9CA3AF">identical scores</text>
+    <rect x="442" y="516" width="370" height="150" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="458" y="544" font-size="17" font-weight="bold" fill="#E5E7EB">Face size decides accuracy</text><text x="458" y="568" font-size="15" fill="#9CA3AF">32-48 px between the eyes: 38.9%</text><text x="458" y="588" font-size="15" fill="#9CA3AF">20-32 px: 18.1% identified</text><text x="458" y="608" font-size="15" fill="#9CA3AF">(17,842 real sightings)</text>
+    <rect x="836" y="516" width="396" height="150" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="852" y="544" font-size="17" font-weight="bold" fill="#E5E7EB">4 recognition models tied</text><text x="852" y="568" font-size="15" fill="#9CA3AF">antelopev2, AdaFace, buffalo_l and</text><text x="852" y="588" font-size="15" fill="#9CA3AF">AuraFace within noise: camera</text><text x="852" y="608" font-size="15" fill="#9CA3AF">placement matters more than the model</text>
+  </svg>

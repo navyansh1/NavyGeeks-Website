@@ -22,6 +22,7 @@ export default defineConfig({
     react(),
     // Compress the (multi-MB) PNG/JPG screenshots and certificates at build time.
     ViteImageOptimizer({
+      test: /\.(jpe?g|png|webp)$/i,
       png: { quality: 75 },
       jpeg: { quality: 78 },
       jpg: { quality: 78 },

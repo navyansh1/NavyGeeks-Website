@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9CA3AF"/></marker></defs>
+  <rect width="1280" height="720" fill="#162121"/>
+  <text x="48" y="64" font-size="30" font-weight="bold" fill="#E5E7EB">Masker: PII Redaction</text>
+  <text x="48" y="94" font-size="16" fill="#9CA3AF">Pixel-accurate redaction of medical documents</text>
+  
+    <rect x="48" y="200" width="220" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="228" font-size="17" font-weight="bold" fill="#E5E7EB">Upload</text><text x="64" y="252" font-size="15" fill="#9CA3AF">image (JPG, PNG)</text><text x="64" y="272" font-size="15" fill="#9CA3AF">or PDF, any pages</text>
+    <line x1="268" y1="255" x2="316" y2="255" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="318" y="200" width="260" height="110" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="334" y="228" font-size="17" font-weight="bold" fill="#EAB308">Google Vision OCR</text><text x="334" y="252" font-size="15" fill="#9CA3AF">exact pixel box for</text><text x="334" y="272" font-size="15" fill="#9CA3AF">every word</text>
+    <line x1="578" y1="255" x2="626" y2="255" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="628" y="200" width="280" height="110" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="644" y="228" font-size="17" font-weight="bold" fill="#EAB308">Gemini 2.5 Flash-Lite</text><text x="644" y="252" font-size="15" fill="#9CA3AF">reads the word list (text</text><text x="644" y="272" font-size="15" fill="#9CA3AF">only) and flags the PII</text>
+    <line x1="908" y1="255" x2="956" y2="255" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="958" y="200" width="274" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="974" y="228" font-size="17" font-weight="bold" fill="#E5E7EB">Black out</text><text x="974" y="252" font-size="15" fill="#9CA3AF">fill the OCR box of each</text><text x="974" y="272" font-size="15" fill="#9CA3AF">flagged word, every page</text>
+    <line x1="1095" y1="310" x2="1095" y2="380" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="958" y="382" width="274" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="974" y="410" font-size="17" font-weight="bold" fill="#E5E7EB">Redacted file</text><text x="974" y="434" font-size="15" fill="#9CA3AF">same format out as in</text><text x="974" y="454" font-size="15" fill="#9CA3AF">(PDF in, PDF out)</text>
+    <rect x="48" y="382" width="860" height="110" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="410" font-size="17" font-weight="bold" fill="#E5E7EB">Why split the job</text><text x="64" y="434" font-size="15" fill="#9CA3AF">A vision LLM reads documents well but its bounding boxes drift between runs, which can leave a field</text><text x="64" y="454" font-size="15" fill="#9CA3AF">partly exposed. OCR owns the geometry, the LLM only decides which words are PII, so the redaction</text><text x="64" y="474" font-size="15" fill="#9CA3AF">lands on the exact pixels every time.</text>
+    <text x="48" y="560" font-size="13" fill="#EAB308" font-weight="bold" letter-spacing="1">DETECTS</text>
+    <text x="48" y="588" font-size="16" fill="#E5E7EB">names · addresses · phone numbers · emails · dates of birth · patient IDs · Aadhaar / SSN · insurance numbers · signatures</text>
+    <text x="48" y="640" font-size="13" fill="#EAB308" font-weight="bold" letter-spacing="1">RUNS ON</text>
+    <text x="48" y="668" font-size="16" fill="#E5E7EB">Firebase Hosting + Cloud Functions</text>
+  </svg>

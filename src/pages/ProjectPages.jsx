@@ -37,7 +37,7 @@ const projectSchema = (project, path) => {
 export function ProjectsIndexPage() {
     const crumbs = [{ name: 'Home', path: '/' }, { name: 'Projects', path: '/projects' }];
     const description =
-        'Projects by Navyansh Kothari: VedicFlow, Bill Sonic, Masker PII redaction, GeoScout IQ, AI expense and meal trackers, ML forecasting and fraud models, and more.';
+        'Projects by Navyansh Kothari: GeoScout IQ location intelligence, CCTV IQ face-ID attendance, Masker PII redaction, BTL spend optimization, VedicFlow and more.';
 
     const schema = [
         {
@@ -65,7 +65,7 @@ export function ProjectsIndexPage() {
             <Breadcrumbs items={crumbs} />
             <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-3">Projects</h1>
             <p className="text-base md:text-lg text-gray-300 mb-8 max-w-[750px]">
-                Mobile apps, machine learning case studies, web apps and design work.
+                Gen AI and machine learning systems, computer vision, mobile apps and web apps.
             </p>
 
             <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
@@ -129,7 +129,29 @@ export function ProjectPage() {
             <p className="mt-6 text-base md:text-lg text-gray-300 leading-relaxed">
                 {project.title.split(' - ')[0]} is a {project.kind} by Navyansh Kothari.
             </p>
-            <p className="mt-3 text-base md:text-lg text-gray-300 leading-relaxed">{project.description}</p>
+            {project.gist && (
+                <>
+                    <h2 className="text-xl md:text-2xl font-semibold text-gray-100 mt-8 mb-3">At a glance</h2>
+                    <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300 text-base leading-relaxed">
+                        {project.gist.map((point) => <li key={point}>{point}</li>)}
+                    </ul>
+                </>
+            )}
+
+            <p className={`${project.gist ? 'mt-6' : 'mt-3'} text-base md:text-lg text-gray-300 leading-relaxed`}>{project.description}</p>
+
+            {project.diagram && (
+                <>
+                    <h2 className="text-xl md:text-2xl font-semibold text-gray-100 mt-8 mb-3">How it works</h2>
+                    <img
+                        src={project.diagram}
+                        alt={`${project.title.split(' - ')[0]} architecture diagram`}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full rounded-xl border border-gray-700"
+                    />
+                </>
+            )}
 
             {(project.stack.length > 0 || project.platforms) && (
                 <>

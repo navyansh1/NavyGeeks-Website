@@ -52,7 +52,8 @@ const Navbar = () => {
     useEffect(() => {
         if (!isHome) return undefined;
         const handleScroll = () => {
-            const sections = ['hero', 'skills', 'experience', 'portfolio', 'education', 'certifications', 'research', 'contact'];
+            // must match the order of the sections on the home page
+            const sections = ['hero', 'skills', 'experience', 'education', 'portfolio', 'certifications', 'research', 'contact'];
 
             const scrollPosition = window.scrollY + 200; // Adding offset for better accuracy
 
