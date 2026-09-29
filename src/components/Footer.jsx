@@ -4,11 +4,13 @@ import { Github, Instagram, Youtube, Linkedin } from 'lucide-react';
 import { SOCIAL_LINKS, pagePath } from '../data/site';
 
 const exploreLinks = [
+    { to: 'skills', label: 'Skills' },
     { to: 'experience', label: 'Experience' },
     { to: 'education', label: 'Education' },
     { to: 'projects', label: 'Projects' },
     { to: 'research', label: 'Research & Publications' },
     { to: 'certifications', label: 'Certifications' },
+    { to: 'about', label: 'About & Contact' },
 ];
 
 const socials = [

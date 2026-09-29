@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from './Layout';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
-import { ExperiencePage, EducationPage, CertificationsPage } from './pages/SectionPages';
+import { ExperiencePage, EducationPage, CertificationsPage, SkillsPage, AboutPage } from './pages/SectionPages';
 import { ResearchIndexPage, PaperPage } from './pages/ResearchPages';
 import { ProjectsIndexPage, ProjectPage } from './pages/ProjectPages';
 import { papers } from './data/research';
@@ -17,6 +17,8 @@ export const routes = [
         entry: 'src/Layout.jsx',
         children: [
             { index: true, element: <Home /> },
+            { path: 'skills', element: <SkillsPage /> },
+            { path: 'about', element: <AboutPage /> },
             { path: 'experience', element: <ExperiencePage /> },
             { path: 'education', element: <EducationPage /> },
             { path: 'certifications', element: <CertificationsPage /> },

@@ -7,16 +7,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 // On the home page links scroll to a section; on other pages they navigate.
 const pageRoutes = {
     hero: '/',
-    skills: '/#skills',
+    skills: '/skills/',
     experience: '/experience/',
     education: '/education/',
     portfolio: '/projects/',
     certifications: '/certifications/',
     research: '/research/',
-    contact: '/#contact',
+    contact: '/about/',
 };
 
 const pageSections = {
+    skills: 'skills',
+    about: 'contact',
     experience: 'experience',
     education: 'education',
     projects: 'portfolio',

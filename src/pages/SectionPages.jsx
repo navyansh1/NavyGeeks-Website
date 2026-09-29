@@ -5,6 +5,8 @@ import CertDetails from '../components/CertDetails';
 import Experience from '../components/Experience';
 import Education from '../components/Education';
 import Certifications from '../components/Certifications';
+import Skills from '../components/Skills';
+import Contact from '../components/Contact';
 import { certifications } from '../data/certifications';
 import { SITE_NAME, SITE_URL, absoluteUrl, personRef } from '../data/site';
 
@@ -103,6 +105,54 @@ export function CertificationsPage() {
                         ))}
                     </ul>
                 </section>
+            </PageFrame>
+        </>
+    );
+}
+
+export function SkillsPage() {
+    const crumbs = [{ name: 'Home', path: '/' }, { name: 'Skills', path: '/skills' }];
+    const description =
+        'Skills of Navyansh Kothari: Python, pandas, scikit-learn, LangChain, LangGraph, RAG, FastAPI, React Native, Swift, AWS, GCP and Firebase across data science, Gen AI and mobile.';
+    return (
+        <>
+            <Seo
+                title={`Skills | ${SITE_NAME}`}
+                description={description}
+                path="/skills"
+                schema={[collectionSchema('Skills', '/skills', description), breadcrumbSchema(crumbs)]}
+            />
+            <PageFrame crumbs={crumbs}>
+                <Skills pageHeading />
+            </PageFrame>
+        </>
+    );
+}
+
+export function AboutPage() {
+    const crumbs = [{ name: 'Home', path: '/' }, { name: 'About & Contact', path: '/about' }];
+    const description =
+        'About Navyansh Kothari: Data Scientist, backend and mobile developer, and creator of the NavyGeeks YouTube channel. Get in touch for projects and collaborations.';
+    return (
+        <>
+            <Seo
+                title={`About & Contact | ${SITE_NAME}`}
+                description={description}
+                path="/about"
+                schema={[
+                    {
+                        '@type': ['AboutPage', 'ContactPage'],
+                        name: `About ${SITE_NAME}`,
+                        description,
+                        url: absoluteUrl('/about'),
+                        isPartOf: { '@id': `${SITE_URL}/#website` },
+                        mainEntity: personRef,
+                    },
+                    breadcrumbSchema(crumbs),
+                ]}
+            />
+            <PageFrame crumbs={crumbs}>
+                <Contact pageHeading />
             </PageFrame>
         </>
     );
