@@ -37,6 +37,7 @@ import ocrDiagram from "../assets/diagrams/ocr-benchmark.svg";
  * tables      optional result tables ({ title, head, rows })
  * details     optional bullets inside the collapsed "Technical details" section
  * diagram     optional architecture diagram
+ * thumbIsDiagram  the thumbnail is that diagram, so the page does not repeat it at the top
  * tags        keywords: shown as chips and used for meta keywords / structured data
  * type        schema.org type: MobileApplication | WebApplication | SoftwareApplication | SoftwareSourceCode | CreativeWork
  */
@@ -104,6 +105,7 @@ export const projects = [
     },
     {
         slug: "cctv-iq-face-attendance",
+        thumbIsDiagram: true,
         featured: true,
         isPrivate: true,
         kind: "computer vision system",
@@ -169,7 +171,53 @@ export const projects = [
         links: {},
     },
     {
+        slug: "vedicflow",
+        featured: true,
+        isPrivate: true,
+        kind: "mobile app (iOS & Android)",
+        img: thumb_vedicflow,
+        title: "VedicFlow - Hindu Calendar & Panchang",
+        type: "MobileApplication",
+        platforms: ["iOS", "Android"],
+        stack: ["React Native", "Expo", "TypeScript", "Firebase"],
+        metaDescription:
+            "VedicFlow is a Hindu calendar and Panchang app for iOS and Android with Tithi, Choghadiya, Rahu Kaal, muhurat and Kundli matching, computed on-device.",
+        summary: "A Hindu calendar and Panchang app that works out daily timings on your phone from your location, live on the App Store and Google Play.",
+        facts: [
+            ["What it does", "Daily Panchang, Choghadiya, Rahu Kaal alerts, festivals, muhurat, Kundli matching, horoscope and a 108-bead mala."],
+            ["How it works", "Timings are calculated on-device from GPS and local sunrise, sunset and moonrise, so it works offline."],
+            ["AI features", "Ask the Stars and palm reading, powered by Gemini through Firebase (no API key inside the app)."],
+            ["Languages", "English, Hindi, Gujarati, Kannada, Tamil and Telugu"],
+            ["Tech", "Expo SDK 54, React Native, TypeScript, Firebase, astronomy-engine, TanStack Query, EAS updates"],
+        ],
+        highlights: [
+            "Daily Tithi, Nakshatra, Yoga, Karana and Vaara from your own location",
+            "Nine notification types you can switch on or off",
+            "Shareable image cards for Panchang, Choghadiya and horoscopes",
+            "Fixes ship over the air without an app store release",
+        ],
+        details: [
+            "Sankatahara Chaturthi is worked out at moonrise, not sunrise; every 2026 date was checked against Drik Panchang",
+            "Follows classical rules, for example no Abhijit Muhurta alert on Wednesdays",
+            "Palm reading uses the camera with flash and zoom controls",
+        ],
+        flow: [
+            ["Your location", "GPS"],
+            ["On-device maths", "sunrise, sunset, moonrise"],
+            ["Panchang", "Tithi, Choghadiya, Rahu Kaal"],
+            ["Alerts", "9 types, on or off"],
+            ["Share", "image cards"],
+        ],
+        tags: ["Hindu calendar", "Panchang app", "Choghadiya", "Rahu Kaal", "muhurat", "astrology app", "React Native", "Expo", "Firebase", "Gemini"],
+        links: {
+            site: "https://www.vedicflow.co.in/",
+            ios: "https://apps.apple.com/in/app/vedic-flow-hindu-calendar-2026/id6760628104",
+            android: "https://play.google.com/store/apps/details?id=com.vedicflow.app",
+        },
+    },
+    {
         slug: "ocr-engine-benchmark",
+        thumbIsDiagram: true,
         featured: true,
         isPrivate: true,
         repoName: "OCR_Research",
@@ -236,7 +284,46 @@ export const projects = [
         links: {},
     },
     {
+        slug: "bill-sonic",
+        featured: true,
+        isPrivate: true,
+        kind: "point-of-sale app",
+        img: thumb_bill_sonic,
+        title: "Bill Sonic - Mobile POS App",
+        type: "MobileApplication",
+        platforms: ["iOS", "Android", "Web"],
+        stack: ["React Native", "Expo", "Firebase"],
+        metaDescription:
+            "Bill Sonic is a React Native and Firebase point-of-sale app with barcode scanning, GST-compliant PDF billing, inventory tracking, analytics and cloud sync.",
+        summary: "A point-of-sale app for small shops: scan, bill and track stock from a phone, on Android, iOS and the web from one codebase.",
+        facts: [
+            ["Problem", "Small retailers need fast billing and stock tracking without a costly billing machine."],
+            ["What it does", "Barcode scanning, GST-ready PDF bills, bulk product import from Excel or CSV, stock tracking and sales analytics."],
+            ["Who uses it", "Shop owners (admin) and cashiers, each with their own access and a PIN"],
+            ["Languages", "English, Hindi, Spanish and Portuguese"],
+            ["Tech", "React Native, Expo SDK 54, Expo Router, Firebase Auth and Firestore, EAS builds"],
+        ],
+        highlights: [
+            "Sign in with email, Google or Apple, plus a PIN lock for staff",
+            "Real-time cloud sync across devices",
+            "Import hundreds of products at once from a spreadsheet",
+            "Works in the browser as well as on phones",
+        ],
+        flow: [
+            ["Sign in", "email, Google, Apple + staff PIN"],
+            ["Add items", "scan barcode or search"],
+            ["Bill", "GST-ready PDF"],
+            ["Stock updates", "synced to the cloud"],
+            ["Analytics", "sales reports"],
+        ],
+        tags: ["POS app", "billing software", "GST invoice", "inventory management", "barcode scanner", "retail app", "React Native", "Expo", "Firebase"],
+        links: {
+            site: "https://billsonic.vercel.app/",
+        },
+    },
+    {
         slug: "discount-spend-optimization",
+        thumbIsDiagram: true,
         featured: true,
         isPrivate: true,
         kind: "machine learning pipeline",
@@ -280,90 +367,8 @@ export const projects = [
         links: {},
     },
     {
-        slug: "vedicflow",
-        featured: true,
-        isPrivate: true,
-        kind: "mobile app (iOS & Android)",
-        img: thumb_vedicflow,
-        title: "VedicFlow - Hindu Calendar & Panchang",
-        type: "MobileApplication",
-        platforms: ["iOS", "Android"],
-        stack: ["React Native", "Expo", "TypeScript", "Firebase"],
-        metaDescription:
-            "VedicFlow is a Hindu calendar and Panchang app for iOS and Android with Tithi, Choghadiya, Rahu Kaal, muhurat and Kundli matching, computed on-device.",
-        summary: "A Hindu calendar and Panchang app that works out daily timings on your phone from your location, live on the App Store and Google Play.",
-        facts: [
-            ["What it does", "Daily Panchang, Choghadiya, Rahu Kaal alerts, festivals, muhurat, Kundli matching, horoscope and a 108-bead mala."],
-            ["How it works", "Timings are calculated on-device from GPS and local sunrise, sunset and moonrise, so it works offline."],
-            ["AI features", "Ask the Stars and palm reading, powered by Gemini through Firebase (no API key inside the app)."],
-            ["Languages", "English, Hindi, Gujarati, Kannada, Tamil and Telugu"],
-            ["Tech", "Expo SDK 54, React Native, TypeScript, Firebase, astronomy-engine, TanStack Query, EAS updates"],
-        ],
-        highlights: [
-            "Daily Tithi, Nakshatra, Yoga, Karana and Vaara from your own location",
-            "Nine notification types you can switch on or off",
-            "Shareable image cards for Panchang, Choghadiya and horoscopes",
-            "Fixes ship over the air without an app store release",
-        ],
-        details: [
-            "Sankatahara Chaturthi is worked out at moonrise, not sunrise; every 2026 date was checked against Drik Panchang",
-            "Follows classical rules, for example no Abhijit Muhurta alert on Wednesdays",
-            "Palm reading uses the camera with flash and zoom controls",
-        ],
-        flow: [
-            ["Your location", "GPS"],
-            ["On-device maths", "sunrise, sunset, moonrise"],
-            ["Panchang", "Tithi, Choghadiya, Rahu Kaal"],
-            ["Alerts", "9 types, on or off"],
-            ["Share", "image cards"],
-        ],
-        tags: ["Hindu calendar", "Panchang app", "Choghadiya", "Rahu Kaal", "muhurat", "astrology app", "React Native", "Expo", "Firebase", "Gemini"],
-        links: {
-            site: "https://www.vedicflow.co.in/",
-            ios: "https://apps.apple.com/in/app/vedic-flow-hindu-calendar-2026/id6760628104",
-            android: "https://play.google.com/store/apps/details?id=com.vedicflow.app",
-        },
-    },
-    {
-        slug: "bill-sonic",
-        featured: true,
-        isPrivate: true,
-        kind: "point-of-sale app",
-        img: thumb_bill_sonic,
-        title: "Bill Sonic - Mobile POS App",
-        type: "MobileApplication",
-        platforms: ["iOS", "Android", "Web"],
-        stack: ["React Native", "Expo", "Firebase"],
-        metaDescription:
-            "Bill Sonic is a React Native and Firebase point-of-sale app with barcode scanning, GST-compliant PDF billing, inventory tracking, analytics and cloud sync.",
-        summary: "A point-of-sale app for small shops: scan, bill and track stock from a phone, on Android, iOS and the web from one codebase.",
-        facts: [
-            ["Problem", "Small retailers need fast billing and stock tracking without a costly billing machine."],
-            ["What it does", "Barcode scanning, GST-ready PDF bills, bulk product import from Excel or CSV, stock tracking and sales analytics."],
-            ["Who uses it", "Shop owners (admin) and cashiers, each with their own access and a PIN"],
-            ["Languages", "English, Hindi, Spanish and Portuguese"],
-            ["Tech", "React Native, Expo SDK 54, Expo Router, Firebase Auth and Firestore, EAS builds"],
-        ],
-        highlights: [
-            "Sign in with email, Google or Apple, plus a PIN lock for staff",
-            "Real-time cloud sync across devices",
-            "Import hundreds of products at once from a spreadsheet",
-            "Works in the browser as well as on phones",
-        ],
-        flow: [
-            ["Sign in", "email, Google, Apple + staff PIN"],
-            ["Add items", "scan barcode or search"],
-            ["Bill", "GST-ready PDF"],
-            ["Stock updates", "synced to the cloud"],
-            ["Analytics", "sales reports"],
-        ],
-        tags: ["POS app", "billing software", "GST invoice", "inventory management", "barcode scanner", "retail app", "React Native", "Expo", "Firebase"],
-        links: {
-            site: "https://billsonic.vercel.app/",
-        },
-    },
-    {
         slug: "masker-pii-redaction",
+        thumbIsDiagram: true,
         featured: true,
         demo: true,
         kind: "AI web app",

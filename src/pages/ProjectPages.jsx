@@ -171,8 +171,8 @@ export function ProjectPage() {
 
             <h1 className="text-2xl md:text-4xl font-bold text-yellow-500 leading-tight">{project.title}</h1>
 
-            {/* Diagram projects use the diagram as their thumbnail; it is shown under Architecture instead. */}
-            {!project.diagram && (
+            {/* When the thumbnail is the diagram, it is shown under Architecture instead. */}
+            {!project.thumbIsDiagram && (
                 <img
                     src={project.img}
                     alt={`${shortName(project.title)} preview`}
