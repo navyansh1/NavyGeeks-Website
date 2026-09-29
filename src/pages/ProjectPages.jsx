@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Github, ExternalLink, Apple, Play, ArrowLeft, Lock, ChevronDown } from 'lucide-react';
 import Seo from '../components/Seo';
 import Breadcrumbs from '../components/Breadcrumbs';
-import ProjectCard from '../components/ProjectCard';
+import ProjectGrid from '../components/ProjectGrid';
 import Flow from '../components/Flow';
 import MoreProjects from '../components/MoreProjects';
 import ProjectModal from '../components/ProjectModal';
@@ -75,11 +75,7 @@ export function ProjectsIndexPage() {
             <Breadcrumbs items={crumbs} />
             <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-8">Projects</h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                {featuredProjects.map((project) => (
-                    <ProjectCard key={project.slug} project={project} headingLevel="h2" onOpen={setOpen} />
-                ))}
-            </div>
+            <ProjectGrid projects={featuredProjects} onOpen={setOpen} headingLevel="h2" />
 
             <MoreProjects onOpen={setOpen} />
 
@@ -279,9 +275,7 @@ export function ProjectPage() {
             )}
 
             <h2 className={h2Class}>More projects</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {related.map((p) => <ProjectCard key={p.slug} project={p} compact />)}
-            </div>
+            <ProjectGrid projects={related} />
 
             <Link to={pagePath('projects')} className="mt-8 inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold">
                 <ArrowLeft size={18} /> All projects

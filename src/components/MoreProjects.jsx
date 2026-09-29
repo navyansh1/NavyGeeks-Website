@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
-import ProjectCard from './ProjectCard';
+import ProjectGrid from './ProjectGrid';
 import { moreProjects } from '../data/projects';
 
 // Smaller and older projects, collapsed by default. The links stay in the HTML for crawlers.
@@ -10,10 +10,8 @@ const MoreProjects = ({ onOpen }) => (
             <span className='text-base md:text-lg font-semibold text-inherit'>More projects ({moreProjects.length})</span>
             <ChevronDown size={20} className='transition-transform group-open:rotate-180' />
         </summary>
-        <div className='grid grid-cols-2 lg:grid-cols-4 gap-3 p-4 pt-1'>
-            {moreProjects.map((project) => (
-                <ProjectCard key={project.slug} project={project} compact onOpen={onOpen} />
-            ))}
+        <div className='p-4 pt-1'>
+            <ProjectGrid projects={moreProjects} onOpen={onOpen} />
         </div>
     </details>
 );

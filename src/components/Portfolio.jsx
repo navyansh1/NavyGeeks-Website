@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { FolderOpen, ArrowRight } from 'lucide-react';
 import ShinyEffect from './ShinyEffect';
-import ProjectCard from './ProjectCard';
+import ProjectGrid from './ProjectGrid';
 import MoreProjects from './MoreProjects';
 import ProjectModal from './ProjectModal';
 import { featuredProjects } from '../data/projects';
@@ -18,11 +18,7 @@ const Portfolio = () => {
         </h2>
         <ShinyEffect left={0} top={0} size={1900} />
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6'>
-            {featuredProjects.map((project) => (
-                <ProjectCard key={project.slug} project={project} onOpen={setOpen} />
-            ))}
-        </div>
+        <ProjectGrid projects={featuredProjects} onOpen={setOpen} />
 
         <MoreProjects onOpen={setOpen} />
 
