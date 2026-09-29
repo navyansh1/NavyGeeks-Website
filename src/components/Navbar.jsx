@@ -31,7 +31,7 @@ const NavLink = ({ isHome, to, offset = -80, ...props }) =>
         ? <ScrollLink to={to} smooth={true} offset={offset} duration={500} {...props} />
         : <RouterLink to={pageRoutes[to]} {...props} />;
 
-const sectionLabels = { hero: 'About', portfolio: 'Projects', certifications: 'Licenses' };
+const sectionLabels = { hero: 'Home', portfolio: 'Projects', certifications: 'Licenses' };
 
 const Navbar = () => {
     const [nav, setNav] = useState(false);
@@ -70,34 +70,11 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [isHome]);
 
-    const menuVariants = {
-        open: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                type: "spring",
-                stiffness: 200,
-                damping: 25,
-                mass: 0.8
-            },
-        },
-        closed: {
-            y: '100%',
-            opacity: 0,
-            transition: {
-                type: "spring",
-                stiffness: 200,
-                damping: 25,
-                mass: 0.8
-            },
-        },
-    };
-
     // Function to determine if section is active
     const isActive = (section) => activeSection === section;
 
     const mobileLinks = [
-        { to: 'hero', label: 'About', icon: <Home size={22} /> },
+        { to: 'hero', label: 'Home', icon: <Home size={22} /> },
         { to: 'skills', label: 'Skills', icon: <Settings size={22} /> },
         { to: 'experience', label: 'Experience', icon: <Briefcase size={22} /> },
         { to: 'education', label: 'Education', icon: <GraduationCap size={22} /> },
@@ -113,7 +90,7 @@ const Navbar = () => {
             <nav aria-label="Primary" className='fixed top-0 left-0 w-full bg-opacity-70 backdrop-blur-md z-50 hidden md:block'>
                 <div className='max-w-[1300px] mx-auto flex justify-center items-center px-4 h-14 text-gray-200 text-lg'>
                     <ul className='flex gap-4 lg:gap-12 z-10 cursor-pointer'>
-                        <li className={isActive('hero') ? 'text-yellow-400' : ''}><NavLink isHome={isHome} to="hero" offset={-80}>About</NavLink></li>
+                        <li className={isActive('hero') ? 'text-yellow-400' : ''}><NavLink isHome={isHome} to="hero" offset={-80}>Home</NavLink></li>
                         <li className={isActive('skills') ? 'text-yellow-400' : ''}><NavLink isHome={isHome} to="skills" offset={-80}>Skills</NavLink></li>
                         <li className={isActive('experience') ? 'text-yellow-400' : ''}><NavLink isHome={isHome} to="experience" offset={-80}>Experience</NavLink></li>
                         <li className={isActive('education') ? 'text-yellow-400' : ''}><NavLink isHome={isHome} to="education" offset={-80}>Education</NavLink></li>

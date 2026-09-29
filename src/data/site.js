@@ -31,7 +31,7 @@ export const personSchema = {
     name: SITE_NAME,
     alternateName: 'NavyGeeks',
     url: `${SITE_URL}/`,
-    image: `${SITE_URL}/og-image.png`,
+    image: `${SITE_URL}/profile.jpg`,
     jobTitle: 'Data Scientist & Gen AI Engineer',
     description:
         'Data Scientist and Gen AI Engineer building RAG systems, machine learning models and mobile apps, and creating tech content as NavyGeeks.',
@@ -58,3 +58,13 @@ export const personRef = { '@id': PERSON_ID };
 // Asset imports resolve to '/assets/x-hash.png' on build (or a data: URI for tiny files).
 export const imageUrl = (img) =>
     typeof img === 'string' && img.startsWith('/') ? `${SITE_URL}${img}` : DEFAULT_IMAGE;
+
+export const breadcrumbSchema = (items) => ({
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: item.name,
+        item: item.path ? absoluteUrl(item.path) : `${SITE_URL}/`,
+    })),
+});

@@ -1,5 +1,5 @@
 import React from 'react';
-import Seo, { breadcrumbSchema } from '../components/Seo';
+import Seo from '../components/Seo';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CertDetails from '../components/CertDetails';
 import Experience from '../components/Experience';
@@ -8,7 +8,7 @@ import Certifications from '../components/Certifications';
 import Skills from '../components/Skills';
 import Contact from '../components/Contact';
 import { certifications } from '../data/certifications';
-import { SITE_NAME, SITE_URL, absoluteUrl, personRef } from '../data/site';
+import { SITE_NAME, SITE_URL, absoluteUrl, personRef, breadcrumbSchema } from '../data/site';
 
 const PageFrame = ({ crumbs, children }) => (
     <div className="pt-20 md:pt-24">

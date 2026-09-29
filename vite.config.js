@@ -41,22 +41,14 @@ export default defineConfig({
       return html.replace(/<link rel="preload" as="image"[^>]*>/g, '')
     },
     onFinished(dir) {
-      const today = new Date().toISOString().slice(0, 10)
       const urls = renderedRoutes.filter((p) => p.replace(/\//g, '') !== '404')
 
       const sitemap = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-        ...urls.map((route) => {
-          const isHome = route === '/' || route === ''
-          return [
-            '  <url>',
-            `    <loc>${toUrl(route)}</loc>`,
-            `    <lastmod>${today}</lastmod>`,
-            `    <priority>${isHome ? '1.0' : '0.8'}</priority>`,
-            '  </url>',
-          ].join('\n')
-        }),
+        // no lastmod/priority: a build-date lastmod on every URL teaches Google to ignore it,
+        // and priority is ignored by Google entirely
+        ...urls.map((route) => `  <url><loc>${toUrl(route)}</loc></url>`),
         '</urlset>',
         '',
       ].join('\n')

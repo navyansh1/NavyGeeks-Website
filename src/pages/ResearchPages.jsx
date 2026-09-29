@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ExternalLink, User, CalendarDays, Building2, ArrowLeft } from 'lucide-react';
-import Seo, { breadcrumbSchema } from '../components/Seo';
+import Seo from '../components/Seo';
 import Breadcrumbs from '../components/Breadcrumbs';
 import NotFound from './NotFound';
 import { papers, getPaper } from '../data/research';
-import { PERSON_ID, SITE_NAME, SITE_URL, absoluteUrl, pagePath } from '../data/site';
+import { PERSON_ID, SITE_NAME, SITE_URL, absoluteUrl, pagePath, breadcrumbSchema } from '../data/site';
 
 const Tags = ({ tags }) => (
     <div className="mt-3 flex flex-wrap gap-1.5">

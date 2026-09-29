@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import profilepic from "../assets/profile/profpic-web.jpg";
-import resume from "../assets/profile/resume.pdf";
-import { TypeAnimation } from "react-type-animation";
 import ShinyEffect from "./ShinyEffect";
 
 import resumeImage from "../assets/profile/resumeImage.png";
@@ -26,8 +24,6 @@ import { TbBrandReactNative } from "react-icons/tb";
 import { motion } from "framer-motion";
 
 const Hero = () => {
-    const [modalOpen, setModalOpen] = useState(false);
-
     const [resumeVisible, setResumeVisible] = useState(false);
 
     const toggleResume = () => {
@@ -36,7 +32,7 @@ const Hero = () => {
 
     return (
         <div className="mt-24 md:mt-32 max-w-[1200px] mx-auto relative px-6 md:px-0">
-            <div className={`grid md:grid-cols-2 place-items-center gap-8 ${modalOpen && 'blur-sm'}`}>
+            <div className="grid md:grid-cols-2 place-items-center gap-8">
                 <motion.div
                     initial={{ opacity: 0, y: -50 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +48,6 @@ const Hero = () => {
                     >
                         hey, I am <br />
                         <span className="text-yellow-500 text-5xl font-bold">Navyansh Kothari</span>
-                        <span className="sr-only"> - Data Scientist, Gen AI Engineer and Mobile App Developer</span>
                     </motion.h1>
 
                     <motion.div
@@ -175,27 +170,6 @@ const Hero = () => {
                 <ShinyEffect left={0} top={0} size={1900} />
             </div>
 
-            {modalOpen && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-                    <div className="relative bg-white p-6 rounded-lg w-[90%] md:w-[70%]">
-                        <button
-                            className="absolute top-2 right-2 text-gray-600 hover:text-gray-900 bg-transparent border-none"
-                            onClick={toggleModal}
-                        >
-                            <X size={30} />
-                        </button>
-                        <iframe
-                            src={resume}
-                            className="w-full h-[80vh] border-none"
-                            title="Resume"
-                            style={{ border: "none" }}
-                        />
-                        <div className="mt-4 text-center md:hidden">
-                            <a href={resume} download className="text-blue-500 underline">Download Resume</a>
-                        </div>
-                    </div>
-                </div>
-            )}
         </div>
 
     )

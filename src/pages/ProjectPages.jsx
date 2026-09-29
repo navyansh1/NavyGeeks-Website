@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Github, ExternalLink, Apple, Play, ArrowLeft } from 'lucide-react';
-import Seo, { breadcrumbSchema } from '../components/Seo';
+import Seo from '../components/Seo';
 import Breadcrumbs from '../components/Breadcrumbs';
 import NotFound from './NotFound';
 import { projects, getProject } from '../data/projects';
-import { PERSON_ID, SITE_NAME, absoluteUrl, imageUrl, pagePath } from '../data/site';
+import { PERSON_ID, SITE_NAME, absoluteUrl, imageUrl, pagePath, breadcrumbSchema } from '../data/site';
 
 const linkClass = 'flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold transition duration-300';
 

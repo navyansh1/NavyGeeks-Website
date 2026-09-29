@@ -1,6 +1,6 @@
 import React from 'react';
 import { Head } from 'vite-react-ssg';
-import { DEFAULT_IMAGE, SITE_NAME, SITE_URL, absoluteUrl } from '../data/site';
+import { DEFAULT_IMAGE, SITE_NAME, absoluteUrl } from '../data/site';
 
 const jsonLd = (data) => JSON.stringify({ '@context': 'https://schema.org', ...data });
 
@@ -55,15 +55,5 @@ const Seo = ({
         </Head>
     );
 };
-
-export const breadcrumbSchema = (items) => ({
-    '@type': 'BreadcrumbList',
-    itemListElement: items.map((item, i) => ({
-        '@type': 'ListItem',
-        position: i + 1,
-        name: item.name,
-        item: item.path ? absoluteUrl(item.path) : `${SITE_URL}/`,
-    })),
-});
 
 export default Seo;

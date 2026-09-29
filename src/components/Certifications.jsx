@@ -32,7 +32,7 @@ const Certifications = ({ pageHeading = false }) => {
       <Heading className='text-2xl md:text-5xl font-bold text-yellow-500 mb-8 flex items-center justify-center text-center gap-2 whitespace-nowrap'><Award size={22} className='md:w-10 md:h-10 flex-shrink-0' /> Certifications & Licenses:</Heading>
 
       <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6'>
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <Reveal key={project.title}>
             <div
               className='bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700

@@ -1,6 +1,5 @@
 import React from "react";
 import { Mail, UserCircle, MessageSquare, Send } from "lucide-react";
-import { motion } from "framer-motion";
 import Reveal from "./Reveal";
 
 const Contact = ({ pageHeading = false }) => {
