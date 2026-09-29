@@ -4,22 +4,26 @@
   <text x="48" y="64" font-size="30" font-weight="bold" fill="#E5E7EB">GeoScout IQ</text>
   <text x="48" y="94" font-size="16" fill="#9CA3AF">Where to open the next ATM, branch, store or warehouse in India</text>
   
-    <rect x="48" y="150" width="250" height="130" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
-  <text x="64" y="178" font-size="17" font-weight="bold" fill="#E5E7EB">Ask</text><text x="64" y="202" font-size="15" fill="#9CA3AF">any Indian location</text><text x="64" y="222" font-size="15" fill="#9CA3AF">industry and use case</text><text x="64" y="242" font-size="15" fill="#9CA3AF">your company (optional)</text>
-    <line x1="298" y1="215" x2="346" y2="215" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
-    <rect x="348" y="150" width="300" height="300" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
-  <text x="364" y="178" font-size="17" font-weight="bold" fill="#E5E7EB">Data sources</text><text x="364" y="202" font-size="15" fill="#9CA3AF">Google Places: competitors</text><text x="364" y="222" font-size="15" fill="#9CA3AF">WorldPop: population</text><text x="364" y="242" font-size="15" fill="#9CA3AF">NASA night lights: activity</text><text x="364" y="262" font-size="15" fill="#9CA3AF">OpenStreetMap: malls, transit,</text><text x="364" y="282" font-size="15" fill="#9CA3AF">  schools, land you cannot use</text><text x="364" y="302" font-size="15" fill="#9CA3AF">Property listings: rents</text><text x="364" y="322" font-size="15" fill="#9CA3AF">Google Search: upcoming</text><text x="364" y="342" font-size="15" fill="#9CA3AF">  metro, roads and projects</text>
-    <line x1="648" y1="300" x2="696" y2="300" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
-    <rect x="698" y="150" width="270" height="140" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
-  <text x="714" y="178" font-size="17" font-weight="bold" fill="#EAB308">H3 hex grid</text><text x="714" y="202" font-size="15" fill="#9CA3AF">~0.7 sq km tiles</text><text x="714" y="222" font-size="15" fill="#9CA3AF">demand · open space ·</text><text x="714" y="242" font-size="15" fill="#9CA3AF">access · growth</text>
-    <line x1="833" y1="290" x2="833" y2="320" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
-    <rect x="698" y="322" width="270" height="128" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
-  <text x="714" y="350" font-size="17" font-weight="bold" fill="#EAB308">Gemini grounding agents</text><text x="714" y="374" font-size="15" fill="#9CA3AF">nearby context and the</text><text x="714" y="394" font-size="15" fill="#9CA3AF">written narrative</text>
-    <line x1="968" y1="300" x2="1016" y2="300" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
-    <rect x="1018" y="150" width="214" height="300" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
-  <text x="1034" y="178" font-size="17" font-weight="bold" fill="#E5E7EB">Answer in ~30 s</text><text x="1034" y="202" font-size="15" fill="#9CA3AF">colour-coded hex</text><text x="1034" y="222" font-size="15" fill="#9CA3AF">heatmap</text><text x="1034" y="242" font-size="15" fill="#9CA3AF">competitor and own</text><text x="1034" y="262" font-size="15" fill="#9CA3AF">store pins</text><text x="1034" y="282" font-size="15" fill="#9CA3AF">property listings</text><text x="1034" y="302" font-size="15" fill="#9CA3AF">executive summary:</text><text x="1034" y="322" font-size="15" fill="#9CA3AF">GO / CAUTION / AVOID</text>
-    <text x="48" y="520" font-size="13" fill="#EAB308" font-weight="bold" letter-spacing="1">BUILT FOR</text>
-    <text x="48" y="548" font-size="16" fill="#E5E7EB">BFSI (ATM and branch placement) and FMCG (stores and warehouses). Same input gives the same score, and the scoring maths is visible.</text>
-    <text x="48" y="610" font-size="13" fill="#EAB308" font-weight="bold" letter-spacing="1">STACK</text>
-    <text x="48" y="638" font-size="16" fill="#E5E7EB">Google Maps · H3 · Gemini · Firebase (Hosting, Functions, Firestore)</text>
+    <rect x="48" y="150" width="200" height="150" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="178" font-size="17" font-weight="bold" fill="#E5E7EB">Ask</text><text x="64" y="202" font-size="15" fill="#9CA3AF">a place in India</text><text x="64" y="222" font-size="15" fill="#9CA3AF">the industry</text><text x="64" y="242" font-size="15" fill="#9CA3AF">your company</text><text x="64" y="262" font-size="15" fill="#9CA3AF">(optional)</text>
+    <line x1="248" y1="225" x2="284" y2="225" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="286" y="150" width="260" height="300" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="302" y="178" font-size="17" font-weight="bold" fill="#E5E7EB">Data sources</text><text x="302" y="202" font-size="15" fill="#9CA3AF">Google Places: competitors</text><text x="302" y="222" font-size="15" fill="#9CA3AF">WorldPop: population</text><text x="302" y="242" font-size="15" fill="#9CA3AF">NASA night lights: activity</text><text x="302" y="262" font-size="15" fill="#9CA3AF">OpenStreetMap: malls,</text><text x="302" y="282" font-size="15" fill="#9CA3AF">transit, schools, land</text><text x="302" y="302" font-size="15" fill="#9CA3AF">you cannot build on</text><text x="302" y="322" font-size="15" fill="#9CA3AF">Property listings: rents</text><text x="302" y="342" font-size="15" fill="#9CA3AF">Google Search: upcoming</text><text x="302" y="362" font-size="15" fill="#9CA3AF">metro, roads, projects</text>
+    <line x1="546" y1="245" x2="582" y2="245" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="584" y="150" width="300" height="190" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="600" y="178" font-size="17" font-weight="bold" fill="#EAB308">H3 hex scoring</text><text x="600" y="202" font-size="15" fill="#9CA3AF">~0.7 sq km tiles, each scored</text><text x="600" y="222" font-size="15" fill="#9CA3AF">demand 45% · access 25%</text><text x="600" y="242" font-size="15" fill="#9CA3AF">open space 15% · growth 15%</text><text x="600" y="262" font-size="15" fill="#9CA3AF">water and no-build land removed</text><text x="600" y="282" font-size="15" fill="#9CA3AF">same input, same score</text>
+    <line x1="734" y1="340" x2="734" y2="368" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="584" y="370" width="300" height="80" rx="12" fill="#3A3314" stroke="#EAB308" stroke-width="2"/>
+  <text x="600" y="398" font-size="17" font-weight="bold" fill="#EAB308">Gemini grounding agents</text><text x="600" y="422" font-size="15" fill="#9CA3AF">nearby context and the summary</text>
+    <line x1="884" y1="245" x2="920" y2="245" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="884" y1="410" x2="920" y2="410" stroke="#9CA3AF" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="922" y="150" width="310" height="300" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="938" y="178" font-size="17" font-weight="bold" fill="#E5E7EB">Answer</text><text x="938" y="202" font-size="15" fill="#9CA3AF">colour-coded hex heatmap</text><text x="938" y="222" font-size="15" fill="#9CA3AF">competitor and own-store pins</text><text x="938" y="242" font-size="15" fill="#9CA3AF">what is nearby, per tile</text><text x="938" y="262" font-size="15" fill="#9CA3AF">property listings for sale</text><text x="938" y="282" font-size="15" fill="#9CA3AF">summary with a star rating</text><text x="938" y="302" font-size="15" fill="#9CA3AF">GO / CAUTION / AVOID</text>
+    <text x="48" y="510" font-size="13" fill="#EAB308" font-weight="bold" letter-spacing="1">WHY IT WORKS</text>
+    <rect x="48" y="526" width="370" height="136" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="64" y="554" font-size="17" font-weight="bold" fill="#E5E7EB">About 30 seconds</text><text x="64" y="578" font-size="15" fill="#9CA3AF">from a place name to a</text><text x="64" y="598" font-size="15" fill="#9CA3AF">scored map and a decision</text>
+    <rect x="442" y="526" width="370" height="136" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="458" y="554" font-size="17" font-weight="bold" fill="#E5E7EB">Scores you can check</text><text x="458" y="578" font-size="15" fill="#9CA3AF">the weights and maths are shown,</text><text x="458" y="598" font-size="15" fill="#9CA3AF">nothing is a black box</text>
+    <rect x="836" y="526" width="396" height="136" rx="12" fill="#213130" stroke="#3E5654" stroke-width="1.5"/>
+  <text x="852" y="554" font-size="17" font-weight="bold" fill="#E5E7EB">Built for banks and FMCG</text><text x="852" y="578" font-size="15" fill="#9CA3AF">ATMs and branches,</text><text x="852" y="598" font-size="15" fill="#9CA3AF">stores and warehouses</text>
   </svg>

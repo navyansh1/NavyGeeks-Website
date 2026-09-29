@@ -108,19 +108,20 @@ const diagrams = {
   `),
 
   'geoscout-iq': svg('GeoScout IQ', 'Where to open the next ATM, branch, store or warehouse in India', `
-    ${box(48, 150, 250, 130, 'Ask', ['any Indian location', 'industry and use case', 'your company (optional)'])}
-    ${arrow(298, 215, 346, 215)}
-    ${box(348, 150, 300, 300, 'Data sources', ['Google Places: competitors', 'WorldPop: population', 'NASA night lights: activity', 'OpenStreetMap: malls, transit,', '  schools, land you cannot use', 'Property listings: rents', 'Google Search: upcoming', '  metro, roads and projects'])}
-    ${arrow(648, 300, 696, 300)}
-    ${box(698, 150, 270, 140, 'H3 hex grid', ['~0.7 sq km tiles', 'demand · open space ·', 'access · growth'], true)}
-    ${arrow(833, 290, 833, 320)}
-    ${box(698, 322, 270, 128, 'Gemini grounding agents', ['nearby context and the', 'written narrative'], true)}
-    ${arrow(968, 300, 1016, 300)}
-    ${box(1018, 150, 214, 300, 'Answer in ~30 s', ['colour-coded hex', 'heatmap', 'competitor and own', 'store pins', 'property listings', 'executive summary:', 'GO / CAUTION / AVOID'])}
-    ${label(48, 520, 'BUILT FOR', 13, C.accent, 'bold')}
-    <text x="48" y="548" font-size="16" fill="${C.text}">BFSI (ATM and branch placement) and FMCG (stores and warehouses). Same input gives the same score, and the scoring maths is visible.</text>
-    ${label(48, 610, 'STACK', 13, C.accent, 'bold')}
-    <text x="48" y="638" font-size="16" fill="${C.text}">Google Maps · H3 · Gemini · Firebase (Hosting, Functions, Firestore)</text>
+    ${box(48, 150, 200, 150, 'Ask', ['a place in India', 'the industry', 'your company', '(optional)'])}
+    ${arrow(248, 225, 284, 225)}
+    ${box(286, 150, 260, 300, 'Data sources', ['Google Places: competitors', 'WorldPop: population', 'NASA night lights: activity', 'OpenStreetMap: malls,', 'transit, schools, land', 'you cannot build on', 'Property listings: rents', 'Google Search: upcoming', 'metro, roads, projects'])}
+    ${arrow(546, 245, 582, 245)}
+    ${box(584, 150, 300, 190, 'H3 hex scoring', ['~0.7 sq km tiles, each scored', 'demand 45% · access 25%', 'open space 15% · growth 15%', 'water and no-build land removed', 'same input, same score'], true)}
+    ${arrow(734, 340, 734, 368)}
+    ${box(584, 370, 300, 80, 'Gemini grounding agents', ['nearby context and the summary'], true)}
+    ${arrow(884, 245, 920, 245)}
+    ${arrow(884, 410, 920, 410)}
+    ${box(922, 150, 310, 300, 'Answer', ['colour-coded hex heatmap', 'competitor and own-store pins', 'what is nearby, per tile', 'property listings for sale', 'summary with a star rating', 'GO / CAUTION / AVOID'])}
+    ${label(48, 510, 'WHY IT WORKS', 13, C.accent, 'bold')}
+    ${box(48, 526, 370, 136, 'About 30 seconds', ['from a place name to a', 'scored map and a decision'])}
+    ${box(442, 526, 370, 136, 'Scores you can check', ['the weights and maths are shown,', 'nothing is a black box'])}
+    ${box(836, 526, 396, 136, 'Built for banks and FMCG', ['ATMs and branches,', 'stores and warehouses'])}
   `),
   'paper-odm-rag': svg('On-Demand Multimodal RAG', 'Search text cheaply, then show the LLM only the pages that matter', `
     ${label(48, 140, 'ONCE PER DOCUMENT')}

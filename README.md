@@ -71,7 +71,7 @@ All content lives in `src/data/`. Adding an entry there creates its page, sitema
 | `node scripts/make-thumbnails.mjs` | Project thumbnails: the diagram, or a screenshot from `scripts/thumb-sources/` in a browser or phone frame. No project name on the image. |
 | `node scripts/make-og-image.mjs` | Link-preview card `public/og-image.png` |
 
-`scripts/thumb-data.mjs` lists which projects get which thumbnail style. `frame: "none"` uses the screenshot as it is (VedicFlow, Bill Sonic, GeoScout IQ).
+`scripts/thumb-data.mjs` lists which projects get which thumbnail style. `frame: "none"` uses the screenshot as it is (VedicFlow, Bill Sonic).
 
 ---
 
@@ -98,5 +98,5 @@ All content lives in `src/data/`. Adding an entry there creates its page, sitema
 - **Research pages:** each of the 5 papers has an architecture diagram, a flowchart, results tables and plain-language key points. Added the IECS 2026 paper *On-Demand Multimodal RAG*.
 - **CCTV IQ:** updated for the two-camera setup: first and last sighting on either camera, time inside minus breaks, a glass-zone mask, a score floor fitted to real data, a process supervisor, and *Ask Iris* (plain-English questions answered with Claude on AWS Bedrock). New diagram.
 - **Discount Spend Optimization:** updated for the Databricks pipeline: one Excel config, 18 product lines, elasticity buckets, a two-model track for competing packs, MLflow tracking and a P&L simulator. New diagram.
-- **Thumbnails:** VedicFlow and Bill Sonic back to their original images; GeoScout IQ uses a real app screenshot.
+- **Thumbnails:** VedicFlow and Bill Sonic back to their original images; GeoScout IQ uses its architecture diagram.
 - **Back navigation:** fixed returning to the top of the home page. The Certifications section was scrolling to the top on load.

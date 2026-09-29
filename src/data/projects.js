@@ -45,6 +45,7 @@ export const projects = [
     // ---------------------------------------------------------------- featured
     {
         slug: "geoscout-iq",
+        thumbIsDiagram: true,
         featured: true,
         demo: true,
         kind: "location intelligence web app",
