@@ -129,8 +129,6 @@ export function PaperPage() {
         ...(paper.doi ? [{ name: 'citation_doi', content: paper.doi }] : []),
     ];
 
-    const related = papers.filter((p) => p.slug !== paper.slug);
-
     return (
         <article className="pt-20 md:pt-24 max-w-[900px] mx-auto px-6 pb-8">
             <Seo title={title} description={paper.metaDescription} path={path} type="article" schema={schema} meta={meta} />
@@ -183,18 +181,7 @@ export function PaperPage() {
                 )}
             </div>
 
-            <h2 className="text-xl md:text-2xl font-semibold text-gray-100 mt-12 mb-3">More publications</h2>
-            <ul className="space-y-2">
-                {related.map((p) => (
-                    <li key={p.slug}>
-                        <Link to={pagePath(`research/${p.slug}`)} className="text-base text-gray-300 hover:text-yellow-400 transition-colors">
-                            {p.title}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
-
-            <Link to={pagePath('research')} className="mt-8 inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold">
+            <Link to={pagePath('research')} className="mt-12 inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold">
                 <ArrowLeft size={18} /> All publications
             </Link>
         </article>
