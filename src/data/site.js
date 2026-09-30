@@ -49,7 +49,16 @@ export const personSchema = {
         'React Native',
         'iOS Development',
         'Deep Learning',
+        'Claude',
+        'AI Agents',
     ],
+    hasCredential: {
+        '@type': 'EducationalOccupationalCredential',
+        name: 'Claude Certified Architect - Foundations',
+        credentialCategory: 'certificate',
+        recognizedBy: { '@type': 'Organization', name: 'Anthropic' },
+        url: 'https://www.credly.com/badges/b355de73-3050-4373-bfb7-51e284cf262b',
+    },
     sameAs: Object.values(SOCIAL_LINKS),
 };
 

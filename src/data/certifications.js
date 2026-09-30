@@ -6,12 +6,32 @@ import iitKanpurImg from "../assets/experience/iit_kanpur.png";
 import awsAiPractitioner from "../assets/certifications/aws_ai_practitioner.png";
 import openaiTechnical from "../assets/certifications/openai_technical_practitioner.png";
 import openaiDeployment from "../assets/certifications/openai_deployment_practitioner.png";
+import claudeArchitect from "../assets/certifications/claude_certified_architect.png";
+import claudeArchitectPdf from "../assets/certifications/claude_certified_architect.pdf";
 import openaiTechnicalPdf from "../assets/certifications/openai_technical_practitioner.pdf";
 import openaiDeploymentPdf from "../assets/certifications/openai_deployment_practitioner.pdf";
 
 // Plain-data certifications so they can be rendered in the modal, on the
 // /certifications/ page, and in structured data.
 export const certifications = [
+  {
+    img: claudeArchitect,
+    title: "Claude Certified Architect - Foundations",
+    issuer: "Anthropic",
+    issued: "Sep 2026",
+    expires: "Sep 2027",
+    listTitle: "Key takeaways:",
+    list: [
+      "Agent loops fail differently: one wrong tool call feeds bad data into every later step, compounding errors and API cost",
+      "Enforce rules in code, not prompts: hooks and permissions run every time (block risky actions before they run, lint or test after every edit)",
+      "Tool design is interface design: clear descriptions pick the right tool, structured errors let the agent recover",
+      "Prompt caching shapes the architecture: static parts first, variable parts last, plus the Batches API for non-urgent work",
+    ],
+    links: {
+      site: "https://www.credly.com/badges/b355de73-3050-4373-bfb7-51e284cf262b",
+      certificate: claudeArchitectPdf,
+    },
+  },
   {
     img: openaiTechnical,
     title: "OpenAI Technical Practitioner",

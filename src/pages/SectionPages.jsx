@@ -69,7 +69,7 @@ export function EducationPage() {
 export function CertificationsPage() {
     const crumbs = [{ name: 'Home', path: '/' }, { name: 'Certifications', path: '/certifications' }];
     const description =
-        'Certifications of Navyansh Kothari: AWS AI and Cloud Practitioner, OpenAI Technical and ChatGPT Deployment Practitioner, Google Cloud, NPTEL and Coursera.';
+        'Certifications of Navyansh Kothari: Claude Certified Architect (Anthropic), AWS AI and Cloud Practitioner, OpenAI Technical and ChatGPT Deployment Practitioner, and more.';
     const itemList = {
         '@type': 'ItemList',
         itemListElement: certifications.map((cert, i) => ({
@@ -86,7 +86,7 @@ export function CertificationsPage() {
     return (
         <>
             <Seo
-                title={`${SITE_NAME} – Certifications | AWS, OpenAI`}
+                title={`${SITE_NAME} – Certifications | Anthropic, AWS, OpenAI`}
                 description={description}
                 path="/certifications"
                 schema={[collectionSchema('Certifications & Licenses', '/certifications', description), itemList, breadcrumbSchema(crumbs)]}
