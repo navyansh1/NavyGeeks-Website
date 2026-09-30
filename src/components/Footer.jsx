@@ -8,9 +8,9 @@ const exploreLinks = [
     { to: 'experience', label: 'Experience' },
     { to: 'education', label: 'Education' },
     { to: 'projects', label: 'Projects' },
-    { to: 'research', label: 'Research & Publications' },
+    { to: 'research', label: 'Research' },
     { to: 'certifications', label: 'Certifications' },
-    { to: 'about', label: 'About & Contact' },
+    { to: 'about', label: 'About' },
 ];
 
 const socials = [
@@ -22,9 +22,9 @@ const socials = [
 
 const Footer = () => {
     return (
-        <footer className='max-w-[1300px] mx-auto flex flex-col gap-8 md:flex-row md:justify-between p-6 pb-20 md:p-20 text-sm md:text-lg mt-12'>
-            <div className='space-y-4'>
-                <div className='flex flex-row gap-4 md:gap-6 text-yellow-500'>
+        <footer className='max-w-[1300px] mx-auto flex flex-col gap-6 xl:flex-row xl:items-center xl:justify-between p-6 pb-20 md:px-12 md:py-12 text-sm md:text-lg mt-12'>
+            <div>
+                <div className='flex flex-row gap-4 md:gap-5 text-yellow-500'>
                     {socials.map(({ href, label, Icon }) => (
                         <a
                             key={label}
@@ -40,20 +40,20 @@ const Footer = () => {
                 </div>
             </div>
 
-            <nav aria-label="Explore" className='flex flex-wrap gap-x-6 gap-y-2'>
+            <nav aria-label="Explore" className='flex flex-wrap gap-x-6 gap-y-2 xl:flex-nowrap xl:gap-x-7'>
                 {exploreLinks.map((link) => (
                     <Link
                         key={link.to}
                         to={pagePath(link.to)}
-                        className='text-sm md:text-base text-gray-300 hover:text-yellow-400 transition'
+                        className='text-sm md:text-base text-gray-300 hover:text-yellow-400 transition whitespace-nowrap'
                     >
                         {link.label}
                     </Link>
                 ))}
             </nav>
 
-            <p className='text-yellow-500 text-xs md:text-xl mt-3'>
-                @2026 NavyGeeks
+            <p className='text-yellow-500 text-sm md:text-base whitespace-nowrap'>
+                © 2026 NavyGeeks
             </p>
         </footer>
     );
