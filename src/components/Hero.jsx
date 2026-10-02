@@ -3,7 +3,9 @@ import profilepic from "../assets/profile/profpic-web.jpg";
 import ShinyEffect from "./ShinyEffect";
 
 import resumeImage from "../assets/profile/resumeImage.png";
-import { Github, Linkedin, Instagram, Youtube, X } from "lucide-react";
+import { Github, Linkedin, Instagram, Youtube, X, GraduationCap } from "lucide-react";
+import { OrcidIcon } from "./ScholarProfiles";
+import { SOCIAL_LINKS } from "../data/site";
 import {
     DiPython,
     DiNodejsSmall,
@@ -92,7 +94,7 @@ const Hero = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.45, delay: 0.3, ease: 'easeOut' }}
-                        className="flex flex-row items-center gap-6 my-4 md:mb-0"
+                        className="flex flex-row flex-wrap items-center gap-x-6 gap-y-4 my-4 md:mb-0"
                     >
                         <motion.button
                             whileHover={{ scale: 1.1, boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.3)" }}
@@ -102,7 +104,7 @@ const Hero = () => {
                             Resume
                         </motion.button>
 
-                        <div className="flex gap-6 flex-row text-yellow-400 z-20">
+                        <div className="flex gap-5 md:gap-6 flex-row flex-wrap text-yellow-400 z-20">
                             <motion.a whileHover={{ scale: 1.4 }} href="https://github.com/navyansh1" aria-label="GitHub" target="_blank" rel="noopener noreferrer me">
                                 <Github size={32} className="md:w-10 md:h-10" />
                             </motion.a>
@@ -116,6 +118,12 @@ const Hero = () => {
                             </motion.a>
                             <motion.a whileHover={{ scale: 1.4 }} href="https://www.youtube.com/@navygeeks" aria-label="YouTube" target="_blank" rel="noopener noreferrer me">
                                 <Youtube size={32} className="md:w-10 md:h-10" />
+                            </motion.a>
+                            <motion.a whileHover={{ scale: 1.4 }} href={SOCIAL_LINKS.googleScholar} aria-label="Google Scholar" target="_blank" rel="noopener noreferrer me">
+                                <GraduationCap size={32} className="md:w-10 md:h-10" />
+                            </motion.a>
+                            <motion.a whileHover={{ scale: 1.4 }} href={SOCIAL_LINKS.orcid} aria-label="ORCID" target="_blank" rel="noopener noreferrer me">
+                                <OrcidIcon size={32} className="md:w-10 md:h-10" />
                             </motion.a>
                         </div>
                     </motion.div>
