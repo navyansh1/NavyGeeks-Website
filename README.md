@@ -13,6 +13,7 @@ Portfolio of **Navyansh Kothari**, AI/ML Engineer: experience, projects and IEEE
 - vite-react-ssg + React Router: every route is pre-rendered to static HTML (SEO)
 - framer-motion (respects the OS "reduce motion" setting)
 - Vercel hosting (deploys on every push to `main`) + Vercel Web Analytics
+- Node.js 24 (`engines.node` in `package.json`; Vercel stopped building with Node 20)
 - sharp for generated images (thumbnails, diagrams, link-preview card)
 
 ---
