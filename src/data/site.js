@@ -9,7 +9,11 @@ export const SOCIAL_LINKS = {
     linkedin: 'https://www.linkedin.com/in/navyansh/',
     instagram: 'https://www.instagram.com/navygeeks/',
     youtube: 'https://www.youtube.com/@navygeeks',
+    orcid: 'https://orcid.org/0009-0002-1467-8595',
+    googleScholar: 'https://scholar.google.com/citations?user=IwNd_zoAAAAJ',
 };
+
+export const ORCID_ID = '0009-0002-1467-8595';
 
 // Static hosts differ on whether they prefer /research or /research/.
 // Pages are pre-rendered as research/index.html, so the trailing slash form is the native one.
@@ -59,6 +63,7 @@ export const personSchema = {
         recognizedBy: { '@type': 'Organization', name: 'Anthropic' },
         url: 'https://www.credly.com/badges/b355de73-3050-4373-bfb7-51e284cf262b',
     },
+    identifier: { '@type': 'PropertyValue', propertyID: 'ORCID', value: ORCID_ID, url: SOCIAL_LINKS.orcid },
     sameAs: Object.values(SOCIAL_LINKS),
 };
 

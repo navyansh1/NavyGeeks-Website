@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BookOpen, ExternalLink, CalendarDays, Building2, ArrowRight } from 'lucide-react';
 import Reveal from './Reveal';
+import ScholarProfiles from './ScholarProfiles';
 import { papers } from '../data/research';
 import { pagePath } from '../data/site';
 
@@ -14,6 +15,8 @@ const Research = () => {
       <h2 className='text-2xl md:text-5xl font-bold text-yellow-500 mb-8 flex items-center justify-center text-center gap-2 whitespace-nowrap'>
         <BookOpen size={22} className='md:w-10 md:h-10 flex-shrink-0' /> Research & Publications:
       </h2>
+
+      <ScholarProfiles className='justify-center mb-6 -mt-2' />
 
       <div className='space-y-4'>
         {papers.map((paper) => {

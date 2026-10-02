@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Instagram, Youtube, Linkedin } from 'lucide-react';
+import { Github, Instagram, Youtube, Linkedin, GraduationCap } from 'lucide-react';
+import { OrcidIcon } from './ScholarProfiles';
 import { SOCIAL_LINKS, pagePath } from '../data/site';
 
 const exploreLinks = [
@@ -18,6 +19,8 @@ const socials = [
     { href: SOCIAL_LINKS.instagram, label: 'Instagram', Icon: Instagram },
     { href: SOCIAL_LINKS.youtube, label: 'YouTube', Icon: Youtube },
     { href: SOCIAL_LINKS.linkedin, label: 'LinkedIn', Icon: Linkedin },
+    { href: SOCIAL_LINKS.googleScholar, label: 'Google Scholar', Icon: GraduationCap },
+    { href: SOCIAL_LINKS.orcid, label: 'ORCID', Icon: (props) => <OrcidIcon {...props} size={28} /> },
 ];
 
 const Footer = () => {

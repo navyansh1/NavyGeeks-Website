@@ -4,6 +4,7 @@ import { ExternalLink } from 'lucide-react';
 import Seo from '../components/Seo';
 import Breadcrumbs from '../components/Breadcrumbs';
 import Flow from '../components/Flow';
+import ScholarProfiles from '../components/ScholarProfiles';
 import { h2Class, FactsTable, ResultTable, Bullets, Diagram, Details, TagList, BackLink } from '../components/DetailBlocks';
 import NotFound from './NotFound';
 import { papers, getPaper } from '../data/research';
@@ -59,7 +60,8 @@ export function ResearchIndexPage() {
         <div className="pt-20 md:pt-24 max-w-[1000px] mx-auto px-6 pb-8">
             <Seo title={`${SITE_NAME} – Research & IEEE Publications`} description={description} path="/research" schema={schema} />
             <Breadcrumbs items={crumbs} />
-            <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-8">Research & Publications</h1>
+            <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-4">Research & Publications</h1>
+            <ScholarProfiles className="mb-8" />
 
             <ul className="space-y-4">
                 {papers.map((paper) => (
