@@ -46,7 +46,7 @@ const Hero = () => {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.45, delay: 0.1 }}
-                        className="text-gray-200 md:text-2xl text-2xl font-normal tracking-tight leading-relaxed mb-4 mt-0 md:mt-6 md:pt-2"
+                        className="text-gray-200 md:text-2xl text-2xl font-normal tracking-tight leading-relaxed mb-1 md:mb-4 mt-0 md:mt-6 md:pt-2"
                     >
                         hey, I am <br />
                         <span className="text-yellow-500 text-5xl font-bold">Navyansh Kothari</span>
@@ -57,7 +57,7 @@ const Hero = () => {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.45, delay: 0.2 }}
-                        className="text-gray-100 max-w-[300px] md:max-w-[500px] md:text-xl text-base mb-6 font-light pt-6"
+                        className="text-gray-100 max-w-[300px] md:max-w-[500px] md:text-xl text-base mb-6 font-light pt-2 md:pt-6"
                     >
                         <p className="mb-2 text-gray-300">A geek with proficiency in:</p>
                         <ul className="list-disc list-inside space-y-1 text-gray-100">
@@ -106,9 +106,10 @@ const Hero = () => {
                         </motion.button>
                         */}
 
-                        <div className="flex gap-5 md:gap-6 flex-row flex-wrap text-yellow-400 z-20">
-                            <motion.button whileHover={{ scale: 1.4 }} type="button" aria-label="Resume" title="Resume" onClick={toggleResume} className="cursor-pointer bg-transparent border-none p-0 text-yellow-400">
+                        <div className="flex gap-4 md:gap-6 flex-row flex-wrap items-start text-yellow-400 z-20">
+                            <motion.button whileHover={{ scale: 1.4 }} type="button" aria-label="Resume" title="Resume" onClick={toggleResume} className="cursor-pointer bg-transparent border-none p-0 text-yellow-400 flex flex-col items-center">
                                 <FileText size={32} className="md:w-10 md:h-10" />
+                                <span className="mt-0.5 w-8 md:w-10 text-center text-[9px] md:text-[11px] leading-none font-medium">Resume</span>
                             </motion.button>
 
                             <motion.a whileHover={{ scale: 1.4 }} href="https://github.com/navyansh1" aria-label="GitHub" target="_blank" rel="noopener noreferrer me">
