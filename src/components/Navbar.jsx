@@ -31,7 +31,8 @@ const NavLink = ({ isHome, to, offset = -80, ...props }) =>
         ? <ScrollLink to={to} smooth={true} offset={offset} duration={400} {...props} />
         : <RouterLink to={pageRoutes[to]} {...props} />;
 
-const sectionLabels = { hero: 'Home', portfolio: 'Projects', certifications: 'Licenses' };
+// Used by the mobile section indicator bubble (currently commented out below)
+// const sectionLabels = { hero: 'Home', portfolio: 'Projects', certifications: 'Licenses' };
 
 const Navbar = () => {
     const [nav, setNav] = useState(false);
@@ -122,10 +123,11 @@ const Navbar = () => {
                     </motion.div>
                 </motion.button>
 
-                {/* Current section indicator bubble */}
+                {/* Current section indicator bubble (hidden on mobile)
                 <div className="fixed bottom-10 left-6 z-[999] bg-slate-800 bg-opacity-60 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium shadow-lg">
                     <span className="text-yellow-400">{sectionLabels[activeSection] || (activeSection ? activeSection.charAt(0).toUpperCase() + activeSection.slice(1) : 'Menu')}</span>
                 </div>
+                */}
 
                 {/* Fullscreen mobile menu */}
                 <AnimatePresence mode="wait">
