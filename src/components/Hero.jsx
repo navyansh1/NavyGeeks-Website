@@ -3,7 +3,7 @@ import profilepic from "../assets/profile/profpic-web.jpg";
 import ShinyEffect from "./ShinyEffect";
 
 import resumeImage from "../assets/profile/resumeImage.png";
-import { Github, Linkedin, Instagram, Youtube, X, GraduationCap, FileText } from "lucide-react";
+import { Github, Linkedin, Instagram, Youtube, X, GraduationCap } from "lucide-react";
 import { OrcidIcon } from "./ScholarProfiles";
 import { SOCIAL_LINKS } from "../data/site";
 import {
@@ -57,7 +57,7 @@ const Hero = () => {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.45, delay: 0.2 }}
-                        className="text-gray-100 max-w-[300px] md:max-w-[500px] md:text-xl text-base mb-6 font-light pt-2 md:pt-6"
+                        className="text-gray-100 max-w-[300px] md:max-w-[500px] md:text-xl text-base mb-6 font-light pt-4 md:pt-6"
                     >
                         <p className="mb-2 text-gray-300">A geek with proficiency in:</p>
                         <ul className="list-disc list-inside space-y-1 text-gray-100">
@@ -106,32 +106,31 @@ const Hero = () => {
                         </motion.button>
                         */}
 
-                        <div className="flex gap-4 md:gap-6 flex-row flex-wrap items-start text-yellow-400 z-20">
-                            <motion.button whileHover={{ scale: 1.4 }} type="button" aria-label="Resume" title="Resume" onClick={toggleResume} className="cursor-pointer bg-transparent border-none p-0 text-yellow-400 flex flex-col items-center">
-                                <FileText size={32} className="md:w-10 md:h-10" />
-                                <span className="mt-0.5 w-8 md:w-10 text-center text-[9px] md:text-[11px] leading-none font-medium">Resume</span>
-                            </motion.button>
-
+                        <div className="flex gap-3 min-[380px]:gap-4 md:gap-6 flex-row flex-wrap items-center text-yellow-400 z-20">
                             <motion.a whileHover={{ scale: 1.4 }} href="https://github.com/navyansh1" aria-label="GitHub" target="_blank" rel="noopener noreferrer me">
-                                <Github size={32} className="md:w-10 md:h-10" />
+                                <Github size={30} className="md:w-10 md:h-10" />
                             </motion.a>
 
                             <motion.a whileHover={{ scale: 1.4 }} href="https://www.linkedin.com/in/navyansh/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer me">
-                                <Linkedin size={32} className="md:w-10 md:h-10" />
+                                <Linkedin size={30} className="md:w-10 md:h-10" />
                             </motion.a>
 
                             <motion.a whileHover={{ scale: 1.4 }} href="https://www.instagram.com/navygeeks/" aria-label="Instagram" target="_blank" rel="noopener noreferrer me">
-                                <Instagram size={32} className="md:w-10 md:h-10" />
+                                <Instagram size={30} className="md:w-10 md:h-10" />
                             </motion.a>
                             <motion.a whileHover={{ scale: 1.4 }} href="https://www.youtube.com/@navygeeks" aria-label="YouTube" target="_blank" rel="noopener noreferrer me">
-                                <Youtube size={32} className="md:w-10 md:h-10" />
+                                <Youtube size={30} className="md:w-10 md:h-10" />
                             </motion.a>
                             <motion.a whileHover={{ scale: 1.4 }} href={SOCIAL_LINKS.googleScholar} aria-label="Google Scholar" target="_blank" rel="noopener noreferrer me">
-                                <GraduationCap size={32} className="md:w-10 md:h-10" />
+                                <GraduationCap size={30} className="md:w-10 md:h-10" />
                             </motion.a>
                             <motion.a whileHover={{ scale: 1.4 }} href={SOCIAL_LINKS.orcid} aria-label="ORCID" target="_blank" rel="noopener noreferrer me">
-                                <OrcidIcon size={32} className="md:w-10 md:h-10" />
+                                <OrcidIcon size={30} className="md:w-10 md:h-10" />
                             </motion.a>
+
+                            <motion.button whileHover={{ scale: 1.1 }} type="button" aria-label="Resume" onClick={toggleResume} className="cursor-pointer bg-transparent border-none p-0 text-yellow-400 font-bold text-sm md:text-lg leading-8 md:leading-10">
+                                Resume
+                            </motion.button>
                         </div>
                     </motion.div>
                 </motion.div>
