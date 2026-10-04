@@ -61,9 +61,9 @@ const Hero = () => {
                     >
                         <p className="mb-2 text-gray-300">A geek with proficiency in:</p>
                         <ul className="list-disc list-inside space-y-1 text-gray-100">
-                            <li>Data Science</li>
-                            <li>Backend Development</li>
                             <li>Gen AI Engineering</li>
+                            <li>Machine Learning &amp; AI Research</li>
+                            <li>Backend Development</li>
                             <li>Mobile App Development</li>
                             <li>Tech Content Creation</li>
                         </ul>
