@@ -3,7 +3,7 @@ import profilepic from "../assets/profile/profpic-web.jpg";
 import ShinyEffect from "./ShinyEffect";
 
 import resumeImage from "../assets/profile/resumeImage.png";
-import { Github, Linkedin, Instagram, Youtube, X, GraduationCap } from "lucide-react";
+import { Github, Linkedin, Instagram, Youtube, X, GraduationCap, FileText } from "lucide-react";
 import { OrcidIcon } from "./ScholarProfiles";
 import { SOCIAL_LINKS } from "../data/site";
 import {
@@ -96,6 +96,7 @@ const Hero = () => {
                         transition={{ duration: 0.45, delay: 0.3, ease: 'easeOut' }}
                         className="flex flex-row flex-wrap items-center gap-x-6 gap-y-4 my-4 md:mb-0"
                     >
+                        {/* Resume text button (hidden - replaced by the document icon in the icon row)
                         <motion.button
                             whileHover={{ scale: 1.1, boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.3)" }}
                             className="z-10 cursor-pointer font-bold text-gray-200 text-sm md:text-base md:w-auto px-3 py-2 md:p-4 border border-yellow-400 rounded-xl"
@@ -103,8 +104,13 @@ const Hero = () => {
                         >
                             Resume
                         </motion.button>
+                        */}
 
                         <div className="flex gap-5 md:gap-6 flex-row flex-wrap text-yellow-400 z-20">
+                            <motion.button whileHover={{ scale: 1.4 }} type="button" aria-label="Resume" title="Resume" onClick={toggleResume} className="cursor-pointer bg-transparent border-none p-0 text-yellow-400">
+                                <FileText size={32} className="md:w-10 md:h-10" />
+                            </motion.button>
+
                             <motion.a whileHover={{ scale: 1.4 }} href="https://github.com/navyansh1" aria-label="GitHub" target="_blank" rel="noopener noreferrer me">
                                 <Github size={32} className="md:w-10 md:h-10" />
                             </motion.a>
