@@ -33,7 +33,7 @@ const Hero = () => {
     };
 
     return (
-        <div className="mt-20 md:mt-32 max-w-[1200px] mx-auto relative px-6 md:px-0">
+        <div className="mt-4 md:mt-32 max-w-[1200px] mx-auto relative px-6 md:px-0">
             <div className="grid md:grid-cols-2 place-items-center gap-8">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
