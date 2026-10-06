@@ -3,7 +3,7 @@ import { Github } from 'lucide-react';
 import { SOCIAL_LINKS } from '../data/site';
 
 const USER = 'navyansh1';
-const API = `https://github-contributions-api.jogruber.de/v4/${USER}?y=last`;
+const API = `https://github-contributions-api.jogruber.de/v4/${USER}?y=all`;
 const LEVELS = ['bg-slate-800', 'bg-green-900', 'bg-green-700', 'bg-green-500', 'bg-green-400'];
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -26,6 +26,7 @@ const toWeeks = (days) => {
 const GithubActivity = ({ compact = false }) => {
     const [data, setData] = useState(null);
     const [failed, setFailed] = useState(false);
+    const [year, setYear] = useState('last');
     const scroller = useRef(null);
 
     useEffect(() => {
@@ -37,11 +38,18 @@ const GithubActivity = ({ compact = false }) => {
         return () => ctrl.abort();
     }, []);
 
+    const years = useMemo(
+        () => (data ? Object.keys(data.total).map(Number).sort((a, b) => b - a) : []),
+        [data]
+    );
+
     const weeks = useMemo(() => {
         if (!data) return null;
-        const w = toWeeks(data.contributions);
-        return compact ? w.slice(-26) : w;
-    }, [data, compact]);
+        const all = data.contributions;
+        const days = year === 'last' ? all.slice(-365) : all.filter((d) => d.date.startsWith(year));
+        const w = toWeeks(days);
+        return compact && year === 'last' ? w.slice(-26) : w;
+    }, [data, compact, year]);
 
     // Start scrolled to the latest weeks on narrow screens.
     useEffect(() => {
@@ -59,9 +67,22 @@ const GithubActivity = ({ compact = false }) => {
                 <h3 className="flex items-center gap-2 text-lg md:text-2xl font-bold text-gray-100">
                     <Github size={22} /> Open source activity
                 </h3>
+                <div className="flex items-center gap-3">
+                    {years.length > 0 && (
+                        <select
+                            value={year}
+                            onChange={(e) => setYear(e.target.value)}
+                            aria-label="Select year"
+                            className="bg-slate-800 text-gray-100 text-sm rounded-md border border-slate-600 px-2 py-1 focus:outline-none focus:border-yellow-500"
+                        >
+                            <option value="last">{compact ? 'Last 6 months' : 'Last 12 months'}</option>
+                            {years.map((y) => <option key={y} value={y}>{y}</option>)}
+                        </select>
+                    )}
                 <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" className="text-sm text-yellow-400 hover:underline">
                     @{USER} on GitHub
                 </a>
+                </div>
             </div>
 
             {failed ? (
@@ -72,7 +93,7 @@ const GithubActivity = ({ compact = false }) => {
             ) : (
                 <>
                     <p className="text-sm text-gray-400 mb-3 h-5">
-                        {weeks && <><span className="text-gray-100 font-semibold">{total.toLocaleString()}</span> contributions in the last {compact ? '6 months' : 'year'}</>}
+                        {weeks && <><span className="text-gray-100 font-semibold">{total.toLocaleString()}</span> contributions {year === 'last' ? `in the last ${compact ? '6 months' : 'year'}` : `in ${year}`}</>}
                     </p>
                     <div ref={scroller} className="overflow-x-auto pb-2" role="img" aria-label="GitHub contribution graph">
                         <div className="inline-flex flex-col gap-1 min-w-max">
