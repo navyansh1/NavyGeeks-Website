@@ -4,6 +4,7 @@ import { FolderOpen, ArrowRight } from 'lucide-react';
 import ShinyEffect from './ShinyEffect';
 import ProjectGrid from './ProjectGrid';
 import ProjectModal from './ProjectModal';
+import GithubActivity from './GithubActivity';
 import { featuredProjects, projects } from '../data/projects';
 import { pagePath } from '../data/site';
 
@@ -30,6 +31,8 @@ const Portfolio = () => {
                 See all {projects.length} projects <ArrowRight size={18} />
             </Link>
         </div>
+
+        <GithubActivity />
 
         <ProjectModal project={open} onClose={close} />
     </div>

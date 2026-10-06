@@ -8,6 +8,7 @@ import Flow from '../components/Flow';
 import { h2Class, FactsTable, ResultTable, Bullets, Diagram, Details, TagList, BackLink } from '../components/DetailBlocks';
 import MoreProjects from '../components/MoreProjects';
 import ProjectModal from '../components/ProjectModal';
+import GithubActivity from '../components/GithubActivity';
 import NotFound from './NotFound';
 import { projects, featuredProjects, getProject } from '../data/projects';
 import { PERSON_ID, SITE_NAME, absoluteUrl, imageUrl, pagePath, breadcrumbSchema } from '../data/site';
@@ -89,6 +90,8 @@ export function ProjectsIndexPage() {
             <Seo title={`${SITE_NAME} – Projects | AI, ML & App Portfolio`} description={description} path="/projects" schema={schema} />
             <Breadcrumbs items={crumbs} />
             <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-8">Projects</h1>
+
+            <GithubActivity compact />
 
             <ProjectGrid projects={featuredProjects} onOpen={setOpen} headingLevel="h2" />
 
