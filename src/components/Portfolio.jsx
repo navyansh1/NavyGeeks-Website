@@ -21,6 +21,8 @@ const Portfolio = () => {
         </h2>
         <ShinyEffect left={0} top={0} size={1900} />
 
+        <GithubActivity compact />
+
         <ProjectGrid projects={featuredProjects.slice(0, HOME_COUNT)} onOpen={setOpen} />
 
         <div className='mt-8 text-center'>
@@ -31,8 +33,6 @@ const Portfolio = () => {
                 See all {projects.length} projects <ArrowRight size={18} />
             </Link>
         </div>
-
-        <GithubActivity />
 
         <ProjectModal project={open} onClose={close} />
     </div>
