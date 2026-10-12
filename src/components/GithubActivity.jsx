@@ -3,6 +3,7 @@ import { Github } from 'lucide-react';
 import { SOCIAL_LINKS } from '../data/site';
 
 const USER = 'navyansh1';
+const DEFAULT_YEAR = '2026';
 const API = `https://github-contributions-api.jogruber.de/v4/${USER}?y=all`;
 const LEVELS = ['bg-slate-800', 'bg-green-900', 'bg-green-700', 'bg-green-500', 'bg-green-400'];
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -22,11 +23,11 @@ const toWeeks = (days) => {
 };
 
 // Contribution graph, fetched in the browser (the site is pre-rendered, so SSR shows a skeleton).
-// `compact` shows the last ~26 weeks and drops the footer legend.
+// `compact` drops the footer legend. The graph always opens on DEFAULT_YEAR.
 const GithubActivity = ({ compact = false }) => {
     const [data, setData] = useState(null);
     const [failed, setFailed] = useState(false);
-    const [year, setYear] = useState('last');
+    const [year, setYear] = useState(DEFAULT_YEAR);
     const scroller = useRef(null);
 
     useEffect(() => {
@@ -46,14 +47,17 @@ const GithubActivity = ({ compact = false }) => {
     const weeks = useMemo(() => {
         if (!data) return null;
         const all = data.contributions;
-        const days = year === 'last' ? all.slice(-365) : all.filter((d) => d.date.startsWith(year));
-        const w = toWeeks(days);
-        return compact && year === 'last' ? w.slice(-26) : w;
-    }, [data, compact, year]);
+        return toWeeks(all.filter((d) => d.date.startsWith(year)));
+    }, [data, year]);
 
-    // Start scrolled to the latest weeks on narrow screens.
+    // On narrow screens, scroll so the most recent week (up to today) is in view.
     useEffect(() => {
-        if (weeks && scroller.current) scroller.current.scrollLeft = scroller.current.scrollWidth;
+        const el = scroller.current;
+        if (!weeks || !el) return;
+        const today = new Date().toISOString().slice(0, 10);
+        let last = weeks.length - 1;
+        while (last > 0 && !weeks[last].some((d) => d && d.date <= today)) last -= 1;
+        el.scrollLeft = Math.max(0, (last + 1) * 15 - el.clientWidth);
     }, [weeks]);
 
     const total = useMemo(
@@ -75,7 +79,6 @@ const GithubActivity = ({ compact = false }) => {
                             aria-label="Select year"
                             className="bg-slate-800 text-gray-100 text-sm rounded-md border border-slate-600 px-2 py-1 focus:outline-none focus:border-yellow-500"
                         >
-                            <option value="last">{compact ? 'Last 6 months' : 'Last 12 months'}</option>
                             {years.map((y) => <option key={y} value={y}>{y}</option>)}
                         </select>
                     )}
@@ -93,12 +96,12 @@ const GithubActivity = ({ compact = false }) => {
             ) : (
                 <>
                     <p className="text-sm text-gray-400 mb-3 h-5">
-                        {weeks && <><span className="text-gray-100 font-semibold">{total.toLocaleString()}</span> contributions {year === 'last' ? `in the last ${compact ? '6 months' : 'year'}` : `in ${year}`}</>}
+                        {weeks && <><span className="text-gray-100 font-semibold">{total.toLocaleString()}</span> contributions in {year}</>}
                     </p>
                     <div ref={scroller} className="overflow-x-auto pb-2" role="img" aria-label="GitHub contribution graph">
                         <div className="inline-flex flex-col gap-1 min-w-max">
                             <div className="flex gap-[3px] h-4 text-gray-500" style={{ fontSize: 10, lineHeight: '16px' }}>
-                                {(weeks || Array.from({ length: compact ? 26 : 53 })).map((w, i, arr) => {
+                                {(weeks || Array.from({ length: 53 })).map((w, i, arr) => {
                                     const first = w?.find(Boolean);
                                     const m = first ? new Date(`${first.date}T00:00:00Z`).getUTCMonth() : null;
                                     const prev = i > 0 && arr[i - 1]?.find?.(Boolean);
@@ -107,7 +110,7 @@ const GithubActivity = ({ compact = false }) => {
                                 })}
                             </div>
                             <div className="flex gap-[3px]">
-                                {(weeks || Array.from({ length: compact ? 26 : 53 }, () => Array(7).fill(null))).map((w, i) => (
+                                {(weeks || Array.from({ length: 53 }, () => Array(7).fill(null))).map((w, i) => (
                                     <div key={i} className="flex flex-col gap-[3px]">
                                         {Array.from({ length: 7 }, (_, r) => {
                                             const d = w[r];
