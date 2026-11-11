@@ -4,6 +4,7 @@ import project4 from "../assets/certifications/certi3.png";
 import project6 from "../assets/certifications/python-crash-course.png";
 import iitKanpurImg from "../assets/experience/iit_kanpur.png";
 import awsAiPractitioner from "../assets/certifications/aws_ai_practitioner.png";
+import awsSaa from "../assets/certifications/aws_solutions_architect_associate.png";
 import openaiTechnical from "../assets/certifications/openai_technical_practitioner.png";
 import openaiDeployment from "../assets/certifications/openai_deployment_practitioner.png";
 import claudeArchitect from "../assets/certifications/claude_certified_architect.png";
@@ -14,6 +15,15 @@ import openaiDeploymentPdf from "../assets/certifications/openai_deployment_prac
 // Plain-data certifications so they can be rendered in the modal, on the
 // /certifications/ page, and in structured data.
 export const certifications = [
+  {
+    img: awsSaa,
+    title: "AWS Certified Solutions Architect - Associate",
+    issuer: "Amazon Web Services",
+    issued: "Nov 2026",
+    expires: "Nov 2029",
+    validation: "3da3535805214ea99ff534baaef305f8",
+    links: { site: "https://aws.amazon.com/verification" },
+  },
   {
     img: claudeArchitect,
     title: "Claude Certified Architect - Foundations",
