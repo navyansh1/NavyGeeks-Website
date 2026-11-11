@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Dark design: browsers must not apply their own light/dark recolouring */
+:root { color-scheme: dark; }
+
 body {
   font-family: "Space Grotesk", sans-serif;
   background-color: #06121A;
@@ -105,3 +108,17 @@ span {
   z-index: 1;
   isolation: isolate;
 }
+
+/* iPhone Safari tints the areas behind its toolbars with the colour of whatever is fixed
+   at the very top and bottom edges. These thin bands carry the aurora's edge colours,
+   so the toolbars blend into the background instead of showing a dark strip. */
+.aurora-edge {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 6px;
+  z-index: 0;
+  pointer-events: none;
+}
+.aurora-edge--top { top: 0; background-color: #1F3F3E; }
+.aurora-edge--bottom { bottom: 0; background-color: #2E363D; }

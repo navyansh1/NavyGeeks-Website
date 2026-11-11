@@ -92,6 +92,8 @@ const AuroraBackground = () => {
                 </video>
             )}
             <div className="aurora-bg__grain" style={{ backgroundImage: `url(${grain})` }} />
+            <div className="aurora-edge aurora-edge--top" />
+            <div className="aurora-edge aurora-edge--bottom" />
         </div>
     );
 };
