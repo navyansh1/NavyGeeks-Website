@@ -50,10 +50,12 @@ const AuroraBackground = () => {
         };
     }, []);
 
-    // iPhone Safari only autoplays a video that is muted from the start, and React sets
-    // `muted` as a property, not as the HTML attribute Safari checks. So set both here,
-    // then start it. If Safari still refuses (e.g. Low Power Mode), drop the video and
-    // keep the still poster, so Safari's own play button never shows.
+    // iPhone Safari only plays a video on its own if it has the HTML `muted` attribute, and
+    // React sets `muted` only as a property, so set both here. There is deliberately no
+    // `autoplay` attribute: in Low Power Mode iOS always draws its own play button on
+    // videos that have it, and CSS can't hide that button. Instead we start the video from
+    // code; if iOS refuses (Low Power Mode, data saver), the video is removed and the still
+    // poster with grain stays.
     useEffect(() => {
         const el = videoRef.current;
         if (!el) return;
@@ -77,7 +79,6 @@ const AuroraBackground = () => {
                     ref={videoRef}
                     className={`aurora-bg__video${playing ? ' is-playing' : ''}`}
                     onPlaying={() => setPlaying(true)}
-                    autoPlay
                     muted
                     loop
                     playsInline
