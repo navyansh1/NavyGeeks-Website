@@ -87,6 +87,7 @@ export const papers = [
   {
     slug: "selective-embedding-update-rag-vector-database",
     title: "Efficient Vector Database Management in Retrieval-Augmented Generation Systems: A Selective Embedding Update Approach",
+    seoTitle: "Selective Embedding Updates for RAG – Navyansh Kothari",
     authors: ["Navyansh Kothari"],
     venue: "2026 International Conference on Recent Advances in Electrical, Electronics, Ubiquitous Communication, and Computational Intelligence (RAEEUCCI)",
     date: "April 2026 · Chennai, India",
@@ -162,6 +163,7 @@ export const papers = [
   {
     slug: "otitis-media-diagnosis-deep-neural-networks",
     title: "Leveraging Deep Neural Networks for Enhanced Otitis Media Diagnosis",
+    seoTitle: "Otitis Media Diagnosis via Deep Learning – Navyansh Kothari",
     authors: ["Navyansh Kothari"],
     venue: "2026 International Conference on Emerging Systems and Intelligent Computing (ESIC)",
     date: "February 2026 · Bhubaneswar, India",

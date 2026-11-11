@@ -1,0 +1,28 @@
+# Navyansh Kothari (NavyGeeks)
+
+> Navyansh Kothari is an AI/ML Engineer at Ganit Inc (Chennai, India), an IEEE-published researcher, a mobile app developer, and the creator of the NavyGeeks tech YouTube channel. This site is his portfolio: projects, research papers, certifications, experience and education.
+
+## Main pages
+- [Home](https://www.navygeeks.in/): overview of skills, experience, projects, certifications and research
+- [About & Contact](https://www.navygeeks.in/about/): who he is and how to reach him
+- [Experience](https://www.navygeeks.in/experience/): work history (Ganit Inc, Hitwicket, NavyGeeks YouTube)
+- [Education](https://www.navygeeks.in/education/): B.Tech CSE, VIT Vellore
+- [Skills](https://www.navygeeks.in/skills/): Gen AI, machine learning, backend and mobile tech stack
+- [Certifications](https://www.navygeeks.in/certifications/): AWS Solutions Architect - Associate, Claude Certified Architect, AWS AI Practitioner, OpenAI certifications and more
+
+## Research (IEEE)
+- [All publications](https://www.navygeeks.in/research/)
+- [On-Demand Multimodal RAG](https://www.navygeeks.in/research/on-demand-multimodal-rag-selective-page-rendering/)
+- [Selective Embedding Updates for RAG Vector Databases](https://www.navygeeks.in/research/selective-embedding-update-rag-vector-database/)
+- [Otitis Media Diagnosis with Deep Neural Networks](https://www.navygeeks.in/research/otitis-media-diagnosis-deep-neural-networks/)
+- [EfficientNet-DR: Diabetic Retinopathy Detection](https://www.navygeeks.in/research/efficientnet-dr-diabetic-retinopathy-detection/)
+- [Insider Threat Resilience Mitigation Model](https://www.navygeeks.in/research/insider-threat-resilience-mitigation-model/)
+
+## Projects
+- [All projects](https://www.navygeeks.in/projects/)
+- [GeoScout IQ](https://www.navygeeks.in/projects/geoscout-iq/): location intelligence for banks and retailers
+- [CCTV IQ](https://www.navygeeks.in/projects/cctv-iq-face-attendance/): face-recognition attendance from CCTV
+- [VedicFlow](https://www.navygeeks.in/projects/vedicflow/): Hindu calendar and Panchang app
+- [OCR Engine Benchmark](https://www.navygeeks.in/projects/ocr-engine-benchmark/): OCR comparison on Indian loan documents
+- [Bill Sonic](https://www.navygeeks.in/projects/bill-sonic/): mobile point-of-sale app
+- [Discount Spend Optimization](https://www.navygeeks.in/projects/discount-spend-optimization/): ML pipeline for FMCG promotions

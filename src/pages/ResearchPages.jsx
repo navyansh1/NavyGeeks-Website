@@ -92,7 +92,7 @@ export function PaperPage() {
         { name: paper.title, path },
     ];
     const year = paper.published.slice(0, 4);
-    const title = `${SITE_NAME} – IEEE Paper: ${paper.title}`;
+    const title = paper.seoTitle || `${paper.title.split(':')[0]} – IEEE Paper by ${SITE_NAME}`;
 
     const schema = [
         {

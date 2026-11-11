@@ -14,12 +14,12 @@ const Contact = ({ pageHeading = false }) => {
               <Heading className="text-2xl md:text-4xl text-yellow-400 font-bold mb-3 md:mb-5 flex items-center gap-2">
                 <UserCircle size={26} className="md:w-9 md:h-9 flex-shrink-0" /> About Me
               </Heading>
-              <p className="text-justify text-sm md:text-base leading-6 md:leading-7 w-full md:w-11/12 md:mx-auto px-2 md:px-0">
+              <p className="text-sm md:text-base leading-6 md:leading-7 w-full md:w-11/12 md:mx-auto px-2 md:px-0">
                 I am an AI/ML Engineer who builds Gen AI products, machine learning models, backends and mobile apps, and an AWS-certified cloud developer. Through my YouTube channel, NavyGeeks, I create content to explain tech concepts and share practical tutorials that help viewers engage with tech better. I approach tasks with a balance of technical skill, creativity and a learner's mindset.
               </p>
               <br />
-              <p className="text-justify text-sm md:text-base leading-6 md:leading-7 w-full md:w-11/12 md:mx-auto px-2 md:px-0">
-                When I'm not coding or creating content, I'm likely exploring the latest in the automotive world. My enthusiasm for cars keeps me happy and i also love gardening, capturing videos, photos and making memories as my life is a movie.
+              <p className="text-sm md:text-base leading-6 md:leading-7 w-full md:w-11/12 md:mx-auto px-2 md:px-0">
+                When I'm not coding or creating content, I'm likely exploring the latest in the automotive world. My enthusiasm for cars keeps me happy, and I also love gardening, capturing videos, photos and making memories as my life is a movie.
               </p>
             </div>
           </div>

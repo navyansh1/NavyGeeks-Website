@@ -38,7 +38,7 @@ export const ResultTable = ({ table }) => (
                     {table.rows.map((row) => (
                         <tr key={row[0]} className="border-t border-gray-700/70">
                             {row.map((cell, i) => (
-                                <td key={i} className={`px-3 py-2 text-gray-300 ${i === 0 ? 'font-medium text-gray-100' : 'whitespace-nowrap tabular-nums'}`}>{cell}</td>
+                                <td key={i} className={`px-3 py-2 text-gray-300 ${i === 0 ? 'font-medium text-gray-100 min-w-[7rem]' : 'tabular-nums min-w-[8rem]'}`}>{cell}</td>
                             ))}
                         </tr>
                     ))}

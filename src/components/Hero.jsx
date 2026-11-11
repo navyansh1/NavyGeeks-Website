@@ -135,14 +135,14 @@ const Hero = () => {
                     </motion.div>
                 </motion.div>
 
-                <motion.img
+                {/* Largest image on the page: shown at once (no fade-in) so it doesn't delay LCP */}
+                <img
                     src={profilepic}
                     alt="Navyansh Kothari, AI/ML Engineer"
-                    className="w-[250px] md:w-[350px] rounded-xl"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, ease: 'easeOut' }}
+                    width={900}
+                    height={1185}
+                    fetchpriority="high"
+                    className="w-[250px] md:w-[350px] h-auto rounded-xl"
                 />
 
             </div>

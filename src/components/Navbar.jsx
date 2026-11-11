@@ -28,7 +28,8 @@ const pageSections = {
 
 const NavLink = ({ isHome, to, offset = -80, ...props }) =>
     isHome
-        ? <ScrollLink to={to} smooth={true} offset={offset} duration={400} {...props} />
+        // href makes the link crawlable by Google; react-scroll still handles the click
+        ? <ScrollLink to={to} href={pageRoutes[to]} smooth={true} offset={offset} duration={400} {...props} />
         : <RouterLink to={pageRoutes[to]} {...props} />;
 
 // Used by the mobile section indicator bubble (currently commented out below)
@@ -81,7 +82,7 @@ const Navbar = () => {
         { to: 'experience', label: 'Experience', icon: <Briefcase size={22} /> },
         { to: 'education', label: 'Education', icon: <GraduationCap size={22} /> },
         { to: 'portfolio', label: 'Projects', icon: <FolderOpen size={22} /> },
-        { to: 'certifications', label: 'Licenses', icon: <Award size={22} /> },
+        { to: 'certifications', label: 'Certifications', icon: <Award size={22} /> },
         { to: 'research', label: 'Research', icon: <BookOpen size={22} /> },
         { to: 'contact', label: 'Contact', icon: <AtSign size={22} /> },
     ];
@@ -97,7 +98,7 @@ const Navbar = () => {
                         <li className={isActive('experience') ? 'text-yellow-400' : ''}><NavLink isHome={isHome} to="experience" offset={-80}>Experience</NavLink></li>
                         <li className={isActive('education') ? 'text-yellow-400' : ''}><NavLink isHome={isHome} to="education" offset={-80}>Education</NavLink></li>
                         <li className={isActive('portfolio') ? 'text-yellow-400' : ''}><NavLink isHome={isHome} to="portfolio" offset={-80}>Projects</NavLink></li>
-                        <li className={isActive('certifications') ? 'text-yellow-400' : ''}><NavLink isHome={isHome} to="certifications" offset={-80}>Licenses</NavLink></li>
+                        <li className={isActive('certifications') ? 'text-yellow-400' : ''}><NavLink isHome={isHome} to="certifications" offset={-80}>Certifications</NavLink></li>
                         <li className={isActive('research') ? 'text-yellow-400' : ''}><NavLink isHome={isHome} to="research" offset={-80}>Research</NavLink></li>
                         <li className={isActive('contact') ? 'text-yellow-400' : ''}><NavLink isHome={isHome} to="contact" offset={-160}>Contact</NavLink></li>
                     </ul>
