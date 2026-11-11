@@ -56,7 +56,8 @@ span {
   position: fixed;
   /* Explicit layers (background 0, page 1) instead of z-index -1: iPhone browsers can draw
      a video above the page when it relies on a negative z-index. */
-  /* Taller than the screen, so it also runs under Safari's toolbars on iPhone */
+  /* Taller than the screen, so it also runs under Safari's toolbars on iPhone
+     (with viewport-fit=cover in index.html; iOS 26 clips fixed elements without it) */
   top: 0;
   left: 0;
   right: 0;
@@ -108,17 +109,3 @@ span {
   z-index: 1;
   isolation: isolate;
 }
-
-/* iPhone Safari tints the areas behind its toolbars with the colour of whatever is fixed
-   at the very top and bottom edges. These thin bands carry the aurora's edge colours,
-   so the toolbars blend into the background instead of showing a dark strip. */
-.aurora-edge {
-  position: fixed;
-  left: 0;
-  right: 0;
-  height: 6px;
-  z-index: 0;
-  pointer-events: none;
-}
-.aurora-edge--top { top: 0; background-color: #1F3F3E; }
-.aurora-edge--bottom { bottom: 0; background-color: #2E363D; }

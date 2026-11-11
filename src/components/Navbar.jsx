@@ -111,7 +111,7 @@ const Navbar = () => {
                 <motion.button
                     onClick={toggleNav}
                     aria-label={nav ? 'Close menu' : 'Open menu'}
-                    className="fixed bottom-10 right-6 z-[1000] p-3 bg-yellow-400 bg-opacity-60 backdrop-blur-sm rounded-full shadow-lg text-slate-900 w-12 h-12 flex items-center justify-center"
+                    className="fixed bottom-[calc(2.5rem+env(safe-area-inset-bottom,0px))] right-6 z-[1000] p-3 bg-yellow-400 bg-opacity-60 backdrop-blur-sm rounded-full shadow-lg text-slate-900 w-12 h-12 flex items-center justify-center"
                     whileTap={{ scale: 0.95 }}
                     layout
                 >
@@ -125,7 +125,7 @@ const Navbar = () => {
                 </motion.button>
 
                 {/* Current section indicator bubble (hidden on mobile)
-                <div className="fixed bottom-10 left-6 z-[999] bg-slate-800 bg-opacity-60 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+                <div className="fixed bottom-[calc(2.5rem+env(safe-area-inset-bottom,0px))] left-6 z-[999] bg-slate-800 bg-opacity-60 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium shadow-lg">
                     <span className="text-yellow-400">{sectionLabels[activeSection] || (activeSection ? activeSection.charAt(0).toUpperCase() + activeSection.slice(1) : 'Menu')}</span>
                 </div>
                 */}
