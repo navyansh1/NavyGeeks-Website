@@ -19,7 +19,7 @@ export const papers = [
     location: "Bhopal, India",
     tags: ["Generative AI", "Multimodal RAG", "Document AI", "LLM Cost Optimization", "Gemini", "FAISS"],
     metaDescription:
-      "IEEE paper by Navyansh Kothari: On-Demand Multimodal RAG answers questions on diagram-heavy PDFs at 94.2% accuracy while cutting LLM cost 97.3% by rendering only the pages it needs.",
+      "IEEE paper: On-Demand Multimodal RAG answers questions on diagram-heavy PDFs at 94.2% accuracy and cuts LLM cost 97.3% by rendering only needed pages.",
     facts: [
       ["Problem", "Technical PDFs keep key facts in diagrams, tables and equations. Text-only RAG loses them, OCR is slow, and sending the whole PDF to an LLM is very expensive."],
       ["Idea", "Search the text as usual, then turn only the few matching pages into images and send those to a multimodal LLM."],
@@ -97,7 +97,7 @@ export const papers = [
     doi: "10.1109/RAEEUCCI67649.2026.11504894",
     link: "https://ieeexplore.ieee.org/document/11504894",
     metaDescription:
-      "IEEE paper by Navyansh Kothari: updating only the changed document in a RAG vector database cuts update time 84.9% and database calls 99.6% on AWS OpenSearch and Bedrock.",
+      "IEEE paper: updating only the changed document in a RAG vector database cuts update time 84.9% and database calls 99.6% on AWS OpenSearch and Bedrock.",
     facts: [
       ["Problem", "When one PDF changes, many RAG systems re-embed and re-index everything. That is slow, costly and can cause downtime."],
       ["Idea", "Check if the file already exists. If it does, delete only its old vectors in one call and add the new ones in one bulk call."],
@@ -172,7 +172,7 @@ export const papers = [
     tags: ["Deep Learning", "Ensemble Learning", "Computer Vision", "Healthcare AI", "Medical Imaging"],
     link: "https://ieeexplore.ieee.org/document/11495855",
     metaDescription:
-      "IEEE paper by Navyansh Kothari: an ensemble of RegNet, MobileNetV2 and ResNeXt reaches 92.56% accuracy and 96.12% sensitivity diagnosing ear infections from otoscope images.",
+      "IEEE paper: a RegNet, MobileNetV2 and ResNeXt ensemble diagnoses ear infections from otoscope images with 92.56% accuracy and 96.12% sensitivity.",
     facts: [
       ["Problem", "Ear infections (otitis media) are common in children, but reading otoscope images is subjective and often wrong."],
       ["Idea", "Combine four different CNNs and add patient details (age, symptoms, history) to the image."],
@@ -239,7 +239,7 @@ export const papers = [
     doi: "10.1109/ESIC68176.2026.11495823",
     link: "https://ieeexplore.ieee.org/document/11495823",
     metaDescription:
-      "IEEE paper by Navyansh Kothari: EfficientNet-B0 grades diabetic retinopathy (0-4) on the Indian IDRiD dataset at 84.2% accuracy, in a 20 MB model for low-end devices.",
+      "IEEE paper: EfficientNet-B0 grades diabetic retinopathy (0-4) on the Indian IDRiD dataset at 84.2% accuracy, in a 20 MB model for low-end devices.",
     facts: [
       ["Problem", "Diabetic retinopathy is a top cause of preventable blindness, and many places lack eye specialists or costly equipment."],
       ["Idea", "Use EfficientNet-B0, a small but accurate CNN, to grade eye scans from 0 (healthy) to 4 (severe)."],
@@ -307,7 +307,7 @@ export const papers = [
     doi: "10.1109/ESIC60604.2024.10481615",
     link: "https://ieeexplore.ieee.org/document/10481615",
     metaDescription:
-      "IEEE paper by Navyansh Kothari: a Flutter tool that hides a network check inside a file, so the file opens on the office network and erases itself anywhere else.",
+      "IEEE paper: a Flutter tool hides a network check inside a file, so it opens on the office network and erases its contents anywhere else.",
     facts: [
       ["Problem", "Insiders already have access, so they can copy sensitive files out of the company."],
       ["Idea", "Bundle every protected file with a hidden check. The file opens only on approved networks."],

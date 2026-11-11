@@ -27,9 +27,16 @@ const projectTitle = (project) => {
 };
 
 // Descriptions carry the owner's name so name searches match every project page.
+// Adds the author's name to a description only while it stays within ~160 characters,
+// so Google shows the whole thing (the name is in the title anyway).
+const MAX_DESC = 160;
 const withName = (text, name) => {
-    if (text.startsWith(`${name} `)) return `${name}, by ${SITE_NAME},${text.slice(name.length)}`;
-    return text.length <= 132 ? `${text} A project by ${SITE_NAME}.` : `By ${SITE_NAME}: ${text}`;
+    const options = [
+        text.startsWith(`${name} `) ? `${name}, by ${SITE_NAME},${text.slice(name.length)}` : null,
+        `${text} A project by ${SITE_NAME}.`,
+        `${text} By ${SITE_NAME}.`,
+    ];
+    return options.find((o) => o && o.length <= MAX_DESC) || text;
 };
 
 const projectSchema = (project, path) => {
@@ -158,6 +165,15 @@ export function ProjectPage() {
 
             <h2 className={h2Class}>At a glance</h2>
             <FactsTable rows={facts} />
+
+            {project.about && (
+                <>
+                    <h2 className={h2Class}>About this project</h2>
+                    <div className="space-y-4 text-gray-300 text-base md:text-lg leading-relaxed">
+                        {project.about.map((para) => <p key={para.slice(0, 40)}>{para}</p>)}
+                    </div>
+                </>
+            )}
 
             {project.flow && (
                 <>

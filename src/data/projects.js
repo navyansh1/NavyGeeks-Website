@@ -350,7 +350,7 @@ export const projects = [
         type: "SoftwareApplication",
         stack: ["Python", "XGBoost", "SHAP", "Databricks", "MLflow"],
         metaDescription:
-            "An ML pipeline on Databricks for an FMCG company: it measures where trade discounts lift sales across 18 product lines and simulates the sales and P&L impact of changes.",
+            "An ML pipeline on Databricks that measures where trade discounts lift FMCG sales across 18 product lines and simulates the sales and P&L impact.",
         summary: "A modelling pipeline for an FMCG company that shows where trade discounts actually lift sales, and what happens to sales and profit if they change.",
         facts: [
             ["Problem", "Discount budgets are spread across states, packs and channels, and it is hard to see which ones pay back."],
@@ -458,10 +458,15 @@ export const projects = [
         img: thumb_fmcg_demand_forecasting,
         title: "Demand Forecasting Analysis",
         type: "CreativeWork",
-        stack: ["Python", "Time-series models", "Machine learning"],
+        stack: ["Python", "pandas", "statsmodels (ARIMA, exponential smoothing)", "Machine learning"],
         metaDescription:
             "FMCG demand forecasting project: seasonality and sales-pattern analysis, statistical and machine learning models, and forecasts turned into business decisions.",
         summary: "An FMCG demand forecasting case study that turns sales history into forecasts a business can act on.",
+        about: [
+            "In FMCG, too little stock means lost sales and too much means cash tied up and products expiring. This case study shows a practical, explainable way to forecast demand instead of relying on a black-box model.",
+            "It starts by cleaning a messy sales dataset (the date column needed fixing) and exploring trends and seasonality. Products are then grouped with ABC-XYZ analysis: ABC by revenue impact and XYZ by how much demand swings, because a stable best-seller and a volatile low seller need different stocking strategies.",
+            "Moving averages, exponential smoothing, ARIMA and a machine learning model with lag, rolling and calendar features are compared on weekly and monthly horizons and scored with MAE, RMSE and MAPE. The findings: past demand is the strongest predictor, category-level forecasts beat product-level ones, and simple ARIMA often beats complex models for stable products.",
+        ],
         highlights: [
             "Analyses seasonality and sales patterns",
             "Compares statistical and machine learning models",
@@ -485,10 +490,15 @@ export const projects = [
         img: thumb_credit_card_fraud_detection_bfsi,
         title: "Credit Card Modelling - BFSI Domain",
         type: "CreativeWork",
-        stack: ["Python", "Machine learning"],
+        stack: ["Python", "XGBoost", "pandas"],
         metaDescription:
             "BFSI credit card fraud detection: analyses transaction patterns, handles heavily imbalanced data and builds interpretable models to flag fraudulent activity.",
         summary: "A fraud detection case study for banking that flags suspicious credit card transactions.",
+        about: [
+            "Fraud is rare, which is what makes it hard to catch: in this dataset of about 555,000 card transactions, only 0.4% are fraudulent. A model that simply says \"not fraud\" every time would be 99.6% accurate and completely useless.",
+            "The pipeline builds features a fraud analyst would look at: transaction hour and weekday, customer age, the distance between customer and merchant, whether the card was present, and how often a merchant appears. An XGBoost model then handles the imbalance with class weighting instead of synthetic oversampling.",
+            "On the test set it catches 93%+ of fraud cases with a ROC-AUC of 0.997, while flagging only about 0.3% of genuine transactions. The strongest fraud signals were transaction amount, online (card-not-present) purchases, rarely seen merchants, time of day and unusual distance.",
+        ],
         highlights: [
             "Studies transaction patterns",
             "Handles heavily imbalanced data",
@@ -500,7 +510,19 @@ export const projects = [
             ["Train models", "interpretable"],
             ["Flag fraud", ""],
         ],
-        tags: ["fraud detection", "BFSI", "imbalanced data", "credit risk", "machine learning"],
+        tables: [
+            {
+                title: "Test set results",
+                head: ["Metric", "Value", "What it means"],
+                rows: [
+                    ["Recall", "93%+", "Catches 93% of all fraud"],
+                    ["ROC-AUC", "0.997", "Separates fraud from genuine very well"],
+                    ["Precision", "51%", "About half of the alerts are real fraud"],
+                    ["False alarms", "~0.3%", "Share of genuine transactions flagged"],
+                ],
+            },
+        ],
+        tags: ["fraud detection", "BFSI", "imbalanced data", "credit risk", "machine learning", "XGBoost"],
         links: {
             site: "https://navyansh1.github.io/ML_Fraud_Detection_BFSI/",
         },
@@ -515,6 +537,10 @@ export const projects = [
         metaDescription:
             "NextForms is a fully customizable alternative to Google Forms with seamless response tracking and advanced email notifications.",
         summary: "A customisable alternative to Google Forms with response tracking and email notifications.",
+        about: [
+            "NextForms is a form builder for people who outgrow Google Forms. Each form can have its own theme and layout, so it looks like part of your brand.",
+            "When someone submits a form they get an instant confirmation email, and you can track responses with built-in analytics or export them to Excel or Google Sheets. It is live at nextforms.in.",
+        ],
         flow: [
             ["Build a form", ""],
             ["Share link", ""],
@@ -542,6 +568,11 @@ export const projects = [
         metaDescription:
             "Cricket-themed HTML5 playable ads built at Hitwicket for Unity Ads, AppLovin and Google Ads, with 7M+ impressions and 40K+ installs.",
         summary: "Mini cricket games that run inside mobile ads, built at Hitwicket.",
+        about: [
+            "Playable ads let people try a game inside an ad before installing it. This set of cricket-themed playables, built at Hitwicket, includes a player-vs-player match, a build-your-team game, a timed Australia vs England challenge and a special-powers mode.",
+            "Ad networks put strict limits on file size and load time, so each playable is written in plain JavaScript on HTML5 Canvas with no external libraries, compressed assets and touch controls tuned for phones.",
+            "They ran on Unity Ads, AppLovin and Google Ads, reaching 7M+ impressions and 40K+ installs at a cost per install of about $0.20 to $0.25.",
+        ],
         facts: [
             ["Result", "7M+ impressions and 40K+ installs"],
             ["Ad networks", "Unity Ads, AppLovin, Google Ads"],
@@ -574,6 +605,11 @@ export const projects = [
         metaDescription:
             "GuardNote is a privacy-first digital notebook that runs in the browser, with drawing tools, PDF export and optional sync through your own private GitHub Gists.",
         summary: "A handwriting notebook that runs in the browser and syncs through your own private GitHub Gists.",
+        about: [
+            "GuardNote is a handwriting notebook for people who don't want their notes on someone else's server. It runs entirely in the browser and saves to your device by default.",
+            "If you want your notes on more than one device, you connect a GitHub token with only gist permission, and GuardNote syncs your notebooks to a private Gist in your own account. Your data never passes through a third-party server.",
+            "It has a resizable pen and eraser with several colours, unlimited notebooks and pages, plain, ruled or grid paper, and PDF export for a whole notebook. There are no analytics, cookies or tracking, and it works on desktop, tablet and phone.",
+        ],
         highlights: [
             "Saved on your device by default; cloud sync is optional",
             "Pen, eraser, and plain, ruled or grid pages",
@@ -602,6 +638,11 @@ export const projects = [
         metaDescription:
             "An AI quiz generator that reads PDFs, Word files and text files and turns them into multiple-choice quizzes you can download as text or PDF.",
         summary: "Upload a PDF, Word or text file and get multiple-choice questions generated by AI.",
+        about: [
+            "This Flask web app turns study material into a quiz. You upload a PDF, Word document or text file, choose how many questions you want, and Google's Gemini model writes multiple-choice questions from the content.",
+            "Text is pulled out with pdfplumber and python-docx, split into chunks of about 4,000 characters and sent to Gemini 1.5 Flash. For long PDFs over 30 pages it reads the first and last ten pages plus every fifth page in between, which keeps it fast without losing coverage.",
+            "The finished quiz can be downloaded as a text file or a PDF generated with FPDF, which makes it handy for teachers and students.",
+        ],
         flow: [
             ["Upload", "PDF, DOCX or TXT"],
             ["Extract text", ""],
@@ -629,6 +670,10 @@ export const projects = [
         metaDescription:
             "A TicTacToe iOS game app built with SwiftUI and UIKit, with source code on GitHub.",
         summary: "A TicTacToe game for iPhone built with SwiftUI and UIKit.",
+        about: [
+            "A classic two-player TicTacToe game for iPhone, built while learning iOS development. Two people take turns on the same phone, and the app checks every move for a win or a draw and then offers a restart.",
+            "It is written in Swift with SwiftUI for the interface, with the game board and buttons split into small reusable views. The full Xcode project is on GitHub.",
+        ],
         flow: [
             ["Tap a square", ""],
             ["Check win or draw", ""],
@@ -654,6 +699,10 @@ export const projects = [
         metaDescription:
             "A decentralized lottery system built with Solidity smart contracts and a React front end, leveraging blockchain technology.",
         summary: "A lottery that runs on a Solidity smart contract, with a React front end.",
+        about: [
+            "A lottery where the rules are enforced by code instead of a company. Players join through a React web page, and their entries are recorded by a smart contract written in Solidity.",
+            "The contract picks the winner and pays out, so no one running the lottery can change the result. The contract was written, deployed and tested in Remix, and the demo video walks through a full round.",
+        ],
         flow: [
             ["Enter", "React front end"],
             ["Entry recorded", "Solidity contract"],
@@ -680,6 +729,10 @@ export const projects = [
         metaDescription:
             "InstaSnap: a refined Instagram UI/UX concept designed in Figma for a sleek, user-friendly social media experience.",
         summary: "A cleaner Instagram-style social app concept designed in Figma.",
+        about: [
+            "InstaSnap is a design concept for a cleaner Instagram-style social app, made in Figma.",
+            "It reworks the main screens (feed, comments, creating and viewing stories, search and activity) with a simpler layout that gives photos more room and keeps the controls out of the way. The full Figma file is public, so you can open every screen.",
+        ],
         highlights: [
             "Redesigned feed, comments, stories, search and activity screens",
             "Cleaner layout with more space for photos",
@@ -708,6 +761,10 @@ export const projects = [
         metaDescription:
             "A playing cards iOS app built with SwiftUI, UIKit and Figma that brings card games to your fingertips. Source on GitHub.",
         summary: "A card game app for iPhone, designed in Figma and built with SwiftUI.",
+        about: [
+            "A simple card game for iPhone: you play against the CPU, tap Deal, and both sides draw a card. Whoever has the higher card wins the round and the scores update straight away.",
+            "The screens were designed in Figma first and then built in SwiftUI, using @State properties so the cards and scores redraw automatically on each deal. It is an early iOS project from 2023, and the Xcode project with its unit and UI test targets is on GitHub.",
+        ],
         highlights: [
             "Player vs CPU card game",
             "Tap Deal to draw cards; the higher card scores",
@@ -734,6 +791,11 @@ export const projects = [
         metaDescription:
             "The source of this portfolio website, built with React, Tailwind CSS and Framer Motion and pre-rendered for search engines.",
         summary: "This website: React and Tailwind CSS, pre-rendered to static pages so search engines can read every page.",
+        about: [
+            "This website is built with React, Vite, Tailwind CSS and Framer Motion, and it is designed to be found as well as viewed.",
+            "Every route, including a page for each project and research paper, is pre-rendered to static HTML at build time, so search engines and AI tools can read the full content without running JavaScript. Each page has its own title, description, canonical URL and structured data (Person, ScholarlyArticle, SoftwareApplication and breadcrumbs), plus a sitemap and an llms.txt file.",
+            "It deploys automatically to Vercel from GitHub, and the source code is public.",
+        ],
         flow: [
             ["React pages", ""],
             ["Pre-render", "every route to HTML"],

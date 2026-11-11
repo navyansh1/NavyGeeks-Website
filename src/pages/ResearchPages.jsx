@@ -34,7 +34,7 @@ const scholarName = (name) => {
 export function ResearchIndexPage() {
     const crumbs = [{ name: 'Home', path: '/' }, { name: 'Research', path: '/research' }];
     const description =
-        'IEEE research by Navyansh Kothari: multimodal RAG, RAG vector database updates, deep learning for ear infections and diabetic retinopathy, and insider threat mitigation.';
+        'IEEE papers by Navyansh Kothari on multimodal RAG, RAG vector databases, deep learning for ear infection and diabetic retinopathy, and insider threats.';
 
     const schema = [
         {
