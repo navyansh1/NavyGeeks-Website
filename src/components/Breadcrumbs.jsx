@@ -1,21 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { pagePath } from '../data/site';
+import { BackLink } from './DetailBlocks';
 
-// items: [{ name, path }], ending with the current page. Only the parent pages are shown,
-// because the current page's name is already the <h1> right below; the full trail still
-// goes into the BreadcrumbList structured data.
-const Breadcrumbs = ({ items }) => (
-    <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-400">
-        <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
-            {items.slice(0, -1).map((item, i) => (
-                <li key={item.path} className="flex items-center gap-2">
-                    {i > 0 && <span aria-hidden="true" className="text-sm text-gray-500 font-normal">/</span>}
-                    <Link to={pagePath(item.path)} className="text-sm hover:text-yellow-400 transition-colors">{item.name}</Link>
-                </li>
-            ))}
-        </ol>
-    </nav>
-);
+// items: [{ name, path }], ending with the current page. Shows a Back link to the parent
+// page (or one step back in history); the full trail goes into the BreadcrumbList
+// structured data on each page.
+const Breadcrumbs = ({ items }) => {
+    const parent = items[items.length - 2];
+    return (
+        <nav aria-label="Back" className="mb-6">
+            <BackLink to={pagePath(parent.path)} label={parent.name} className="" />
+        </nav>
+    );
+};
 
 export default Breadcrumbs;

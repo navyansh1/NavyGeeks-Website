@@ -35,9 +35,9 @@ const Certifications = ({ pageHeading = false }) => {
 
       <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6'>
         {projects.map((project) => (
-          <Reveal key={project.title}>
+          <Reveal key={project.title} width="100%" fill>
             <div
-              className='bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700
+              className='h-full bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700
               hover:border-yellow-500/50 hover:shadow-yellow-500/10 hover:shadow-xl
               transition-all duration-300 overflow-hidden cursor-pointer group'
               onClick={() => setSelectedCert(project)}
@@ -53,7 +53,7 @@ const Certifications = ({ pageHeading = false }) => {
                   />
                 </div>
                 <div className='flex items-center justify-between'>
-                  <h3 className='text-base md:text-lg font-semibold text-gray-200 leading-tight min-h-[2.5rem] flex items-center pr-2'>
+                  <h3 className='text-base md:text-lg font-semibold text-gray-200 leading-tight h-[5em] md:h-[3.75em] line-clamp-4 md:line-clamp-3 pr-2'>
                     {project.title}
                   </h3>
                   <div className='text-yellow-500 bg-yellow-500/10 p-1.5 rounded-md flex-shrink-0'>

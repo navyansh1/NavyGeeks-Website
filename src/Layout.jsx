@@ -4,6 +4,16 @@ import { MotionConfig } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { BackLink } from './components/DetailBlocks';
+import { pagePath } from './data/site';
+
+// Where Back goes when the visitor arrived from outside the site.
+const parentOf = (pathname) => {
+    const parts = pathname.split('/').filter(Boolean);
+    const parent = parts.slice(0, -1).join('/');
+    const labels = { research: 'All publications', projects: 'All projects' };
+    return { to: pagePath(parent), label: labels[parent] || 'Home' };
+};
 
 // Layout effect in the browser (runs before paint, so the old page's position is saved
 // before the new page can change it); plain effect during pre-rendering.
@@ -54,6 +64,7 @@ const useScrollOnNavigate = () => {
 
 export default function Layout() {
     useScrollOnNavigate();
+    const { pathname } = useLocation();
 
     return (
         // reducedMotion="user" turns animations off for visitors who set "reduce motion" in their OS
@@ -64,6 +75,11 @@ export default function Layout() {
                 <main>
                     <Outlet />
                 </main>
+                {pathname !== '/' && (
+                    <div className="max-w-[1000px] mx-auto px-6 mb-6">
+                        <BackLink {...parentOf(pathname)} className="mt-4" />
+                    </div>
+                )}
                 <Footer />
             </div>
             {/* Vercel Web Analytics (free tier): page views and visitors, no cookies */}

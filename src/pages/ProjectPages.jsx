@@ -5,7 +5,7 @@ import Seo from '../components/Seo';
 import Breadcrumbs from '../components/Breadcrumbs';
 import ProjectGrid from '../components/ProjectGrid';
 import Flow from '../components/Flow';
-import { h2Class, FactsTable, ResultTable, Bullets, Diagram, Details, TagList, BackLink } from '../components/DetailBlocks';
+import { h2Class, FactsTable, ResultTable, Bullets, Diagram, Details, TagList } from '../components/DetailBlocks';
 import MoreProjects from '../components/MoreProjects';
 import ProjectModal from '../components/ProjectModal';
 import GithubActivity from '../components/GithubActivity';
@@ -221,8 +221,6 @@ export function ProjectPage() {
                     )}
                 </div>
             )}
-
-            <BackLink to={pagePath('projects')} label="All projects" />
         </article>
     );
 }

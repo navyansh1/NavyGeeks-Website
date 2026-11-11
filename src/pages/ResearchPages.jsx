@@ -5,7 +5,7 @@ import Seo from '../components/Seo';
 import Breadcrumbs from '../components/Breadcrumbs';
 import Flow from '../components/Flow';
 import ScholarProfiles from '../components/ScholarProfiles';
-import { h2Class, FactsTable, ResultTable, Bullets, Diagram, Details, TagList, BackLink } from '../components/DetailBlocks';
+import { h2Class, FactsTable, ResultTable, Bullets, Diagram, Details, TagList } from '../components/DetailBlocks';
 import NotFound from './NotFound';
 import { papers, getPaper } from '../data/research';
 import { PERSON_ID, SITE_NAME, SITE_URL, absoluteUrl, pagePath, breadcrumbSchema } from '../data/site';
@@ -201,8 +201,6 @@ export function PaperPage() {
                     )}
                 </div>
             )}
-
-            <BackLink to={pagePath('research')} label="All publications" />
         </article>
     );
 }

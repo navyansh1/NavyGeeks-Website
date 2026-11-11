@@ -94,7 +94,7 @@ export const TagList = ({ tags }) => (
 
 // Goes back to wherever the visitor came from inside the site (for example the home page),
 // so one tap undoes one tap. Arriving from Google or a shared link, it links to the list page.
-export const BackLink = ({ to, label }) => {
+export const BackLink = ({ to, label, className = 'mt-10' }) => {
     const navigate = useNavigate();
     const [canGoBack, setCanGoBack] = useState(false);
     useEffect(() => {
@@ -109,7 +109,7 @@ export const BackLink = ({ to, label }) => {
                 e.preventDefault();
                 navigate(-1);
             }}
-            className="mt-10 inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold"
+            className={`${className} inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold`}
         >
             <ArrowLeft size={18} /> {canGoBack ? 'Back' : label}
         </Link>
