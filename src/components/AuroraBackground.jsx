@@ -21,6 +21,8 @@ const videos = {
 // - Visitors who turn on "reduce motion" only get the still image.
 const AuroraBackground = () => {
     const [shape, setShape] = useState(null); // 'portrait' | 'landscape' once mounted
+    const [playing, setPlaying] = useState(false);
+    const [blocked, setBlocked] = useState(false);
     const videoRef = useRef(null);
 
     useEffect(() => {
@@ -48,14 +50,24 @@ const AuroraBackground = () => {
         };
     }, []);
 
-    // Some browsers ignore autoPlay on elements added later; nudge it, and ignore refusals
-    // (the poster stays visible in that case).
+    // iPhone Safari only autoplays a video that is muted from the start, and React sets
+    // `muted` as a property, not as the HTML attribute Safari checks. So set both here,
+    // then start it. If Safari still refuses (e.g. Low Power Mode), drop the video and
+    // keep the still poster, so Safari's own play button never shows.
     useEffect(() => {
-        const v = videoRef.current;
-        if (v) v.play?.().catch(() => {});
+        const el = videoRef.current;
+        if (!el) return;
+        setPlaying(false);
+        el.muted = true;
+        el.defaultMuted = true;
+        el.setAttribute('muted', '');
+        el.setAttribute('playsinline', '');
+        el.setAttribute('webkit-playsinline', '');
+        const p = el.play?.();
+        if (p && p.catch) p.catch(() => setBlocked(true));
     }, [shape]);
 
-    const v = shape && videos[shape];
+    const v = !blocked && shape && videos[shape];
 
     return (
         <div className="aurora-bg" aria-hidden="true">
@@ -63,7 +75,8 @@ const AuroraBackground = () => {
                 <video
                     key={shape}
                     ref={videoRef}
-                    className="aurora-bg__video"
+                    className={`aurora-bg__video${playing ? ' is-playing' : ''}`}
+                    onPlaying={() => setPlaying(true)}
                     autoPlay
                     muted
                     loop
@@ -72,8 +85,9 @@ const AuroraBackground = () => {
                     preload="auto"
                     poster={v.poster}
                 >
-                    <source src={v.webm} type="video/webm" />
-                    <source src={v.mp4} type="video/mp4" />
+                    {/* Codec strings let each browser skip a format it can't decode */}
+                    <source src={v.webm} type='video/webm; codecs="vp9"' />
+                    <source src={v.mp4} type='video/mp4; codecs="avc1.640028"' />
                 </video>
             )}
             <div className="aurora-bg__grain" style={{ backgroundImage: `url(${grain})` }} />

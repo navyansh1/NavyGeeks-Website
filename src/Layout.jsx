@@ -73,7 +73,7 @@ export default function Layout() {
         <MotionConfig reducedMotion="user">
             <style>{`:root{--aurora-poster-portrait:url(${portraitPoster});--aurora-poster-landscape:url(${landscapePoster})}`}</style>
             <AuroraBackground />
-            <div className="min-h-screen w-full overflow-x-hidden pb-16 md:pb-0">
+            <div className="page-layer min-h-screen w-full overflow-x-hidden pb-16 md:pb-0">
                 <Navbar />
                 <main>
                     <Outlet />

@@ -95,6 +95,7 @@ A looping aurora video sits behind every page (`src/components/AuroraBackground.
 - **Loading:** a still poster frame is set in CSS, so it shows instantly. The video loads only after the page has finished loading, so it doesn't slow the page down. If the video can't autoplay (e.g. iPhone Low Power Mode), the poster stays.
 - **Grain:** a still noise tile (`grain.png`) on top at 10% opacity. It isn't baked into the video, because noise compresses badly; it also hides colour banding.
 - **Reduce motion:** visitors with "reduce motion" turned on get the still poster only.
+- **iPhone (Safari, Chrome, Google app):** all use Apple's WebKit engine. The video gets the `muted` attribute set directly (React only sets the property, and iOS won't autoplay without the attribute), stays hidden until it is actually playing (so iOS never shows its own play button), and the background sits in layer 0 with the page in layer 1 (`.page-layer`) instead of a negative z-index, which iOS could draw over the page. It is also taller than the screen so it runs under Safari's toolbars.
 - **Between pages:** it lives in the shared `Layout`, so it keeps playing without restarting as you move between pages.
 - **Re-rendering:** the videos were rendered from an HTML/CSS aurora (headless Chromium, 30 fps) and encoded with ffmpeg (H.264 CRF 19, VP9 CRF 30). Keep the ping-pong loop and the posters in sync if you change them.
 
