@@ -11,7 +11,7 @@ import ProjectModal from '../components/ProjectModal';
 import GithubActivity from '../components/GithubActivity';
 import NotFound from './NotFound';
 import { projects, featuredProjects, getProject } from '../data/projects';
-import { PERSON_ID, SITE_NAME, absoluteUrl, imageUrl, pagePath, breadcrumbSchema } from '../data/site';
+import { PERSON_ID, SITE_NAME, absoluteUrl, imageUrl, breadcrumbSchema } from '../data/site';
 
 const linkClass = 'flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold transition duration-300';
 

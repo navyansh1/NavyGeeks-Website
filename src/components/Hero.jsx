@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import profilepic from "../assets/profile/profpic-web.jpg";
-import ShinyEffect from "./ShinyEffect";
 
 import resumeImage from "../assets/profile/resumeImage.png";
 import { Github, Linkedin, Instagram, Youtube, X, GraduationCap, FileText } from "lucide-react";
@@ -141,7 +140,7 @@ const Hero = () => {
                     alt="Navyansh Kothari, AI/ML Engineer"
                     width={900}
                     height={1185}
-                    fetchpriority="high"
+                    {...{ fetchpriority: "high" }}
                     className="w-[250px] md:w-[350px] h-auto rounded-xl"
                 />
 
@@ -179,10 +178,6 @@ const Hero = () => {
                     <Github className="text-gray-300 mx-2 w-14 h-14 md:w-16 md:h-16" />
                 </div>
             </motion.div>
-
-            <div className="absolute inset-0 hidden md:block">
-                <ShinyEffect left={0} top={0} size={1900} />
-            </div>
 
         </div>
 

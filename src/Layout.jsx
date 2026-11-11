@@ -4,6 +4,8 @@ import { MotionConfig } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import AuroraBackground from './components/AuroraBackground';
+import { portraitPoster, landscapePoster } from './components/auroraPosters';
 import { BackLink } from './components/DetailBlocks';
 import { pagePath } from './data/site';
 
@@ -69,7 +71,8 @@ export default function Layout() {
     return (
         // reducedMotion="user" turns animations off for visitors who set "reduce motion" in their OS
         <MotionConfig reducedMotion="user">
-            <div className="page-glow" aria-hidden="true" />
+            <style>{`:root{--aurora-poster-portrait:url(${portraitPoster});--aurora-poster-landscape:url(${landscapePoster})}`}</style>
+            <AuroraBackground />
             <div className="min-h-screen w-full overflow-x-hidden pb-16 md:pb-0">
                 <Navbar />
                 <main>

@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { FolderOpen, ArrowRight } from 'lucide-react';
-import ShinyEffect from './ShinyEffect';
 import ProjectGrid from './ProjectGrid';
 import ProjectModal from './ProjectModal';
 import GithubActivity from './GithubActivity';
@@ -19,7 +18,6 @@ const Portfolio = () => {
         <h2 className='text-3xl md:text-5xl font-bold text-yellow-500 mb-8 flex items-center justify-center gap-3'>
             <FolderOpen size={28} className='md:w-10 md:h-10' /> Projects
         </h2>
-        <ShinyEffect left={0} top={0} size={1900} />
 
         <GithubActivity compact />
 

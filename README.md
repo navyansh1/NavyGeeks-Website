@@ -86,6 +86,20 @@ All content lives in `src/data/`. Adding an entry there creates its page, sitema
 
 ---
 
+## 🌌 Background
+
+A looping aurora video sits behind every page (`src/components/AuroraBackground.jsx`, styles in `src/index.css` under `.aurora-bg`).
+
+- **Colours:** traditional Japanese colours: mint (Byakuroku), teal (Seiheki), blue (Ruri) and a soft pink glow (Momo, Nadeshiko, Toki) on a dark navy base. Yellow stays the only accent colour for text and buttons.
+- **Loop:** 5 s forward then 5 s in reverse (10 s total), eased at each end, so it never jumps. Two versions in `src/assets/bg/`: portrait for phones and landscape for wider screens, each as WebM plus MP4 (Safari), 60 to 480 KB.
+- **Loading:** a still poster frame is set in CSS, so it shows instantly. The video loads only after the page has finished loading, so it doesn't slow the page down. If the video can't autoplay (e.g. iPhone Low Power Mode), the poster stays.
+- **Grain:** a still noise tile (`grain.png`) on top at 10% opacity. It isn't baked into the video, because noise compresses badly; it also hides colour banding.
+- **Reduce motion:** visitors with "reduce motion" turned on get the still poster only.
+- **Between pages:** it lives in the shared `Layout`, so it keeps playing without restarting as you move between pages.
+- **Re-rendering:** the videos were rendered from an HTML/CSS aurora (headless Chromium, 30 fps) and encoded with ffmpeg (H.264 CRF 19, VP9 CRF 30). Keep the ping-pong loop and the posters in sync if you change them.
+
+---
+
 ## 🧭 Navigation behaviour
 
 - Home project cards open a quick-view modal; the modal links to the full page.
@@ -95,6 +109,12 @@ All content lives in `src/data/`. Adding an entry there creates its page, sitema
 ---
 
 ## 📝 Recent changes
+
+- **Background:** new animated aurora video background with film grain on every page (see Background). Removed the old purple glow.
+- **Certifications:** added AWS Certified Solutions Architect - Associate (Nov 2026). All certification cards are now the same size.
+- **Back button:** a Back link at the top and bottom of every page except home.
+- **SEO:** crawlable nav links, shorter paper titles, all descriptions within 160 characters, `public/llms.txt` for AI search tools, a faster-loading hero photo, and smaller logos.
+- **Content:** an "About this project" section on 11 smaller project pages, a results table for the fraud project, "Where these skills are used" on Skills and "Beyond the classroom" on Education.
 
 - **Research pages:** each of the 5 papers has an architecture diagram, a flowchart, results tables and plain-language key points. Added the IECS 2026 paper *On-Demand Multimodal RAG*.
 - **CCTV IQ:** updated for the two-camera setup: first and last sighting on either camera, time inside minus breaks, a glass-zone mask, a score floor fitted to real data, a process supervisor, and *Ask Iris* (plain-English questions answered with Claude on AWS Bedrock). New diagram.
