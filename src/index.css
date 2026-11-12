@@ -16,9 +16,11 @@ body {
   box-sizing: border-box;
 }
 
+/* clip (not hidden) stops sideways scrolling without turning body into a scroll
+   container, which would break the sticky aurora background */
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h2 {
@@ -52,19 +54,31 @@ span {
 }
 /* Site-wide aurora background (see AuroraBackground.jsx), fixed behind every page.
    The posters are set here as well, so a still frame shows before any JavaScript runs. */
-.aurora-bg {
-  position: fixed;
-  /* Explicit layers (background 0, page 1) instead of z-index -1: iPhone browsers can draw
-     a video above the page when it relies on a negative z-index. */
-  /* Taller than the screen, so it also runs under Safari's toolbars on iPhone
-     (with viewport-fit=cover in index.html; iOS 26 clips fixed elements without it) */
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100vh;
-  height: calc(100lvh + 160px);
+/* The aurora is NOT position: fixed. iOS 26 Safari clips fixed elements to the area
+   between its toolbars, so when the toolbar shrinks on scroll a bare band showed at the
+   bottom. Instead (the fix React Spectrum and MUI use for iOS 26):
+   - .aurora-track: an absolute layer covering the whole page (layer 0, page is layer 1;
+     explicit layers, because iPhones can draw a video over the page with z-index -1)
+   - .aurora-bg inside it: position: sticky, so it stays on screen while scrolling but is
+     ordinary page content, which Safari draws behind its toolbars. It overshoots the
+     screen by 80px at the top and bottom to fill the areas behind the bars. */
+.site-root {
+  position: relative;
+  isolation: isolate;
+}
+.aurora-track {
+  position: absolute;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
+  overflow: clip; /* clip, not hidden: hidden would stop position: sticky working */
+}
+.aurora-bg {
+  position: sticky;
+  top: -80px;
+  width: 100%;
+  height: calc(100vh + 160px);
+  height: calc(100lvh + 160px);
   overflow: hidden;
   /* No background-color here: iOS 26 Safari paints its top and bottom bars with the
      background-color of a screen-sized fixed layer, which made them black. Images and
@@ -122,7 +136,7 @@ html { background-color: #2F3D42; } /* average bottom edge of the aurora video (
   top: 0;
   left: 0;
   right: 0;
-  height: 0.5px; /* hairline: on a 3x iPhone screen it's 1.5 physical pixels */
+  height: 1px; /* Safari ignored a 0.5px strip */
   z-index: 2; /* Safari samples the topmost fixed element at the edge */
   pointer-events: none;
   background-color: #264747; /* average top edge of the aurora video (+ grain) */

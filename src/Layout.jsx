@@ -79,6 +79,7 @@ export default function Layout() {
             <Head>
                 <link rel="preload" href={fontLatin} as="font" type="font/woff2" crossOrigin="anonymous" />
             </Head>
+            <div className="site-root">
             <AuroraBackground />
             <div className="page-layer min-h-screen w-full overflow-x-hidden pb-16 md:pb-0">
                 <Navbar />
@@ -91,6 +92,7 @@ export default function Layout() {
                     </div>
                 )}
                 <Footer />
+            </div>
             </div>
             {/* Vercel Web Analytics (free tier): page views and visitors, no cookies */}
             <Analytics />
