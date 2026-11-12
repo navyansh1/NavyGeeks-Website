@@ -103,6 +103,8 @@ A looping aurora video sits behind every page (`src/components/AuroraBackground.
 
 ## 🧭 Navigation behaviour
 
+- **Back links** (top and bottom of every page except home) always go **up one level**: paper or project page → Research or Projects → Home, labelled "Back to …". When the previous step in the tab's history is that parent page, they step back in history (keeping your scroll position there); otherwise they link to the parent. `src/navTrail.js` records which path sits at each history step, and the decision is made at click time. (An earlier version could loop between a paper and Research when a paper was opened directly.)
+
 - Home project cards open a quick-view modal; the modal links to the full page.
 - Home paper cards go straight to the paper page.
 - **Back** returns to where you were: the page's Back button uses browser history when you came from inside the site, and both it and the browser back button restore the previous scroll position (`src/Layout.jsx`). Visitors arriving from Google see "All projects" or "All publications" instead.

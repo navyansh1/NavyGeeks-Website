@@ -7,13 +7,14 @@ import Footer from './components/Footer';
 import AuroraBackground from './components/AuroraBackground';
 import { portraitPoster, landscapePoster } from './components/auroraPosters';
 import { BackLink } from './components/DetailBlocks';
+import { recordHistoryStep } from './navTrail';
 import { pagePath } from './data/site';
 
 // Where Back goes when the visitor arrived from outside the site.
 const parentOf = (pathname) => {
     const parts = pathname.split('/').filter(Boolean);
     const parent = parts.slice(0, -1).join('/');
-    const labels = { research: 'All publications', projects: 'All projects' };
+    const labels = { research: 'Research', projects: 'Projects' };
     return { to: pagePath(parent), label: labels[parent] || 'Home' };
 };
 
@@ -66,7 +67,8 @@ const useScrollOnNavigate = () => {
 
 export default function Layout() {
     useScrollOnNavigate();
-    const { pathname } = useLocation();
+    const { pathname, key } = useLocation();
+    useEffect(() => { recordHistoryStep(pathname); }, [pathname, key]);
 
     return (
         // reducedMotion="user" turns animations off for visitors who set "reduce motion" in their OS

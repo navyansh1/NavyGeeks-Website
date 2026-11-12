@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ChevronDown } from 'lucide-react';
+import { previousStepIs } from '../navTrail';
 
 // Building blocks shared by project and paper pages, so both look the same.
 
@@ -94,24 +95,22 @@ export const TagList = ({ tags }) => (
 
 // Goes back to wherever the visitor came from inside the site (for example the home page),
 // so one tap undoes one tap. Arriving from Google or a shared link, it links to the list page.
+// Back always goes UP one level (paper -> Research -> Home), never sideways, so it can't
+// loop. When the page we came from is that parent, it steps back in history instead, which
+// keeps the visitor's scroll position there. Decided at click time, not when the page opened.
 export const BackLink = ({ to, label, className = 'mt-10' }) => {
     const navigate = useNavigate();
-    const [canGoBack, setCanGoBack] = useState(false);
-    useEffect(() => {
-        setCanGoBack((window.history.state?.idx ?? 0) > 0);
-    }, []);
-
     return (
         <Link
             to={to}
             onClick={(e) => {
-                if (!canGoBack) return;
+                if (!previousStepIs(to)) return; // plain link to the parent page
                 e.preventDefault();
                 navigate(-1);
             }}
             className={`${className} inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold`}
         >
-            <ArrowLeft size={18} /> {canGoBack ? 'Back' : label}
+            <ArrowLeft size={18} /> Back to {label}
         </Link>
     );
 };
