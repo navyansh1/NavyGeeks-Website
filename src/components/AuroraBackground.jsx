@@ -72,6 +72,7 @@ const AuroraBackground = () => {
     const v = !blocked && shape && videos[shape];
 
     return (
+        <>
         <div className="aurora-bg" aria-hidden="true">
             {v && (
                 <video
@@ -93,6 +94,8 @@ const AuroraBackground = () => {
             )}
             <div className="aurora-bg__grain" style={{ backgroundImage: `url(${grain})` }} />
         </div>
+        <div className="safari-top-tint" aria-hidden="true" />
+        </>
     );
 };
 

@@ -7,7 +7,7 @@
 
 body {
   font-family: "Space Grotesk", sans-serif;
-  background-color: #06121A;
+  background-color: #34434B;
 }
 
 * {
@@ -66,7 +66,9 @@ span {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  background-color: #06121A;
+  /* No background-color here: iOS 26 Safari paints its top and bottom bars with the
+     background-color of a screen-sized fixed layer, which made them black. Images and
+     video are ignored for that, so the poster and video stay. */
   background-image: var(--aurora-poster-landscape);
   background-size: cover;
   background-position: center;
@@ -108,4 +110,20 @@ span {
   position: relative;
   z-index: 1;
   isolation: isolate;
+}
+
+/* iOS 26 Safari ignores theme-color and tints its bars instead:
+   - top bar: from a fixed element with a background-color within ~4px of the top edge
+   - bottom bar: from the html/body background-color
+   so both use the aurora's own edge tones (teal at the top, slate at the bottom). */
+html { background-color: #34434B; }
+.safari-top-tint {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 2; /* Safari samples the topmost fixed element at the edge */
+  pointer-events: none;
+  background-color: #2B4F4E;
 }
