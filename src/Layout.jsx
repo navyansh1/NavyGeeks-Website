@@ -8,6 +8,8 @@ import AuroraBackground from './components/AuroraBackground';
 import { portraitPoster, landscapePoster } from './components/auroraPosters';
 import { BackLink } from './components/DetailBlocks';
 import { recordHistoryStep } from './navTrail';
+import { Head } from 'vite-react-ssg';
+import fontLatin from '@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url';
 import { pagePath } from './data/site';
 
 // Where Back goes when the visitor arrived from outside the site.
@@ -74,6 +76,9 @@ export default function Layout() {
         // reducedMotion="user" turns animations off for visitors who set "reduce motion" in their OS
         <MotionConfig reducedMotion="user">
             <style>{`:root{--aurora-poster-portrait:url(${portraitPoster});--aurora-poster-landscape:url(${landscapePoster})}`}</style>
+            <Head>
+                <link rel="preload" href={fontLatin} as="font" type="font/woff2" crossOrigin="anonymous" />
+            </Head>
             <AuroraBackground />
             <div className="page-layer min-h-screen w-full overflow-x-hidden pb-16 md:pb-0">
                 <Navbar />

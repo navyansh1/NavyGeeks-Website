@@ -111,6 +111,13 @@ A looping aurora video sits behind every page (`src/components/AuroraBackground.
 
 ---
 
+## ⚡ Performance notes
+
+- **Font:** Space Grotesk is self-hosted via `@fontsource-variable/space-grotesk` (imported in `src/main.jsx`), not Google Fonts, whose stylesheet blocked the first paint on phones for about a second. `Layout` preloads only the Latin file; `vite.config.js` strips vite-react-ssg's automatic preloads of the Vietnamese and Latin Extended files.
+- **Hero photo:** served through `<picture>` as AVIF, then WebP (400/700/900 px wide, `src/assets/profile/profpic-*.{avif,webp}`), with the JPG as fallback. Phones download about 50 KB instead of 101 KB. If you change the photo, regenerate those sizes.
+
+---
+
 ## 📝 Recent changes
 
 - **Background:** new animated aurora video background with film grain on every page (see Background). Removed the old purple glow.

@@ -37,9 +37,13 @@ export default defineConfig({
       return renderedRoutes
     },
     // vite-react-ssg preloads every imported image on every page (36 on each one, ~20 MB).
-    // Drop them; images load lazily where they are actually used.
+    // Drop them; images load lazily where they are actually used. Also drop its preloads of
+    // the Vietnamese and Latin Extended font files: the page only needs Latin, which Layout
+    // preloads itself (the others still load on demand if a page ever uses them).
     onPageRendered(_route, html) {
-      return html.replace(/<link rel="preload" as="image"[^>]*>/g, '')
+      return html
+        .replace(/<link rel="preload" as="image"[^>]*>/g, '')
+        .replace(/<link rel="preload" as="font"[^>]*space-grotesk-(vietnamese|latin-ext)[^>]*>/g, '')
     },
     onFinished(dir) {
       const urls = renderedRoutes.filter((p) => p.replace(/\//g, '') !== '404')

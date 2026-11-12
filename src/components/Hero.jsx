@@ -1,5 +1,15 @@
 import React, { useState } from "react";
 import profilepic from "../assets/profile/profpic-web.jpg";
+import pic400avif from "../assets/profile/profpic-400.avif";
+import pic700avif from "../assets/profile/profpic-700.avif";
+import pic900avif from "../assets/profile/profpic-900.avif";
+import pic400webp from "../assets/profile/profpic-400.webp";
+import pic700webp from "../assets/profile/profpic-700.webp";
+import pic900webp from "../assets/profile/profpic-900.webp";
+
+// Shown 250px wide on phones and 350px on larger screens; the browser picks the
+// smallest file that is sharp on the screen (AVIF, else WebP, else the JPG).
+const photoSizes = "(min-width: 768px) 350px, 250px";
 
 import resumeImage from "../assets/profile/resumeImage.png";
 import { Github, Linkedin, Instagram, Youtube, X, GraduationCap, FileText } from "lucide-react";
@@ -135,14 +145,18 @@ const Hero = () => {
                 </motion.div>
 
                 {/* Largest image on the page: shown at once (no fade-in) so it doesn't delay LCP */}
-                <img
-                    src={profilepic}
-                    alt="Navyansh Kothari, AI/ML Engineer"
-                    width={900}
-                    height={1185}
-                    {...{ fetchpriority: "high" }}
-                    className="w-[250px] md:w-[350px] h-auto rounded-xl"
-                />
+                <picture>
+                    <source type="image/avif" srcSet={`${pic400avif} 400w, ${pic700avif} 700w, ${pic900avif} 900w`} sizes={photoSizes} />
+                    <source type="image/webp" srcSet={`${pic400webp} 400w, ${pic700webp} 700w, ${pic900webp} 900w`} sizes={photoSizes} />
+                    <img
+                        src={profilepic}
+                        alt="Navyansh Kothari, AI/ML Engineer"
+                        width={900}
+                        height={1185}
+                        {...{ fetchpriority: "high" }}
+                        className="w-[250px] md:w-[350px] h-auto rounded-xl"
+                    />
+                </picture>
 
             </div>
 
