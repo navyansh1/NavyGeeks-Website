@@ -7,7 +7,7 @@
 
 body {
   font-family: "Space Grotesk", sans-serif;
-  background-color: #34434B;
+  background-color: #2F3D42;
 }
 
 * {
@@ -115,15 +115,15 @@ span {
 /* iOS 26 Safari ignores theme-color and tints its bars instead:
    - top bar: from a fixed element with a background-color within ~4px of the top edge
    - bottom bar: from the html/body background-color
-   so both use the aurora's own edge tones (teal at the top, slate at the bottom). */
-html { background-color: #34434B; }
+   so both use the aurora's own edge tones, measured across the whole loop. */
+html { background-color: #2F3D42; } /* average bottom edge of the aurora video (+ grain) */
 .safari-top-tint {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 1px;
   z-index: 2; /* Safari samples the topmost fixed element at the edge */
   pointer-events: none;
-  background-color: #2B4F4E;
+  background-color: #264747; /* average top edge of the aurora video (+ grain) */
 }
