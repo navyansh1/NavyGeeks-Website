@@ -96,7 +96,6 @@ const AuroraBackground = () => {
             <div className="aurora-bg__grain" style={{ backgroundImage: `url(${grain})` }} />
         </div>
         </div>
-        <div className="safari-top-tint" aria-hidden="true" />
         </>
     );
 };

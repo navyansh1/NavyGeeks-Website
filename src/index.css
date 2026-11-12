@@ -126,18 +126,7 @@ span {
   isolation: isolate;
 }
 
-/* iOS 26 Safari ignores theme-color and tints its bars instead:
-   - top bar: from a fixed element with a background-color within ~4px of the top edge
-   - bottom bar: from the html/body background-color
-   so both use the aurora's own edge tones, measured across the whole loop. */
-html { background-color: #2F3D42; } /* average bottom edge of the aurora video (+ grain) */
-.safari-top-tint {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px; /* Safari ignored a 0.5px strip */
-  z-index: 2; /* Safari samples the topmost fixed element at the edge */
-  pointer-events: none;
-  background-color: #264747; /* average top edge of the aurora video (+ grain) */
-}
+/* iOS 26 Safari ignores theme-color. With nothing coloured fixed at the screen edges,
+   it uses the html/body background for its bars where it can't show the page itself
+   (e.g. the status bar at the very top of the page), so that is the aurora's edge tone. */
+html { background-color: #2F3D42; }
