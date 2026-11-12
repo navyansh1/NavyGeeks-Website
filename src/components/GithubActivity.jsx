@@ -50,14 +50,12 @@ const GithubActivity = ({ compact = false }) => {
         return toWeeks(all.filter((d) => d.date.startsWith(year)));
     }, [data, year]);
 
-    // On narrow screens, scroll so the most recent week (up to today) is in view.
+    // On narrow screens the graph scrolls sideways; always start at January,
+    // including after switching the year.
     useEffect(() => {
         const el = scroller.current;
         if (!weeks || !el) return;
-        const today = new Date().toISOString().slice(0, 10);
-        let last = weeks.length - 1;
-        while (last > 0 && !weeks[last].some((d) => d && d.date <= today)) last -= 1;
-        el.scrollLeft = Math.max(0, (last + 1) * 15 - el.clientWidth);
+        el.scrollLeft = 0;
     }, [weeks]);
 
     const total = useMemo(
