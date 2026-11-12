@@ -122,7 +122,7 @@ html { background-color: #2F3D42; } /* average bottom edge of the aurora video (
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
+  height: 0.5px; /* hairline: on a 3x iPhone screen it's 1.5 physical pixels */
   z-index: 2; /* Safari samples the topmost fixed element at the edge */
   pointer-events: none;
   background-color: #264747; /* average top edge of the aurora video (+ grain) */
