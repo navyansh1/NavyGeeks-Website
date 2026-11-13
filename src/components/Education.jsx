@@ -67,8 +67,12 @@ const Education = ({ pageHeading = false }) => {
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.3 }}
                             transition={{ duration: 0.4 }}
+                            /* Previous style (yellow border, slate tint), kept for reference:
                             className='border-2 border-yellow-500/60 p-4 rounded-xl
-                            hover:shadow-xl hover:border-yellow-400 transition-all duration-300 bg-slate-800/40 max-w-[550px] w-full mx-auto'
+                            hover:shadow-xl hover:border-yellow-400 transition-all duration-300 bg-slate-800/40 max-w-[550px] w-full mx-auto' */
+                            // Same card style as Projects and Certifications
+                            className='p-4 bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700
+                            hover:border-yellow-500/50 hover:shadow-yellow-500/10 hover:shadow-xl transition-all duration-300 max-w-[550px] w-full mx-auto'
                         >
                             <div className='flex items-center justify-between mb-1'>
                                 <h3 className='text-gray-100 text-lg font-semibold'>{education.institution}</h3>

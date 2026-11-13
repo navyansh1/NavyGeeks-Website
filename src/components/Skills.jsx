@@ -88,8 +88,13 @@ const Skills = ({ pageHeading = false }) => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {skills.map((skill, index) => (
-            <div key={index} className="border-2 border-yellow-500/60 p-5 rounded-xl bg-purple-800/20 shadow-lg
-              hover:border-yellow-400 hover:shadow-yellow-500/10 hover:shadow-xl transition-all duration-300">
+            <div key={index}
+              /* Previous style (purple tint, yellow border), kept for reference:
+              className="border-2 border-yellow-500/60 p-5 rounded-xl bg-purple-800/20 shadow-lg
+              hover:border-yellow-400 hover:shadow-yellow-500/10 hover:shadow-xl transition-all duration-300" */
+              // Same card style as Projects and Certifications
+              className="p-5 bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700
+              hover:border-yellow-500/50 hover:shadow-yellow-500/10 hover:shadow-xl transition-all duration-300">
               <h3 className="text-lg mb-4 text-center text-yellow-400 font-semibold">{skill.category}</h3>
               <div className="space-y-3">
                 {skill.technologies.map((tech, idx) => (
