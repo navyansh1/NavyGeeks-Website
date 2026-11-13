@@ -2,7 +2,7 @@
 export const SITE_URL = 'https://www.navygeeks.in';
 export const SITE_NAME = 'Navyansh Kothari';
 export const SITE_TAGLINE = 'AI/ML Engineer & App Developer';
-export const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`;
+export const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`;
 
 export const SOCIAL_LINKS = {
     github: 'https://github.com/navyansh1',

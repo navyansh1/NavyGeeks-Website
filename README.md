@@ -70,7 +70,7 @@ All content lives in `src/data/`. Adding an entry there creates its page, sitema
 |---|---|
 | `node scripts/make-diagrams.mjs` | Architecture diagrams in `src/assets/diagrams/` (projects and papers `paper-*.svg`) |
 | `node scripts/make-thumbnails.mjs` | Project thumbnails: the diagram, or a screenshot from `scripts/thumb-sources/` in a browser or phone frame. No project name on the image. |
-| `node scripts/make-og-image.mjs` | Link-preview card `public/og-image.png` |
+| open `scripts/og-image/og-image.html` at 1200×630 and screenshot | Link-preview card `public/og-image.jpg` (keep under ~250 KB for WhatsApp) |
 
 `scripts/thumb-data.mjs` lists which projects get which thumbnail style. `frame: "none"` uses the screenshot as it is (VedicFlow, Bill Sonic).
 

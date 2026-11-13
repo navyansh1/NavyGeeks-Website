@@ -37,7 +37,7 @@ export default function Home() {
         <>
             <Seo
                 title={`${SITE_NAME} – AI/ML Engineer, Gen AI & App Developer`}
-                description="Navyansh Kothari is an AI/ML Engineer at Ganit Inc, IEEE-published researcher, app developer and creator of the NavyGeeks tech channel."
+                description="Navyansh Kothari: AI/ML Engineer at Ganit Inc, IEEE-published researcher, AWS Certified Solutions Architect and app developer. Projects, papers, certifications."
                 path="/"
                 schema={homeSchema}
             />

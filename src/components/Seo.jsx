@@ -42,6 +42,12 @@ const Seo = ({
             <meta property="og:description" content={description} />
             <meta property="og:url" content={url} />
             <meta property="og:image" content={image} />
+            <meta property="og:image:secure_url" content={image} />
+            {/* Size tags let WhatsApp/Telegram lay out the preview before downloading the image */}
+            {image === DEFAULT_IMAGE && <meta property="og:image:type" content="image/jpeg" />}
+            {image === DEFAULT_IMAGE && <meta property="og:image:width" content="1200" />}
+            {image === DEFAULT_IMAGE && <meta property="og:image:height" content="630" />}
+            <meta property="og:image:alt" content={title} />
 
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={title} />
