@@ -119,7 +119,9 @@ const Education = ({ pageHeading = false }) => {
 
             {isModalOpen && (
                 <div className='fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4'>
-                    <div className='relative max-w-4xl max-h-[90vh] bg-slate-900/95 p-4 rounded-xl border border-yellow-500/40 shadow-2xl'>
+                    {/* Previous style (yellow outline): className='relative max-w-4xl max-h-[90vh] bg-slate-900/95 p-4 rounded-xl border border-yellow-500/40 shadow-2xl' */}
+                    {/* Same pop-up style as Certifications and Projects */}
+                    <div className='relative max-w-4xl max-h-[90vh] bg-gray-900 p-4 rounded-2xl border border-gray-700 shadow-2xl'>
                         <button
                             onClick={closeModal}
                             className='absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-black/60 backdrop-blur-sm text-white rounded-full hover:bg-black/80 transition-colors'

@@ -26,14 +26,18 @@ const TestimonialsModal = ({ isOpen, onClose }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-2 md:p-4"
+          /* Previous: className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-2 md:p-4" */
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-2 md:p-4"
           onClick={onClose}
         >
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
-            className="bg-gray-800 rounded-2xl p-3 md:p-6 max-w-4xl w-full max-h-[95vh] overflow-y-auto border-2 border-yellow-500"
+            /* Previous style (thick yellow outline), kept for reference:
+            className="bg-gray-800 rounded-2xl p-3 md:p-6 max-w-4xl w-full max-h-[95vh] overflow-y-auto border-2 border-yellow-500" */
+            // Same pop-up style as Certifications and Projects
+            className="bg-gray-900 border border-gray-700 rounded-2xl p-3 md:p-6 max-w-4xl w-full max-h-[95vh] overflow-y-auto shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}

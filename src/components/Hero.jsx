@@ -78,10 +78,15 @@ const Hero = () => {
                         </ul>
                     </motion.div>
                     {resumeVisible && (
+                        /* Previous style (white panel), kept for reference:
                         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
                             <div className="relative bg-white p-6 rounded-lg w-[90%] md:w-[60%] lg:w-[50%]">
+                                <button className="absolute top-2 right-2 text-gray-600 hover:text-gray-900 bg-transparent border-none" ...> */
+                        // Same pop-up style as Certifications and Projects
+                        <div className="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-sm z-50 p-4">
+                            <div className="relative bg-gray-900 border border-gray-700 shadow-2xl p-6 rounded-2xl w-[90%] md:w-[60%] lg:w-[50%]">
                                 <button
-                                    className="absolute top-2 right-2 text-gray-600 hover:text-gray-900 bg-transparent border-none"
+                                    className="absolute top-2 right-2 text-gray-400 hover:text-white bg-transparent border-none"
                                     onClick={toggleResume}
                                 >
                                     <X size={30} />
