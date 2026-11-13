@@ -91,7 +91,7 @@ All content lives in `src/data/`. Adding an entry there creates its page, sitema
 A looping aurora video sits behind every page (`src/components/AuroraBackground.jsx`, styles in `src/index.css` under `.aurora-bg`).
 
 - **Colours:** traditional Japanese colours: mint (Byakuroku), teal (Seiheki), blue (Ruri) and a soft pink glow (Momo, Nadeshiko, Toki) on a dark navy base. Yellow stays the only accent colour for text and buttons.
-- **Loop:** 5 s forward then 5 s in reverse (10 s total), eased at each end, so it never jumps. Two versions in `src/assets/bg/`: portrait for phones and landscape for wider screens, each as WebM plus MP4 (Safari), 60 to 480 KB.
+- **Loop:** 3.5 s forward then 3.5 s in reverse (7 s total), eased at each end, so it never jumps. Two versions in `src/assets/bg/`: portrait for phones and landscape for wider screens, each as WebM plus MP4 (Safari), 60 to 480 KB.
 - **Loading:** a still poster frame is set in CSS, so it shows instantly. The video loads only after the page has finished loading, so it doesn't slow the page down. If the video can't autoplay (e.g. iPhone Low Power Mode), the poster stays.
 - **Grain:** a still noise tile (`grain.png`) on top at 10% opacity. It isn't baked into the video, because noise compresses badly; it also hides colour banding.
 - **Reduce motion:** visitors with "reduce motion" turned on get the still poster only.
