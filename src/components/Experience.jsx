@@ -105,9 +105,13 @@ const Experience = ({ pageHeading = false }) => {
                                 {/* Card */}
                                 <div className='w-full md:w-[calc(50%-2rem)]'>
                                     <motion.div
-                                        className='border-2 border-yellow-500/60 p-4 rounded-xl 
-                                        hover:shadow-xl hover:border-yellow-400 transition-all duration-300 
-                                        bg-purple-800/20 cursor-pointer'
+                                        /* Previous style (purple tint, yellow border), kept for reference:
+                                        className='border-2 border-yellow-500/60 p-4 rounded-xl
+                                        hover:shadow-xl hover:border-yellow-400 transition-all duration-300
+                                        bg-purple-800/20 cursor-pointer' */
+                                        // Same card style as Projects, Certifications, Skills and Education
+                                        className='p-4 bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700
+                                        hover:border-yellow-500/50 hover:shadow-yellow-500/10 hover:shadow-xl transition-all duration-300 cursor-pointer'
                                         onClick={() => toggleCard(index)}
                                     >
                                         {/* Header row */}
