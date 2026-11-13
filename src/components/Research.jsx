@@ -11,7 +11,7 @@ const Research = () => {
   const navigate = useNavigate();
 
   return (
-    <div className='max-w-[1000px] mx-auto p-6 md:my-20 relative' id="research">
+    <div className='max-w-[1000px] mx-auto px-4 py-6 md:p-6 md:my-20 relative' id="research">
       <h2 className='text-2xl md:text-5xl font-bold text-yellow-500 mb-8 flex items-center justify-center text-center gap-2 whitespace-nowrap'>
         <BookOpen size={22} className='md:w-10 md:h-10 flex-shrink-0' /> Research & Publications
       </h2>

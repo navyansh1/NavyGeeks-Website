@@ -57,7 +57,7 @@ export function ResearchIndexPage() {
     ];
 
     return (
-        <div className="pt-20 md:pt-24 max-w-[1000px] mx-auto px-6 pb-8">
+        <div className="pt-20 md:pt-24 max-w-[1000px] mx-auto px-4 md:px-6 pb-8">
             <Seo title={`${SITE_NAME} – Research & IEEE Publications`} description={description} path="/research" schema={schema} />
             <Breadcrumbs items={crumbs} />
             <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-4">Research & Publications</h1>
