@@ -152,14 +152,21 @@ export function ProjectPage() {
             />
             <Breadcrumbs items={crumbs} />
 
-            <h1 className="text-2xl md:text-4xl font-bold text-yellow-500 leading-tight">{project.title}</h1>
+            <h1 className="text-2xl md:text-4xl font-bold text-yellow-500 leading-tight">
+                {project.titleBreak && project.title.includes(' - ') ? (
+                    <>
+                        {shortName(project.title)}
+                        <span className="block mt-1 text-xl md:text-3xl text-yellow-500/90">{project.title.split(' - ').slice(1).join(' - ')}</span>
+                    </>
+                ) : project.title}
+            </h1>
 
             {/* When the thumbnail is the diagram, it is shown under Architecture instead. */}
             {!project.thumbIsDiagram && (
                 <img
                     src={project.img}
                     alt={`${shortName(project.title)} preview`}
-                    className="mt-5 w-full aspect-video object-cover rounded-xl border border-gray-700"
+                    className={`mt-5 w-full aspect-video object-cover rounded-xl border border-gray-700${project.imgDim ? ' opacity-[0.94]' : ''}`}
                 />
             )}
 
@@ -193,6 +200,27 @@ export function ProjectPage() {
                 <>
                     <h2 className={h2Class}>Results</h2>
                     {project.tables.map((table) => <ResultTable key={table.title} table={table} />)}
+                </>
+            )}
+
+            {project.gallery && (
+                <>
+                    <h2 className={h2Class}>Screenshots</h2>
+                    <div className="grid gap-5 md:grid-cols-2">
+                        {project.gallery.map(([src, caption]) => (
+                            <figure key={caption}>
+                                <a href={src} target="_blank" rel="noopener noreferrer" aria-label={`${caption} (full size)`}>
+                                    <img
+                                        src={src}
+                                        alt={caption}
+                                        loading="lazy"
+                                        className={`w-full rounded-xl border border-gray-700 hover:border-yellow-500/60 transition-colors${project.imgDim ? ' opacity-[0.94]' : ''}`}
+                                    />
+                                </a>
+                                <figcaption className="mt-2 text-sm text-gray-400">{caption}</figcaption>
+                            </figure>
+                        ))}
+                    </div>
                 </>
             )}
 

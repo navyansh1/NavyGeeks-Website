@@ -17,6 +17,12 @@ import thumb_instasnap_ui_redesign from "../assets/projects/thumbs/instasnap-ui-
 import thumb_playing_cards_ios_app from "../assets/projects/thumbs/playing-cards-ios-app.jpg";
 import thumb_portfolio_website from "../assets/projects/thumbs/portfolio-website.jpg";
 import thumb_car_obd_dashboard from "../assets/projects/thumbs/car-obd-dashboard.jpg";
+import obd_health_check from "../assets/projects/gallery/car-obd/health-check.jpg";
+import obd_mileage_trip from "../assets/projects/gallery/car-obd/mileage-trip.jpg";
+import obd_past_trips from "../assets/projects/gallery/car-obd/past-trips.jpg";
+import obd_hidden_data from "../assets/projects/gallery/car-obd/hidden-data.jpg";
+import obd_my_car from "../assets/projects/gallery/car-obd/my-car.jpg";
+import obd_swift_live from "../assets/projects/gallery/car-obd/swift-live.jpg";
 
 import geoscoutDiagram from "../assets/diagrams/geoscout-iq.svg";
 import cctvIqDiagram from "../assets/diagrams/cctv-iq.svg";
@@ -41,6 +47,9 @@ import ocrDiagram from "../assets/diagrams/ocr-benchmark.svg";
  * thumbIsDiagram  the thumbnail is that diagram, so the page does not repeat it at the top
  * tags        keywords: shown as chips and used for meta keywords / structured data
  * siteLabel   optional text for the site button (default "Live demo")
+ * titleBreak  put the part after " - " on its own line in the page heading
+ * imgDim      show screenshots at 94% opacity so bright UI sits softer on the page
+ * gallery     optional [image, caption] pairs shown under "Screenshots"
  * type        schema.org type: MobileApplication | WebApplication | SoftwareApplication | SoftwareSourceCode | CreativeWork
  */
 export const projects = [
@@ -245,6 +254,16 @@ export const projects = [
         platforms: ["macOS"],
         stack: ["Python", "python-OBD", "IOBluetooth", "JavaScript"],
         siteLabel: "Website",
+        titleBreak: true,
+        imgDim: true,
+        gallery: [
+            [obd_health_check, "Health check: fault codes and every self-test"],
+            [obd_mileage_trip, "Mileage, fuel used and trip cost in ₹"],
+            [obd_past_trips, "Past trips, second by second"],
+            [obd_hidden_data, "Cracking Hyundai's hidden data"],
+            [obd_my_car, "My car: identity and every computer found"],
+            [obd_swift_live, "Second car: 2010 Maruti Suzuki Swift"],
+        ],
         metaDescription:
             "CAR OBD Dashboard AI reads everything a car's computers know through a ₹500 ELM327 Bluetooth scanner: live gauges, misfires, health check, mileage and hidden data.",
         summary: "Plug a ₹500 ELM327 Bluetooth scanner into the car and see everything its computers know, live and in plain English on a Mac.",
