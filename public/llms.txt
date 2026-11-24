@@ -23,6 +23,7 @@
 - [GeoScout IQ](https://www.navygeeks.in/projects/geoscout-iq/): location intelligence for banks and retailers
 - [CCTV IQ](https://www.navygeeks.in/projects/cctv-iq-face-attendance/): face-recognition attendance from CCTV
 - [VedicFlow](https://www.navygeeks.in/projects/vedicflow/): Hindu calendar and Panchang app
+- [CAR OBD Dashboard AI](https://www.navygeeks.in/projects/car-obd-dashboard/): live car data and hidden manufacturer data from an ELM327 scanner
 - [OCR Engine Benchmark](https://www.navygeeks.in/projects/ocr-engine-benchmark/): OCR comparison on Indian loan documents
 - [Bill Sonic](https://www.navygeeks.in/projects/bill-sonic/): mobile point-of-sale app
 - [Discount Spend Optimization](https://www.navygeeks.in/projects/discount-spend-optimization/): ML pipeline for FMCG promotions

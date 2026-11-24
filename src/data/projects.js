@@ -16,6 +16,7 @@ import thumb_blockchain_lottery_dapp from "../assets/projects/thumbs/blockchain-
 import thumb_instasnap_ui_redesign from "../assets/projects/thumbs/instasnap-ui-redesign.jpg";
 import thumb_playing_cards_ios_app from "../assets/projects/thumbs/playing-cards-ios-app.jpg";
 import thumb_portfolio_website from "../assets/projects/thumbs/portfolio-website.jpg";
+import thumb_car_obd_dashboard from "../assets/projects/thumbs/car-obd-dashboard.jpg";
 
 import geoscoutDiagram from "../assets/diagrams/geoscout-iq.svg";
 import cctvIqDiagram from "../assets/diagrams/cctv-iq.svg";
@@ -39,6 +40,7 @@ import ocrDiagram from "../assets/diagrams/ocr-benchmark.svg";
  * diagram     optional architecture diagram
  * thumbIsDiagram  the thumbnail is that diagram, so the page does not repeat it at the top
  * tags        keywords: shown as chips and used for meta keywords / structured data
+ * siteLabel   optional text for the site button (default "Live demo")
  * type        schema.org type: MobileApplication | WebApplication | SoftwareApplication | SoftwareSourceCode | CreativeWork
  */
 export const projects = [
@@ -231,6 +233,76 @@ export const projects = [
             site: "https://www.vedicflow.co.in/",
             ios: "https://apps.apple.com/in/app/vedic-flow-hindu-calendar-2026/id6760628104",
             android: "https://play.google.com/store/apps/details?id=com.vedicflow.app",
+        },
+    },
+    {
+        slug: "car-obd-dashboard",
+        featured: true,
+        kind: "car diagnostics dashboard",
+        img: thumb_car_obd_dashboard,
+        title: "CAR OBD Dashboard AI - Live Car Data from a ₹500 Scanner",
+        type: "SoftwareApplication",
+        platforms: ["macOS"],
+        stack: ["Python", "python-OBD", "IOBluetooth", "JavaScript"],
+        siteLabel: "Website",
+        metaDescription:
+            "CAR OBD Dashboard AI reads everything a car's computers know through a ₹500 ELM327 Bluetooth scanner: live gauges, misfires, health check, mileage and hidden data.",
+        summary: "Plug a ₹500 ELM327 Bluetooth scanner into the car and see everything its computers know, live and in plain English on a Mac.",
+        facts: [
+            ["Problem", "Normal OBD apps show a handful of numbers. The car's computers know far more, and much of it is undocumented."],
+            ["What it does", "Live gauges, per-cylinder misfires, health check, mileage and trip cost in ₹, past-trip replays and car identity."],
+            ["How it works", "A small macOS bridge app keeps the Bluetooth link open, Python reads the car, and a single HTML page shows it live."],
+            ["Hidden data", "Private manufacturer data blocks are correlated byte by byte against known values to find what each field means."],
+            ["Tested on", "2015 Hyundai Creta 1.6 petrol and 2010 Maruti Suzuki Swift 1.2 (K12M)"],
+            ["Tech", "Python, python-OBD, PyObjC IOBluetooth, NumPy, plain HTML and JavaScript (no build step)"],
+        ],
+        highlights: [
+            "25 to 30 live readings per car, each with an explanation of what it is and what's normal",
+            "Misfire count for each cylinder, this trip and the last 10 trips",
+            "Health check: fault codes, readiness self-tests and the engine's own lab results (catalytic converter, O2 sensors)",
+            "Mileage, fuel used, trip cost in ₹, money spent idling and 0-100 timers",
+            "Every trip saved with second-by-second charts you can replay",
+            "Self-healing Bluetooth bridge that works around a macOS serial bug and reconnects in 3-7 seconds",
+            "Read-only: never clears codes or writes anything to the car",
+        ],
+        tables: [
+            {
+                title: "Hidden Hyundai data decoded",
+                head: ["Value", "Where it hides", "Formula", "Match"],
+                rows: [
+                    ["Road speed", "Block 21 02, byte 12", "× 1.25", "r = 0.99"],
+                    ["Engine speed", "Block 21 01, bytes 7-8", "× 0.25", "r = 0.96"],
+                    ["Spark timing per cylinder (likely)", "Block 21 07, bytes 4-7", "being confirmed", "r ≈ 0.76-0.85"],
+                ],
+            },
+            {
+                title: "Two cars, one dashboard",
+                head: ["", "Hyundai Creta 2015", "Suzuki Swift 2010"],
+                rows: [
+                    ["Computers found", "6 (engine, ABS, steering, cluster, body, climate)", "Engine"],
+                    ["Fuel use", "Worked out from air pressure and rpm", "Measured by a real airflow sensor"],
+                    ["Extra", "Body computer build date: 24 April 2015", "Wideband O2: live air-fuel ratio (λ)"],
+                ],
+            },
+        ],
+        details: [
+            "On Apple Silicon Macs a closed Bluetooth serial port never passes data again; the bridge talks to the RFCOMM channel directly through IOBluetooth and serves it on a local TCP port",
+            "Asks for 6 values per request on CAN, about 4.5× faster than one at a time",
+            "No data-ID probing on ABS, airbag or steering modules: those only get identity and fault-code reads",
+            "Everything is plain JSON on the Mac, so any AI assistant (Claude, ChatGPT, Cursor, Gemini) can read it and answer questions about the car",
+            "Replay mode plays real recorded drives, so it can be tried without a car",
+        ],
+        flow: [
+            ["Car", "CAN bus"],
+            ["ELM327", "₹500 Bluetooth scanner"],
+            ["OBD Bridge", "self-healing link"],
+            ["Dashboard", "live, plain English"],
+            ["Decoder", "hidden data"],
+        ],
+        tags: ["OBD-II", "ELM327", "car diagnostics", "Hyundai Creta", "Maruti Suzuki Swift", "reverse engineering", "CAN bus", "Python", "macOS", "Bluetooth"],
+        links: {
+            site: "https://navyansh1.github.io/CAR-OBD-Dashboard-AI/",
+            github: "https://github.com/navyansh1/CAR-OBD-Dashboard-AI",
         },
     },
     {

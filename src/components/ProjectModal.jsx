@@ -84,7 +84,7 @@ const ProjectModal = ({ project, onClose }) => {
                                 </Link>
                                 {project.links.site && (
                                     <a href={project.links.site} target="_blank" rel="noopener noreferrer" className={`${btn} border border-yellow-500 text-gray-100 hover:bg-yellow-500 hover:text-gray-900`}>
-                                        <ExternalLink size={16} /> {project.type === 'CreativeWork' ? 'View' : 'Live demo'}
+                                        <ExternalLink size={16} /> {project.siteLabel || (project.type === 'CreativeWork' ? 'View' : 'Live demo')}
                                     </a>
                                 )}
                                 {project.links.ios && (

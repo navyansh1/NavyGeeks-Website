@@ -217,7 +217,7 @@ export function ProjectPage() {
                 <div className="mt-6 flex flex-wrap gap-3">
                     {site && (
                         <a href={site} target="_blank" rel="noopener noreferrer" className={`${linkClass} bg-yellow-600 text-white hover:bg-yellow-700`}>
-                            <ExternalLink size={18} /> {project.type === 'CreativeWork' ? 'View' : 'Live demo'}
+                            <ExternalLink size={18} /> {project.siteLabel || (project.type === 'CreativeWork' ? 'View' : 'Live demo')}
                         </a>
                     )}
                     {ios && (
