@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { Lock } from 'lucide-react';
 import { pagePath } from '../data/site';
 
-// Card linking to a project's own page (with `onOpen`, a click opens a quick view instead).
+// Quick-view pop-up (ProjectModal) on click. Off for now: a click opens the project's own page.
+// Set to true to bring the pop-up back; all of its code is still in place.
+const QUICK_VIEW = false;
+
+// Card linking to a project's own page (with `onOpen` and QUICK_VIEW, a click opens a quick view instead).
 const ProjectCard = ({ project, headingLevel = 'h3', onOpen }) => {
     const Heading = headingLevel;
     return (
@@ -11,7 +15,7 @@ const ProjectCard = ({ project, headingLevel = 'h3', onOpen }) => {
             to={pagePath(`projects/${project.slug}`)}
             onClick={(e) => {
                 // Plain click opens the quick view; ctrl/cmd/middle click still opens the page.
-                if (!onOpen || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+                if (!QUICK_VIEW || !onOpen || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
                 e.preventDefault();
                 onOpen(project);
             }}
