@@ -37,7 +37,7 @@ const Certifications = ({ pageHeading = false }) => {
         {projects.map((project) => (
           <Reveal key={project.title} width="100%" fill>
             <div
-              className='h-full bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700
+              className='h-full bg-gray-800/50 rounded-lg shadow-lg border border-gray-700
               hover:border-yellow-500/50 hover:shadow-yellow-500/10 hover:shadow-xl
               transition-all duration-300 overflow-hidden cursor-pointer group'
               onClick={() => setSelectedCert(project)}

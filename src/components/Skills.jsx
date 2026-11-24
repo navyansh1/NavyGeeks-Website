@@ -93,7 +93,7 @@ const Skills = ({ pageHeading = false }) => {
               className="border-2 border-yellow-500/60 p-5 rounded-xl bg-purple-800/20 shadow-lg
               hover:border-yellow-400 hover:shadow-yellow-500/10 hover:shadow-xl transition-all duration-300" */
               // Same card style as Projects and Certifications
-              className="p-5 bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700
+              className="p-5 bg-gray-800/50 rounded-lg shadow-lg border border-gray-700
               hover:border-yellow-500/50 hover:shadow-yellow-500/10 hover:shadow-xl transition-all duration-300">
               <h3 className="text-lg mb-4 text-center text-yellow-400 font-semibold">{skill.category}</h3>
               <div className="space-y-3">

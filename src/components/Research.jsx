@@ -24,7 +24,7 @@ const Research = () => {
           return (
             <Reveal key={paper.slug} width="100%">
               <div
-                className='group cursor-pointer bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700 hover:border-yellow-500/50 transition-all duration-300 overflow-hidden max-w-[750px] w-full mx-auto p-4 md:p-5'
+                className='group cursor-pointer bg-gray-800/50 rounded-lg shadow-lg border border-gray-700 hover:border-yellow-500/50 transition-all duration-300 overflow-hidden max-w-[750px] w-full mx-auto p-4 md:p-5'
                 onClick={() => navigate(to)}
               >
                 <h3 className='text-base md:text-lg font-semibold text-gray-200 leading-snug group-hover:text-yellow-400 transition-colors'>

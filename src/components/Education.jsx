@@ -71,7 +71,7 @@ const Education = ({ pageHeading = false }) => {
                             className='border-2 border-yellow-500/60 p-4 rounded-xl
                             hover:shadow-xl hover:border-yellow-400 transition-all duration-300 bg-slate-800/40 max-w-[550px] w-full mx-auto' */
                             // Same card style as Projects and Certifications
-                            className='p-4 bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700
+                            className='p-4 bg-gray-800/50 rounded-lg shadow-lg border border-gray-700
                             hover:border-yellow-500/50 hover:shadow-yellow-500/10 hover:shadow-xl transition-all duration-300 max-w-[550px] w-full mx-auto'
                         >
                             <div className='flex items-center justify-between mb-1'>

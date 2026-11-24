@@ -26,7 +26,10 @@ export const FactsTable = ({ rows }) => (
 export const ResultTable = ({ table }) => (
     <figure className="mt-6">
         <figcaption className="text-base font-semibold text-gray-200 mb-2">{table.title}</figcaption>
-        <div className="overflow-x-auto rounded-lg border border-gray-700">
+        {/* Clip and border on a plain box; only phones get a sideways scroller. Safari draws
+            scrollers as separate layers, which made the border shimmer while the page scrolled. */}
+        <div className="isolate rounded-lg border border-gray-700 overflow-hidden">
+        <div className="overflow-x-auto md:overflow-x-visible">
             <table className="w-full text-left text-sm border-collapse">
                 <thead className="bg-gray-800/80">
                     <tr>
@@ -45,6 +48,7 @@ export const ResultTable = ({ table }) => (
                     ))}
                 </tbody>
             </table>
+        </div>
         </div>
     </figure>
 );

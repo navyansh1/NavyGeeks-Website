@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Github, ExternalLink, Apple, Play, Lock } from 'lucide-react';
+import { Github, ExternalLink, Apple, Play, Lock, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Seo from '../components/Seo';
 import Breadcrumbs from '../components/Breadcrumbs';
 import ProjectGrid from '../components/ProjectGrid';
@@ -109,9 +109,52 @@ export function ProjectsIndexPage() {
     );
 }
 
+// Full-screen view of one gallery image: click outside or Esc to close, arrow keys to move.
+function Lightbox({ items, index, onClose, onMove }) {
+    useEffect(() => {
+        if (index === null) return undefined;
+        const onKey = (e) => {
+            if (e.key === 'Escape') onClose();
+            if (e.key === 'ArrowRight') onMove(1);
+            if (e.key === 'ArrowLeft') onMove(-1);
+        };
+        const y = window.scrollY;
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        window.addEventListener('keydown', onKey);
+        return () => {
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+            window.removeEventListener('keydown', onKey);
+            window.scrollTo(0, y);
+        };
+    }, [index, onClose, onMove]);
+
+    if (index === null) return null;
+    const [src, caption] = items[index];
+    const navBtn = 'absolute top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center bg-black/60 text-white rounded-full hover:bg-black/80 transition-colors';
+    return (
+        <div className="fixed inset-0 z-[1001] bg-black/85 flex flex-col items-center justify-center p-3 md:p-8" onClick={onClose} role="dialog" aria-modal="true" aria-label={caption}>
+            <img src={src} alt={caption} className="max-w-full max-h-[82vh] object-contain rounded-lg border border-gray-700 shadow-2xl" onClick={(e) => e.stopPropagation()} />
+            <p className="mt-3 text-sm md:text-base text-gray-300 text-center">{caption} <span className="text-gray-500">· {index + 1} / {items.length}</span></p>
+            <button onClick={onClose} aria-label="Close" className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-black/60 text-white rounded-full hover:bg-black/80 transition-colors"><X size={22} /></button>
+            {items.length > 1 && (
+                <>
+                    <button onClick={(e) => { e.stopPropagation(); onMove(-1); }} aria-label="Previous image" className={`${navBtn} left-3 md:left-6`}><ChevronLeft size={24} /></button>
+                    <button onClick={(e) => { e.stopPropagation(); onMove(1); }} aria-label="Next image" className={`${navBtn} right-3 md:right-6`}><ChevronRight size={24} /></button>
+                </>
+            )}
+        </div>
+    );
+}
+
 export function ProjectPage() {
     const { slug } = useParams();
     const project = getProject(slug);
+    const [zoom, setZoom] = useState(null);
+    const closeZoom = useCallback(() => setZoom(null), []);
+    const count = project?.gallery?.length || 0;
+    const moveZoom = useCallback((d) => setZoom((i) => (i === null ? i : (i + d + count) % count)), [count]);
     if (!project) return <NotFound />;
 
     const path = `/projects/${project.slug}`;
@@ -207,20 +250,21 @@ export function ProjectPage() {
                 <>
                     <h2 className={h2Class}>Screenshots</h2>
                     <div className="grid gap-5 md:grid-cols-2">
-                        {project.gallery.map(([src, caption]) => (
+                        {project.gallery.map(([src, caption], i) => (
                             <figure key={caption}>
-                                <a href={src} target="_blank" rel="noopener noreferrer" aria-label={`${caption} (full size)`}>
+                                <button type="button" onClick={() => setZoom(i)} aria-label={`Enlarge: ${caption}`} className="block w-full cursor-zoom-in">
                                     <img
                                         src={src}
                                         alt={caption}
                                         loading="lazy"
                                         className={`w-full rounded-xl border border-gray-700 hover:border-yellow-500/60 transition-colors${project.imgDim ? ' opacity-[0.94]' : ''}`}
                                     />
-                                </a>
+                                </button>
                                 <figcaption className="mt-2 text-sm text-gray-400">{caption}</figcaption>
                             </figure>
                         ))}
                     </div>
+                    <Lightbox items={project.gallery} index={zoom} onClose={closeZoom} onMove={moveZoom} />
                 </>
             )}
 
